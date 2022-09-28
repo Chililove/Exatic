@@ -5,24 +5,24 @@ USE 'ExaticDB';
 CREATE TABLE PostalCode (
     postalCodeID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     cityName VARCHAR(50) NULL,
-    Country VARCHAR(50) NULL
+    country VARCHAR(50) NULL
 );
 
 CREATE TABLE 'Address' (
     addressID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     streetName VARCHAR(255) NULL,
-    streetName INT NULL,
+    streetNumber INT NULL,
     apartmentNumber VARCHAR(50),
-    postalCodeID int,
+    postalCodeID INT NOT NULL,
     FOREIGN KEY (postalCodeID) REFERENCES PostalCode(postalCodeID)
 );
 
 CREATE TABLE CompanyInfo (
     companyInfoID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     companyDescription VARCHAR(255) NULL,
-    Weekdays VARCHAR(10) NOT NULL,
-    Weekends VARCHAR(10) NOT NULL,
-    addressID int,
+    weekdays VARCHAR(10) NOT NULL,
+    weekends VARCHAR(10) NOT NULL,
+    addressID INT NOT NULL,
     FOREIGN KEY (addressID) REFERENCES 'Address'(addressID)
 );
 
@@ -32,9 +32,9 @@ CREATE TABLE User (
     lastName VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL,
     password VARCHAR(1000) NOT NUll,
-    userType INT,
+    userType INTEGER,
     imagePath: VARCHAR(6000),
-    addressID int,
+    addressID INT NOT NULL,
     FOREIGN KEY (addressID) REFERENCES 'Address'(addressID)
 );
 
@@ -48,24 +48,23 @@ CREATE TABLE Discount (
 
 CREATE TABLE ProductType (
     productTypeID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    brands VARCHAR(50),
-    countries VARCHAR(50),
-    categories VARCHAR(50)
+    typeName VARCHAR(200)
 );
 
 CREATE TABLE Product (
     productID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    title: VARCHAR(100),
+    title VARCHAR(100),
     price DECIMAL,
-    stockQuantity: INT,
+    stockQuantity INT,
     description VARCHAR(500),
     isNew BOOLEAN,
     isDailySpecial BOOLEAN,
     country VARCHAR(50),
+    brand VARCHAR(100),
     productImage VARCHAR(1000),
     timestamp TIMESTAMP,
-    productTypeID int,
-    discountID int,
+    productTypeID INT NOT NULL,
+    discountID INT NOT NULL,
     FOREIGN KEY (productTypeID) REFERENCES ProductType(productTypeID),
     FOREIGN KEY (discountID) REFERENCES Discount(discountID)
     
@@ -73,16 +72,20 @@ CREATE TABLE Product (
 
 CREATE TABLE OrderDetail (
     orderDetailID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    quantity: INT,
+    quantity INT,
     price DECIMAL,
-    procent: DECIMAL,
-    productID int,
-    orderID int,
+    procent DECIMAL,
+    productID INT NOT NULL,
+    orderID INT NOT NULL,
     CONSTRAINT  PK_OrderDetail PRIMARY KEY (productID,orderID)
 
 );
 
 CREATE TABLE Order (
     orderID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    delivered: INT
+    dateOrdered DATETIME,
+    dateDelivered INTEGER,
+    status VARCHAR(200),
+    orderDetailID INT NOT NULL,
+    userID INT NOT NULL
 );
