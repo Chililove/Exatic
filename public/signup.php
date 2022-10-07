@@ -11,7 +11,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>signup</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
 <div class="wrapper">
@@ -26,6 +25,8 @@
                 <input type="firstname" name="name" placeholder="Firstname..">
                 <label>Last name:</label>
                 <input type="lastname" name="name" placeholder="Lastname..">
+                <label>Phone:</label>
+                <input type="phone" name="phone" placeholder="Phone number..">
                 <label>Email</label>
                 <input type="email" name="email" placeholder="Enter your email...">
                 <label>Enter password</label>
@@ -37,8 +38,7 @@
     </div>
 </div>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-</body>
+
 
 <style>
     .wrapper {
