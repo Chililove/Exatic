@@ -21,16 +21,17 @@
             <h4>Login Form</h4>
         </div>
 
-        <form>
-            <input type="text" id="login" name="login" placeholder="login"> <br>
-            <input type="text" id="password" name="login" placeholder="password">
-            <input type="submit" class="fadeIn fourth" value="Log In">
+        <form action="" method="post">
+            <div class="row">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Enter your email...">
+                <label>Enter password</label>
+                <input type="password" name="password" placeholder="Enter your password...">
+                <button type="submit" class="btn" name="submit"> Login</button>
+                <p> Already having an account? <a href="signup.php"> Signup Here!</a></p>
+                <a href="">Forgot password?</a><br><br>
+            </div>
         </form>
-
-        <div id="formFooter">
-            <a class="underlineHover" href="#">Forgot Password?</a>
-            <a class="underlineHover" href="#">Register</a>
-        </div>
 
     </div>
 </div>
@@ -57,9 +58,9 @@
         max-width: 450px;
         position: relative;
         padding: 0px;
-        box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
         text-align: center;
     }
+
 </style>
 </html>
 
