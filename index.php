@@ -14,7 +14,7 @@
 
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="/frontpage">
-        <img src="./assets/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+        <img src="Exatic/assets/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
         Exatic
     </a>
 
@@ -33,7 +33,7 @@ echo $request;
 switch ($request) {
     case '':
     case '/':
-        require __DIR__ . '/index.php';
+        require __DIR__ . '/frontpage.php';
         break;
 
     case '/about-us':
