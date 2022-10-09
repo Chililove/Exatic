@@ -1,5 +1,5 @@
 <?php
-
+//include "../database/conn.php";
 
 ?>
 
@@ -13,55 +13,105 @@
     <title>signup</title>
 </head>
 <body>
-<div class="wrapper">
-    <div id="formContent">
 
-        <div id="title" style="text-align: center">
-            <h4>Signup Form</h4>
+<section class="col-xs-1" align="center">
+
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form">
+                <h4>Signup</h4>
+                <input type="firstname" placeholder="firstname" required/>
+                <input type="lastname" placeholder="lastname" required/>
+                <input type="email" placeholder="email" required/>
+                <input type="password" placeholder="password" required/>
+                <h4>Address Information</h4>
+                <input type="street" placeholder="street" required/>
+                <input type="text" placeholder="streetnumber" required/>
+                <div class="row-cols-2">
+                    <input type="postelcode" placeholder="postelcode" required/>
+                    <input type="city" placeholder="city" required/>
+                </div>
+                <input type="country" placeholder="country" required/>
+
+                <button>Signup</button>
+                <p class="message">Already registered? <a href="login.php">Login</a></p>
+            </form>
         </div>
-        <form action="" method="post">
-            <div class="row">
-                <label>First name:</label>
-                <input type="firstname" name="name" placeholder="Firstname..">
-                <label>Last name:</label>
-                <input type="lastname" name="name" placeholder="Lastname..">
-                <label>Phone:</label>
-                <input type="phone" name="phone" placeholder="Phone number..">
-                <label>Email</label>
-                <input type="email" name="email" placeholder="Enter your email...">
-                <label>Enter password</label>
-                <input type="password" name="password" placeholder="Enter your password...">
-                <button type="submit" class="btn" name="submit">Signup</button>
-                <p style="text-align: center"> Already having an account? <br> <a href="signup.php"> Login Here!</a></p>
-            </div>
-        </form>
     </div>
-</div>
-
-
+</section>
 
 <style>
-    .wrapper {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        width: 100%;
-        min-height: 100%;
-        padding: 20px;
+
+    .login-page {
+        width: 360px;
+        padding: 8% 0 0;
+        margin: auto;
     }
-
-
-    #formContent {
-        border-radius: 10px 10px 10px 10px;
-        background: #fff;
-        padding: 30px;
-        width: 90%;
-        max-width: 450px;
+    .form {
         position: relative;
-        padding: 0px;
+        z-index: 1;
+        background: #FFFFFF;
+        max-width: 360px;
+        margin: 0 auto 100px;
+        padding: 45px;
+        text-align: center;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     }
-
+    .form input {
+        font-family: "Roboto", sans-serif;
+        outline: 0;
+        background: #f2f2f2;
+        width: 100%;
+        border: 0;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+    .form button {
+        font-family: "Roboto", sans-serif;
+        text-transform: uppercase;
+        outline: 0;
+        background: #4CAF50;
+        width: 100%;
+        border: 0;
+        padding: 15px;
+        color: #FFFFFF;
+        font-size: 14px;
+        -webkit-transition: all 0.3 ease;
+        transition: all 0.3 ease;
+        cursor: pointer;
+    }
+    .form button:hover,.form button:active,.form button:focus {
+        background: #43A047;
+    }
+    .form .message {
+        margin: 15px 0 0;
+        color: #b3b3b3;
+        font-size: 12px;
+    }
+    .form .message a {
+        color: #4CAF50;
+        text-decoration: none;
+    }
+    .container .info span {
+        color: #4d4d4d;
+        font-size: 12px;
+    }
+    .container .info span a {
+        color: #000000;
+        text-decoration: none;
+    }
+    .container .info span .fa {
+        color: #EF3B3A;
+    }
+    body {
+        background: #c3dbb6;
+        font-family: "Roboto", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
 </style>
-</html>
 
+</body>
+</html>
