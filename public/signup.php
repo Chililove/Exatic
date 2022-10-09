@@ -1,5 +1,6 @@
 <?php
-//include "../database/conn.php";
+include "../database/conn.php";
+include "../controller/signup.php"
 
 ?>
 
@@ -20,20 +21,20 @@
         <div class="form">
             <form class="login-form">
                 <h4>Signup</h4>
-                <input type="firstname" placeholder="firstname" required/>
-                <input type="lastname" placeholder="lastname" required/>
-                <input type="email" placeholder="email" required/>
-                <input type="password" placeholder="password" required/>
+                <input type="firstname" name="fname" placeholder="firstname" required/>
+                <input type="lastname" name="lname" placeholder="lastname" required/>
+                <input type="email" name="email" placeholder="email" required/>
+                <input type="password" name="pass" placeholder="password" required/>
                 <h4>Address Information</h4>
-                <input type="street" placeholder="street" required/>
-                <input type="text" placeholder="streetnumber" required/>
+                <input type="street" name="street" placeholder="street" required/>
+                <input type="text" name="stnum" placeholder="streetnumber" required/>
                 <div class="row-cols-2">
-                    <input type="postelcode" placeholder="postelcode" required/>
-                    <input type="city" placeholder="city" required/>
+                    <input type="postelcode" name="postcode" placeholder="postelcode" required/>
+                    <input type="city" name="city" placeholder="city" required/>
                 </div>
-                <input type="country" placeholder="country" required/>
+                <input type="country" name="country" placeholder="country" required/>
 
-                <button>Signup</button>
+                <input type="submit" name="submit" value="Create" />
                 <p class="message">Already registered? <a href="login.php">Login</a></p>
             </form>
         </div>
