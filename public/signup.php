@@ -18,7 +18,7 @@ include "../controller/signup.php"
 <section class="col-xs-1" align="center">
 
     <div class="login-page">
-        <div class="form">
+        <div class="form" method="post">
             <form class="login-form">
                 <h4>Signup</h4>
                 <input type="firstname" name="fname" placeholder="firstname" required/>

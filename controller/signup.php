@@ -19,7 +19,7 @@ if (isset($POST['submit'])) {
     $iterations = ['cost' => 15];
     $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
 
-    $query = "INSERT INTO login (fname, lname, email, pass, street, stnum, postcode, city, country) VALUES ('{$fname}','{$lname}','{$email}', '{$hashed_password},' '{$street}','{$stnum}','{$postcode}','{$city}', '{$country}')";
+    $query = "INSERT INTO login (fname, lname, email, pass, street, stnum, postcode, city, country, user_type) VALUES ('{$fname}','{$lname}','{$email}', '{$hashed_password},' '{$street}','{$stnum}','{$postcode}','{$city}', '{$country}', 'user')";
     $result = mysqli_query($conn, $query);
         if ($result) {
             $message = "Registered";
