@@ -28,8 +28,6 @@
 
 $request = $_SERVER['REQUEST_URI'];
 
-echo $request;
-
 switch ($request) {
     case '':
     case '/':
@@ -37,37 +35,37 @@ switch ($request) {
         break;
 
     case '/about-us':
-        require __DIR__ . '/public/aboutus.php';
+        require __DIR__ . '/view/aboutus.php';
         break;
 
     case '/contact':
-        require __DIR__ . '/public/contact.php';
+        require __DIR__ . '/view/contact.php';
         break;
     case '/product-overview':
-        require __DIR__ . '/public/productoverview.php';
+        require __DIR__ . '/view/productoverview.php';
         break;
     case '/frontpage':
-        require __DIR__ . '/public/frontpage.php';
+        require __DIR__ . '/view/frontpage.php';
         break;
     case '/signin':
-        require __DIR__ . '/public/login.php';
+        require __DIR__ . '/view/login.php';
         break;
     case '/signup':
-        require __DIR__ . '/public/signup.php';
+        require __DIR__ . '/view/signup.php';
         break;
     case '/profile':
-        require __DIR__ . '/public/profile.php';
+        require __DIR__ . '/view/profile.php';
         break;
     case '/checkout':
-        require __DIR__ . '/public/checkout.php';
+        require __DIR__ . '/view/checkout.php';
         break;
 
     case '/product':
-        require __DIR__ . '/public/product.php';
+        require __DIR__ . '/view/product.php';
         break;
 
     default:
         http_response_code(404);
-        require __DIR__ . '/public/404.php';
+        require __DIR__ . '/view/404.php';
         break;
 }
