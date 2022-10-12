@@ -23,7 +23,7 @@
                 <h4>Login</h4>
                 <input type="text" placeholder="email"/>
                 <input type="password" placeholder="password"/>
-                <button>login</button>
+                <button>Signin</button>
                 <p class="message">Not registered? <a href="signup.php">Create an account</a></p>
             </form>
         </div>
