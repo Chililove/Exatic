@@ -26,12 +26,12 @@
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
-                                    <input type="firstname" id="typeText" class="form-control" placeholder="Firstname"/>
+                                    <input type="firstname" name="fname" class="form-control" placeholder="Firstname" required/>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
-                                    <input type="lastname" id="typeText" class="form-control" placeholder="Lastname"/>
+                                    <input type="lastname" name="lname" class="form-control" placeholder="Lastname" required/>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
-                                    <input type="email" id="typeText" class="form-control" placeholder="Email"/>
+                                    <input type="email" name="email" class="form-control" placeholder="Email" required/>
                                 </div>
                             </div>
 
@@ -61,12 +61,12 @@
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
-                                    <input type="street" id="typeText" class="form-control" placeholder="Name of the street"/>
+                                    <input type="street" name="street" class="form-control" placeholder="Name of the street" required/>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
-                                    <input type="streetnumber" id="typeText" class="form-control" placeholder="Street number"/>
+                                    <input type="streetnumber" name="stnum" class="form-control" placeholder="Street number" required/>
                                 </div>
                             </div>
                         </div>
@@ -74,17 +74,17 @@
                         <div class="row">
                             <div class="col-md-2 mb-4">
                                 <div class="form-outline">
-                                    <input type="postelcode" id="typeText" class="form-control" placeholder="Zip"/>
+                                    <input type="postelcode" name="postcode" class="form-control" placeholder="Zip" required/>
                                 </div>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <div class="form-outline">
-                                    <input type="city" id="typeText" class="form-control" placeholder="City"/>
+                                    <input type="city" name="city" class="form-control" placeholder="City" required/>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
-                                    <select class="form-control" id="exampleFormControlSelect1">
+                                    <select class="form-control" id="exampleFormControlSelect1" name="country" required>
                                         <option value="select">Select a country...</option>
                                         <option value="AFG">Afghanistan</option>
                                         <option value="ALA">Åland Islands</option>
@@ -340,7 +340,7 @@
                             </div>
                         </div>
 
-                        <div class="mt-6 pt-2 ">
+                        <div class="col align-self-end">
                             <input class="btn bg-success btn-lg" type="submit" value="SIGNUP" />
                         </div>
 
