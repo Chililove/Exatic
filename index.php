@@ -12,13 +12,38 @@
 
 </head>
 
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="/frontpage">
-        <img src="Exatic/assets/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-        Exatic
-    </a>
+<nav class="navbar sticky-top navbar-expand-lg" style="background-color: #C3DBB6;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/frontpage">
+            <img src="Exatic/assets/exatic-logo.png" style="margin-left:65%;" width="30" height="30" class="d-inline-block" alt="">
+        </a>
+        <!--responsive aka  burger for mobile ver.--->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarNav" style="margin-left: 70%;">
+            <ul class="navbar-nav mr-auto">
+                <!-- probably remove home? -->
+                <li class="nav-item active">
+                    <a class="nav-link" aria-current="page" href="/frontpage">Home</a>
+                </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="/product">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about-us">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signin">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
 
 </html>
