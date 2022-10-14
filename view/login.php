@@ -24,7 +24,7 @@
                 <input type="text" placeholder="email"/>
                 <input type="password" placeholder="password"/>
                 <button>Signin</button>
-                <p class="message">Not registered? <a href="signup.php">Create an account</a></p>
+                <p class="message">Not registered? <a href="/signup">Create an account</a></p>
             </form>
         </div>
     </div>
