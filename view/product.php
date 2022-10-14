@@ -5,14 +5,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>product</title>
+    <title>Product</title>
 </head>
 <body>
 
 <section style="background-color: #eee;">
     <div class="text-center container py-4">
         <h4 class="mt-4 mb-5"><strong>Bestsellers</strong></h4>
-
         <div class="row">
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card" style="background: #c3dbb6">
@@ -32,7 +31,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="" class="text-reset">
+                        <a href="productoverview.php" class="text-reset">
                             <h5 class="card-title mb-3">Product name</h5>
                         </a>
                         <a href="" class="text-reset">
@@ -60,7 +59,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="" class="text-reset">
+                        <a href="productoverview.php" class="text-reset">
                             <h5 class="card-title mb-3">Product name</h5>
                         </a>
                         <a href="" class="text-reset">
@@ -87,7 +86,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="" class="text-reset">
+                        <a href="productoverview.php" class="text-reset">
                             <h5 class="card-title mb-3">Product name</h5>
                         </a>
                         <a href="" class="text-reset">
@@ -118,7 +117,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="" class="text-reset">
+                        <a href="productoverview.php" class="text-reset">
                             <h5 class="card-title mb-3">Product name</h5>
                         </a>
                         <a href="" class="text-reset">
@@ -152,7 +151,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="" class="text-reset">
+                        <a href="productoverview.php" class="text-reset">
                             <h5 class="card-title mb-3">Product name</h5>
                         </a>
                         <a href="" class="text-reset">
@@ -183,7 +182,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="" class="text-reset">
+                        <a href="productoverview.php" class="text-reset">
                             <h5 class="card-title mb-3">Product name</h5>
                         </a>
                         <a href="" class="text-reset">
@@ -214,7 +213,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="" class="text-reset">
+                        <a href="productoverview.php" class="text-reset">
                             <h5 class="card-title mb-3">Product name</h5>
                         </a>
                         <a href="" class="text-reset">
@@ -244,7 +243,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="" class="text-reset">
+                        <a href="productoverview.php" class="text-reset">
                             <h5 class="card-title mb-3">Product name</h5>
                         </a>
                         <a href="" class="text-reset">
@@ -266,15 +265,6 @@
         </ul>
     </nav>
 </section>
-
-<style lang="scss">
-
-    body {
-        background: #4CAF50;
-    }
-
-
-</style>
 
 </body>
 </html>
