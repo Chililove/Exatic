@@ -31,7 +31,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="productoverview.php" class="text-reset">
+                        <a href="/product-overview" class="text-reset">
                             <h5 class="card-title mb-3">Product name</h5>
                         </a>
                         <a href="" class="text-reset">
@@ -59,7 +59,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="productoverview.php" class="text-reset">
+                        <a href="/product-overview" class="text-reset">
                             <h5 class="card-title mb-3">Product name</h5>
                         </a>
                         <a href="" class="text-reset">
@@ -86,7 +86,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="productoverview.php" class="text-reset">
+                        <a href="/product-overview" class="text-reset">
                             <h5 class="card-title mb-3">Product name</h5>
                         </a>
                         <a href="" class="text-reset">
@@ -117,7 +117,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="productoverview.php" class="text-reset">
+                        <a href="/product-overview" class="text-reset">
                             <h5 class="card-title mb-3">Product name</h5>
                         </a>
                         <a href="" class="text-reset">
@@ -151,7 +151,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="productoverview.php" class="text-reset">
+                        <a href="/product-overview" class="text-reset">
                             <h5 class="card-title mb-3">Product name</h5>
                         </a>
                         <a href="" class="text-reset">
@@ -182,7 +182,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="productoverview.php" class="text-reset">
+                        <a href="/product-overview" class="text-reset">
                             <h5 class="card-title mb-3">Product name</h5>
                         </a>
                         <a href="" class="text-reset">
@@ -213,7 +213,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="productoverview.php" class="text-reset">
+                        <a href="/product-overview" class="text-reset">
                             <h5 class="card-title mb-3">Product name</h5>
                         </a>
                         <a href="" class="text-reset">
@@ -243,7 +243,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="productoverview.php" class="text-reset">
+                        <a href="/product-overview" class="text-reset">
                             <h5 class="card-title mb-3">Product name</h5>
                         </a>
                         <a href="" class="text-reset">
