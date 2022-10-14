@@ -10,7 +10,7 @@
 <body>
 
 <section style="background-color: #eee;">
-    <div class="text-center container py-5">
+    <div class="text-center container py-4">
         <h4 class="mt-4 mb-5"><strong>Bestsellers</strong></h4>
 
         <div class="row">
@@ -258,16 +258,17 @@
     </div>
     <nav class="d-flex justify-content-center">
         <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="#">Next</a></li>
         </ul>
     </nav>
 </section>
 
 <style lang="scss">
+
     body {
         background: #4CAF50;
     }
