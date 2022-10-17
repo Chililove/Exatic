@@ -42,11 +42,11 @@
                     <a class="nav-link" href="/shoppingcart">
                         <img src="Exatic/assets/bag-plus.svg" style=" width:auto; height:29px;" class="d-inline-block" alt="">
                     </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/signin">
                         <img src="Exatic/assets/person-circle.svg" style=" width:auto; height:30px;" class="d-inline-block" alt="">
                     </a>
-                </li>
                 </li>
             </ul>
         </div>

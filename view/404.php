@@ -1,9 +1,10 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="col text-center">
-                <img height="650" class="wrapper404 img-fluid" src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("assets/404.png")); ?>">
-            </div>
-        </div>
-    </div>
-</div>
+   <div>
+       <img height="750" class="style404" src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("assets/404.png")); ?>">
+   </div>
+   <style>
+       .style404 {
+           display: block;
+           margin-left: auto;
+           margin-right: auto;
+       }
+   </style>
