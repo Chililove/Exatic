@@ -15,20 +15,20 @@
 <nav class="navbar sticky-top navbar-expand-lg" style="background-color: #C3DBB6;">
     <div class="container-fluid">
         <a class="navbar-brand" href="/frontpage">
-            <img src="Exatic/assets/exatic-logo.png" style="margin-left:65%;" width="30" height="30" class="d-inline-block" alt="">
+            <img src="Exatic/assets/exatic-logo-2.png" style="margin-left:85%; width:auto; height:45px;" width="35" height="35" class="d-inline-block" alt="">
         </a>
         <!--responsive aka  burger for mobile ver.--->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav" style="margin-left: 70%;">
+        <div class="collapse navbar-collapse" id="navbarNav" style="margin-left: 35%;">
+
             <ul class="navbar-nav mr-auto">
                 <!-- probably remove home? -->
                 <li class="nav-item active">
                     <a class="nav-link" aria-current="page" href="/frontpage">Home</a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link" href="/product">Products</a>
                 </li>
@@ -38,8 +38,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/contact">Contact</a>
                 </li>
+                <li style=" margin-left:120%">
+                    <a class="nav-link" href="/shoppingcart">
+                        <img src="Exatic/assets/bag-plus.svg" style=" width:auto; height:29px;" class="d-inline-block" alt="">
+                    </a>
                 <li class="nav-item">
-                    <a class="nav-link" href="/signin">Login</a>
+                    <a class="nav-link" href="/signin">
+                        <img src="Exatic/assets/person-circle.svg" style=" width:auto; height:30px;" class="d-inline-block" alt="">
+                    </a>
+                </li>
                 </li>
             </ul>
         </div>
