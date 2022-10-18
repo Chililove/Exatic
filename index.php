@@ -13,7 +13,7 @@
 </head>
 
 <nav class="navbar sticky-top navbar-expand-lg" style="background-color: #C3DBB6;">
-    <div class="container-fluid">
+    <div class="container-fluid justify-content-between">
         <a class="navbar-brand" href="/frontpage">
             <img src="Exatic/assets/exatic-logo-2.png" style="margin-left:85%; width:auto; height:45px;" width="35" height="35" class="d-inline-block" alt="">
         </a>
@@ -38,7 +38,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/contact">Contact</a>
                 </li>
-                <li style=" margin-left:120%">
+                <li style="margin-left:115%;">
+                <li>
                     <a class="nav-link" href="/shoppingcart">
                         <img src="Exatic/assets/bag-plus.svg" style=" width:auto; height:29px;" class="d-inline-block" alt="">
                     </a>
@@ -47,6 +48,7 @@
                     <a class="nav-link" href="/signin">
                         <img src="Exatic/assets/person-circle.svg" style=" width:auto; height:30px;" class="d-inline-block" alt="">
                     </a>
+                </li>
                 </li>
             </ul>
         </div>
