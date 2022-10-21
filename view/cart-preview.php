@@ -1,110 +1,304 @@
-<div class="card cardpreview" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">Your shopping cart</h5>
-        <p>Products</p>
-    </div>
-    <div class="card-body cartcardcontent">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-        </ul>
+<body>
+    <div class="shopping-cart">
+        <!-- Title -->
+        <div class="title">
+            Shopping Cart
+        </div>
 
-        <table class="totalpricetable">
-            <tr class="totalpricefield">
-                <td>Total price:</td>
-                <td>{{ totalPrice }} kr.</td>
-            </tr>
-        </table>
-        <a href="#" class="card-link">Close</a>
-        <a href="#" class="card-link">Go to shopping cart</a>
-    </div>
-</div>
+        <!-- Product #1 -->
+        <div class="item">
+            <div class="buttons">
+                <span class="delete-btn"></span>
+                <span class="like-btn"></span>
+            </div>
 
+            <div class="image">
+                <img src="" alt="" />
+            </div>
+
+            <div class="description">
+                <span>Common Projects</span>
+                <span>Bball High</span>
+                <span>White</span>
+            </div>
+
+            <div class="quantity">
+                <button class="plus-btn" type="button" name="button">
+                    <img src="Exatic/assets/plus-lg.svg" alt="" />
+                </button>
+                <input type="text" name="name" value="1">
+                <button class="minus-btn" type="button" name="button">
+                    <img src="Exatic/assets/dash.svg" alt="" />
+                </button>
+            </div>
+
+            <div class="total-price">$549</div>
+        </div>
+
+        <!-- Product #2 -->
+        <div class="item">
+            <div class="buttons">
+                <span class="delete-btn"></span>
+                <span class="like-btn"></span>
+            </div>
+
+            <div class="image">
+                <img src="item-2.png" alt="" />
+            </div>
+
+            <div class="description">
+                <span>Maison Margiela</span>
+                <span>Future Sneakers</span>
+                <span>White</span>
+            </div>
+
+            <div class="quantity">
+                <button class="plus-btn" type="button" name="button">
+                    <img src="Exatic/assets/plus-lg.svg" alt="" />
+                </button>
+                <input type="text" name="name" value="1">
+                <button class="minus-btn" type="button" name="button">
+                    <img src="Exatic/assets/dash.svg" alt="" />
+                </button>
+            </div>
+
+            <div class="total-price">$870</div>
+        </div>
+
+        <!-- Product #3 -->
+        <div class="item">
+            <div class="buttons">
+                <span class="delete-btn"></span>
+                <span class="like-btn"></span>
+            </div>
+
+            <div class="image">
+                <img src="item-3.png" alt="" />
+            </div>
+
+            <div class="description">
+                <span>Our Legacy</span>
+                <span>Brushed Scarf</span>
+                <span>Brown</span>
+            </div>
+
+            <div class="quantity">
+                <button class="plus-btn" type="button" name="button">
+                    <img src="Exatic/assets/plus-lg.svg" alt="" />
+                </button>
+                <input type="text" name="name" value="1">
+                <button class="minus-btn" type="button" name="button">
+                    <img src="Exatic/assets/dash.svg" alt="" />
+                </button>
+            </div>
+
+            <div class="total-price">$349</div>
+        </div>
+    </div>
+</body>
+<script>
+    $('.like-btn').on('click', function() {
+        $(this).toggleClass('is-active');
+    });
+</script>
 <style>
-    .cardpreview {
+    * {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        background-color: #7EC855;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .shopping-cart {
+        width: 750px;
+        height: 423px;
+        margin: 80px auto;
+        background: #FFFFFF;
+        box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.10);
+        border-radius: 6px;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .title {
+        height: 60px;
+        border-bottom: 1px solid #E1E8EE;
+        padding: 20px 30px;
+        color: #5E6977;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .item {
+        padding: 20px 30px;
+        height: 120px;
+        display: flex;
+    }
+
+    .item:nth-child(3) {
+        border-top: 1px solid #E1E8EE;
+        border-bottom: 1px solid #E1E8EE;
+    }
+
+    .buttons {
+        position: relative;
+        padding-top: 30px;
+        margin-right: 60px;
+    }
+
+    .delete-btn,
+    .like-btn {
+        display: inline-block;
+        Cursor: pointer;
+    }
+
+    .delete-btn {
+        width: 18px;
+        height: 17px;
+        background: url('Exatic/assets/x-lg.svg') no-repeat center;
+    }
+
+    .like-btn {
         position: absolute;
-        z-index: 50;
-        height: 75%;
-        overflow: auto;
+        top: 28px;
+        left: 40px;
+        background: url('Exatic/assets/heart.svg');
+        width: 30px;
+        height: 30px;
+        background-size: 70%;
+        background-repeat: no-repeat;
+    }
+
+    .is-active {
+        animation-name: animate;
+        animation-duration: .8s;
+        animation-iteration-count: 1;
+        animation-timing-function: steps(28);
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes animate {
+        0% {
+            background-position: left;
+        }
+
+        50% {
+            background-position: right;
+        }
+
+        100% {
+            background-position: right;
+        }
+    }
+
+    .image {
+        margin-right: 50px;
+    }
+
+    .description {
+        padding-top: 10px;
+        margin-right: 60px;
+        width: 115px;
+    }
+
+    .description span {
+        display: block;
+        font-size: 14px;
+        color: #43484D;
+        font-weight: 400;
+    }
+
+    .description span:first-child {
+        margin-bottom: 5px;
+    }
+
+    .description span:last-child {
+        font-weight: 300;
+        margin-top: 8px;
+        color: #86939E;
+    }
+
+
+    .quantity {
+        padding-top: 20px;
+        margin-right: 60px;
+    }
+
+    .quantity input {
+        -webkit-appearance: none;
+        border: none;
+        text-align: center;
+        width: 32px;
+        font-size: 16px;
+        color: #43484D;
+        font-weight: 300;
+    }
+
+    button[class*=btn] {
+        width: 30px;
+        height: 30px;
+        background-color: #E1E8EE;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .minus-btn img {
+        margin-bottom: 3px;
+    }
+
+    .plus-btn img {
         margin-top: 2px;
-        background-color: #fff;
-        padding: 1% 1% 0% 2%;
-        border: 1% solid #ddd;
-        max-width: 30%;
-        border-radius: 1%;
-        box-shadow: 0px 0px 8px 0px #888;
-        right: 1%;
     }
 
-    .cartcardcontent {
-        box-sizing: border-box;
+    button:focus,
+    input:focus {
+        outline: 0;
     }
 
-    .previewTable {
-        flex-direction: column;
-        border-style: ridge;
-        border-color: lightgray;
-        border-left: hidden;
-        border-right: hidden;
-        max-width: 98%;
-        margin: 2%;
-        box-sizing: border-box;
+    .total-price {
+        width: 83px;
+        padding-top: 27px;
+        text-align: center;
+        font-size: 16px;
+        color: #43484D;
+        font-weight: 300;
     }
 
-    .imageurlfield {
-        max-width: 25%;
-    }
+    @media (max-width: 800px) {
+        .shopping-cart {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+        }
 
-    .imageurlfield img {
-        max-width: 140px;
-        height: auto;
-    }
+        .item {
+            height: auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-    .productidfield {
-        font-family: Courier, monospace;
-    }
+        .image img {
+            width: 50%;
+        }
 
-    .productshortnamefield {
-        font-family: verdana;
-        font-size: 13px;
-        padding-left: 1%;
-        max-width: 20%;
-    }
+        .image,
+        .quantity,
+        .description {
+            width: 100%;
+            text-align: center;
+            margin: 6px 0;
+        }
 
-    .containername {
-        border-color: black;
-    }
-
-    .productpricefield {
-        font-family: verdana;
-        font-weight: bold;
-    }
-
-    .deletebutton {
-        color: red;
-    }
-
-    .deletefield {
-        max-width: 10.5%;
-        text-align: right;
-    }
-
-    .totalpricefield {
-        font-size: 13px;
-        font-family: verdana;
-        font-weight: bold;
-    }
-
-    .totalpricetable {
-        position: center;
-        flex-direction: column;
-        border-style: ridge;
-        border-color: lightgray;
-        border-left: hidden;
-        border-right: hidden;
-        max-width: 99%;
-        margin: 1%;
-        box-sizing: border-box;
+        .buttons {
+            margin-right: 20px;
+        }
     }
 </style>
