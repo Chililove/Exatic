@@ -1,4 +1,5 @@
 <?php
+require_once("connection/conn.php");
 ?>
 <html>
 <meta charset="UTF-8">
@@ -104,32 +105,34 @@
     </div>
 </div>-->
 
+<?php
+
+$products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQuantity`, `description`, `productImage` FROM `Product` LIMIT 10");
+    if (mysqli_num_rows($products) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($products)) {
+        ?>
+      <div class="card">
+      <img class="card-img-top" src="data:image/jpeg;base64,<?php echo base64_encode($row['productImage'])?>" alt="Card image top"/>
+      <div class="card-body">
+          <h3 class="card-title"><?php echo $row["title"] ?></h3> 
+          <h4 class="card-subtitle"><?php echo $row["description"] ?></h4>
+          <p class="card-text"> <?php echo $row["stockQuantity"] ?> items left</p>
+          <p class="card-text-price">Price<?php echo $row["price"] ?>dkk</p>
+      </div>
+      <div class="card-footer">
+          <div><button class="buybtn" onclick="smt">Add to cart</button></div>
+      </div>
+  </div>
+  <?php
+    }
+  } else {
+    echo "0 results";
+  }
+
+?>
 
 
-    <div class="card">
-            <img class="card-img-top" src="Exatic/assets/noodles.jpeg" alt="Card image top">
-            <div class="card-body">
-                <h3 class="card-title">{Pho Bo}</h3> 
-                <h4 class="card-subtitle">Delicious noodles</h4>
-                <p class="card-text">4 items left</p>
-                <p class="card-text-price">Price (18dDkr.) </p>
-            </div>
-            <div class="card-footer">
-                <div><button class="buybtn" onclick="smt">Add to cart</button></div>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="Exatic/assets/drink.jpeg" alt="Card image top">
-            <div class="card-body">
-                <h3 class="card-title">Kirin IMUSE</h3>
-                <h4 class="card-subtitle">Probiotic drink</h4>
-                <p class="card-text">10 items left</p>
-                <p class="card-text-price">Price (24Dkr.)</p>
-            </div>
-            <div class="card-footer"><button class="buybtn" onclick="smt">Add to cart</button></div>
-        </div>
-
-    </div>
     <style>
         #carousel {
             position: absolute;
