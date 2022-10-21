@@ -104,26 +104,37 @@ require_once("connection/conn.php");
         </div>
     </div>
 </div>-->
-
+<div class="container">
+  <div class="row row-cols-3">
 <?php
 
-$products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQuantity`, `description`, `productImage` FROM `Product` LIMIT 10");
+$products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQuantity`, `description`, `productImage`, `isNew` FROM `Product` LIMIT 3");
     if (mysqli_num_rows($products) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($products)) {
         ?>
+
+        <div class="col">
       <div class="card">
       <img class="card-img-top" src="data:image/jpeg;base64,<?php echo base64_encode($row['productImage'])?>" alt="Card image top"/>
       <div class="card-body">
-          <h3 class="card-title"><?php echo $row["title"] ?></h3> 
+          
+      <h3 class="card-title"><?php echo $row["title"] ?>
+      <?php if($row['isNew']){
+          echo '<span class="badge bg-secondary">New</span>';
+      } ?>
+    
+    </h3> 
+        
           <h4 class="card-subtitle"><?php echo $row["description"] ?></h4>
           <p class="card-text"> <?php echo $row["stockQuantity"] ?> items left</p>
-          <p class="card-text-price">Price<?php echo $row["price"] ?>dkk</p>
+          <p class="card-text-price text-end">Price<?php echo $row["price"] ?>dkk</p>
       </div>
-      <div class="card-footer">
-          <div><button class="buybtn" onclick="smt">Add to cart</button></div>
+      <div class="card-footer text-end">
+      <button type="button" class="btn btn-primary">Add to cart</button>
       </div>
   </div>
+    </div>
   <?php
     }
   } else {
@@ -131,9 +142,12 @@ $products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQua
   }
 
 ?>
+</div>
+</div>
 
 
-    <style>
+
+  <!--  <style>
         #carousel {
             position: absolute;
             top: 60%;
@@ -217,21 +231,16 @@ $products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQua
         }
 
 
-        .card-img-top {
+        /* .card-img-top {
             width: 100%;
             height: 11vw;
             margin-top: 3%;
             object-fit: contain;
 
 
-        }
+        } */
 
 
-
-        .buybtn {
-            opacity: 88%;
-            margin-left: 56%;
-        }
 
         /* .image-container {
 
@@ -267,12 +276,6 @@ $products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQua
 
 
 
-        .btn {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            padding: 3px;
-        }
 
         .btn2 {
             border-radius: 30%;
@@ -373,6 +376,7 @@ $products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQua
             width: 35%;
         }
     </style>
+    -->
 </body>
 
 </html>
