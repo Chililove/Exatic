@@ -108,7 +108,7 @@ require_once("connection/conn.php");
   <div class="row row-cols-3">
 <?php
 
-$products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQuantity`, `description`, `productImage`, `isNew` FROM `Product` LIMIT 3");
+$products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQuantity`, `description`, `productImage`, `isNew` FROM `Product` WHERE isNew = 1 LIMIT 3");
     if (mysqli_num_rows($products) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($products)) {
