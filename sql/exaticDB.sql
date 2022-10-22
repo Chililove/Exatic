@@ -1,6 +1,8 @@
-DROP DATABASE IF EXISTS 'ExaticDB';
-CREATE DATABASE 'ExaticDB';
-USE 'ExaticDB';
+
+DROP DATABASE IF EXISTS ExaticDB;
+CREATE DATABASE ExaticDB;
+USE ExaticDB;
+
 
 CREATE TABLE PostalCode (
     postalCodeID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -8,7 +10,7 @@ CREATE TABLE PostalCode (
     country VARCHAR(50) NULL
 );
 
-CREATE TABLE 'Address' (
+CREATE TABLE Address (
     addressID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     streetName VARCHAR(255) NULL,
     streetNumber INT NULL,
@@ -23,19 +25,19 @@ CREATE TABLE CompanyInfo (
     weekdays VARCHAR(10) NOT NULL,
     weekends VARCHAR(10) NOT NULL,
     addressID INT NOT NULL,
-    FOREIGN KEY (addressID) REFERENCES 'Address'(addressID)
+    FOREIGN KEY (addressID) REFERENCES Address(addressID)
 );
 
-CREATE TABLE User (
+CREATE TABLE Users (
     userID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL,
     password VARCHAR(1000) NOT NUll,
     userType INTEGER,
-    imagePath: VARCHAR(6000),
+    imagePath LONGBLOB,
     addressID INT NOT NULL,
-    FOREIGN KEY (addressID) REFERENCES 'Address'(addressID)
+    FOREIGN KEY (addressID) REFERENCES Address(addressID)
 );
 
 CREATE TABLE Discount (
@@ -77,8 +79,9 @@ CREATE TABLE OrderDetail (
     procent DECIMAL,
     productID INT NOT NULL,
     orderID INT NOT NULL,
-    CONSTRAINT  PK_OrderDetail PRIMARY KEY (productID,orderID)
-
+    CONSTRAINT  PK_OrderDetail PRIMARY KEY (productID,orderID),
+    FOREIGN KEY (productID) REFERENCES Product(productID),
+    FOREIGN KEY (orderID) REFERENCES Order(orderID)
 );
 
 CREATE TABLE Order (
