@@ -10,7 +10,7 @@ CREATE TABLE PostalCode (
     country VARCHAR(50) NULL
 );
 
-CREATE TABLE Address (
+CREATE TABLE `Address` (
     addressID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     streetName VARCHAR(255) NULL,
     streetNumber INT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE CompanyInfo (
     FOREIGN KEY (addressID) REFERENCES Address(addressID)
 );
 
-CREATE TABLE Users (
+CREATE TABLE `User` (
     userID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
@@ -81,14 +81,17 @@ CREATE TABLE OrderDetail (
     orderID INT NOT NULL,
     CONSTRAINT  PK_OrderDetail PRIMARY KEY (productID,orderID),
     FOREIGN KEY (productID) REFERENCES Product(productID),
-    FOREIGN KEY (orderID) REFERENCES Order(orderID)
+    FOREIGN KEY (orderID) REFERENCES Orders(orderID)
 );
 
-CREATE TABLE Order (
+CREATE TABLE `Order` (
     orderID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     dateOrdered DATETIME,
     dateDelivered INTEGER,
     status VARCHAR(200),
     orderDetailID INT NOT NULL,
-    userID INT NOT NULL
+    userID INT NOT NULL,
+    FOREIGN KEY (orderDetailID) REFERENCES OrderDetail(orderDetailID),
+    FOREIGN KEY (userID) REFERENCES Users(userID)
+
 );
