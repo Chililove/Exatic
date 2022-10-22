@@ -353,9 +353,9 @@
 
 <style>
 
+@import "../styles/css.scss";
 
     body {
-        background: #c3dbb6;
         font-family: "Roboto", sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
