@@ -103,52 +103,7 @@ require_once("connection/conn.php");
             </div>
         </div>
     </div>
-</div>-->
-<div class="container">
-  <div class="row row-cols-3">
-<?php
-
-$products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQuantity`, `description`, `productImage`, `isNew` FROM `Product` WHERE isNew = 1 LIMIT 3");
-    if (mysqli_num_rows($products) > 0) {
-    // output data of each row
-    while($row = mysqli_fetch_assoc($products)) {
-        ?>
-
-        <div class="col">
-      <div class="card">
-      <img class="card-img-top" src="data:image/jpeg;base64,<?php echo base64_encode($row['productImage'])?>" alt="Card image top"/>
-      <div class="card-body">
-          
-      <h3 class="card-title"><?php echo $row["title"] ?>
-      <?php if($row['isNew']){
-          echo '<span class="badge bg-secondary">New</span>';
-      } ?>
-    
-    </h3> 
-        
-          <h4 class="card-subtitle"><?php echo $row["description"] ?></h4>
-          <p class="card-text"> <?php echo $row["stockQuantity"] ?> items left</p>
-          <p class="card-text-price text-end">Price<?php echo $row["price"] ?>dkk</p>
-      </div>
-      <div class="card-footer text-end">
-      <button type="button" class="btn btn-primary">Add to cart</button>
-      </div>
-  </div>
-    </div>
-  <?php
-    }
-  } else {
-    echo "0 results";
-  }
-
-?>
-</div>
-</div>
-
-
-
-  <!--  <style>
-        #carousel {
+</div> #carousel {
             position: absolute;
             top: 60%;
             right: 0;
@@ -164,89 +119,11 @@ $products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQua
             /*TL TR BR BL*/
             overflow: hidden;
         }
-
-
-
-        #text-box {
-            position: absolute;
-            border-style: hidden;
-            align-content: center;
-            font-family: "Apple SD Gothic Neo";
-            color: #434343;
-            margin-right: 50%;
-            margin-left: 5%;
-            margin-top: 2%;
-            line-height: 25px;
-            font-size: 19px;
-        }
-
-
-        body {
-
-            background-color: #eee;
-        }
-
-        .container {
-            width: 70%;
-        }
-
-        .card-deck {
-            display: flex;
-            width: 60%;
-            margin-left: 16%;
-            align-content: space-between;
-
-        }
-
-        .card {
-            background-color: #fff;
-            border-radius: 8%;
-            width: 30%;
-            margin-top: 40%;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-        }
-
-        .card-text-price {
-            text-align: right;
-            font-size: small;
-            margin-top: -6%;
-
-        }
-
-        .card-title {
-            font-size: large;
-            margin-bottom: 3%;
-        }
-
-        .card-subtitle {
-            margin-bottom: 2%;
-            font-size: small;
-            font-weight: normal;
-        }
-
-        .card-text {
-            font-size: smaller;
-            font-weight: lighter;
-        }
-
-
-        /* .card-img-top {
-            width: 100%;
-            height: 11vw;
-            margin-top: 3%;
-            object-fit: contain;
-
-
-        } */
-
-
-
-        /* .image-container {
+         .image-container {
 
             position: relative;
 
-        }*/
+        }
 
         .thumbnail-image {
             border-radius: 10px !important;
@@ -254,37 +131,13 @@ $products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQua
         }
 
 
-        .discount {
-
-            background-color: red;
-            padding-top: 1px;
-            padding-bottom: 1px;
-            padding-left: 4px;
-            padding-right: 4px;
-            font-size: 10px;
-            border-radius: 6px;
-            color: #fff;
-        }
-
-
-        .first {
-
-            position: absolute;
-            width: 100%;
-            padding: 9px;
-        }
-
-
-
-
-        .btn2 {
+         .btn2 {
             border-radius: 30%;
             border-style: groove;
             border-color: lightgreen;
             padding: 3px;
             background-color: lightcyan;
         }
-
 
         .item-size {
             width: 15px;
@@ -299,40 +152,124 @@ $products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQua
             display: flex;
             justify-content: center;
         }
+  .off {
+            font-size: 100%;
+            position: relative;
+            bottom: 5px;
+        }
+
+
+-->
+<!-- Products array cards limit 3 new -->
+    <div class="container">
+        <div class="row row-cols-3">
+            <?php
+
+            $products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQuantity`, `description`, `productImage`, `isNew` FROM `Product` WHERE isNew = 1 LIMIT 3");
+            if (mysqli_num_rows($products) > 0) {
+                // output data of each row
+                while ($row = mysqli_fetch_assoc($products)) {
+            ?>
+
+                    <div class="col">
+                        <div class="card">
+                            <div class="embed-responsive embed-responsive-16by9">
+
+                                <img class="card-img-top" src="data:image/jpeg;base64,<?php echo base64_encode($row['productImage']) ?>" alt="Card image top" />
+                                <div class="card-body">
+                                    <h3 class="card-title"><?php echo $row["title"] ?>
+                                        <?php if ($row['isNew']) {
+                                            echo '<span class="badge bg-secondary">New</span>';
+                                        } ?>
+
+                                    </h3>
+
+                                    <h4 class="card-subtitle"><?php echo $row["description"] ?></h4>
+                                    <p class="card-text"> <?php echo $row["stockQuantity"] ?> items left</p>
+                                    <p class="card-text-price text-end">Price<?php echo $row["price"] ?>dkk</p>
+                                </div>
+                                <div class="card-footer text-end">
+                                    <button type="button" class="btn btn-primary">Add to cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <?php
+                }
+            } else {
+                echo "0 results";
+            }
+
+            ?>
+        </div>
+    </div>
 
 
 
+    <style>
+        #text-box {
+            font-family: "Apple SD Gothic Neo";
+            color: #434343;
+            margin-right: 50%;
+            margin-left: 5%;
+            margin-top: 2%;
+            line-height: 25px;
+            font-size: 19px;
+        }
 
-        .vouchers {
-            background-color: #fff;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            overflow: hidden;
-            margin-top: -1%;
+        body {
 
         }
 
-        .voucher-divider {
+        .container {
+            width: 70%;
+        }
 
-            display: flex;
+        .card {
+            border-radius: 10% 10% 10% 10%;
+            box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 10px 24px 0 rgba(0, 0, 0, 0.19);
 
         }
 
-        .voucher-left {
-            width: 60%
+        .card-text-price {
+            text-align: right;
+            font-size: normal;
+            margin-top: -6%;
+
         }
 
+        .card-title {
+            font-size: larger;
+            margin-bottom: 3%;
+        }
+
+        .card-subtitle {
+            margin-bottom: 2%;
+            font-size: medium;
+            font-weight: normal;
+
+        }
+
+        .card-text {
+            font-size: smaller;
+            font-weight: light;
+        }
+
+
+        .embed-responsive .card-img-top {
+            width: 100%;
+            height: auto;
+            border-radius: 10% 10% 0 0;
+
+        }
 
         .voucherstop {
             position: absolute;
             background-color: #fff;
-            border: none;
+            border-radius: 10% 10% 10% 10%;
             width: 38%;
             height: 6.8%;
-            margin-top: -1%;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            overflow: hidden;
         }
 
         .voucher-nametop {
@@ -343,32 +280,38 @@ $products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQua
 
         .voucher-codetop {
             color: red;
-            font-size: 100%;
+            font-size: 110%;
             font-weight: lighter;
         }
 
         .voucher-righttop {
-            width: 42%;
+            box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 18px 0 rgba(0, 0, 0, 0.19);
+
+            width: 38%;
             background-color: lightgreen;
             color: #fff;
         }
 
+        .voucher-left {
+            width: 62%
+        }
+
+        .voucher-divider {
+
+            display: flex;
+
+        }
+
+        .vouchers {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        }
 
         .discount-percent {
             font-size: 100%;
             font-weight: bold;
             position: relative;
-            top: 5px;
-        }
-
-        .off {
-            font-size: 100%;
-            position: relative;
-            bottom: 5px;
-        }
-
-        .product_descript {
-            font-size: x-small;
+            top: 10%;
         }
 
         .discountedItem {
@@ -376,7 +319,6 @@ $products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQua
             width: 35%;
         }
     </style>
-    -->
 </body>
 
 </html>
