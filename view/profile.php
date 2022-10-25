@@ -20,21 +20,33 @@
 </header>
 
 <body>
-    <div class="boxed">
-        <div class="card">
-            <img class="card-img-top" src="/assets/anime.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title">Title</h4>
-                <p class="card-text">Text</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">firstname</li>
-                <li class="list-group-item">lastname</li>
-                <li class="list-group-item">email</li>
-            </ul>
-        </div>
-    </div>
 
+
+    <?php
+    $user = "SELECT `userID`, `firstName`, `lastName`, `email`, `imagePath` FROM `User` WHERE userID = 1";
+    $result = mysqli_query($conn, $user);
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        while ($row = mysqli_fetch_array($result)) {  ?>
+
+            <div class="container">
+                <div class="card">
+                    <a><img class="card-img-top" src="data:image/jpeg;base64,<?php echo base64_encode($row['imagePath']) ?>" alt="Card image top" /></a>
+                    <div class="card-body">
+                        <h4 class="card-title"><?php echo $row["lastName"] ?></h4>
+                        <p class="card-text"><?php echo $row["firstName"] ?></p>
+                    </div>
+
+                </div>
+
+            </div>
+    <?php
+        }
+    } else {
+        echo "0 results";
+    }
+
+    ?>
 </body>
 
 </html>
