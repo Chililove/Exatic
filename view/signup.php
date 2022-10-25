@@ -1,7 +1,34 @@
-<?php
-//include "../connection/conn.php";
-//include "../controller/signup.php"
 
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $firstname = $_POST['firstName'];
+    $lastname = $_POST['lastName'];
+    $email =  $_POST['email'];
+    $password =  $_POST['password'];
+
+    //$street = $_POST['street'];
+    //$stnum = $_POST['stnum'];
+    //$postcode = $_POST['$postcode'];
+    //$city = $_POST['city'];
+    //$country = $_POST['country'];
+
+
+    $iterations = ['cost' => 15];
+    $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
+
+    $query = "INSERT INTO `user` (firstName, lastName, email, password, userType) VALUES ('{$firstname}','{$lastname}','{$email}', '{$hashed_password}', 1)";
+    //$query2 = "INSERT INTO ´address´(street, steetnumber, postelcode, city, country) VALUE ('{$street}','{$stnum}','{$postcode}','{$city}', '{$country}')";
+    $result = mysqli_query($conn, $query);
+    if ($result) {
+        $message = "Registered";
+    }else {
+        $message = "User could not be registered";
+        $message .= "<br />" . mysqli_error($conn);
+    }
+}
+
+if (!empty($message)) {echo "<p>" . $message . "</p>";}
 ?>
 
 <!doctype html>
@@ -21,17 +48,17 @@
             <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                 <div class="card-body p-4 p-md-5">
                     <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-                    <form>
+                    <form action="" method="post">
 
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
-                                    <input type="firstname" name="fname" class="form-control" placeholder="Firstname" required/>
+                                    <input type="firstname" name="firstName" class="form-control" placeholder="Firstname" required/>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
-                                    <input type="lastname" name="lname" class="form-control" placeholder="Lastname" required/>
+                                    <input type="lastname" name="lastName" class="form-control" placeholder="Lastname" required/>
                                 </div>
                             </div>
                         </div>
@@ -43,30 +70,25 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-6 mb-4">
+                                <div class="form-outline">
+                                    <input type="password" name="password" class="form-control" placeholder="Password"/>
+                                </div>
+                            </div>
+
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <div class="form-outline">
-                                    <input type="password" id="typeText" class="form-control" placeholder="Password"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <div class="form-outline">
-                                    <input type="password" id="typeText" class="form-control" placeholder="Confirm Password"/>
-                                </div>
-                            </div>
-                        </div>
+
                         <h6 class="mb-4 pb-2 pb-md-0">Address Information</h6>
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
-                                    <input type="street" name="street" class="form-control" placeholder="Name of the street" required/>
+                                    <input type="street" name="street" class="form-control" placeholder="Name of the street"/>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
-                                    <input type="streetnumber" name="stnum" class="form-control" placeholder="Street number" required/>
+                                    <input type="streetnumber" name="stnum" class="form-control" placeholder="Street number"/>
                                 </div>
                             </div>
                         </div>
@@ -74,17 +96,17 @@
                         <div class="row">
                             <div class="col-md-2 mb-4">
                                 <div class="form-outline">
-                                    <input type="postelcode" name="postcode" class="form-control" placeholder="Zip" required/>
+                                    <input type="postelcode" name="postcode" class="form-control" placeholder="Zip"/>
                                 </div>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <div class="form-outline">
-                                    <input type="city" name="city" class="form-control" placeholder="City" required/>
+                                    <input type="city" name="city" class="form-control" placeholder="City"/>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
-                                    <select class="form-control" id="exampleFormControlSelect1" name="country" required>
+                                    <select class="form-control" id="exampleFormControlSelect1" name="country">
                                         <option value="select">Select a country...</option>
                                         <option value="AFG">Afghanistan</option>
                                         <option value="ALA">Åland Islands</option>
@@ -341,7 +363,7 @@
                         </div>
 
                         <div class="col align-self-end">
-                            <input class="btn bg-success btn-lg" type="submit" value="SIGNUP" />
+                            <input class="btn bg-success btn-lg" type="submit" name="submit" value="SIGNUP" />
                         </div>
 
                     </form>
@@ -364,3 +386,4 @@
 
 </body>
 </html>
+

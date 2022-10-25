@@ -1,3 +1,5 @@
+<?php require("connection/conn.php"); ?>
+
 <!doctype html>
 <html lang="en">
 
