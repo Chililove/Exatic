@@ -7,7 +7,7 @@ CREATE TABLE PostalCode (
     postalCodeID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     cityName VARCHAR(50) NULL,
     country VARCHAR(50) NULL
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE `Address` (
     addressID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -16,7 +16,7 @@ CREATE TABLE `Address` (
     apartmentNumber VARCHAR(50),
     postalCodeID INT NOT NULL,
     FOREIGN KEY (postalCodeID) REFERENCES PostalCode(postalCodeID)
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE CompanyInfo (
     companyInfoID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -25,7 +25,7 @@ CREATE TABLE CompanyInfo (
     weekends VARCHAR(10) NOT NULL,
     addressID INT NOT NULL,
     FOREIGN KEY (addressID) REFERENCES `Address`(addressID)
-);
+)  ENGINE=InnoDB;
 
 CREATE TABLE `User` (
     userID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -37,7 +37,7 @@ CREATE TABLE `User` (
     imagePath LONGBLOB,
     addressID INT NOT NULL,
     FOREIGN KEY (addressID) REFERENCES `Address`(addressID)
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE Discount (
     discountID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -45,12 +45,12 @@ CREATE TABLE Discount (
     description VARCHAR(500),
     discountProcent DECIMAL,
     duration DATETIME
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE ProductType (
     productTypeID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     typeName VARCHAR(200)
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE Product (
     productID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -68,26 +68,25 @@ CREATE TABLE Product (
     discountID INT NOT NULL,
     FOREIGN KEY (productTypeID) REFERENCES ProductType(productTypeID),
     FOREIGN KEY (discountID) REFERENCES Discount(discountID)
-    
-);
+
+) ENGINE=InnoDB;
 
 CREATE TABLE OrderDetail (
     orderDetailID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     quantity INT,
     price DECIMAL,
     procent DECIMAL,
+    orderID INT NOT NULL,
     productID INT NOT NULL,
-    FOREIGN KEY (productID) REFERENCES Product(productID)
-);
+    FOREIGN KEY (productID) REFERENCES Product(productID),
+    FOREIGN KEY (orderID) REFERENCES `Order`(orderID)
+) ENGINE=InnoDB;
 
 CREATE TABLE `Order` (
-    orderID INT NOT NULL,
+    orderID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     dateOrdered DATETIME,
     dateDelivered INTEGER,
     status VARCHAR(200),
-    orderDetailID INT NOT NULL,
     userID INT NOT NULL,
-    CONSTRAINT  PK_Order PRIMARY KEY (userID, orderDetailID),        
-    FOREIGN KEY (userID) REFERENCES `User`(userID),    
-    FOREIGN KEY (orderDetailID) REFERENCES OrderDetail(orderDetailID) 
-);
+    FOREIGN KEY (userID) REFERENCES `User`(userID)
+) ENGINE=InnoDB;

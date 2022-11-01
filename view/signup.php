@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $lastname = $_POST['lastName'];
     $email =  $_POST['email'];
     $password =  $_POST['password'];
+    $imagePath = $_POST['imagePath'];
 
     //$street = $_POST['street'];
     //$stnum = $_POST['stnum'];
@@ -14,11 +15,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     //$country = $_POST['country'];
 
 
+    // Prepare Statement
+
+
     $iterations = ['cost' => 15];
     $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
 
-    $query = "INSERT INTO `user` (firstName, lastName, email, password, userType) VALUES ('{$firstname}','{$lastname}','{$email}', '{$hashed_password}', 1)";
-    //$query2 = "INSERT INTO ´address´(street, steetnumber, postelcode, city, country) VALUE ('{$street}','{$stnum}','{$postcode}','{$city}', '{$country}')";
+    $query = "INSERT INTO `user` (firstName, lastName, email, password, userType, imagePath) VALUES (:firstName, :lastName, :email, '{$hashed_password}', 1, )";
+
+    $handle = $cxn->prepare($query);
+    $handle->bindParam('firstName', $firstname);
+    $handle->bindParam('lastName', $lastname);
+    $handle->bindParam('email', $email);
+    $handle->execute();
+
+
+    $query2 = "INSERT INTO ´address´(street, steetnumber, postelcode, city, country) VALUE ('{$street}','{$stnum}','{$postcode}','{$city}', '{$country}')";
+
+
     $result = mysqli_query($conn, $query);
     if ($result) {
         $message = "Registered";
