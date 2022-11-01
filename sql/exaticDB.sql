@@ -34,7 +34,7 @@ CREATE TABLE `User` (
     email VARCHAR(100) NOT NULL,
     password VARCHAR(1000) NOT NUll,
     userType INTEGER,
-    imagePath LONGBLOB,
+    imagePath VARCHAR(1000),
     addressID INT NOT NULL,
     FOREIGN KEY (addressID) REFERENCES `Address`(addressID)
 ) ENGINE=InnoDB;
@@ -71,6 +71,17 @@ CREATE TABLE Product (
 
 ) ENGINE=InnoDB;
 
+
+
+CREATE TABLE `Order` (
+    orderID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    dateOrdered DATETIME,
+    dateDelivered INTEGER,
+    status VARCHAR(200),
+    userID INT NOT NULL,
+    FOREIGN KEY (userID) REFERENCES `User`(userID)
+) ENGINE=InnoDB;
+
 CREATE TABLE OrderDetail (
     orderDetailID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     quantity INT,
@@ -80,13 +91,4 @@ CREATE TABLE OrderDetail (
     productID INT NOT NULL,
     FOREIGN KEY (productID) REFERENCES Product(productID),
     FOREIGN KEY (orderID) REFERENCES `Order`(orderID)
-) ENGINE=InnoDB;
-
-CREATE TABLE `Order` (
-    orderID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    dateOrdered DATETIME,
-    dateDelivered INTEGER,
-    status VARCHAR(200),
-    userID INT NOT NULL,
-    FOREIGN KEY (userID) REFERENCES `User`(userID)
 ) ENGINE=InnoDB;
