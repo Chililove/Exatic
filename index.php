@@ -40,6 +40,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/contact">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                </li>
+
                 <!-- Cart-preview -->
                 <li class="nav-item dropdown" style="position:absolute; right:6%;">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -210,6 +214,25 @@
 <?php
 
 $request = $_SERVER['REQUEST_URI'];
+// $path = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
+//$request = explode("/", $path);
+/* $routes = [];
+function route($action, Closure $callback)
+{
+    global $request;
+    $action = trim($action, '/');
+    //$action = preg_replace('/{[^]+}/' , '(.+)' , $action);
+    $request[$action] = $callback;
+}
+function dispatch($action)
+{
+    global $request;
+    $action = trim($action, '/');
+    $callback = $request[$action];
+
+    echo call_user_func($callback);
+} */
+
 
 switch ($request) {
     case '':

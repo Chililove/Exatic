@@ -1,4 +1,7 @@
+<?php require_once("connection/conn.php");
+?>
 
+<html>
 <header>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
@@ -11,19 +14,39 @@
   margin-left: 5%;
   margin-top: 2%;
     ">
-
-<div class="card-deck>
-    <div class="card">
-            <img class="card-img-top" src="Exatic/assets/anime.jpg" alt="Card image top">
-            <div class="card-body">
-                <h3 class="card-title">{Pho Bo}</h3> 
-                <h4 class="card-subtitle">Delicious noodles</h4>
-                <p class="card-text">4 items left</p>
-                <p class="card-text-price">Price (18dDkr.) </p>
-            </div>
-            <div class="card-footer">
-                <div><button class="buybtn" onclick="smt">Add to cart</button></div>
-            </div>
-        </div>
+        <br>
+        <h2>Profilepage</h2>
     </div>
- 
+</header>
+
+<body>
+
+
+    <?php
+    $user = "SELECT `userID`, `firstName`, `lastName`, `email`, `imagePath` FROM `User` WHERE userID = 1";
+    $result = mysqli_query($conn, $user);
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        while ($row = mysqli_fetch_array($result)) {  ?>
+
+            <div class="container">
+                <div class="card">
+                    <a><img class="card-img-top" src="data:image/jpeg;base64,<?php echo base64_encode($row['imagePath']) ?>" alt="Card image top" /></a>
+                    <div class="card-body">
+                        <h4 class="card-title"><?php echo $row["lastName"] ?></h4>
+                        <p class="card-text"><?php echo $row["firstName"] ?></p>
+                    </div>
+
+                </div>
+
+            </div>
+    <?php
+        }
+    } else {
+        echo "0 results";
+    }
+
+    ?>
+</body>
+
+</html>
