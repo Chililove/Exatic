@@ -208,6 +208,25 @@
 <?php
 
 $request = $_SERVER['REQUEST_URI'];
+// $path = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
+//$request = explode("/", $path);
+/* $routes = [];
+function route($action, Closure $callback)
+{
+    global $request;
+    $action = trim($action, '/');
+    //$action = preg_replace('/{[^]+}/' , '(.+)' , $action);
+    $request[$action] = $callback;
+}
+function dispatch($action)
+{
+    global $request;
+    $action = trim($action, '/');
+    $callback = $request[$action];
+
+    echo call_user_func($callback);
+} */
+
 
 switch ($request) {
     case '':
