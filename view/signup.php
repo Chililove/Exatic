@@ -1,36 +1,44 @@
 
 <?php
 
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $firstname = $_POST['firstName'];
     $lastname = $_POST['lastName'];
     $email =  $_POST['email'];
     $password =  $_POST['password'];
-    $imagePath = $_POST['imagePath'];
 
-    //$street = $_POST['street'];
-    //$stnum = $_POST['stnum'];
-    //$postcode = $_POST['$postcode'];
-    //$city = $_POST['city'];
-    //$country = $_POST['country'];
+
+    $street = $_POST['street'];
+    $stnum = $_POST['stnum'];
+    $postcode = $_POST['$postcode'];
+    $city = $_POST['city'];
+    $country = $_POST['country'];
 
 
     // Prepare Statement
-
+    $conn = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
 
     $iterations = ['cost' => 15];
     $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
 
-    $query = "INSERT INTO `user` (firstName, lastName, email, password, userType, imagePath) VALUES (:firstName, :lastName, :email, '{$hashed_password}', 1, )";
+    $postelcodes = "INSERT INTO postalcode(cityName) VALUE (:cityName)";
+    $postid = $conn -> insert_id;
 
-    $handle = $cxn->prepare($query);
+    $address = "INSERT INTO ´address´(street, steetnumber, postelcode, city, country) VALUE ('{$street}','{$stnum}','{$postcode}','{$city}', '{$country}')";
+    $last_id = $conn -> insert_id;
+    $query = "INSERT INTO `user` (firstName, lastName, email, password, userType) VALUES (:firstName, :lastName, :email, '{$hashed_password}', 1)";
+
+    $handle = $conn->prepare($query);
     $handle->bindParam('firstName', $firstname);
     $handle->bindParam('lastName', $lastname);
     $handle->bindParam('email', $email);
+    $handle->bind_param('password', $password);
+    $handle->bind_param('last_id', $last_id);
     $handle->execute();
 
 
-    $query2 = "INSERT INTO ´address´(street, steetnumber, postelcode, city, country) VALUE ('{$street}','{$stnum}','{$postcode}','{$city}', '{$country}')";
+
 
 
     $result = mysqli_query($conn, $query);
@@ -389,7 +397,7 @@ if (!empty($message)) {echo "<p>" . $message . "</p>";}
 
 <style>
 
-@import "../styles/css.scss";
+    @import "../styles/css.scss";
 
     body {
         font-family: "Roboto", sans-serif;
