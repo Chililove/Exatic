@@ -241,43 +241,43 @@ switch ($request) {
         break;
 
     case '/about-us':
-        require __DIR__ . '/view/aboutus.php';
+        require __DIR__ . '/View/aboutus.php';
         break;
 
     case '/contact':
-        require __DIR__ . '/view/contact.php';
+        require __DIR__ . '/View/contact.php';
         break;
     case '/product-overview':
-        require __DIR__ . '/view/productoverview.php';
+        require __DIR__ . '/View/productoverview.php';
         break;
     case '/frontpage':
-        require __DIR__ . '/view/frontpage.php';
+        require __DIR__ . '/View/frontpage.php';
         break;
     case '/signin':
-        require __DIR__ . '/view/login.php';
+        require __DIR__ . '/View/login.php';
         break;
     case '/signup':
-        require __DIR__ . '/view/signup.php';
+        require __DIR__ . '/View/signup.php';
         break;
     case '/profile':
-        require __DIR__ . '/view/profile.php';
+        require __DIR__ . '/View/profile.php';
         break;
     case '/checkout':
-        require __DIR__ . '/view/checkout.php';
+        require __DIR__ . '/View/checkout.php';
         break;
 
     case '/product':
-        require __DIR__ . '/view/product.php';
+        require __DIR__ . '/View/product.php';
         break;
     case '/shopping-cart':
-        require __DIR__ . '/view/shoppingcart.php';
+        require __DIR__ . '/View/shoppingcart.php';
         break;
     case '/cart-preview':
-        require __DIR__ . '/view/cart-preview.php';
+        require __DIR__ . '/View/cart-preview.php';
         break;
 
     default:
         http_response_code(404);
-        require __DIR__ . '/view/404.php';
+        require __DIR__ . '/View/404.php';
         break;
 }
