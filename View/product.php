@@ -14,8 +14,8 @@ if (isset($_POST["add_to_cart"])) {
             $count = count($_SESSION["shopping_cart"]);
             $item_array = array(
                 'item_id'            =>    $_GET["productID"],
-                'item_name'            =>    $_POST["hidden_name"],
-                'item_price'        =>    $_POST["hidden_price"],
+                'item_name'            =>    $_POST["title"],
+                'item_price'        =>    $_POST["price"],
                 'item_quantity'        =>    $_POST["stockQuantity"]
             );
             $_SESSION["shopping_cart"][$count] = $item_array;
@@ -25,9 +25,9 @@ if (isset($_POST["add_to_cart"])) {
     } else {
         $item_array = array(
             'item_id'            =>    $_GET["productID"],
-            'item_name'            =>    $_POST["hidden_name"],
-            'item_price'        =>    $_POST["hidden_price"],
-            'item_quantity'        =>    $_POST["quantity"]
+            'item_name'            =>    $_POST["title"],
+            'item_price'        =>    $_POST["price"],
+            'item_quantity'        =>    $_POST["stockQuantity"]
         );
         $_SESSION["shopping_cart"][0] = $item_array;
     }
@@ -39,7 +39,7 @@ if (isset($_GET["action"])) {
             if ($values["item_id"] == $_GET["productID"]) {
                 unset($_SESSION["shopping_cart"][$keys]);
                 echo '<script>alert("Item Removed")</script>';
-                echo '<script>window.location="product"</script>';
+                echo '<script>window.location="/product"</script>';
             }
         }
     }
@@ -115,17 +115,18 @@ if (isset($_GET["action"])) {
                         <div class="col-md-4">
                             <form method="post" action="product.php?action=add&id=<?php echo $row["productID"]; ?>">
                                 <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">
-                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($row["productImage"]) ?>" alt="Card image top" />
+                                    <a href="/Exatic/product-overview"><img class="card-img-top" src="data:image/jpeg;base64,<?php echo base64_encode($row['productImage']) ?>" alt="Card image top" /></a>
+
 
                                     <h4 class="text-info"><?php echo $row["title"]; ?></h4>
 
-                                    <h4 class="text-danger">$ <?php echo $row["price"]; ?></h4>
+                                    <h4 class="text-danger"><?php echo $row["price"]; ?> kr.</h4>
 
-                                    <input type="text" name="quantity" value="1" class="form-control" />
+                                    <input type="text" name="stockQuantity" value="1" class="form-control" />
 
-                                    <input type="hidden" name="hidden_name" value="<?php echo $row["title"]; ?>" />
+                                    <input type="hidden" name="title" value="<?php echo $row["title"]; ?>" />
 
-                                    <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
+                                    <input type="hidden" name="price" value="<?php echo $row["price"]; ?>" />
 
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />
 
@@ -150,14 +151,14 @@ if (isset($_GET["action"])) {
                                     foreach ($_SESSION["shopping_cart"] as $keys => $values) {
                                 ?>
                                         <tr>
-                                            <td><?php echo $values["item_name"]; ?></td>
-                                            <td><?php echo $values["item_quantity"]; ?></td>
-                                            <td>$ <?php echo $values["item_price"]; ?></td>
-                                            <td>$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2); ?></td>
-                                            <td><a href="/product?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="text-danger">Remove</span></a></td>
+                                            <td><?php echo $values["title"]; ?></td>
+                                            <td><?php echo $values["stockQuantity"]; ?></td>
+                                            <td>$ <?php echo $values["price"]; ?></td>
+                                            <td>$ <?php echo number_format($values["stockQuantity"] * $values["price"], 2); ?></td>
+                                            <td><a href="/product?action=delete&id=<?php echo $values["productID"]; ?>"><span class="text-danger">Remove</span></a></td>
                                         </tr>
                                     <?php
-                                        $total = $total + ($values["item_quantity"] * $values["item_price"]);
+                                        $total = $total + ($values["stockQuantity"] * $values["price"]);
                                     }
                                     ?>
                                     <tr>
