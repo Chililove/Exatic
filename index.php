@@ -16,8 +16,8 @@
 
 <nav class="navbar sticky-top navbar-expand-lg" style="background-color: #C3DBB6;">
     <div class="container-fluid justify-content-between">
-        <a class="navbar-brand" href="/frontpage">
-            <img src="Exatic/assets/exatic-logo-2.png" style="margin-left:85%; width:auto; height:45px;" width="35" height="35" class="d-inline-block" alt="">
+        <a class="navbar-brand" href="/Exatic/frontpage">
+            <img src="/Exatic/assets/exatic-logo-2.png" style="margin-left:85%; width:auto; height:45px;" width="35" height="35" class="d-inline-block" alt="">
         </a>
         <!--responsive aka  burger for mobile ver.--->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,32 +29,33 @@
             <ul class="navbar-nav mr-auto">
                 <!-- probably remove home? -->
                 <li class="nav-item active">
-                    <a class="nav-link" aria-current="page" href="/frontpage">Home</a>
+                    <a class="nav-link" aria-current="page" href="/Exatic/frontpage">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/product">Products</a>
+                    <a class="nav-link" href="/Exatic/product">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/about-us">About</a>
+                    <a class="nav-link" href="/Exatic/about-us">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
+                    <a class="nav-link" href="/Exatic/contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/profile">Profile</a>
+                    <a class="nav-link" href="/Exatic/profile">Profile</a>
                 </li>
 
                 <!-- Cart-preview -->
                 <li class="nav-item dropdown" style="position:absolute; right:6%;">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src=" Exatic/assets/bag-plus.svg" style=" width:auto; height:29px;" class="d-inline-block" alt="">
+                        <img src="/Exatic/assets/bag-plus.svg" style=" width:auto; height:29px;" class="d-inline-block" alt="">
                     </a>
                     <div class="dropdown-menu  dropdown-menu-end cardpreview">
+                        <?php include("cart-preview") ?>
                         <div class="shopping-cart-preview">
                             <!-- Title -->
                             <div class="title">
                                 <span>Shopping Cart</span>
-                                <a href="/cart-preview" class="card-link" style="padding-left: 30%; color:red">Remove All</a>
+                                <a href="/Exatic/cart-preview" class="card-link" style="padding-left: 30%; color:red">Remove All</a>
                             </div>
                         </div>
                         <!---Products-->
@@ -63,7 +64,7 @@
                                 <br></br>
                                 <tr>
                                     <td class="imageurlfield">
-                                        <img src="Exatic/assets/exatic-logo-green.png" />
+                                        <img src="/Exatic/assets/exatic-logo-green.png" />
                                     </td>
                                     <td class="productshortnamefield">
                                         Apples
@@ -86,13 +87,13 @@
                             <br>
                         </div>
                         <div style="position:absolute;">
-                            <a href="/shopping-cart" class="link">Go to shopping cart</a>
+                            <a href="/Exatic/shopping-cart" class="link">Go to shopping cart</a>
                         </div>
                     </div>
                 </li>
                 <li class="nav-item" style="position:absolute; right:2%;">
-                    <a class="nav-link" href="/signin">
-                        <img src="Exatic/assets/person-circle.svg" style=" width:auto; height:30px;" class="d-inline-block" alt="">
+                    <a class="nav-link" href="/Exatic/signin">
+                        <img src="/Exatic/assets/person-circle.svg" style=" width:auto; height:30px;" class="d-inline-block" alt="">
                     </a>
                 </li>
             </ul>
@@ -212,67 +213,75 @@
 
 
 <?php
+/*
+spl_autoload_register(function ($class) {
+    include($class . ".php");
+});
 
-$request = $_SERVER['REQUEST_URI'];
-// $path = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
-//$request = explode("/", $path);
-/* $routes = [];
-function route($action, Closure $callback)
-{
-    global $request;
-    $action = trim($action, '/');
-    //$action = preg_replace('/{[^]+}/' , '(.+)' , $action);
-    $request[$action] = $callback;
+$model = new Model();
+$controller = new Controller($model);
+$view = new product($controller, $model);
+
+if (isset($_GET['action']) && !empty($_GET['action'])) {
+    $controller = $controller->{$_GET['action']}();
 }
-function dispatch($action)
-{
-    global $request;
-    $action = trim($action, '/');
-    $callback = $request[$action];
+echo $view->output();
+*/
+//$request = $_SERVER['REQUEST_URI'];
+$urlpath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-    echo call_user_func($callback);
-} */
+// Reqex to match everything until .php or ?
+$regex = '/.+?(?=.php|\?)/';
+
+// Apply regex to request ($parsedRequest is the result)
+preg_match($regex, $urlpath, $parsedRequest);
 
 
-switch ($request) {
+$toCheck;
+if ($parsedRequest[0]) {
+    $toCheck = $parsedRequest[0];
+} else {
+    $toCheck = $urlpath;
+}
+
+switch ($toCheck) {
     case '':
     case '/':
         require __DIR__ . '/frontpage.php';
         break;
 
-    case '/about-us':
+    case '/Exatic/about-us':
         require __DIR__ . '/View/aboutus.php';
         break;
 
-    case '/contact':
+    case '/Exatic/contact':
         require __DIR__ . '/View/contact.php';
         break;
-    case '/product-overview':
+    case '/Exatic/product-overview':
         require __DIR__ . '/View/productoverview.php';
         break;
-    case '/frontpage':
+    case '/Exatic/frontpage':
         require __DIR__ . '/View/frontpage.php';
         break;
-    case '/signin':
+    case '/Exatic/signin':
         require __DIR__ . '/View/login.php';
         break;
-    case '/signup':
+    case '/Exatic/signup':
         require __DIR__ . '/View/signup.php';
         break;
-    case '/profile':
+    case '/Exatic/profile':
         require __DIR__ . '/View/profile.php';
         break;
-    case '/checkout':
+    case '/Exatic/checkout':
         require __DIR__ . '/View/checkout.php';
         break;
-
-    case '/product':
+    case '/Exatic/product':
         require __DIR__ . '/View/product.php';
         break;
-    case '/shopping-cart':
+    case '/Exatic/shopping-cart':
         require __DIR__ . '/View/shoppingcart.php';
         break;
-    case '/cart-preview':
+    case '/Exatic/cart-preview':
         require __DIR__ . '/View/cart-preview.php';
         break;
 
