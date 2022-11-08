@@ -37,7 +37,7 @@ while ($row = mysqli_fetch_assoc($result)) { ?>
 
 
             <h6 class="title-price"><small>Price</small></h6>
-            <h3 style="margin-top:0px;"><?php echo $row['price']; ?></h3>
+            <h3 style="margin-top:0px;"><?php echo $row['price']; ?> KRR</h3>
 
 
             <div class="section">
@@ -117,7 +117,7 @@ while ($row = mysqli_fetch_assoc($result)) { ?>
                         <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
                         <h5 class="bsp_card-title"><?php echo $row['title'] ?></h5>
                         <div class="text-center">
-                            <p class="bsp_card-text">$ <?php echo $row['price'] ?></p>
+                            <p class="bsp_card-text"> <?php echo $row['price'] ?> KRR</p>
                             <p><?php echo $row['brand'] ?></p>
                         </div>
                     </div>
