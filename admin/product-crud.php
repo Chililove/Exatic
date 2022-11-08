@@ -17,7 +17,7 @@ require_once("../connection/conn.php");
 <body>
 <div class="container">
     <table class="table table-hover">
-        <thead>
+        <thead style="background: #c3dbb6">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Title</th>
@@ -60,7 +60,7 @@ require_once("../connection/conn.php");
             <td><?php echo $row['isNew']; ?></td>
             <td><?php echo $row['country']; ?></td>
             <td><?php echo $row['brand']; ?></td>
-            <td><?php echo $row['productImage']; ?></td>
+            <td><img style="width: 20%; justify-items: center" src="/Exatic/assets/<?php echo $row['productImage'] ?>"  alt="<?php echo $row['productImage'] ?>"</td>
             <td><?php echo $row['typeName']; ?></td>
             <td><?php echo $row['eventName']; ?></td>
             <td><?php echo $row['timestamp']; ?></td>
