@@ -30,9 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $query = "INSERT INTO `user` (firstName, lastName, email, password, userType) VALUES (:firstName, :lastName, :email, '{$hashed_password}', 1)";
 
     $handle = $conn->prepare($query);
-    $handle->bindParam('firstName', $firstname);
-    $handle->bindParam('lastName', $lastname);
-    $handle->bindParam('email', $email);
+    $handle->bind_Param('firstName', $firstname);
+    $handle->bind_Param('lastName', $lastname);
+    $handle->bind_Param('email', $email);
     $handle->bind_param('password', $password);
     $handle->bind_param('last_id', $last_id);
     $handle->execute();
