@@ -20,31 +20,22 @@ require_once("connection/conn.php");
         <br>
         <h1>Welcome to Exatic!</h1>
     </div>
-    <br>
-    <div>
-        <div class="boxed" id="text-box">
-            It's very nice to have you here, we hope the experience will please you.<br />Here at Exatic we aim to broaden asian products as well as making them more accessible in Denmark.<br /><br />
-            Here you can find any ingredient you need to cook asian cuisine and treat family and friends with familiar and newly added products.<br />
-            All groceries can be deliveried at home.<br />
-            <br />
-            Hopefully you find what you need or maybe get inspired by new products from your familiar brands.
-        </div>
-        <div class="discountedItem" style="margin-top: -22%;">
-            <!--VOUCHER-->
-            <div class="card voucherstop">
 
-                <div class="embed-responsive embed-responsive-16by9">
+    <div class="discountedItem">
+        <!--VOUCHER-->
+        <div class="card voucherstop">
 
-                    <div class="voucher-divider">
-                        <div class="voucher-left text-center">
-                            <span class="voucher-nametop" style="font-size: 110%;">A special daily offer</span>
-                            <h5 class="voucher-codetop" style="font-size: 100%;">#discount</h5>
+            <div class="embed-responsive embed-responsive-16by9">
 
-                        </div>
-                        <div class="voucher-righttop text-center border-left">
-                            <h5 class="discount-percent">20%</h5>
-                            <span class="off">Off</span>
-                        </div>
+                <div class="voucher-divider">
+                    <div class="voucher-left text-center">
+                        <span class="voucher-nametop" style="font-size: 110%;">A special daily offer</span>
+                        <h5 class="voucher-codetop" style="font-size: 100%;">#discount</h5>
+
+                    </div>
+                    <div class="voucher-righttop text-center border-left">
+                        <h5 class="discount-percent">20%</h5>
+                        <span class="off">Off</span>
                     </div>
                 </div>
             </div>
@@ -88,7 +79,127 @@ require_once("connection/conn.php");
     }
 
     ?>
+    <span><br><br><br></span>
 
+    <div class="boxed" id="text-box" style="margin-top: -24%;">
+        It's very nice to have you here, we hope the experience will please you.<br />Here at Exatic we aim to broaden asian products as well as making them more accessible in Denmark.<br /><br />
+        Here you can find any ingredient you need to cook asian cuisine and treat family and friends with familiar and newly added products.<br />
+        All groceries can be deliveried at home.<br />
+        <br />
+        Hopefully you find what you need or maybe get inspired by new products from your familiar brands.
+    </div>
+
+    <!--
+    <div carousel>
+        <div class="container px-0" id="containermain">
+            <div class="container" id="container" style="padding: 0;">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 col-md-offset-2">
+
+                        <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="Exatic/assets/noodles.jpeg" class="img-fluid w-100" alt="green">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Exatic/assets/matcha.jpeg" class="img-fluid w-100" alt="pink">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Exatic/assets/drink.jpeg" class="img-fluid w-100" alt="study">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Exatic/assets/can.jpeg" class="img-fluid rounded thumbnail-image" alt="">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carousel" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!--
+<div class="container">
+    <div class="card-deck">
+        <div class="card">
+            <div class="embed-responsive embed-responsive-16by9">
+
+                <img class="card-img-top embed-responsive-item" src="Exatic/assets/can.jpeg" alt="Card image top">
+                <div class="card-body">
+                    <h3 class="card-title">Rita Kiwi</h3>
+                    <h4 class="card-subtitle">Vietnamese Kiwi Drink</h4>
+                    <p class="card-text">2 Items left</p>
+                    <p class="card-text-price">Price (20Dkr.)</p>
+                    <button class="buybtn" onclick="smt">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> #carousel {
+            position: absolute;
+            top: 60%;
+            right: 0;
+            bottom: 0;
+            width: 28%;
+            opacity: .8;
+            filter: alpha(opacity=80);
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+            border-radius: 100px 1px 0px 1px;
+            /*TL TR BR BL*/
+            overflow: hidden;
+        }
+         .image-container {
+
+            position: relative;
+
+        }
+
+        .thumbnail-image {
+            border-radius: 10px !important;
+
+        }
+
+
+         .btn2 {
+            border-radius: 30%;
+            border-style: groove;
+            border-color: lightgreen;
+            padding: 3px;
+            background-color: lightcyan;
+        }
+
+        .item-size {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid grey;
+            color: grey;
+            font-size: 10px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+  .off {
+            font-size: 100%;
+            position: relative;
+            bottom: 5px;
+        }
+
+
+-->
     <!-- Products array cards limit 3 new -->
 
 
