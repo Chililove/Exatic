@@ -1,6 +1,11 @@
 <?php
-class Model{
-    public function __construct() {
-        echo "smth";
+class Model
+{
+
+    public $string;
+
+    public function __construct()
+    {
+        $this->string = "Something Model";
     }
 }

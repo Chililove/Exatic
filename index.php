@@ -50,6 +50,7 @@
                         <img src="/Exatic/assets/bag-plus.svg" style=" width:auto; height:29px;" class="d-inline-block" alt="">
                     </a>
                     <div class="dropdown-menu  dropdown-menu-end cardpreview">
+                        <?php include("cart-preview") ?>
                         <div class="shopping-cart-preview">
                             <!-- Title -->
                             <div class="title">
@@ -212,29 +213,38 @@
 
 
 <?php
+/*
+spl_autoload_register(function ($class) {
+    include($class . ".php");
+});
 
-$request = $_SERVER['REQUEST_URI'];
-// $path = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
-//$request = explode("/", $path);
-/* $routes = [];
-function route($action, Closure $callback)
-{
-    global $request;
-    $action = trim($action, '/');
-    //$action = preg_replace('/{[^]+}/' , '(.+)' , $action);
-    $request[$action] = $callback;
+$model = new Model();
+$controller = new Controller($model);
+$view = new product($controller, $model);
+
+if (isset($_GET['action']) && !empty($_GET['action'])) {
+    $controller = $controller->{$_GET['action']}();
 }
-function dispatch($action)
-{
-    global $request;
-    $action = trim($action, '/');
-    $callback = $request[$action];
+echo $view->output();
+*/
+//$request = $_SERVER['REQUEST_URI'];
+$urlpath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-    echo call_user_func($callback);
-} */
+// Reqex to match everything until .php or ?
+$regex = '/.+?(?=.php|\?)/';
+
+// Apply regex to request ($parsedRequest is the result)
+preg_match($regex, $urlpath, $parsedRequest);
 
 
-switch ($request) {
+$toCheck;
+if ($parsedRequest[0]) {
+    $toCheck = $parsedRequest[0];
+} else {
+    $toCheck = $urlpath;
+}
+
+switch ($toCheck) {
     case '':
     case '/':
         require __DIR__ . '/frontpage.php';
