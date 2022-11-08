@@ -19,9 +19,10 @@ require_once("connection/conn.php");
 
 $product = $_SERVER['QUERY_STRING'];
 
-$product_details = "SELECT * FROM product WHERE productID = $product";
-$result = mysqli_query($conn, $product_details);
+$product_details = "SELECT * FROM product LIMIT 1";
 
+$result = mysqli_query($conn, $product_details);
+echo $_SERVER['QUERY_STRING'];
 while ($row = mysqli_fetch_assoc($result)) { ?>
 <div class="container">
     <div class="row">
