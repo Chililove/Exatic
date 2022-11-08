@@ -1,4 +1,7 @@
-<?php require("connection/conn.php"); ?>
+<?php require("connection/conn.php");
+session_start();
+?>
+
 
 <!doctype html>
 <html lang="en">
@@ -236,13 +239,14 @@ $regex = '/.+?(?=.php|\?)/';
 // Apply regex to request ($parsedRequest is the result)
 preg_match($regex, $urlpath, $parsedRequest);
 
-
 $toCheck;
-if ($parsedRequest[0]) {
+if (isset($parsedRequest[0])) {
     $toCheck = $parsedRequest[0];
 } else {
     $toCheck = $urlpath;
 }
+
+
 
 switch ($toCheck) {
     case '':

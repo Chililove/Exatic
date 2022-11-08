@@ -28,7 +28,7 @@ while ($row = mysqli_fetch_assoc($result)) { ?>
 <div class="container">
     <div class="row">
         <div class="col-xs-4 item-photo">
-            <img style="max-width:100%;" src="../assets/anime.jpg" />
+            <img style="max-width:100%;" src="data:image/jpeg;base64,<?php echo base64_encode($row['productImage']) ?>" />
         </div>
         <div class="col-xs-5" style="border:0px solid gray">
 

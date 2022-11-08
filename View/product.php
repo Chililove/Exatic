@@ -18,8 +18,9 @@ class product
 } */
 
 
-session_start();
-$connect = mysqli_connect("localhost", "root", "root", "ExaticDB");
+
+//session_start();
+//$connect = mysqli_connect("localhost", "root", "root", "ExaticDB");
 
 $stat = session_status();
 $msg = "Current Session Status: ";
@@ -27,8 +28,9 @@ $msg .= $stat;
 
 if (isset($_POST["add_to_cart"])) {
     if (isset($_SESSION["shopping_cart"])) {
-        echo "$_SESSION";
+        //echo "$_SESSION";
         $item_array_id = array_column($_SESSION["shopping_cart"], "productID");
+        //echo count($_SESSION["shopping_cart"]);
         if (!in_array($_GET["productID"], $item_array_id)) {
             $count = count($_SESSION["shopping_cart"]);
             $item_array = array(
@@ -39,7 +41,7 @@ if (isset($_POST["add_to_cart"])) {
             );
             $_SESSION["shopping_cart"][$count] = $item_array;
         } else {
-            echo '<script>alert("Item Already Added")</script>';
+            echo "Item Already Added";
         }
     } else {
         $item_array = array(
@@ -57,8 +59,8 @@ if (isset($_GET["action"])) {
         foreach ($_SESSION["shopping_cart"] as $keys => $values) {
             if ($values["productID"] == $_GET["productID"]) {
                 unset($_SESSION["shopping_cart"][$keys]);
-                echo '<script>alert("Item Removed")</script>';
-                echo '<script>window.location="/Exatic/View/product.php"</script>';
+                echo "Item Removed";
+                echo "/Exatic/product.php";
             }
         }
     }
@@ -134,7 +136,7 @@ if (isset($_GET["action"])) {
                         <div class="col-md-4">
                             <form method="post" action="/Exatic/product.php?action=add&id=<?php echo $row["productID"]; ?>">
                                 <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">
-                                    <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="data:image/jpeg;base64,<?php echo base64_encode($row['productImage']) ?>" alt="Card image top" /></a>
+                                    <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
 
 
                                     <h4 class="text-info"><?php echo $row["title"]; ?></h4>
