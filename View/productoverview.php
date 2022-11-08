@@ -19,10 +19,11 @@ require_once("connection/conn.php");
 
 $product = $_SERVER['QUERY_STRING'];
 
-$product_details = "SELECT * FROM product WHERE productID = $product";
+// $product_details = "SELECT * FROM product WHERE productID = $product";
+$product_details = "SELECT * FROM product p, producttype pt WHERE p.productID = $product AND pt.producttypeID = $product  LIMIT 1" ;
+
 
 $result = mysqli_query($conn, $product_details);
-echo $_SERVER['QUERY_STRING'];
 while ($row = mysqli_fetch_assoc($result)) { ?>
 <div class="container">
     <div class="row">
@@ -32,7 +33,7 @@ while ($row = mysqli_fetch_assoc($result)) { ?>
         <div class="col-xs-5" style="border:0px solid gray">
 
             <h3><?php echo $row['title']; ?></h3>
-            <h5 style="color:#337ab7"><a href="#">Food</a> / <a href="#"> <?php echo $row['brand']; ?></a> · <small style="color:#337ab7">(50 likes)</small></h5>
+            <h5 style="color:#337ab7"><a href="#"><?php echo $row['typeName']; ?></a> / <a href="#"> <?php echo $row['brand']; ?></a> · <small style="color:#337ab7">(50 likes)</small></h5>
 
 
             <h6 class="title-price"><small>Price</small></h6>
