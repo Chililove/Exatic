@@ -20,7 +20,7 @@ require_once("connection/conn.php");
 $product = $_SERVER['QUERY_STRING'];
 
 // $product_details = "SELECT * FROM product WHERE productID = $product";
-$product_details = "SELECT * FROM product p, producttype pt WHERE p.productID = $product AND pt.producttypeID = $product  LIMIT 1" ;
+$product_details = "SELECT * FROM product p, producttype pt WHERE p.productTypeID = pt.producttypeID AND p.productID = $product" ;
 
 
 $result = mysqli_query($conn, $product_details);
@@ -28,7 +28,7 @@ while ($row = mysqli_fetch_assoc($result)) { ?>
 <div class="container">
     <div class="row">
         <div class="col-xs-4 item-photo">
-            <img style="max-width:100%;" src="data:image/jpeg;base64,<?php echo base64_encode($row['productImage']) ?>" />
+            <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
         </div>
         <div class="col-xs-5" style="border:0px solid gray">
 
@@ -85,10 +85,52 @@ while ($row = mysqli_fetch_assoc($result)) { ?>
     </div>
 </div>
 <?php } ?>
+
+
+<div class="container-fluid" style="text-align: center"  >
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row bsp_row-underline">
+                <div class="col-md-6">
+                    <span class="pull-left bsp_deal-text">Recommended <Products></Products></span>
+                </div>
+                <div class="col-md-6">
+                    <a href="/Exatic/product">
+                        <span class="pull-right bsp_view-all">View all <i class="fa fa-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
+                <?php
+
+                $product = $_SERVER['QUERY_STRING'];
+
+                // $product_details = "SELECT * FROM product WHERE productID = $product";
+                $recommend = "SELECT * FROM product ORDER BY RAND() LIMIT 4" ;
+
+
+                $result2 = mysqli_query($conn, $recommend);
+                while ($row = mysqli_fetch_assoc($result2)) { ?>
+                <div class="col-md-3 bsp_padding-0">
+                    <div class="bsp_bbb_item">
+                        <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
+                        <h5 class="bsp_card-title"><?php echo $row['title'] ?></h5>
+                        <div class="text-center">
+                            <p class="bsp_card-text">$ <?php echo $row['price'] ?></p>
+                            <p>DELL</p>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
 
-<style>
+<style lang="css">
     ul > li{margin-right:25px;font-weight:lighter;cursor:pointer}
     li.active{border-bottom:3px solid silver;}
     .item-photo{display:flex;justify-content:center;align-items:center;border-right:1px solid #f6f6f6;}
@@ -103,22 +145,52 @@ while ($row = mysqli_fetch_assoc($result)) { ?>
     div.section > div > input {margin:0;padding-left:5px;font-size:10px;padding-right:5px;max-width:18%;text-align:center;}
 
 
-    @media (max-width: 426px) {
-        .container {margin-top:0px !important;}
-        .container > .row{padding:0 !important;}
-        .container > .row > .col-xs-12.col-sm-5{
-            padding-right:0 ;
-        }
-        .container > .row > .col-xs-12.col-sm-9 > div > p{
-            padding-left:0 !important;
-            padding-right:0 !important;
-        }
-        .container > .row > .col-xs-12.col-sm-9 > div > ul{
-            padding-left:10px !important;
 
-        }
-        .section{width:104%;}
-        .menu-items{padding-left:0;}
+
+    .bsp_row-underline{
+
+        content: "";
+        display: block;
+        border-bottom: 2px solid #3cdb37;
+        margin-bottom: 20px
+
     }
+
+    .bsp_deal-text{
+
+        margin-left: -10px;
+        font-size: 25px;
+        margin-bottom: 10px;
+        color: #000;
+        font-weight: 700;
+    }
+
+    .bsp_view-all{
+
+        margin-right: -10px;
+        font-size: 14px;
+        margin-top: 10px;
+
+    }
+
+    .bsp_padding-0{
+
+        padding: 3px;
+    }
+
+    .bsp_bbb_item{
+
+        padding: 15px;
+        background-color: #fff;
+        box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+        border: solid 1px #e8e8e8;
+
+    }
+
+    .bsp_card-text{
+
+        color: blue;
+    }
+
 
 </style>
