@@ -118,7 +118,7 @@ while ($row = mysqli_fetch_assoc($result)) { ?>
                         <h5 class="bsp_card-title"><?php echo $row['title'] ?></h5>
                         <div class="text-center">
                             <p class="bsp_card-text">$ <?php echo $row['price'] ?></p>
-                            <p>DELL</p>
+                            <p><?php echo $row['brand'] ?></p>
                         </div>
                     </div>
                 </div>
