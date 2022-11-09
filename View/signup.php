@@ -30,7 +30,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
 
     // I added the postalcode table columns to the address table. There is no need for the postalcode table. So I made the signup without the postalcode table..
-    //meaning i connected address and user..
+    //meaning I connected address and user..
+// else we need to find a way to bind postalcode in insert, since we are not inserting a now postal code row when we make a new address.. it needs to refer to the specific postal code.
+
+    // i deleted apartment number from DB since we dont even have an input field in the signup form.
+
+// $postalQuery = "INSERT INTO postalCode (city, country) VALUE (?, ?)";
+// $handle = $conn->prepare($postalQuery);
+// $handle->bind_param('ss', $city, $country);
+// $postalQueryResult = $handle->execute();
+// $postalID = $conn->insert_id;
 
     $addressQuery = "INSERT INTO `address` (streetName, streetNumber, postalCode, city, country) VALUE (?, ?, ?, ?, ?)";
     $handle = $conn->prepare($addressQuery);
