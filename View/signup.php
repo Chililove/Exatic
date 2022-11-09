@@ -29,6 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $iterations = ['cost' => 6];
     $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
 
+    // I added the postalcode table columns to the address table. There is no need for the postalcode table. So I made the signup without the postalcode table..
+    //meaning i connected address and user..
 
     $addressQuery = "INSERT INTO `address` (streetName, streetNumber, postalCode, city, country) VALUE (?, ?, ?, ?, ?)";
     $handle = $conn->prepare($addressQuery);
@@ -43,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $userResult = $handle->execute();
 
 
-    // $result = mysqli_query($conn, $userQuery);
     if ($addressResult && $userResult) {
         $conn->commit();
         $message = "Registered";
@@ -133,6 +134,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <div class="form-outline">
+
+                                        <!-- Do we need all these countries?? When we are only in DK? -->
+
                                         <select class="form-control" name="country">
                                             <option value="select">Select a country...</option>
                                             <option value="AFG">Afghanistan</option>
