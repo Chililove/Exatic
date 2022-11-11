@@ -51,7 +51,7 @@
 
             </div>
             <div class="footer-row mx-0 justify-content-center" style="background-color: #C3DBB6; text-align: center; color: #5D5A57; ">
-                <p class="footer-p" style="">© Copyright 2022 Exatic. All Rights Reserved.</p>
+                <p class="footer-p">© Copyright 2022 Exatic. All Rights Reserved.</p>
             </div>
         </div>
     </div>

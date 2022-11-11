@@ -1,5 +1,5 @@
 <?php
-$PageTitle = "Exaitc";
+$PageTitle = "Exatic";
 ?>
 <!Doctype html>
 <html lang="en">
@@ -55,7 +55,7 @@ $PageTitle = "Exaitc";
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="/assets/nav-icons/bag-plus.svg" style=" width:auto; height:29px;" class="d-inline-block" alt="cart">
                         </a>
-                        <div class="dropdown-menu  dropdown-menu-end cardpreview">
+                        <div class="dropdown-menu  dropdown-menu-end card-preview">
                             <?php include($rootPath . "View/cart-preview.php") ?>
                         </div>
 
@@ -85,17 +85,7 @@ $PageTitle = "Exaitc";
         flex-direction: column;
     }
 
-    .title {
-        height: 60px;
-        border-bottom: 1px solid #E1E8EE;
-        padding: 20px 10px;
-        color: #5E6977;
-        font-size: 17px;
-        font-weight: 400;
-
-    }
-
-    .cardpreview {
+    .card-preview {
         width: 20rem;
         max-width: 20rem;
         height: 40rem;
@@ -105,73 +95,6 @@ $PageTitle = "Exaitc";
         border: 1% solid #ddd;
         border-radius: 10px;
         box-shadow: 0px 25px 40px #888;
-    }
-
-    .previewTable {
-        flex-direction: column;
-        border-style: ridge;
-        border-color: lightgray;
-        border-left: hidden;
-        border-right: hidden;
-        max-width: 98%;
-        margin: 2%;
-        box-sizing: border-box;
-    }
-
-    .imageurlfield {
-        max-width: 25%;
-    }
-
-    .imageurlfield img {
-        max-width: 140px;
-        height: auto;
-    }
-
-    .productidfield {
-        font-family: Courier, monospace;
-    }
-
-    .productshortnamefield {
-        font-family: verdana;
-        font-size: 13px;
-        padding-left: 1%;
-        max-width: 20%;
-    }
-
-    .containername {
-        border-color: black;
-    }
-
-    .productpricefield {
-        font-family: verdana;
-        font-weight: bold;
-    }
-
-    .deletebutton {
-        color: red;
-    }
-
-    .deletefield {
-        max-width: 10.5%;
-        text-align: right;
-    }
-
-    .totalpricefield {
-        font-size: 13px;
-        font-family: verdana;
-        font-weight: bold;
-    }
-
-    .totalpricetable {
-        position: center;
-        flex-direction: column;
-        border-style: ridge;
-        border-color: lightgray;
-        border-left: hidden;
-        border-right: hidden;
-        max-width: 99%;
-        margin: 1%;
-        box-sizing: border-box;
     }
 </style>
 
