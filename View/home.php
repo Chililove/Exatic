@@ -1,19 +1,15 @@
 <?php
-require_once("connection/conn.php");
+require("rootPath.php");
+
+require $rootPath . "Model/HomeModel.php";
+require $rootPath . "Controller/HomeController.php";
+
 ?>
+
 <html>
 
-<!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css"> -->
 
-
-
-<div style="width: 200px; font-size: 30px; background-image: linear-gradient(to left, darkgreen, lightgreen, lightskyblue, lightgreen, lightpink, lightgreen);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-right:auto;
-  margin-left: 5%;
-  margin-top: 2%;
-    ">
+<div class="headerStyle">
     <br>
     <h1>Welcome to Exatic!</h1>
 </div>
@@ -53,16 +49,15 @@ require_once("connection/conn.php");
 
 <?php
 
-$products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQuantity`, `description`, `productImage`, `isDailySpecial` FROM `Product` WHERE isDailySpecial = 1 LIMIT 1");
-if (mysqli_num_rows($products) > 0) {
+if (mysqli_num_rows($dailyResult) > 0) {
     // output data of each row
-    while ($row = mysqli_fetch_assoc($products)) {
+    while ($row = mysqli_fetch_assoc($dailyResult)) {
 
 ?>
 
         <div class="card" id="cardtop">
             <div class="embed-responsive embed-responsive-16by9">
-                <a href="/Exatic/product-overview?productID=<?php echo $row["productID"]; ?>"><img class="card-img-top-top" src="/Exatic/assets/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
+                <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
                 <div class="card-body">
                     <h3 class="card-title"><?php echo $row["title"] ?>
                         <?php if ($row['isDailySpecial']) {
@@ -92,13 +87,7 @@ if (mysqli_num_rows($products) > 0) {
 
 
 <span>
-    <div style="width: 85%; font-size: 20px; background-image: linear-gradient(to left, darkgreen, lightgreen, lightskyblue, lightgreen, lightpink, lightgreen);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-left: 2.9%;
-  margin-top: -6%;
-  padding:2%;
-    ">
+    <div class="newProductsHeader">
         <h1>New products in store..</h1>
     </div>
 </span>
@@ -106,17 +95,16 @@ if (mysqli_num_rows($products) > 0) {
     <div class="row row-cols-3">
         <?php
 
-        $products = mysqli_query($conn, "SELECT `productID`, `title`, `price`, `stockQuantity`, `description`, `productImage`, `isNew` FROM `Product` WHERE isNew = 1 LIMIT 3");
-        if (mysqli_num_rows($products) > 0) {
+        if (mysqli_num_rows($newsResult) > 0) {
             // output data of each row
-            while ($row = mysqli_fetch_assoc($products)) {
+            while ($row = mysqli_fetch_assoc($newsResult)) {
 
         ?>
 
                 <div class="col">
                     <div class="card">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <a href="/Exatic/product-overview?productID=<?php echo $row["productID"]; ?>"><img class="card-img-top" src="/Exatic/assets/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
+                        <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
                             <div class="card-body">
                                 <h3 class="card-title"><?php echo $row["title"] ?>
                                     <?php if ($row['isNew']) {
@@ -148,6 +136,31 @@ if (mysqli_num_rows($products) > 0) {
 
 
 <style>
+    .newProductsHeader {
+        width: 85%;
+        font-size: 20px;
+        background-image: linear-gradient(to left, darkgreen, lightgreen, lightskyblue, lightgreen, lightpink, lightgreen);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-left: 2.9%;
+        margin-top: -6%;
+        padding: 2%;
+
+
+    }
+
+    .headerStyle {
+        width: 200px;
+        font-size: 30px;
+        background-image: linear-gradient(to left, darkgreen, lightgreen, lightskyblue, lightgreen, lightpink, lightgreen);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-right: auto;
+        margin-left: 5%;
+        margin-top: 2%;
+
+    }
+
     .discountedItem {
         object-fit: contain;
         margin-top: -30%;

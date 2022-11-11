@@ -2,6 +2,11 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+require("rootPath.php");
+
+require $rootPath . "Model/SignUpModel.php";
+require $rootPath . "Controller/SignUpController.php";
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];

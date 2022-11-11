@@ -19,7 +19,7 @@ session_start();
 
 <nav class="navbar sticky-top navbar-expand-lg" style="background-color: #C3DBB6;">
     <div class="container-fluid justify-content-between">
-        <a class="navbar-brand" href="/Exatic/frontpage">
+        <a class="navbar-brand" href="/Exatic/home">
             <img src="/Exatic/assets/exatic-logo-2.png" style="margin-left:85%; width:auto; height:45px;" width="35" height="35" class="d-inline-block" alt="">
         </a>
         <!--responsive aka  burger for mobile ver.--->
@@ -32,7 +32,7 @@ session_start();
             <ul class="navbar-nav mr-auto">
                 <!-- probably remove home? -->
                 <li class="nav-item active">
-                    <a class="nav-link" aria-current="page" href="/Exatic/frontpage">Home</a>
+                    <a class="nav-link" aria-current="page" href="/Exatic/home">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/Exatic/product">Products</a>
@@ -50,16 +50,16 @@ session_start();
                 <!-- Cart-preview -->
                 <li class="nav-item dropdown" style="position:absolute; right:6%;">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="/Exatic/assets/bag-plus.svg" style=" width:auto; height:29px;" class="d-inline-block" alt="">
+                        <img src="/Exatic/assets/bag-plus.svg" style=" width:auto; height:29px;" class="d-inline-block" alt="cart">
                     </a>
                     <div class="dropdown-menu  dropdown-menu-end cardpreview">
                         <?php require($rootPath . "View/cart-preview.php") ?>
                     </div>
 
                 </li>
-                <li class="nav-item" style="position:absolute; right:2%;">
+                <li class="nav-item" style="position:absolute; list-style-type: none; right:2%;">
                     <a class="nav-link" href="/Exatic/signin">
-                        <img src="/Exatic/assets/person-circle.svg" style=" width:auto; height:30px;" class="d-inline-block" alt="">
+                        <img src="/Exatic/assets/nav-icons/person-circle.svg" style=" width:auto; height:30px;" class="d-inline-block" alt="login">
                     </a>
                 </li>
             </ul>
@@ -213,8 +213,9 @@ if (isset($parsedRequest[0])) {
 
 switch ($toCheck) {
     case '':
+        //doesnt redirecct case "/"
     case '/':
-        require __DIR__ . '/frontpage.php';
+        require __DIR__ . '/View/home.php';
         break;
 
     case '/Exatic/about-us':
@@ -227,8 +228,8 @@ switch ($toCheck) {
     case '/Exatic/product-overview':
         require __DIR__ . '/View/productoverview.php';
         break;
-    case '/Exatic/frontpage':
-        require __DIR__ . '/View/frontpage.php';
+    case '/Exatic/home':
+        require __DIR__ . '/View/home.php';
         break;
     case '/Exatic/signin':
         require __DIR__ . '/View/login.php';
@@ -236,6 +237,7 @@ switch ($toCheck) {
     case '/Exatic/signup':
         require __DIR__ . '/View/signup.php';
         break;
+        //remove from navbar after login is complete
     case '/Exatic/profile':
         require __DIR__ . '/View/profile.php';
         break;
@@ -250,6 +252,12 @@ switch ($toCheck) {
         break;
     case '/Exatic/cart-preview':
         require __DIR__ . '/View/cart-preview.php';
+        break;
+    case '/Exatic/product-admin':
+        require __DIR__ . '/View/adminProduct.php';
+        break;
+    case '/Exatic/product-admin-add':
+        require __DIR__ . '/View/adminProductAdd.php';
         break;
     case '/Exatic/test':
         require __DIR__ . '/View/test.php';

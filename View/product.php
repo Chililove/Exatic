@@ -1,11 +1,5 @@
 <?php
-
-//session_start();
-//$connect = mysqli_connect("localhost", "root", "root", "ExaticDB");
-$rootPath = "";
-while (!file_exists($rootPath . "index.php")) {
-    $rootPath = "../$rootPath";
-}
+require("rootPath.php");
 
 require $rootPath . "Model/ProductModel.php";
 require $rootPath . "Controller/ProductController.php";
@@ -80,8 +74,8 @@ $msg .= $stat;
                 <?php
                 //$query = "SELECT * FROM Product ORDER BY productID ASC"; //MODEL
                 // $result = mysqli_query($conn, $query); //Controller
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_array($result)) {
+                if (mysqli_num_rows($productResult) > 0) {
+                    while ($row = mysqli_fetch_array($productResult)) {
                 ?>
                         <div class="col-md-4">
                             <form method="post" action="/Exatic/product.php?action=add&id=<?php echo $row["productID"]; ?>">

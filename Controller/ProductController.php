@@ -1,3 +1,3 @@
 <?php
 
-$result = mysqli_query($conn, $ProductModel->query);
+$productResult = mysqli_query($conn, $ProductModel->products);
