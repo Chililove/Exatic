@@ -22,6 +22,7 @@ require_once("../connection/conn.php");
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Price</th>
+            <th scope="col">%</th>
             <th scope="col">Quantity</th>
             <th scope="col">Description</th>
             <th scope="col">isNew</th>
@@ -33,6 +34,7 @@ require_once("../connection/conn.php");
             <th scope="col">CreatedAt</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
+
         </tr>
         </thead>
         <tbody>
@@ -45,16 +47,18 @@ require_once("../connection/conn.php");
         $result = mysqli_query($conn, $query);
 
 
-        $product_list = "SELECT p.productID, p.title, p.price, p.stockQuantity, p.description, p.isNew, p.isDailySpecial, p.country, p.brand, p.productImage, p.timestamp, pt.productTypeID, pt.typeName, d.discountID, d.eventName
+        $product_list = "SELECT p.productID, p.title, p.price, p.stockQuantity, p.description, p.isNew, p.isDailySpecial, p.country, p.brand, p.productImage, p.timestamp, pt.productTypeID, pt.typeName, d.discountID, d.eventName, d.discountProcent
                         FROM product p, producttype pt, discount d WHERE p.productTypeID = pt.producttypeID AND p.discountID = d.discountID";
         $result = mysqli_query($conn, $product_list);
         $i = 1;
         while ($row = mysqli_fetch_array($result)) {
         ?>
+
         <tr>
             <th scope="row"><?php echo $i; ?></th>
             <td><?php echo $row['title']; ?></td>
             <td><?php echo $row['price']; ?></td>
+            <td><?php echo $row['discountProcent']  ; ?> <?php echo $row['price']; ?></td>
             <td><?php echo $row['stockQuantity']; ?></td>
             <td class="block text-truncate" style="max-width: 150px;"><?php echo $row['description']; ?></td>
             <td><?php echo $row['isNew']; ?></td>
@@ -66,6 +70,7 @@ require_once("../connection/conn.php");
             <td><?php echo $row['timestamp']; ?></td>
             <td><a href="#" class="edit" data-id="<?php echo $row["productID"]; ?>">edit</a></td>
             <td><a href="#" class="delete" data-id="<?php echo $row["productID"]; ?>">delete</a></td>
+
 
         </tr>
             <?php

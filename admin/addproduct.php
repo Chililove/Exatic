@@ -14,21 +14,22 @@ if (isset($_POST['submit'])) {
         $description = trim(mysqli_real_escape_string($conn, $_POST['description']));
         $country = trim(mysqli_real_escape_string($conn, $_POST['country']));
         $brand = trim(mysqli_real_escape_string($conn, $_POST['brand']));
+        $productypeID = trim(mysqli_real_escape_string($conn, $_POST['productTypeID']));
+        $discountID = trim(mysqli_real_escape_string($conn, $_POST['discountID']));
 
         $file = $_FILES["productImage"]["name"];
 
         $filename = strtolower($file);
 
         if ($_FILES['productImage']['name']){
-            move_uploaded_file($_FILES['image']['tmp_name'],
-                "../assets/" . $_FILES['productImage']['name']);
-            header("Location: ../admin/addproduct.php");
-            $product = "INSERT INTO product (title, price, stockQuantity, description, isNew, isDailySpecial, country, brand, productImage, timestamp, productTypeID, discountID) values ('$title', '$price', '$stockQuantity', '$description',1,  1, TIMESTAMP, '$filename')";
+            move_uploaded_file($_FILES['productImage']['tmp_name'], "../assets/" . $_FILES['productImage']['name']);
+            $product = "INSERT INTO product (title, price, stockQuantity, description, isNew, isDailySpecial, country, brand, productImage, timestamp, productTypeID, discountID) values ('$title', '$price', '$stockQuantity', '$description',1,  1, '$country', '$brand', '$filename', TIMESTAMP, '$productypeID', '$discountID' )";
+            echo $product;
             $result3 = mysqli_query($conn, $product);
+
         }
     }
 } else {
-    echo "../admin/addproduct.php";
 
 }
 
@@ -102,13 +103,13 @@ if (isset($_POST['submit'])) {
         <div class="col-md-4 mb-4">
             <div class="form-group">
             <label>Type</label>
-            <select type="text" id="type" name="type" class="form-control" required>
+            <select type="text" id="type" name="productTypeID" class="form-control" required>
                 <option value="">--- Choose a Type ---</option>
                 <?php $product_type = "SELECT * FROM producttype";
                 $result = mysqli_query($conn, $product_type);
                 while ($row = mysqli_fetch_array($result)) {
                 ?>
-                <option value="Latest"><?php echo $row["productTypeID"]; ?></option>
+                <option value="<?php echo $row["productTypeID"]; ?>"><?php echo $row["typeName"]; ?></option>
                     <?php } ?>
             </select>
             </div>
@@ -116,13 +117,13 @@ if (isset($_POST['submit'])) {
         <div class="col-md-4 mb-4">
             <div class="form-group">
                 <label>Discount</label>
-                <select type="category" id="category" name="category" class="form-control" required>
+                <select type="category" id="category" name="discountID" class="form-control" required>
                     <option value="">--- Choose a Discount ---</option>
                     <?php $discount = "SELECT * FROM discount";
                     $result2 = mysqli_query($conn, $discount);
                     while ($row = mysqli_fetch_array($result2)) {
                         ?>
-                        <option value="Latest"><?php echo $row["discountID"]; ?></option>
+                        <option value="<?php echo $row["discountID"]; ?>"><?php echo $row["eventName"]; ?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -132,7 +133,7 @@ if (isset($_POST['submit'])) {
             <div class="col-md-8 mb-4">
                 <div class="form-group">
                     <label for="image">Add image</label>
-                    <input type="file" name="image" id="image" value="" class="form-control" required/>
+                    <input type="file" name="productImage" id="image" value="" class="form-control" required/>
                 </div>
             </div>
         </div>
