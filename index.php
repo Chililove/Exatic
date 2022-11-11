@@ -50,7 +50,7 @@ session_start();
                 <!-- Cart-preview -->
                 <li class="nav-item dropdown" style="position:absolute; right:6%;">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="/Exatic/assets/bag-plus.svg" style=" width:auto; height:29px;" class="d-inline-block" alt="cart">
+                        <img src="/Exatic/assets/nav-icons/bag-plus.svg" style=" width:auto; height:29px;" class="d-inline-block" alt="cart">
                     </a>
                     <div class="dropdown-menu  dropdown-menu-end cardpreview">
                         <?php require($rootPath . "View/cart-preview.php") ?>
