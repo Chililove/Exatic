@@ -4,21 +4,13 @@ require("rootPath.php");
 require $rootPath . "Model/ProductModel.php";
 require $rootPath . "Controller/ProductController.php";
 require $rootPath . "Controller/CartController.php";
-
-$stat = session_status();
-$msg = "Current Session Status: ";
-$msg .= $stat;
-
 ?>
 
 
-<!doctype html>
+<!Doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Product</title>
 </head>
 
@@ -78,7 +70,7 @@ $msg .= $stat;
                     while ($row = mysqli_fetch_array($productResult)) {
                 ?>
                         <div class="col-md-4">
-                            <form method="post" action="/Exatic/product.php?action=add&id=<?php echo $row["productID"]; ?>">
+                            <form method="post" action="/product.php?action=add&id=<?php echo $row["productID"]; ?>">
                                 <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">
                                     <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
 

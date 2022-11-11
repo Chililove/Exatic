@@ -2,7 +2,7 @@
     <!-- Title -->
     <div class="title">
         <span>Shopping Cart</span>
-        <a href="/Exatic/cart-preview" class="card-link" style="padding-left: 30%; color:red">Remove All</a>
+        <a href="/cart-preview" class="card-link" style="padding-left: 30%; color:red">Remove All</a>
     </div>
 </div>
 <!---Products-->
@@ -11,7 +11,7 @@
         <br></br>
         <tr>
             <td class="imageurlfield">
-                <img src="/Exatic/assets/exatic-logo-green.png" />
+                <img src="/assets/exatic-logo-2.png" />
             </td>
             <td class="productshortnamefield">
                 Apples
@@ -35,5 +35,4 @@
 </div>
 <div style="position:absolute;">
     <a href="/Exatic/shopping-cart" class="link">Go to shopping cart</a>
-</div>
 </div>

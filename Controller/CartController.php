@@ -34,7 +34,7 @@ if (isset($_GET["action"])) {
             if ($values["productID"] == $_GET["productID"]) {
                 unset($_SESSION["shopping_cart"][$keys]);
                 echo "Item Removed";
-                echo "/Exatic/product.php";
+                echo "/product.php";
             }
         }
     }
