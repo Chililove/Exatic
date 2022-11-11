@@ -1,7 +1,7 @@
 <?php
 class AdminProductAddModel
 {
-    public $productType = "SELECT * FROM productType";
-    public $discount = "SELECT * FROM discount";
+    public $productType = "SELECT * FROM ProductType";
+    public $discount = "SELECT * FROM Discount";
 }
 $AdminProductAddModel = new AdminProductAddModel();

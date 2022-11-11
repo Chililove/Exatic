@@ -25,7 +25,7 @@ require $rootPath . "Controller/POverviewController.php";
     $overview = $_SERVER['QUERY_STRING'];
 
     // $product_details = "SELECT * FROM product WHERE productID = $product";
-    $product_details = "SELECT * FROM product p, producttype pt WHERE p.productTypeID = pt.producttypeID AND p.productID = $overview";
+    $product_details = "SELECT * FROM Product p, ProductType pt WHERE p.productTypeID = pt.producttypeID AND p.productID = $overview";
 
 
     $overviewResult = mysqli_query($conn, $product_details);

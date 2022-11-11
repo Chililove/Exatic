@@ -6,6 +6,6 @@
 class POverviewModel
 {
 
-    public $recommend = "SELECT * FROM product ORDER BY RAND() LIMIT 4";
+    public $recommend = "SELECT * FROM Product ORDER BY RAND() LIMIT 4";
 }
 $POverviewModel = new POverviewModel();
