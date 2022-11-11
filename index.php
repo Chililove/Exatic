@@ -53,46 +53,9 @@ session_start();
                         <img src="/Exatic/assets/bag-plus.svg" style=" width:auto; height:29px;" class="d-inline-block" alt="">
                     </a>
                     <div class="dropdown-menu  dropdown-menu-end cardpreview">
-                        <?php include("cart-preview") ?>
-                        <div class="shopping-cart-preview">
-                            <!-- Title -->
-                            <div class="title">
-                                <span>Shopping Cart</span>
-                                <a href="/Exatic/cart-preview" class="card-link" style="padding-left: 30%; color:red">Remove All</a>
-                            </div>
-                        </div>
-                        <!---Products-->
-                        <div class="">
-                            <table class="previewTable">
-                                <br></br>
-                                <tr>
-                                    <td class="imageurlfield">
-                                        <img src="/Exatic/assets/exatic-logo-green.png" />
-                                    </td>
-                                    <td class="productshortnamefield">
-                                        Apples
-                                        <br></br>
-                                        <p class="productpricefield"> 400 kr.</p>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br>
-
-
-                            <!-- Total Price -->
-                            <table class="totalpricetable">
-                                <tr class="totalpricefield">
-                                    <td>Total price:</td>
-                                    <td> 5099 kr.</td>
-                                </tr>
-                            </table>
-
-                            <br>
-                        </div>
-                        <div style="position:absolute;">
-                            <a href="/Exatic/shopping-cart" class="link">Go to shopping cart</a>
-                        </div>
+                        <?php require($rootPath . "View/cart-preview.php") ?>
                     </div>
+
                 </li>
                 <li class="nav-item" style="position:absolute; right:2%;">
                     <a class="nav-link" href="/Exatic/signin">
@@ -287,6 +250,9 @@ switch ($toCheck) {
         break;
     case '/Exatic/cart-preview':
         require __DIR__ . '/View/cart-preview.php';
+        break;
+    case '/Exatic/test':
+        require __DIR__ . '/View/test.php';
         break;
 
     default:

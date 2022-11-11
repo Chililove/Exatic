@@ -1,70 +1,20 @@
 <?php
-/*
-class product
-{
-    private $model;
-    private $controller;
-
-    public function __construct($controller, $model)
-    {
-        $this->model = $model;
-        $this->controller = $controller;
-    }
-    public function output()
-    {
-        return "<a href='index.php?action=clicked'>" .
-            $this->model->string . "</a>";
-    }
-} */
-
-
 
 //session_start();
 //$connect = mysqli_connect("localhost", "root", "root", "ExaticDB");
+$rootPath = "";
+while (!file_exists($rootPath . "index.php")) {
+    $rootPath = "../$rootPath";
+}
+
+require $rootPath . "Model/ProductModel.php";
+require $rootPath . "Controller/ProductController.php";
+require $rootPath . "Controller/CartController.php";
 
 $stat = session_status();
 $msg = "Current Session Status: ";
 $msg .= $stat;
 
-if (isset($_POST["add_to_cart"])) {
-    if (isset($_SESSION["shopping_cart"])) {
-        //echo "$_SESSION";
-        $item_array_id = array_column($_SESSION["shopping_cart"], "productID");
-        //echo count($_SESSION["shopping_cart"]);
-        if (!in_array($_GET["productID"], $item_array_id)) {
-            $count = count($_SESSION["shopping_cart"]);
-            $item_array = array(
-                'productID'            =>    $_GET["productID"],
-                'title'            =>    $_POST["title"],
-                'price'        =>    $_POST["price"],
-                'stockQuantity'        =>    $_POST["stockQuantity"]
-            );
-            $_SESSION["shopping_cart"][$count] = $item_array;
-        } else {
-            echo "Item Already Added";
-        }
-    } else {
-        $item_array = array(
-            'productID'            =>    $_GET["productID"],
-            'title'            =>    $_POST["title"],
-            'price'        =>    $_POST["price"],
-            'stockQuantity'        =>    $_POST["stockQuantity"]
-        );
-        $_SESSION["shopping_cart"][0] = $item_array;
-    }
-}
-
-if (isset($_GET["action"])) {
-    if ($_GET["action"] == "delete") {
-        foreach ($_SESSION["shopping_cart"] as $keys => $values) {
-            if ($values["productID"] == $_GET["productID"]) {
-                unset($_SESSION["shopping_cart"][$keys]);
-                echo "Item Removed";
-                echo "/Exatic/product.php";
-            }
-        }
-    }
-}
 ?>
 
 
@@ -128,8 +78,8 @@ if (isset($_GET["action"])) {
             <!--Product-->
             <div class="container">
                 <?php
-                $query = "SELECT * FROM Product ORDER BY productID ASC";
-                $result = mysqli_query($conn, $query);
+                //$query = "SELECT * FROM Product ORDER BY productID ASC"; //MODEL
+                // $result = mysqli_query($conn, $query); //Controller
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_array($result)) {
                 ?>
