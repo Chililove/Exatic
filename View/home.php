@@ -57,7 +57,7 @@ if (mysqli_num_rows($dailyResult) > 0) {
 
         <div class="card" id="cardtop">
             <div class="embed-responsive embed-responsive-16by9">
-                <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
+                <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
                 <div class="card-body">
                     <h3 class="card-title"><?php echo $row["title"] ?>
                         <?php if ($row['isDailySpecial']) {
@@ -104,7 +104,7 @@ if (mysqli_num_rows($dailyResult) > 0) {
                 <div class="col">
                     <div class="card">
                         <div class="embed-responsive embed-responsive-16by9">
-                        <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
+                            <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
                             <div class="card-body">
                                 <h3 class="card-title"><?php echo $row["title"] ?>
                                     <?php if ($row['isNew']) {

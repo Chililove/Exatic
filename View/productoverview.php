@@ -33,7 +33,7 @@ require $rootPath . "Controller/POverviewController.php";
         <div class="container">
             <div class="row">
                 <div class="col-xs-4 item-photo">
-                    <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
+                    <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
                 </div>
                 <div class="col-xs-5" style="border:0px solid gray">
 
@@ -111,7 +111,7 @@ require $rootPath . "Controller/POverviewController.php";
                     while ($row = mysqli_fetch_assoc($recommendResult)) { ?>
                         <div class="col-md-3 bsp_padding-0">
                             <div class="bsp_bbb_item">
-                                <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
+                                <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
                                 <h5 class="bsp_card-title"><?php echo $row['title'] ?></h5>
                                 <div class="text-center">
                                     <p class="bsp_card-text"> <?php echo $row['price'] ?> KRR</p>

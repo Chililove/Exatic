@@ -80,7 +80,7 @@ $msg .= $stat;
                         <div class="col-md-4">
                             <form method="post" action="/Exatic/product.php?action=add&id=<?php echo $row["productID"]; ?>">
                                 <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">
-                                    <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
+                                    <a href="/Exatic/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
 
 
                                     <h4 class="text-info"><?php echo $row["title"]; ?></h4>

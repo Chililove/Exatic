@@ -67,7 +67,7 @@ require $rootPath . "Controller/Admin/AdminProductController.php";
                         <td><?php echo $row['isNew']; ?></td>
                         <td><?php echo $row['country']; ?></td>
                         <td><?php echo $row['brand']; ?></td>
-                        <td><img style="width: 20%; justify-items: center" src="/Exatic/assets/<?php echo $row['productImage'] ?>" alt="<?php echo $row['productImage'] ?>" </td>
+                        <td><img style="width: 20%; justify-items: center" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="<?php echo $row['productImage'] ?>" </td>
                         <td><?php echo $row['typeName']; ?></td>
                         <td><?php echo $row['eventName']; ?></td>
                         <td><?php echo $row['timestamp']; ?></td>
