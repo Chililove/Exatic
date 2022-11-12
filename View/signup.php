@@ -1,5 +1,10 @@
+<?php
+require("rootPath.php");
 
+require $rootPath . "Model/SignupModel.php";
+require $rootPath . "Controller/SignupController.php";
 
+?>
 <!doctype html>
 <html lang="en">
 
@@ -81,7 +86,7 @@
 
                                         <!-- Do we need all these countries?? When we are only in DK? -->
 
-                                        <select class="form-control" name="country" required >
+                                        <select class="form-control" name="country" required>
                                             <option value="select">Select a country...</option>
                                             <option value="AFG">Afghanistan</option>
                                             <option value="ALA">Åland Islands</option>

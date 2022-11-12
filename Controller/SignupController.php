@@ -2,19 +2,14 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require("rootPath.php");
-
-require $rootPath . "Model/SignUpModel.php";
-require $rootPath . "Controller/SignUpController.php";
-require $rootPath . "View/Signup.php";
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-    $conn = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+    /* $conn = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
     if ($conn == false) {
         echo ":'(";
-    }
+    } */
 
     $firstName = trim(mysqli_real_escape_string($conn, $_POST['firstName']));
     $lastName = trim(mysqli_real_escape_string($conn, $_POST['lastName']));
