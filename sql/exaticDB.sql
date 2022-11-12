@@ -44,7 +44,8 @@ CREATE TABLE Discount (
     eventName VARCHAR(30),
     description VARCHAR(500),
     discountProcent DECIMAL,
-    duration DATETIME
+    startDate DATETIME,
+    endDate DATETIME
 ) ENGINE=InnoDB;
 
 CREATE TABLE ProductType (
@@ -95,10 +96,10 @@ CREATE TABLE OrderDetail (
 
 
 /* Discount */
-INSERT INTO Discount (discountID, eventName, description, discountProcent, duration) VALUES (1, "None", "No discount", "0", "2022-10-28 14:00:00");
-INSERT INTO Discount (discountID, eventName, description, discountProcent, duration) VALUES (2, "Halloween", "Halloween Event", "20", "2022-10-28 14:00:00");
-INSERT INTO Discount (discountID, eventName, description, discountProcent, duration) VALUES (3, "Winter Sale", "WINTER SALE", "50", "2022-11-24 14:48:50");
-INSERT INTO Discount (discountID, eventName, description, discountProcent, duration) VALUES (4, "Black Friday", "BLACK FRIDAY", "70", "2022-11-25 23:59:59");
+INSERT INTO Discount (discountID, eventName, description, discountProcent, startDate, endDate) VALUES (1, "None", "No discount", "0", "2022-11-24 00:00:00", "2022-11-24 00:00:00");
+INSERT INTO Discount (discountID, eventName, description, discountProcent, startDate, endDate) VALUES (2, "Halloween", "Halloween Event", "20", "2022-10-12 18:55:35", "2022-10-31 23:59:59");
+INSERT INTO Discount (discountID, eventName, description, discountProcent, startDate, endDate) VALUES (3, "Winter Sale", "WINTER SALE", "50", "2022-11-24 14:48:50", "2022-12-28 14:00:00");
+INSERT INTO Discount (discountID, eventName, description, discountProcent, startDate, endDate) VALUES (4, "Black Friday", "BLACK FRIDAY", "70", "2022-11-25 00:00:00", "2022-11-25 23:59:59");
 
 
 
