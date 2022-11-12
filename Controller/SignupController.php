@@ -43,13 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     //  $postalQuery = "INSERT INTO postalCode (postNumber, cityName, country) VALUE (?, ?, ?)";
     $handle = $conn->prepare($postalQuery);
-    $handle->bind_param('sss', $postNumber, $cityName, $country);
+    $handle->bind_param('iss', $postNumber, $cityName, $country);
     $postalQueryResult = $handle->execute();
     $postalID = $conn->insert_id;
 
     //  $addressQuery = "INSERT INTO `address` (streetName, streetNumber, postalID) VALUE (?, ?, ?)";
     $handle = $conn->prepare($addressQuery);
-    $handle->bind_param('sss', $streetName, $streetNumber, $postalID);
+    $handle->bind_param('sis', $streetName, $streetNumber, $postalID);
     $addressResult = $handle->execute();
     $addressID = $conn->insert_id;
 
