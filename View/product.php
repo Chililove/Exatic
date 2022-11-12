@@ -12,6 +12,17 @@ require $rootPath . "Controller/CartController.php";
 
 <head>
     <title>Product</title>
+    <?php if ($isSuccess) { ?>
+        <div class="alert alert-success text-center" role="alert">
+            <strong>Success!</strong> Product added to your shopping cart.
+        </div>
+    <?php } ?>
+    <?php if ($isError) { ?>
+        <div class="alert alert-danger text-center" role="alert">
+            <strong>Product already added</strong>
+        </div>
+    <?php } ?>
+
 </head>
 
 <body>
@@ -20,19 +31,19 @@ require $rootPath . "Controller/CartController.php";
         <!--TO DO:NAV Categories DB FETCH -->
         <ul class="nav  justify-content-center">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Category</a>
+                <a style="color:black;" class="nav-link active" aria-current="page" href="#">Category</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Beverages</a>
+                <a style="color:black;" class="nav-link" href="#">Beverages</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Spices</a>
+                <a style="color:black;" class="nav-link" href="#">Spices</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Frozen</a>
+                <a style="color:black;" class="nav-link" href="#">Frozen</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Brands</a>
+                <a style="color:black;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Brands</a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Brand1</a></li>
                     <li><a class="dropdown-item" href="#">YUMYUM</a></li>
@@ -40,7 +51,7 @@ require $rootPath . "Controller/CartController.php";
                 </ul>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Country</a>
+                <a style="color:black;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Country</a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Brand1</a></li>
                     <li><a class="dropdown-item" href="#">YUMYUM</a></li>
@@ -52,34 +63,41 @@ require $rootPath . "Controller/CartController.php";
     <!--Product-->
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="row justify-content-center">
+
             <?php
             if (mysqli_num_rows($productResult) > 0) {
                 while ($row = mysqli_fetch_array($productResult)) {
             ?>
-                    <div class="card mx-auto col-md-6 col-10 mt-5">
-                        <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-5 d-flex justify-content-center">
+                        <div class="card" style="width: 18rem;">
 
-                            <a href="/product-overview?<?php echo $row['productID']; ?>"><img class="mx-auto img-thumbnail" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="auto" height="auto" /></a>
-                            <div class="card-body text-center mx-auto">
-                                <div class='cvp'>
+                            <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>">
+
+                                <a href="/product-overview?<?php echo $row['productID']; ?>"><img class="mx-auto card-img-top" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="250" /></a>
+                                <div class="card-body text-center mx-auto">
+                                    <div class='cvp'>
 
 
-                                    <h5 class="card-title font-weight-bold"><?php echo $row["title"]; ?></h5>
-                                    <p class="card-text"><?php echo $row["price"]; ?> kr</p>
+                                        <h5 class="card-text font-weight-bold"><?php echo $row["title"]; ?></h5>
+                                        <div class="overlay-right d-flex justify-content-between">
+                                            <div class="card-text">
+                                                <input style="width: 40%; height:90%;margin-left:10%; text-align: center" type="number" name="stockQuantity" value="1" class="form-control" />
+                                            </div>
+                                            <p class="card-text" style="margin-right:10%;font-size:20px; font-weight:300"><?php echo $row["price"]; ?> kr</p>
 
-                                    <h6 class="mb-3">
-                                        <span>Quantity:</span><strong class="ms-2 text-danger"><input style="width: 35%; margin-left: 32%; text-align: center" type="text" name="stockQuantity" value="1" class="form-control" /></strong>
-                                    </h6>
-                                    <input type="hidden" name="title" value="<?php echo $row["title"]; ?>" />
+                                        </div>
 
-                                    <input type="hidden" name="price" value="<?php echo $row["price"]; ?>" />
+                                        <input type="hidden" name="title" value="<?php echo $row["title"]; ?>" />
 
-                                    <input type="submit" name="add_to_cart" style="margin-bottom:5%;" class="btn cart px-auto" value="Add to Cart" />
+                                        <input type="hidden" name="price" value="<?php echo $row["price"]; ?>" />
 
+                                        <input type="submit" name="add_to_cart" style="margin-bottom:5%;" class="btn cart px-auto" value="Add to Cart" />
+
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
             <?php
                 }
@@ -97,8 +115,8 @@ require $rootPath . "Controller/CartController.php";
 
 
     <div style="clear:both"></div>
-
-    <nav class="d-flex justify-content-center">
+    <!-- Pagination -->
+    <!--<nav class="d-flex justify-content-center">
         <ul class="pagination">
             <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="#">Previous</a></li>
             <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="#">1</a></li>
@@ -106,7 +124,7 @@ require $rootPath . "Controller/CartController.php";
             <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="#">3</a></li>
             <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="#">Next</a></li>
         </ul>
-    </nav>
+    </nav> -->
 
 </body>
 
@@ -149,29 +167,8 @@ require $rootPath . "Controller/CartController.php";
 </div>
 
 <style lang="css">
-    /*
-    .card-img-products {
-        width: 100%;
-    }
-
-    .card-border {
-        border: 1px solid #C3DBB6;
-        background-color: #C3DBB6;
-        border-radius: 5px;
-        padding: 16px;
-        align: center;
-
-    }
-
-    .card {
-        width: 85%;
-        border-radius: 10% 10% 10% 10%;
-        box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 10px 24px 0 rgba(0, 0, 0, 0.19);
-
-    }
-*/
-    body {
-        background: #E0E0E0;
+    .card-text {
+        font-size: 16px;
     }
 
     .cart {
@@ -180,14 +177,10 @@ require $rootPath . "Controller/CartController.php";
         margin-top: 10px;
         font-size: 12px;
         font-weight: 900;
-        width: 100%;
-        height: 39px;
-        padding-top: 9px;
+        width: 90%;
+        height: 32px;
+        padding-top: 7px;
         box-shadow: 0px 5px 10px #212121;
-    }
-
-    .card {
-        max-width: 30%;
     }
 
     .card-body {

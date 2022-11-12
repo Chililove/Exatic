@@ -1,4 +1,6 @@
 <?php
+$isError = false;
+$isSuccess = false;
 
 if (isset($_POST["add_to_cart"])) {
     if (isset($_SESSION["shopping_cart"])) {
@@ -12,8 +14,9 @@ if (isset($_POST["add_to_cart"])) {
                 'stockQuantity'        =>    $_POST["stockQuantity"]
             );
             $_SESSION["shopping_cart"][$count] = $item_array;
+            $isSuccess = true;
         } else {
-            echo "Item Already Added";
+            $isError = true;
         }
     } else {
         $item_array = array(
@@ -23,6 +26,7 @@ if (isset($_POST["add_to_cart"])) {
             'stockQuantity'        =>    $_POST["stockQuantity"]
         );
         $_SESSION["shopping_cart"][0] = $item_array;
+        $isSuccess = true;
     }
 }
 
@@ -31,7 +35,7 @@ if (isset($_GET["action"])) {
         foreach ($_SESSION["shopping_cart"] as $keys => $values) {
             if ($values["productID"] == $_GET["productID"]) {
                 unset($_SESSION["shopping_cart"][$keys]);
-                echo "Item Removed";
+                // echo "Item Removed";
             }
         }
     }
