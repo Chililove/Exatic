@@ -5,6 +5,7 @@ USE ExaticDB;
 
 CREATE TABLE PostalCode (
     postalCodeID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    postNumber INT (10) NOT NULL,
     cityName VARCHAR(50) NULL,
     country VARCHAR(50) NULL
 ) ENGINE=InnoDB;
