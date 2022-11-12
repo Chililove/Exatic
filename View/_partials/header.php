@@ -54,12 +54,14 @@ $PageTitle = "Exatic";
 
                     <!-- Cart-preview -->
                     <li class="nav-item dropdown" style="position:absolute; right:6%;">
-                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link" href="/shopping-cart"> <img src="/assets/nav-icons/bag-plus.svg" style=" width:auto; height:29px;" class="d-inline-block" alt="cart">
+                        </a>
+                        <!--     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="/assets/nav-icons/bag-plus.svg" style=" width:auto; height:29px;" class="d-inline-block" alt="cart">
                         </a>
                         <div class="dropdown-menu  dropdown-menu-end card-preview">
-                            <?php include($rootPath . "View/cart-preview.php") ?>
-                        </div>
+                             include($rootPath . "View/cart-preview.php") ?>
+                        </div> -->
 
                     </li>
                     <li class="nav-item" style="position:absolute; right:2%;">
@@ -75,27 +77,16 @@ $PageTitle = "Exatic";
 
 <style lang="css">
     /* Cart preview style */
-    .shopping-cart {
-        width: 750px;
-        height: 423px;
-        margin: 80px auto;
-        background: #FFFFFF;
-        box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.10);
-        border-radius: 6px;
-
-        display: flex;
-        flex-direction: column;
-    }
 
     .card-preview {
         width: 20rem;
         max-width: 20rem;
         height: 40rem;
         overflow: auto;
-        background-color: #fff;
+        background-color: #ffff;
         padding: 1% 1% 0% 2%;
         border: 1% solid #ddd;
-        border-radius: 10px;
+        border-radius: 5px;
         box-shadow: 0px 25px 40px #888;
     }
 </style>

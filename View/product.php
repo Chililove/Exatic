@@ -17,9 +17,9 @@ require $rootPath . "Controller/CartController.php";
             <strong>Success!</strong> Product added to your shopping cart.
         </div>
     <?php } ?>
-    <?php if ($isError) { ?>
-        <div class="alert alert-danger text-center" role="alert">
-            <strong>Product already added</strong>
+    <?php if ($isUpdated) { ?>
+        <div class="alert alert-warning text-center" role="alert">
+            <strong>Product quantity updated</strong>
         </div>
     <?php } ?>
 
@@ -84,7 +84,7 @@ require $rootPath . "Controller/CartController.php";
                                             <div class="card-text">
                                                 <input style="width: 40%; height:90%;margin-left:10%; text-align: center" type="number" name="stockQuantity" value="1" class="form-control" />
                                             </div>
-                                            <p class="card-text" style="margin-right:10%;font-size:20px; font-weight:300"><?php echo $row["price"]; ?> kr</p>
+                                            <p class="card-text" style="margin-right:10%;font-size:20px; font-weight:200"><?php echo $row["price"]; ?> kr</p>
 
                                         </div>
 
