@@ -5,7 +5,7 @@ $urlpath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 // Reqex to match everything until .php or ?
 $regex = '/.+?(?=.php|\?)/';
 
-// Apply regex to request ($parsedRequest is the result)
+// Apply regex to request ($parsedRequest in the result)
 preg_match($regex, $urlpath, $parsedRequest);
 
 $toCheck;
@@ -19,7 +19,6 @@ if (isset($parsedRequest[0])) {
 
 switch ($toCheck) {
     case '':
-        //doesnt redirecct case "/"
     case '/':
         require __DIR__ . '/View/home.php';
         break;

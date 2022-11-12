@@ -2,9 +2,7 @@
 
 if (isset($_POST["add_to_cart"])) {
     if (isset($_SESSION["shopping_cart"])) {
-        //echo "$_SESSION";
         $item_array_id = array_column($_SESSION["shopping_cart"], "productID");
-        //echo count($_SESSION["shopping_cart"]);
         if (!in_array($_GET["productID"], $item_array_id)) {
             $count = count($_SESSION["shopping_cart"]);
             $item_array = array(
@@ -34,7 +32,6 @@ if (isset($_GET["action"])) {
             if ($values["productID"] == $_GET["productID"]) {
                 unset($_SESSION["shopping_cart"][$keys]);
                 echo "Item Removed";
-                echo "/product.php";
             }
         }
     }
