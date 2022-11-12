@@ -59,7 +59,7 @@ require $rootPath . "Controller/LoginController.php";
 
 
                         <button type="button" class="btn btn-primary btn-lg" style="color: var(--background)">Sign In</button>
-                        <a href="/Exatic/signup"><button type="button" class="btn btn-secondary btn-lg">Sign Up</button></a>
+                        <a href="/signup"><button type="button" class="btn btn-secondary btn-lg">Sign Up</button></a>
 
 
                     </form>
