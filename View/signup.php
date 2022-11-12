@@ -1,74 +1,4 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
-require("rootPath.php");
-
-require $rootPath . "Model/SignUpModel.php";
-require $rootPath . "Controller/SignUpController.php";
-
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
-    $email =  $_POST['email'];
-    $password =  $_POST['password'];
-
-
-    $streetName = $_POST['streetName'];
-    $streetNumber = $_POST['streetNumber'];
-    $city = $_POST['city'];
-    $postalCode = $_POST['postalCode'];
-    $country = $_POST['country'];
-
-    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-
-
-    // Prepare Statement
-    $conn = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-    if ($conn == false) {
-        echo ":'(";
-    }
-    //Transaction - autocommit -> commit / rollback
-    $conn->autocommit(false);
-
-    $iterations = ['cost' => 6];
-    $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
-
-    // I added the postalcode table columns to the address table. There is no need for the postalcode table. So I made the signup without the postalcode table..
-    //meaning I connected address and user..
-    // else we need to find a way to bind postalcode in insert, since we are not inserting a now postal code row when we make a new address.. it needs to refer to the specific postal code.
-
-    // i deleted apartment number from DB since we dont even have an input field in the signup form.
-
-    // $postalQuery = "INSERT INTO postalCode (city, country) VALUE (?, ?)";
-    // $handle = $conn->prepare($postalQuery);
-    // $handle->bind_param('ss', $city, $country);
-    // $postalQueryResult = $handle->execute();
-    // $postalID = $conn->insert_id;
-
-    $addressQuery = "INSERT INTO `address` (streetName, streetNumber, postalCode, city, country) VALUE (?, ?, ?, ?, ?)";
-    $handle = $conn->prepare($addressQuery);
-    $handle->bind_param('sssss', $streetName, $streetNumber, $postalCode, $city, $country);
-    $addressResult = $handle->execute();
-    $addressID = $conn->insert_id;
-
-
-    $userQuery = "INSERT INTO `user` (firstName, lastName, email, password, userType, addressID) VALUES (?, ?, ?, ?, 1, ?)";
-    $handle = $conn->prepare($userQuery);
-    $handle->bind_param('ssssss', $firstName, $lastName, $email, $hashed_password, $userType, $addressID);
-    $userResult = $handle->execute();
-
-
-    if ($addressResult && $userResult) {
-        $conn->commit();
-        $message = "Registered";
-    } else {
-        $conn->rollback();
-        $message = "User could not be registered";
-        $message .= "<br />" . mysqli_error($conn);
-    }
-}
-?>
 
 <!doctype html>
 <html lang="en">
@@ -114,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                                 <div class="col-md-6 mb-4">
                                     <div class="form-outline">
-                                        <input type="password" name="password" class="form-control" placeholder="Password" />
+                                        <input type="password" name="password" class="form-control" placeholder="Password" required />
                                     </div>
                                 </div>
 
@@ -125,12 +55,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <div class="form-outline">
-                                        <input type="street" name="streetName" class="form-control" placeholder="Name of the street" />
+                                        <input type="street" name="streetName" class="form-control" placeholder="Name of the street" required />
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <div class="form-outline">
-                                        <input type="streetnumber" name="streetNumber" class="form-control" placeholder="Street number" />
+                                        <input type="streetnumber" name="streetNumber" class="form-control" placeholder="Street number" required />
                                     </div>
                                 </div>
                             </div>
@@ -138,12 +68,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             <div class="row">
                                 <div class="col-md-2 mb-4">
                                     <div class="form-outline">
-                                        <input type="postelcode" name="postalCode" class="form-control" placeholder="Zip" />
+                                        <input type="postelcode" name="postNumber" class="form-control" placeholder="Zip" required />
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-4">
                                     <div class="form-outline">
-                                        <input type="city" name="city" class="form-control" placeholder="City" />
+                                        <input type="city" name="cityName" class="form-control" placeholder="City" required />
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-4">
@@ -151,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                                         <!-- Do we need all these countries?? When we are only in DK? -->
 
-                                        <select class="form-control" name="country">
+                                        <select class="form-control" name="country" required >
                                             <option value="select">Select a country...</option>
                                             <option value="AFG">Afghanistan</option>
                                             <option value="ALA">Åland Islands</option>
