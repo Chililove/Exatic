@@ -14,7 +14,6 @@ CREATE TABLE `Address` (
     addressID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     streetName VARCHAR(255) NULL,
     streetNumber INT NULL,
-    apartmentNumber VARCHAR(50),
     postalCodeID INT NOT NULL,
     FOREIGN KEY (postalCodeID) REFERENCES PostalCode(postalCodeID)
 ) ENGINE=InnoDB;
@@ -32,7 +31,7 @@ CREATE TABLE `User` (
     userID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
-    email VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL unique,
     password VARCHAR(1000) NOT NUll,
     userType INTEGER,
     imagePath VARCHAR(1000),

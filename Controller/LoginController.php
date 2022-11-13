@@ -1,20 +1,30 @@
 <?php
-
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $email = htmlspecialchars($_POST['username']);
+    $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
 
-    if (!empty($username) && !empty($password)) {
-        $query = "SELECT * FROM `users` WHERE `email` = '$email' LIMIT 1";
-        $result = mysqli_query($conn, $query);
+    if (!empty($email) && !empty($password)) {
 
-        var_dump($result);
+        $handle = $conn->prepare($LoginModel->selectQuery);
+        $handle->bind_param('s', $email);
+        $handle->execute();
+        $result = $handle->get_result();
+
+
+
+
 
         if ($result && mysqli_num_rows($result) > 0) {
-            $user_data = mysqli_fetch_assoc($result);
-            if (password_verify($password, $user_data['password'])) {
-                $_SESSION['userID'] = $user_data['email'];
-                header('Location: /frontpage');
+            $user = $result->fetch_assoc();
+
+            if (password_verify($password, $user['password'])) {
+                $_SESSION['userID'] = $user['userID'];
+?>
+                <script>
+                    window.location.href = "/home";
+                </script>
+<?php
+                exit();
             } else {
                 echo "Invalid username or password";
             }
