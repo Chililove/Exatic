@@ -67,6 +67,9 @@ switch ($toCheck) {
     case '/admin-product-add':
         require __DIR__ . '/View/adminProductAdd.php';
         break;
+    case '/logout':
+        require __DIR__ . '/View/logout.php';
+        break;
 
     default:
         http_response_code(404);
