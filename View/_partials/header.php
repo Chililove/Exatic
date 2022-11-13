@@ -64,10 +64,23 @@ $PageTitle = "Exatic";
                         </div> -->
 
                     </li>
+
+
+
                     <li class="nav-item" style="position:absolute; right:2%;">
-                        <a class="nav-link" href="/signin">
-                            <img src="/assets/nav-icons/person-circle.svg" style=" width:auto; height:30px;" class="d-inline-block" alt="login">
-                        </a>
+                        <?php if (isset($_SESSION["userID"])) {
+                        ?>
+                            <a class="nav-link" href="/profile">
+                                <img src="/assets/nav-icons/person-circle.svg" style=" width:auto; height:30px;" class="d-inline-block" alt="login">
+                            </a>
+                        <?php
+                        } else {
+                        ?>
+                            <a class="nav-link" href="/signin">Login</a>
+                        <?php
+                        }
+                        ?>
+
                     </li>
                 </ul>
             </div>
