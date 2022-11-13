@@ -14,7 +14,6 @@ CREATE TABLE `Address` (
     addressID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     streetName VARCHAR(255) NULL,
     streetNumber INT NULL,
-    apartmentNumber VARCHAR(50),
     postalCodeID INT NOT NULL,
     FOREIGN KEY (postalCodeID) REFERENCES PostalCode(postalCodeID)
 ) ENGINE=InnoDB;
