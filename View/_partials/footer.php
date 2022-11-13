@@ -1,5 +1,5 @@
 <footer>
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top:5%">
 
         <div class="row" id="background">
             <div style="background-color: #C3DBB6;">

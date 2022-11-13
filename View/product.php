@@ -84,10 +84,9 @@ require $rootPath . "Controller/CartController.php";
                                         <h5 class="card-text font-weight-bold"><?php echo $row["title"]; ?></h5>
                                         <div class="overlay-right d-flex flex-row justify-content-center">
                                             <div class="card-text">
-                                                <input style="width: 40%; height:90%; text-align: center" type="number" name="stockQuantity" value="1" class="form-control" />
+                                                <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" class="form-control" />
                                             </div>
                                             <p class="text-end" style="font-size:20px; text-align: center; font-weight:200"><?php echo $row["price"]; ?> kr</p>
-
 
 
                                         </div>
@@ -111,14 +110,14 @@ require $rootPath . "Controller/CartController.php";
     </div>
 
 
-    <div style="clear:both"></div>
-
-    <br />
 
 
 
 
-    <div style="clear:both"></div>
+
+
+
+
     <!-- Pagination -->
     <!--<nav class="d-flex justify-content-center">
         <ul class="pagination">
@@ -132,7 +131,7 @@ require $rootPath . "Controller/CartController.php";
 
 </body>
 
-<!-- <h3>Order Details</h3>
+<!-- <h3>Order Details for testing</h3>
 <div class="table-responsive">
     <table class="table table-bordered">
         <tr>
@@ -142,7 +141,7 @@ require $rootPath . "Controller/CartController.php";
             <th width="15%">Total</th>
             <th width="5%">Action</th>
         </tr>
-        <?php
+       <?php
         if (!empty($_SESSION["shopping_cart"])) {
             $total = 0;
             foreach ($_SESSION["shopping_cart"] as $keys => $values) {
