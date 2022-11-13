@@ -1,3 +1,11 @@
+<?php
+require("rootPath.php");
+
+require $rootPath . "Model/ProductModel.php";
+require $rootPath . "Controller/ProductController.php";
+require $rootPath . "Controller/CartController.php";
+?>
+<html>
 <section class="h-100 h-custom" style="background-color: whitesmoke; display:block; overflow:auto">
     <div class="container py-3 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -10,7 +18,6 @@
                                     <div class="d-flex justify-content-between align-items-center mb-5">
                                         <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
                                         <h6 class="mb-0 text-muted">3 items</h6>
-
                                     </div>
                                     <hr class="my-4">
                                     <!-- Product -->
@@ -22,7 +29,7 @@
                                         ?>
 
                                                 <div class="col-md-2 col-lg-2 col-xl-2">
-                                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img5.webp" class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                                    <a href="/product-overview?<?php echo $row['productID']; ?>"><img class="img-fluid rounded-3 mx-auto card-img-top" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="250" /></a>
                                                 </div>
 
                                                 <div class="col-md-3 col-lg-3 col-xl-3">
@@ -36,7 +43,7 @@
                                                     <h6 class="mb-0"> <?php echo $values["price"]; ?> kr</h6>
                                                 </div>
                                                 <div class="col-md-1 col-lg-1 col-xl-1 text-center">
-                                                    <a class="text-muted" href="/product?action=delete&productID=<?php echo $values["productID"]; ?>"><span class="text-danger">X</span></a>
+                                                    <a class="text-muted" href="/shopping-cart?action=delete&productID=<?php echo $values["productID"]; ?>"><span class="text-danger">X</span></a>
                                                 </div>
                                                 <hr class="my-4">
                                             <?php
@@ -135,9 +142,9 @@
                                         <h5 class="text-uppercase">Total price</h5>
                                         <h5><?php echo number_format($total, 2); ?> kr.</h5>
                                     </div>
-                                    <div class="">
-                                        <a href="/checkout" type="button" class="btn btn-dark btn-lg" data-mdb-ripple-color="dark">Checkout</a>
-                                    </div>
+
+                                    <a href="/checkout" type="button" class="btn btn-dark btn-lg" data-mdb-ripple-color="dark">Checkout</a>
+
                                 </div>
                             </div>
                         </div>
@@ -148,6 +155,7 @@
     </div>
 </section>
 
+</html>
 <style lang="css">
     @media (min-width: 1025px) {
         .h-custom {

@@ -18,17 +18,9 @@ if (isset($_POST["add_to_cart"])) {
 
             //add quantity to existing item
             // need to find specific product smth with array_search
-            // $productIndex = array_search($_GET["productID"], array_column($_SESSION["shopping_cart"], "productID"));
-            //  $_SESSION["shopping_cart"][$productIndex] = $_SESSION["shopping_cart"][$productIndex]++;
-            if (!empty($_SESSION["shopping_cart"])) {
-                if (in_array($item_array_id["productID"], array_keys($_SESSION["shopping_cart"]))) {
-                    foreach ($_SESSION["shopping_cart"] as $k => $v) {
-                        if ($item_array_id["productID"] == $k) {
-                            $_SESSION["shopping_cart"][$k]["stockQuantity"] += $_POST["stockQuantity"];
-                        }
-                    }
-                }
-            }
+            $productIndex = array_search($_GET["productID"], array_column($_SESSION["shopping_cart"], "productID"));
+            $_SESSION["shopping_cart"][$productIndex]["stockQuantity"] += $_POST["stockQuantity"];
+
             $isUpdated = true;
         }
     } else {
@@ -51,7 +43,7 @@ if (isset($_GET["action"])) {
             }
         }
     }
-} 
+}
 
 
 /* Start a new shopping cart logic cuz this is just ugh*/

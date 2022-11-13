@@ -228,7 +228,7 @@
                                 <div class="row">
                                     <div class="col-12 col-xl-6">
                                         <div class="form-outline mb-4 mb-xl-5">
-                                            <input type="text" id="typeName" class="form-control form-control-lg" siez="17" placeholder="John Smith" />
+                                            <input type="text" id="typeName" class="form-control form-control-lg" size="17" placeholder="John Smith" />
                                             <label class="form-label" for="typeName">Name on card</label>
                                         </div>
 
@@ -239,7 +239,7 @@
                                     </div>
                                     <div class="col-12 col-xl-6">
                                         <div class="form-outline mb-4 mb-xl-5">
-                                            <input type="text" id="typeText" class="form-control form-control-lg" siez="17" placeholder="1111 2222 3333 4444" minlength="19" maxlength="19" />
+                                            <input type="text" id="typeText" class="form-control form-control-lg" size="17" placeholder="1111 2222 3333 4444" minlength="19" maxlength="19" />
                                             <label class="form-label" for="typeText">Card Number</label>
                                         </div>
 
@@ -306,8 +306,8 @@
 
                         <div class="mb-5">
                             <div class="form-outline">
-                                <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
-                                <label class="form-label" for="form3Examplea2">Enter your code</label>
+                                <input type="text" id="form3Example2" class="form-control form-control-lg" />
+                                <label class="form-label" for="form3Example2">Enter your code</label>
                             </div>
                         </div>
 
