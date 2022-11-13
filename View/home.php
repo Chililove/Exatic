@@ -6,297 +6,250 @@ require $rootPath . "Controller/HomeController.php";
 
 ?>
 
-<html>
+<!Doctype html>
+<html lang="en">
 
+<head>
+    <title>Home</title>
+</head>
 
-<div class="headerStyle">
-    <br>
-    <h1>Welcome to Exatic!</h1>
-</div>
-<br><br>
-<div>
-    <div class="boxed" id="text-box">
-        It's very nice to have you here, we hope the experience will please you.<br />Here at Exatic we aim to broaden asian products as well as making them more accessible in Denmark.<br /><br />
-        Here you can find any ingredient you need to cook asian cuisine and treat family and friends with familiar and newly added products.<br />
-        All groceries can be deliveried at home.<br />
-        <br />
-        Hopefully you find what you need or maybe get inspired by new products from your familiar brands.
-    </div>
-    <div class="discountedItem">
-        <!--VOUCHER-->
-        <div class="card voucherstop">
-
-            <div class="embed-responsive embed-responsive-16by9">
-
-                <div class="voucher-divider">
-                    <div class="voucher-left text-center">
-                        <span class="voucher-nametop" style="font-size: 110%;">A special daily offer</span>
-                        <h5 class="voucher-codetop" style="font-size: 100%;">#discount</h5>
-
-                    </div>
-                    <div class="voucher-righttop text-center border-left">
-                        <h5 class="discount-percent">20%</h5>
-                        <span class="off">Off</span>
-                    </div>
+<body>
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center align-items-center">
+            <!-- I want background to be half page to this color style="background:#C3DBB6;" -->
+            <!--  <div style="background:#C3DBB6;"> -->
+            <div class="col-6">
+                <div class="justify-content-between">
+                    <h3 class="title-welcome">Welcome to Exatic</h3>
+                </div>
+                <div id="text-box">
+                    It's very nice to have you here, we hope the experience will please you.<br />Here at Exatic we aim to broaden asian products as well as making them more accessible in Denmark.<br /><br />
+                    Here you can find any ingredient you need to cook asian cuisine and treat family and friends with familiar and newly added products.<br />
+                    All groceries can be delivered at home.<br />
+                    <br />
+                    Hopefully you find what you need or maybe get inspired by new products from your familiar brands.
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+            <div class="col-6">
+                <div class="row">
 
-<br>
+                    <!--VOUCHER-->
+                    <div class="card voucher-stop">
+                        <div class="voucher-divider">
+                            <!--Fix display:flex + width:62%-->
+                            <div class="voucher-left text-center">
+                                <span class="voucher-name">A special daily offer</span>
+                                <h5 class="voucher-code">#discount</h5>
 
-
-<?php
-
-if (mysqli_num_rows($dailyResult) > 0) {
-    // output data of each row
-    while ($row = mysqli_fetch_assoc($dailyResult)) {
-
-?>
-
-        <div class="card" id="cardtop">
-            <div class="embed-responsive embed-responsive-16by9">
-                <a href="/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
-                <div class="card-body">
-                    <h3 class="card-title"><?php echo $row["title"] ?>
-                        <?php if ($row['isDailySpecial']) {
-                            echo '<span class="badge bg-warning">Daily Special</span>';
-                        } ?>
-                    </h3>
-                    <h4 class="card-subtitle"><?php echo substr($row["description"], 0, 45); ?></h4>
-                    <p class="card-text-price text-end">Price<?php echo $row["price"] ?>dkk</p>
-                    <p class="card-text"> <?php echo $row["stockQuantity"] ?> items left</p>
-                </div>
-                <div class="card-footer text-end">
-
-                    <a href="/shoppingcart"> <button type="button" class="btn btn-primary" onclick="">Add to cart</button></a>
-                </div>
-            </div>
-        </div>
-<?php
-    }
-} else {
-    echo "0 results";
-}
-
-?>
-
-
-<!-- Products array cards limit 3 new -->
-
-
-<span>
-    <div class="newProductsHeader">
-        <h1>New products in store..</h1>
-    </div>
-</span>
-<div class="container">
-    <div class="row row-cols-3">
-        <?php
-
-        if (mysqli_num_rows($newsResult) > 0) {
-            // output data of each row
-            while ($row = mysqli_fetch_assoc($newsResult)) {
-
-        ?>
-
-                <div class="col">
-                    <div class="card">
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <a href="/product-overview?<?php echo $row['productID']; ?>"><img class="card-img-top" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
-                            <div class="card-body">
-                                <h3 class="card-title"><?php echo $row["title"] ?>
-                                    <?php if ($row['isNew']) {
-                                        echo '<span class="badge bg-success">New</span>';
-                                    } ?>
-                                </h3>
-                                <h4 class="card-subtitle"><?php echo substr($row["description"], 0, 65); ?>...</h4>
-
-                                <p class="card-text"> <?php echo $row["stockQuantity"] ?> items left</p>
-
-                                <p class="card-text-price text-end">Price<?php echo $row["price"] ?>dkk</p>
                             </div>
-                            <div class="card-footer text-end">
-                                <a href="/shoppingcart"> <button type="button" class="btn btn-primary" onclick="">Add to cart</button></a>
+                            <div class="voucher-right-top text-center border-left">
+                                <h5 class="discount-percent">20%</h5>
+                                <span>Off</span>
                             </div>
                         </div>
                     </div>
+
                 </div>
-        <?php
-            }
-        } else {
-            echo "0 results";
-        }
 
-        ?>
+                <!-- Daily Special -->
+                <div class="row justify-content-end">
+                    <?php
+                    if (mysqli_num_rows($dailyResult) > 0) {
+                        while ($row = mysqli_fetch_assoc($dailyResult)) {
+                    ?>
+
+                            <div class="card" style="width: 20rem;">
+
+                                <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>">
+
+                                    <a href="/product-overview?<?php echo $row['productID']; ?>"><img class="mx-auto card-img-top" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="250" />
+                                        <?php if ($row['isDailySpecial']) {
+                                            echo '<span class="badge bg-warning">Daily Special</span>';
+                                        } ?>
+                                    </a>
+                                    <div class="card-body text-center mx-auto">
+                                        <div class='cvp'>
+                                            <h5 class="card-text font-weight-bold"><?php echo $row["title"]; ?></h5>
+                                            <h8 class="card-text font-weight:100"><?php echo substr($row["description"], 0, 45); ?></h8>
+
+                                            <div class="overlay-right d-flex flex-row justify-content-between">
+                                                <p class="card-text text-start" style="font-size:20px; text-align:center; font-weight:200"> <?php echo $row["stockQuantity"] ?> items left</p>
+                                                <p class=" text-end" style="font-size:20px; text-align: center; font-weight:200"><?php echo $row["price"]; ?> kr</p>
+                                            </div>
+
+                                            <input type="hidden" name="title" value="<?php echo $row["title"]; ?>" />
+
+                                            <input type="hidden" name="price" value="<?php echo $row["price"]; ?>" />
+
+                                            <input type="submit" name="add_to_cart" style="margin-bottom:5%;" class="btn add-cart px-auto" value="Add to Cart" />
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                    <?php
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                    ?>
+                </div>
+            </div>
+            <!-- </div> -->
+
+            <!-- News Section-->
+
+            <div class="justify-content-between">
+                <h2 class="newProductsHeader">New products in store</h2>
+            </div>
+            <div class="col">
+                <div class="row justify-content-center">
+                    <?php
+
+                    if (mysqli_num_rows($newsResult) > 0) {
+
+
+                        while ($row = mysqli_fetch_assoc($newsResult)) {
+
+                    ?>
+
+                            <div class="col-12 col-md-6 col-lg-3">
+                                <div class="card" style="width: 300px;">
+
+                                    <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>">
+
+                                        <a href="/product-overview?<?php echo $row['productID']; ?>"><img class="mx-auto card-img-top" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="250" />
+                                            <?php if ($row['isNew']) {
+                                                echo '<span class="badge bg-success">New</span>';
+                                            } ?>
+                                        </a>
+                                        <div class="card-body text-center mx-auto">
+                                            <div class='cvp'>
+                                                <h5 class="card-text font-weight-bold"><?php echo $row["title"]; ?></h5>
+                                                <h8 class="card-text font-weight:100"><?php echo substr($row["description"], 0, 65); ?>...</h8>
+
+                                                <div class="overlay-right d-flex flex-row justify-content-between">
+                                                    <p class="card-text text-start" style="font-size:20px; text-align:center; font-weight:200"> <?php echo $row["stockQuantity"] ?> items left</p>
+                                                    <p class=" text-end" style="font-size:20px; text-align: center; font-weight:200"><?php echo $row["price"]; ?> kr</p>
+                                                </div>
+
+                                                <input type="hidden" name="title" value="<?php echo $row["title"]; ?>" />
+
+                                                <input type="hidden" name="price" value="<?php echo $row["price"]; ?>" />
+
+                                                <input type="submit" name="add_to_cart" style="margin-bottom:5%;" class="btn add-cart px-auto" value="Add to Cart" />
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                    <?php
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+
+                    ?>
+
+
+
+                </div>
+
+            </div>
+        </div>
     </div>
-</div>
+    </div>
 
+</body>
 
+</html>
 
-<style>
-    .newProductsHeader {
-        width: 85%;
-        font-size: 20px;
-        background-image: linear-gradient(to left, darkgreen, lightgreen, lightskyblue, lightgreen, lightpink, lightgreen);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-left: 2.9%;
-        margin-top: -6%;
-        padding: 2%;
-
-
+<style lang="css">
+    .card {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
+        border-radius: 5px;
+        padding-bottom: 5px;
     }
 
-    .headerStyle {
-        width: 200px;
+    .add-cart {
+        background-color: #212121;
+        color: white;
+        margin-top: 10px;
+        font-size: 12px;
+        font-weight: 900;
+        width: 90%;
+        height: 32px;
+        padding-top: 7px;
+        box-shadow: 0px 5px 10px #212121;
+    }
+
+    .newProductsHeader {
+        width: 30%;
         font-size: 30px;
         background-image: linear-gradient(to left, darkgreen, lightgreen, lightskyblue, lightgreen, lightpink, lightgreen);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-right: auto;
-        margin-left: 5%;
-        margin-top: 2%;
+        margin-left: -2%;
+        padding: 3%;
+
 
     }
 
-    .discountedItem {
-        object-fit: contain;
-        margin-top: -30%;
+    .title-welcome {
+        width: 300px;
+        font-size: 30px;
+        background-image: linear-gradient(to left, darkgreen, lightgreen, lightskyblue, lightgreen, lightpink, lightgreen);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-left: 3%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+
     }
 
     #text-box {
         font-family: "Apple SD Gothic Neo";
         color: #434343;
-        margin-right: 40%;
-        margin-left: 5%;
-        line-height: 25px;
-        font-size: 19px;
+        padding-bottom: 15%;
+        margin-left: 3%;
+        max-width: 100%;
+        line-height: 30px;
+        font-size: 18px;
     }
 
-    .body {
-        height: auto;
-        width: 100%;
-    }
-
-    .container {
-        width: 70%;
-    }
-
-    .card {
-        width: 85%;
-        border-radius: 10% 10% 10% 10%;
-        box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 10px 24px 0 rgba(0, 0, 0, 0.19);
-
-    }
-
-
-    #cardtop {
-        width: 16%;
-        margin-left: 80%;
-        margin-right: 5%;
-        margin-top: -8%;
-        border-radius: 10% 10% 10% 10%;
-        box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 10px 24px 0 rgba(0, 0, 0, 0.19);
-
-
-
-    }
-
-
-    .card-text-price {
-        text-align: right;
-        font-size: normal;
-
-    }
-
-    .card-title {
-        font-size: large;
-        margin-bottom: 3%;
-    }
-
-    .card-subtitle {
-        margin-bottom: 2%;
-        font-size: small;
-        font-weight: normal;
-
-    }
-
-    .card-text {
-        font-size: smaller;
-        font-weight: light;
-
-    }
-
-
-    .embed-responsive .card-img-top {
-        border-radius: 10% 10% 0 0;
-        height: 10%;
-
-
-
-
-    }
-
-    .embed-responsive .card-img-top-top {
-        border-radius: 10% 10% 0 0;
-        width: 100%;
-
-    }
-
-
-
-
-    .btn-primary {
-        background-color: lightgreen;
-        color: #434343;
-        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 12px 0 rgba(0, 0, 0, 0.19);
-        border: hidden;
-
-
-    }
-
-    .voucherstop {
-
+    .voucher-stop {
         background-color: #fff;
-        border-radius: 10% 10% 10% 10%;
-        width: 78%;
-        height: 6.8%;
-        margin-top: -24%;
-        margin-left: 32%;
-
+        width: 80%;
+        margin-left: 20%;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
-    .voucher-nametop {
+    .voucher-name {
         color: grey;
         font-size: 120%;
         font-weight: normal;
     }
 
-    .voucher-codetop {
+    .voucher-code {
         color: red;
-        font-size: 110%;
         font-weight: lighter;
     }
 
-    .voucher-righttop {
+    .voucher-right-top {
         box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 18px 0 rgba(0, 0, 0, 0.19);
-
-        width: 38%;
-        background-color: lightgreen;
-        color: #fff;
+        width: 80%;
+        background-color: black;
+        color: #ffff;
     }
 
     .voucher-left {
-        width: 62%
+        width: 100%;
+
     }
 
     .voucher-divider {
-
         display: flex;
-
     }
 
     .vouchers {
@@ -308,13 +261,6 @@ if (mysqli_num_rows($dailyResult) > 0) {
         font-weight: bold;
         position: relative;
         top: 10%;
-    }
-
-    .discountedItem {
-        margin-left: 62%;
-        width: 34.5%;
+        margin-bottom: 0%;
     }
 </style>
-</body>
-
-</html>

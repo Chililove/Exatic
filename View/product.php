@@ -29,36 +29,38 @@ require $rootPath . "Controller/CartController.php";
 
     <div class="text-center container py-2">
         <!--TO DO:NAV Categories DB FETCH -->
+
+
         <ul class="nav  justify-content-center">
-            <li class="nav-item">
-                <a style="color:black;" class="nav-link active" aria-current="page" href="#">Category</a>
-            </li>
-            <li class="nav-item">
-                <a style="color:black;" class="nav-link" href="#">Beverages</a>
-            </li>
-            <li class="nav-item">
-                <a style="color:black;" class="nav-link" href="#">Spices</a>
-            </li>
-            <li class="nav-item">
-                <a style="color:black;" class="nav-link" href="#">Frozen</a>
-            </li>
+            <?php
+            if (mysqli_num_rows($productResult) > 0) {
+                while ($row = mysqli_fetch_array($productTypeResult)) {
+            ?>
+                    <li class="nav-item">
+                        <a style="color:black; font-weight:500;" class="nav-link active" aria-current="page" href="#"><?php echo $row["typeName"]; ?></a>
+                    </li>
+
+            <?php }
+            } ?>
             <li class="nav-item dropdown">
-                <a style="color:black;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Brands</a>
+                <a style="color:black; font-weight:500;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Brands</a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Brand1</a></li>
-                    <li><a class="dropdown-item" href="#">YUMYUM</a></li>
-                    <li><a class="dropdown-item" href="#">AnotherBrand</a></li>
+                    <li><a class="dropdown-item" href="#">BrandTest1</a></li>
+                    <li><a class="dropdown-item" href="#">BrandTest2</a></li>
+                    <li><a class="dropdown-item" href="#">BrandTest3</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown">
-                <a style="color:black;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Country</a>
+                <a style="color:black; font-weight:500;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Country</a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Brand1</a></li>
-                    <li><a class="dropdown-item" href="#">YUMYUM</a></li>
-                    <li><a class="dropdown-item" href="#">AnotherBrand</a></li>
+                    <li><a class="dropdown-item" href="#">CountryTest1</a></li>
+                    <li><a class="dropdown-item" href="#">CountryTest2</a></li>
+                    <li><a class="dropdown-item" href="#">CountryTest3</a></li>
                 </ul>
             </li>
+
         </ul>
+
     </div>
     <!--Product-->
 
@@ -80,11 +82,12 @@ require $rootPath . "Controller/CartController.php";
 
 
                                         <h5 class="card-text font-weight-bold"><?php echo $row["title"]; ?></h5>
-                                        <div class="overlay-right d-flex justify-content-between">
+                                        <div class="overlay-right d-flex flex-row justify-content-center">
                                             <div class="card-text">
-                                                <input style="width: 40%; height:90%;margin-left:10%; text-align: center" type="number" name="stockQuantity" value="1" class="form-control" />
+                                                <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" class="form-control" />
                                             </div>
-                                            <p class="card-text" style="margin-right:10%;font-size:20px; font-weight:200"><?php echo $row["price"]; ?> kr</p>
+                                            <p class="text-end" style="font-size:20px; text-align: center; font-weight:200"><?php echo $row["price"]; ?> kr</p>
+
 
                                         </div>
 
@@ -107,14 +110,14 @@ require $rootPath . "Controller/CartController.php";
     </div>
 
 
-    <div style="clear:both"></div>
-
-    <br />
 
 
 
 
-    <div style="clear:both"></div>
+
+
+
+
     <!-- Pagination -->
     <!--<nav class="d-flex justify-content-center">
         <ul class="pagination">
@@ -128,7 +131,7 @@ require $rootPath . "Controller/CartController.php";
 
 </body>
 
-<h3>Order Details</h3>
+<!-- <h3>Order Details for testing</h3>
 <div class="table-responsive">
     <table class="table table-bordered">
         <tr>
@@ -138,7 +141,7 @@ require $rootPath . "Controller/CartController.php";
             <th width="15%">Total</th>
             <th width="5%">Action</th>
         </tr>
-        <?php
+       <?php
         if (!empty($_SESSION["shopping_cart"])) {
             $total = 0;
             foreach ($_SESSION["shopping_cart"] as $keys => $values) {
@@ -164,11 +167,11 @@ require $rootPath . "Controller/CartController.php";
         ?>
 
     </table>
-</div>
+</div> -->
 
 <style lang="css">
     .card-text {
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .cart {
