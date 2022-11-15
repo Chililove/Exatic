@@ -58,14 +58,17 @@ switch ($toCheck) {
     case '/cart-preview':
         require __DIR__ . '/View/cart-preview.php';
         break;
-    case '/admin-event-add':
-        require __DIR__ . '/View/adminOverview.php';
+    case '/admin-profile':
+        require __DIR__ . '/View/adminProfile.php';
         break;
     case '/admin-product':
         require __DIR__ . '/View/adminProduct.php';
         break;
     case '/admin-product-add':
         require __DIR__ . '/View/adminProductAdd.php';
+        break;
+    case '/admin-event-add':
+        require __DIR__ . '/View/adminEventAdd.php';
         break;
     case '/logout':
         require __DIR__ . '/View/logout.php';
