@@ -1,9 +1,9 @@
 <?php
 class SignupModel
 {
-    public $postalSelect = "SELECT postalCodeID FROM postalCode WHERE postNumber = ?";
-    public $userInsert = "INSERT INTO `user` (firstName, lastName, email, password, userType, addressID) VALUES (?, ?, ?, ?, 1, ?)";
-    public $addressInsert = "INSERT INTO `address` (streetName, streetNumber, postalCodeID) VALUES (?, ?, ?)";
+    public $postalSelect = "SELECT postalCodeID FROM PostalCode WHERE postNumber = ?";
+    public $userInsert = "INSERT INTO `User` (firstName, lastName, email, password, userType, addressID) VALUES (?, ?, ?, ?, 1, ?)";
+    public $addressInsert = "INSERT INTO `Address` (streetName, streetNumber, postalCodeID) VALUES (?, ?, ?)";
     public $allPostalSelect = "SELECT postalCodeID, postNumber, cityName FROM postalCode";
 }
 $SignupModel = new SignupModel();
