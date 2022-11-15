@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS ExaticDB;
-CREATE DATABASE ExaticDB;
-USE ExaticDB;
+DROP DATABASE IF EXISTS exatic_storeexaticdb;
+CREATE DATABASE exatic_storeexaticdb;
+USE exatic_storeexaticdb;
 
 
 CREATE TABLE PostalCode (
