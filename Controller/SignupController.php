@@ -1,9 +1,9 @@
 <?php
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 $cities = $conn->query($SignupModel->allPostalSelect);
-
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
@@ -34,18 +34,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $addressResult = $handle->execute();
     $addressID = $conn->insert_id;
 
-
     $handle = $conn->prepare($SignupModel->userInsert);
     $handle->bind_param('ssssi', $firstName, $lastName, $email, $hashed_password, $addressID);
     $userResult = $handle->execute();
+    // } else {
 
+    //     $message = '<div class="alert alert-danger">Oops, user not registered! :(<br>Try again with another email! :)</div>';
+    // }
 
     if ($addressResult && $userResult) {
+
+        $message = '<div class="alert alert-success">Awesome<br>User registered succesfully!</div>';
         $conn->commit();
-        $message = "Registered";
+
+        // $message = "Registered";
     } else {
+        $message = '<div class="alert alert-danger">Oops, user not registered! :(<br>Try again with another email! :)</div>';
+
+        // $message = "User could not be registered";
+        //  $message .= "<br />" . mysqli_error($conn);
         $conn->rollback();
-        $message = "User could not be registered";
-        $message .= "<br />" . mysqli_error($conn);
     }
 }

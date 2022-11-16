@@ -16,9 +16,7 @@ require $rootPath . "Controller/SignupController.php";
 </head>
 
 <body>
-    <?php if (!empty($message)) {
-        echo "<p>" . $message . "</p>";
-    } ?>
+
     <div class="container py-5 h-100">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-12 col-lg-9 col-xl-7">
@@ -87,8 +85,11 @@ require $rootPath . "Controller/SignupController.php";
                             <div class="col align-self-end">
                                 <input class="btn bg-success btn-lg" type="submit" name="submit" value="SIGNUP" />
                             </div>
-
+                            <?php if (!empty($message)) {
+                                echo "<p>" . $message . "</p>";
+                            } ?>
                         </form>
+
                     </div>
                 </div>
             </div>

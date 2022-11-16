@@ -4,7 +4,26 @@ require("rootPath.php");
 require $rootPath . "Model/LoginModel.php";
 require $rootPath . "Controller/LoginController.php";
 ?>
+<html>
 
+<head>
+    <?php if ($errorPassword) { ?>
+        <div class="alert alert-danger text-center" role="alert">
+            <strong>Error:</strong> Wrong password!
+        </div>
+    <?php } ?>
+    <?php if ($notregistered) { ?>
+        <div class="alert alert-danger text-center" role="alert">
+            <strong>Invalid login:</strong> Please fill out your email and password!
+        </div>
+    <?php } ?>
+    <?php if ($wrongCredentials) { ?>
+        <div class="alert alert-danger text-center" role="alert">
+            <strong>Error:</strong> Wrong credentials!
+        </div>
+    <?php } ?>
+
+</head>
 <section class="vh-100">
     <div class="container py-5 h-50">
         <div class="row d-flex align-items-center justify-content-center h-100">
@@ -47,15 +66,10 @@ require $rootPath . "Controller/LoginController.php";
 
                     <input type="submit" class="btn btn-primary btn-lg" style="color: var(--background)" value="Sign In" />
                     <a href="/signup"><button type="button" class="btn btn-secondary btn-lg">Sign Up</button></a>
-
-
                 </form>
             </div>
         </div>
     </div>
 </section>
-
-
-</body>
 
 </html>

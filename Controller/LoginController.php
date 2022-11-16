@@ -1,17 +1,20 @@
 <?php
+
+$errorPassword = false;
+$notregistered = false;
+$wrongCredentials = false;
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
 
     if (!empty($email) && !empty($password)) {
 
+
         $handle = $conn->prepare($LoginModel->selectQuery);
         $handle->bind_param('s', $email);
         $handle->execute();
         $result = $handle->get_result();
-
-
-
 
 
         if ($result && mysqli_num_rows($result) > 0) {
@@ -26,12 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <?php
                 exit();
             } else {
-                echo "Invalid username or password";
+                $errorPassword = true;
             }
-        } else {
-            echo "Invalid username or password";
         }
     } else {
-        echo "<div class='error'>Please fill out everything</div>";
+        $notregistered = true;
     }
 }
