@@ -9,20 +9,14 @@ require $rootPath . "Controller/LoginController.php";
 <head>
     <?php if ($errorPassword) { ?>
         <div class="alert alert-danger text-center" role="alert">
-            <strong>Error:</strong> Wrong password!
+            <strong>Error:</strong> Wrong email or password!
         </div>
     <?php } ?>
     <?php if ($notregistered) { ?>
         <div class="alert alert-danger text-center" role="alert">
-            <strong>Invalid login:</strong> Please fill out your email and password!
+            <strong>Invalid login:</strong> Please try again or sign up!
         </div>
     <?php } ?>
-    <?php if ($wrongCredentials) { ?>
-        <div class="alert alert-danger text-center" role="alert">
-            <strong>Error:</strong> Wrong credentials!
-        </div>
-    <?php } ?>
-
 </head>
 <section class="vh-100">
     <div class="container py-5 h-50">

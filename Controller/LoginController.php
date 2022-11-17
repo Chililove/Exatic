@@ -10,11 +10,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if (!empty($email) && !empty($password)) {
 
-
         $handle = $conn->prepare($LoginModel->selectQuery);
         $handle->bind_param('s', $email);
         $handle->execute();
         $result = $handle->get_result();
+
+
+
 
 
         if ($result && mysqli_num_rows($result) > 0) {
@@ -31,8 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             } else {
                 $errorPassword = true;
             }
+        } else {
+            $notregistered = true;
         }
     } else {
-        $notregistered = true;
+        $wrongCredentials = true;
     }
 }
