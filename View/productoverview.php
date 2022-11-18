@@ -18,11 +18,7 @@ require $rootPath . "Controller/POverviewController.php";
     <?php
 
     $overview = $_SERVER['QUERY_STRING'];
-
-    // $product_details = "SELECT * FROM product WHERE productID = $product";
     $product_details = "SELECT * FROM Product p, ProductType pt WHERE p.productTypeID = pt.producttypeID AND p.productID = $overview";
-
-
     $overviewResult = mysqli_query($conn, $product_details);
     while ($row = mysqli_fetch_assoc($overviewResult)) { ?>
         <div class="container-fluid">

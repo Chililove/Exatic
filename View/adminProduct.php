@@ -70,7 +70,7 @@ require $rootPath . "Controller/Admin/AdminProductController.php";
                 <td><?php echo $row['typeName']; ?></td>
                 <td><?php echo $row['eventName']; ?></td>
                 <td><?php echo $row['timestamp']; ?></td>
-                <td><a href="#" class="edit" data-id="<?php echo $row["productID"]; ?>">edit</a></td>
+                <td><a href="/admin-product-edit?<?php echo $row['productID']; ?>" class="edit" data-id="<?php echo $row["productID"]; ?>">edit</a></td>
                 <td><a href="#" class="delete" data-id="<?php echo $row["productID"]; ?>">delete</a></td>
 
 

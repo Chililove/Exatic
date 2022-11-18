@@ -67,6 +67,9 @@ switch ($toCheck) {
     case '/admin-product-add':
         require __DIR__ . '/View/adminProductAdd.php';
         break;
+    case '/admin-product-edit':
+        require __DIR__ . '/View/adminProductEdit.php';
+        break;
     case '/admin-event-add':
         require __DIR__ . '/View/adminEventAdd.php';
         break;
