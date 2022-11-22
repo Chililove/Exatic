@@ -1,9 +1,14 @@
 <?php
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$cities = $conn->query($SignupModel->allPostalSelect);
+$errorEmail = false;
+$signupSucess = false;
+$error = false;
 
+
+$cities = $conn->query($SignupModel->allPostalSelect);
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
@@ -38,14 +43,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $handle = $conn->prepare($SignupModel->userInsert);
     $handle->bind_param('ssssi', $firstName, $lastName, $email, $hashed_password, $addressID);
     $userResult = $handle->execute();
-
-
-    if ($addressResult && $userResult) {
-        $conn->commit();
-        $message = "Registered";
+    $conn->commit();
+    /* if ($email === ['email']) {
+       
+        $signupSucess = true;
     } else {
+        $errorEmail = true;
         $conn->rollback();
-        $message = "User could not be registered";
-        $message .= "<br />" . mysqli_error($conn);
-    }
+    } */
+    // Missing error message working , userResult has email which is unique therefore it fails, but it shouldn't fail
+    //it should sent error message to user about email..
+
+    /*  if ($addressResult && $userResult) {
+        $conn->commit();
+
+        $signupSucess = true;
+    } else {
+        $errorEmail = true;
+
+       
+    } */
 }

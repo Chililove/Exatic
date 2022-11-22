@@ -1,4 +1,9 @@
 <?php
+
+$errorPassword = false;
+$notregistered = false;
+$wrongCredentials = false;
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
@@ -26,12 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <?php
                 exit();
             } else {
-                echo "Invalid username or password";
+                $errorPassword = true;
             }
         } else {
-            echo "Invalid username or password";
+            $notregistered = true;
         }
     } else {
-        echo "<div class='error'>Please fill out everything</div>";
+        $wrongCredentials = true;
     }
 }
