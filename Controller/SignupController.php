@@ -3,6 +3,11 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+$errorEmail = false;
+$signupSucess = false;
+$error = false;
+
+
 $cities = $conn->query($SignupModel->allPostalSelect);
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -34,25 +39,28 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $addressResult = $handle->execute();
     $addressID = $conn->insert_id;
 
+
     $handle = $conn->prepare($SignupModel->userInsert);
     $handle->bind_param('ssssi', $firstName, $lastName, $email, $hashed_password, $addressID);
     $userResult = $handle->execute();
-    // } else {
+    $conn->commit();
+    /* if ($email === ['email']) {
+       
+        $signupSucess = true;
+    } else {
+        $errorEmail = true;
+        $conn->rollback();
+    } */
+    // Missing error message working , userResult has email which is unique therefore it fails, but it shouldn't fail
+    //it should sent error message to user about email..
 
-    //     $message = '<div class="alert alert-danger">Oops, user not registered! :(<br>Try again with another email! :)</div>';
-    // }
-
-    if ($addressResult && $userResult) {
-
-        $message = '<div class="alert alert-success">Awesome<br>User registered succesfully!</div>';
+    /*  if ($addressResult && $userResult) {
         $conn->commit();
 
-        // $message = "Registered";
+        $signupSucess = true;
     } else {
-        $message = '<div class="alert alert-danger">Oops, user not registered! :(<br>Try again with another email! :)</div>';
+        $errorEmail = true;
 
-        // $message = "User could not be registered";
-        //  $message .= "<br />" . mysqli_error($conn);
-        $conn->rollback();
-    }
+       
+    } */
 }
