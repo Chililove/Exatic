@@ -31,9 +31,9 @@ CREATE TABLE `User` (
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL unique,
-    password VARCHAR(1000) NOT NUll,
+    password VARCHAR(150) NOT NUll,
     userType INTEGER,
-    imagePath VARCHAR(1000),
+    imagePath VARCHAR(150),
     addressID INT NOT NULL,
     FOREIGN KEY (addressID) REFERENCES `Address`(addressID)
 ) ENGINE=InnoDB;
@@ -76,7 +76,7 @@ CREATE TABLE Product (
 CREATE TABLE `Order` (
     orderID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     dateOrdered DATETIME,
-    dateDelivered INTEGER,
+    dateDelivered DATETIME,
     status VARCHAR(200),
     userID INT NOT NULL,
     FOREIGN KEY (userID) REFERENCES `User`(userID)
@@ -120,3 +120,22 @@ INSERT INTO Product (productID, title, price, stockQuantity, description, isNew,
 INSERT INTO Product (productID, title, price, stockQuantity, description, isNew, isDailySpecial, country, brand, productImage, timestamp, productTypeID, discountID) values (6, 'Shinmei Toyama Koshihikari Rice, Small', 169, 80, 'A sweeter premium rice from Toyama. Try a slightly different flavour of rice with this 1kg bag of Koshihikari white rice. Grown in Nyuzen, an area of Toyama prefecture famous for its pure and fast flowing fresh spring waters, this Japonica rice has a unique flavour slightly sweeter than other Japanese rices, as well as the slightly sticky texture typical of Koshihikari rices. Use to make sushi or serve on the side of other Japanese dishes.', false, 1, 'Japan', 'Shinmei', 'Shinmei.png', '2022-09-23 21:36:25', 4, 1);
 INSERT INTO Product (productID, title, price, stockQuantity, description, isNew, isDailySpecial, country, brand, productImage, timestamp, productTypeID, discountID) values (7, 'Samyang Dukboki (tteokbokki)', 35, 60, 'A sweeter premium rice from Toyama. Try a slightly different flavour of rice with this 1kg bag of Koshihikari white rice.', false, 1, 'Korea', 'Shinmei', 'pinkNoodle.jpeg', '2022-09-23 21:36:25', 4, 1);
 INSERT INTO Product (productID, title, price, stockQuantity, description, isNew, isDailySpecial, country, brand, productImage, timestamp, productTypeID, discountID) values (8, 'Samyang Buldak', 169, 80, 'A sweeter premium noodle from Toyama. Try a slightly different flavour of rice with this 1kg bag of Koshihikari white rice.', 1, false, 'Korea', 'Korea', 'samyang-carbo.jpg', '2022-09-23 21:36:25', 2, 3);
+
+
+/*Address */
+
+INSERT INTO `Address` (`addressID`, `streetName`, `streetNumber`, `postalCodeID`) VALUES
+(1, 'Spangsbjerg Kirkevej', 103, 5),
+(2, 'Havnegade', 11, 4),
+(3, 'Spangsbjerg Kirkevej', 103, 859);
+
+/*CompanyInfo*/
+
+INSERT INTO `CompanyInfo` (`companyInfoID`, `companyDescription`, `weekdays`, `weekends`, `addressID`) VALUES
+(1, 'Its very nice to have you here, we hope the experience will please you.', 'Weekdays', 'Weekends', 1);
+
+/* User */
+
+INSERT INTO `User` (`userID`, `firstName`, `lastName`, `email`, `password`, `userType`, `imagePath`, `addressID`) VALUES
+(1, 'NAdTetst', 'testererer', 'testererrererer@email.com', '$2y$06$n4ZABmjODCX7E3P4SFCe..8y9H8OqyjPtZ5DYl8YmLeDaeesHKLh2', 1, NULL, 2),
+(2, 'Company', 'Exatic', 'exaticproject@gmail.com', '$2y$06$uBLmOkVcNhOqQGPaidHV7udqp/cO9W.y5PFXglprJR.UzCELQe4fm', 0, NULL, 3);
