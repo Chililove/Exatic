@@ -3,6 +3,7 @@ require("rootPath.php");
 
 require $rootPath . "Model/AdminProductModel.php";
 require $rootPath . "Controller/Admin/AdminProductController.php";
+require $rootPath . "Controller/Admin/ProductDeleteController.php   ";
 
 ?>
 
@@ -28,7 +29,7 @@ require $rootPath . "Controller/Admin/AdminProductController.php";
             <th scope="col">Discount</th>
             <th scope="col">CreatedAt</th>
             <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
+            <th scope="col"> class="delete"</th>
 
         </tr>
         </thead>
@@ -71,7 +72,7 @@ require $rootPath . "Controller/Admin/AdminProductController.php";
                 <td><?php echo $row['eventName']; ?></td>
                 <td><?php echo $row['timestamp']; ?></td>
                 <td><a href="/admin-product-edit?<?php echo $row['productID']; ?>" class="edit" data-id="<?php echo $row["productID"]; ?>">edit</a></td>
-                <td><a href="#" class="delete" data-id="<?php echo $row["productID"]; ?>">delete</a></td>
+                <td><a href="/admin-product?<?php echo $row['productID'] ?>" class="delete" data-id="<?php echo $row["productID"]; ?>">delete</a></td>
 
 
             </tr>

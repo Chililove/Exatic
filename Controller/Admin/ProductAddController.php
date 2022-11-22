@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
         $filename = strtolower($file);
 
         if ($_FILES['productImage']['name']) {
-            move_uploaded_file($_FILES['productImage']['tmp_name'], "../assets/" . $_FILES['productImage']['name']);
+            move_uploaded_file($_FILES['productImage']['tmp_name'], "../assets/product/" . $_FILES['productImage']['name']);
             $product = "INSERT INTO product (title, price, stockQuantity, description, isNew, isDailySpecial, country, brand, productImage, timestamp, productTypeID, discountID) values ('$title', '$price', '$stockQuantity', '$description',1,  1, '$country', '$brand', '$filename', TIMESTAMP, '$productypeID', '$discountID' )";
             echo $product;
             $result3 = mysqli_query($conn, $product);
