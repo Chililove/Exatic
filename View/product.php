@@ -10,6 +10,7 @@ require $rootPath . "Controller/CartController.php";
 <!Doctype html>
 <html lang="en">
 
+
 <head>
     <title>Product</title>
     <?php if ($isSuccess) { ?>
@@ -28,7 +29,7 @@ require $rootPath . "Controller/CartController.php";
 <body>
 
     <div class="text-center container py-2">
-        <!--TO DO:NAV Categories DB FETCH -->
+        <!--TO DO: NAV Categories Functionality -->
 
 
         <ul class="nav  justify-content-center">
@@ -65,7 +66,7 @@ require $rootPath . "Controller/CartController.php";
     <!--Product-->
 
     <div class="container-fluid">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin-bottom:5%;">
 
             <?php
             if (mysqli_num_rows($productResult) > 0) {
@@ -76,7 +77,7 @@ require $rootPath . "Controller/CartController.php";
 
                             <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>">
 
-                                <a href="/product-overview?<?php echo $row['productID']; ?>"><img class="mx-auto card-img-top" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="250" /></a>
+                                <a href="/product-overview?<?php echo $row['productID']; ?>"><img class="rounded mx-auto d-block" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="250" /></a>
                                 <div class="card-body text-center mx-auto">
                                     <div class='cvp'>
 
@@ -108,7 +109,6 @@ require $rootPath . "Controller/CartController.php";
             ?>
         </div>
     </div>
-
 
 
 
@@ -169,6 +169,8 @@ require $rootPath . "Controller/CartController.php";
     </table>
 </div> -->
 
+</html>
+
 <style lang="css">
     .card-text {
         font-size: 15px;
@@ -204,6 +206,10 @@ require $rootPath . "Controller/CartController.php";
         border-radius: 5px;
         padding-bottom: 10px;
     }
-</style>
 
-</html>
+    @media (min-width: 1025px) {
+        .h-custom {
+            height: 100vh !important;
+        }
+    }
+</style>

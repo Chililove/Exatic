@@ -45,5 +45,15 @@ if (isset($_GET["action"])) {
     }
 }
 
+function shopping_cart_product_count()
+{
+    $product_count = 0;
+
+    if (isset($_SESSION['shopping_cart'])) {
+        $product_count = array_sum(array_column($_SESSION['shopping_cart'], 'stockQuantity'));
+    }
+
+    return $product_count;
+}
 
 /* Start a new shopping cart logic cuz this is just ugh*/

@@ -1,130 +1,184 @@
-<footer>
-    <div class="container-fluid" style="margin-top:5%">
-
-        <div class="row" id="background">
-            <div style="background-color: #C3DBB6;">
-                <p class="footer-p" style="color: #C3DBB6;">Hi I'm a hidden p! Don't look at me!</p>
+<body>
+    <div class="container"></div>
+    <footer>
+        <!-- Footer main -->
+        <section class="ft-main">
+            <div class="ft-main-item">
+                <h2 class="ft-title">About</h2>
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/product">Products</a></li>
+                    <li><a href="/about-us">About us</a></li>
+                    <li><a href="/contact">Contact us</a></li>
+                    <li><a href="/signin">Login</a></li>
+                </ul>
             </div>
-            <div class="col" style="font-weight: 300; margin-left: 10%;">
-                <div class="content">
-                    <h5 class="big-text-class">About Us:</h5>
-                    <hr>
-                    <p>"Exatic is a reserved <br> delivery company <br> made specifically for <br> asian lovers. Enjoy!"</p>
-                </div>
+            <div class="ft-main-item">
+                <h2 class="ft-title">Contact</h2>
+                <ul>
+                    <?php
+                    $address = "SELECT streetName, streetNumber FROM `Address` WHERE addressID=1";
+                    $addressResult = mysqli_query($conn, $address);
+                    if (mysqli_num_rows($addressResult) > 0) {
+                        while ($row = mysqli_fetch_assoc($addressResult)) {
+                    ?>
+                            <li>
+                                <h8><?php echo $row["streetName"] ?></h8>
+                                <span> <?php echo $row["streetNumber"] ?></span>
+                            </li>
+                            <li>
+                                <h8>+45 we don't have one</h8>
+                            </li>
+                            <?php
+                            $owner = "SELECT email FROM `User` WHERE userID = 2";
+                            $ownerResult = mysqli_query($conn, $owner);
+                            while ($row = mysqli_fetch_assoc($ownerResult)) { ?>
+
+                                <li>
+                                    <h8><?php echo $row["email"] ?></h8>
+                                </li>
+                    <?php
+                            }
+                        }
+                    }
+                    ?>
+                </ul>
             </div>
-            <div class="col">
-                <div class="content">
-                    <h5 class="big-text-class">Contact Us:</h5>
-                    <hr>
-                    <div class="contact">
-                        <p class="footer-p">Address: </p> address 89 <br>
-                        <p class="footer-p">Phone:</p> 2323232323232<br>
-                        <p class="footer-p">Email: </p> email@email.com
-                    </div>
-                </div>
+            <div class="ft-main-item">
+                <h2 class="ft-title">Opening Hours</h2>
+                <ul>
+                    <?php
+                    $companyInfo = "SELECT * FROM CompanyInfo";
+                    $companyInfoResult = mysqli_query($conn, $companyInfo);
+                    if (mysqli_num_rows($companyInfoResult) > 0) {
+                        while ($row = mysqli_fetch_assoc($companyInfoResult)) {
+                    ?>
+                            <li>
+                                <h8> All <?php echo $row["weekdays"] ?></h8>
+                            </li>
+                            <li>
+                                <h8>From: 8:00-22:00</h8>
+                            </li>
+                            <li>
+                                <h8>Closed on <?php echo $row["weekends"] ?></h8>
+                            </li>
+                    <?php
+                        }
+                    }
+                    ?>
+                </ul>
             </div>
-            <div class="col">
-                <div class="content">
-                    <h5 class="big-text-class">Opening Hours:</h5>
-                    <hr>
-                    <div class="hours">
-                        <?php
-                        // example for adding columns from db for later/set key value
-                        // foreach ($index->getWorkdays() as $key => $value) {
-                        //  ($value['startingHour'])
-                        ?>
-                        <div class="col-sm">
-                            <p class="footer-p"> 8:00</p>
-                        </div>
-                        <div class="col-sm">
-                            <p class="footer-p">23:00</p>
-                        </div>
-                        <div class="col-sm">
-                            <p class="footer-p">All weeks</p>
-                        </div>
-                        <?php
 
-                        ?>
-                    </div>
+        </section>
 
-                </div>
-
-            </div>
-            <div class="footer-row mx-0 justify-content-center" style="background-color: #C3DBB6; text-align: center; color: #5D5A57; ">
-                <p class="footer-p">© Copyright 2022 Exatic. All Rights Reserved.</p>
-            </div>
-        </div>
-    </div>
-
-</footer>
-
+        <!-- Footer legal -->
+        <section class="ft-legal">
+            <ul class="ft-legal-list">
+                <li><a href="#">Terms &amp; Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li>&copy; Copyright 2022 Exatic. All Rights Reserved.</li>
+            </ul>
+        </section>
+    </footer>
+</body>
 
 <style lang="css">
-    .footer-p {
-        color: #0B0501;
-        display: inline;
-        line-height: 2;
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
     }
 
-    hr {
-        margin-left: 0;
-        height: 2%;
-        width: 15%;
-        border-width: 2%;
-        background-color: #0B0501;
+    ul {
+        list-style: none;
+        padding-left: 0;
     }
 
-    .big-text-class {
-        font-weight: 700;
-        font-family: Marcellus;
-        text-transform: uppercase;
+    footer {
+        background-color: #323232;
+        color: #bbb;
+        line-height: 1.5;
     }
 
-    .footer-row {
-        color: #0B0501;
-        justify-content: center;
-        align-items: center;
+    footer a {
+        text-decoration: none;
+        color: #eee;
     }
 
-    .footer-col {
-        text-align: center;
-        margin-left: 10%;
-        font-weight: 300;
+    a:hover {
+        text-decoration: none;
+        color: #bbb;
     }
 
-    .content {
-        display: inline-block;
-        text-align: left;
-        padding-top: 8%;
-        padding-bottom: 5%;
+    .ft-title {
+        color: #fff;
+        font-family: ’Merriweather’, serif;
+        font-size: 1.375rem;
+        padding-bottom: 0.625rem;
     }
 
-    .contact {
-        color: #0B0501;
+    /*stick*/
+    body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
     }
 
-    .hours {
-        color: #0B0501;
-        line-height: 1;
+    .container {
+        flex: 1;
+        /* same as flex-grow: 1; */
     }
 
-    #background {
-        position: absolute;
-        height: 220px;
+    .ft-main {
+        padding: 1.25rem 1.875rem;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .ft-main-item {
+        padding: 1.25rem;
+        min-width: 12.5rem
+            /*200px*/
+        ;
+    }
+
+    @media only screen and (min-width: 29.8125rem
+
+        /*477px*/
+    ) {
+        .ft-main {
+            justify-content: space-around;
+        }
+    }
+
+    @media only screen and (min-width: 77.5rem
+
+        /*1240px*/
+    ) {
+        .ft-main {
+            justify-content: space-evenly;
+        }
+    }
+
+    .ft-legal {
+        padding: 0.1rem 0.875rem;
+        background-color: #555;
+    }
+
+    .ft-legal-list {
         width: 100%;
-        /*background: #C3DBB6;*/
-        /* You must set a specified height */
-        background-position: center;
-        /* Center the image */
-        background-repeat: no-repeat;
-        /* Do not repeat the image */
-        background-size: cover;
-        color: #0B0501;
+        display: flex;
+        flex-wrap: wrap;
     }
 
-    .hours {
-        display: grid;
-        grid-template-columns: 20% 30% 50%;
-        margin-left: -5%;
+    .ft-legal-list li {
+        margin: 0.125rem 0.625rem;
+        white-space: nowrap;
+    }
+
+    /* one before the last child */
+    .ft-legal-list li:nth-last-child(2) {
+        flex: 1;
+        /* same as flex-grow: 1; */
     }
 </style>
