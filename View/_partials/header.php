@@ -53,8 +53,13 @@ $PageTitle = "Exatic";
                     </li> -->
 
                     <!-- Cart-preview -->
-                    <li class="nav-item dropdown" style="position:absolute; right:6%;">
+                    <li class="nav-item" style="position:absolute; right:8%;">
                         <a class="nav-link" href="/shopping-cart"> <img src="/assets/nav-icons/bag-plus.svg" style=" width:auto; height:29px;" class="d-inline-block" alt="cart">
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
+                                <?php echo  $product_count = array_sum(array_column($_SESSION['shopping_cart'], 'stockQuantity'));
+                                ?>
+                                <span class="visually-hidden">added items</span>
+                            </span>
                         </a>
                         <!--     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="/assets/nav-icons/bag-plus.svg" style=" width:auto; height:29px;" class="d-inline-block" alt="cart">

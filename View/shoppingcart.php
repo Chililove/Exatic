@@ -14,22 +14,23 @@ require $rootPath . "Controller/CartController.php";
                     <div class="card-body p-0">
                         <div class="row g-0">
                             <div class="col-lg-8">
-                                <div class="p-5" style="box-shadow: 0px 5px 10px #212121;">
+                                <div class="p-5 h-100" style="box-shadow: 0px 5px 10px #212121;">
                                     <div class="d-flex justify-content-between align-items-center mb-5">
                                         <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
-                                        <h6 class="mb-0 text-muted">3 items</h6>
+                                        <h6 class="mb-0 text-muted"><?php echo shopping_cart_product_count(); ?> items</h6>
                                     </div>
-                                    <hr class="my-4">
                                     <!-- Product -->
                                     <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                        <hr class="my-4">
                                         <?php
                                         if (!empty($_SESSION["shopping_cart"])) {
 
                                             foreach ($_SESSION["shopping_cart"] as $keys => $values) {
+
                                         ?>
 
                                                 <div class="col-md-2 col-lg-2 col-xl-2">
-                                                    <a href="/product-overview?<?php echo $row['productID']; ?>"><img class="img-fluid rounded-3 mx-auto card-img-top" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="250" /></a>
+                                                    <a href="/product-overview?<?php echo $row['productID']; ?>"><img class="img-fluid rounded-3 mx-auto card-img-top" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="Product Image" /></a>
                                                 </div>
 
                                                 <div class="col-md-3 col-lg-3 col-xl-3">
@@ -43,15 +44,17 @@ require $rootPath . "Controller/CartController.php";
                                                     <h6 class="mb-0"> <?php echo $values["price"]; ?> kr</h6>
                                                 </div>
                                                 <div class="col-md-1 col-lg-1 col-xl-1 text-center">
-                                                    <a class="text-muted" href="/shopping-cart?action=delete&productID=<?php echo $values["productID"]; ?>"><span class="text-danger">X</span></a>
+                                                    <a type="button" href="/shopping-cart?action=delete&productID=<?php echo $values["productID"]; ?>" class="btn-close text-muted" aria-label="Close"></a>
                                                 </div>
                                                 <hr class="my-4">
                                             <?php
                                             }
+
                                             ?>
 
                                         <?php
                                         }
+
                                         ?>
                                     </div>
 
@@ -82,8 +85,8 @@ require $rootPath . "Controller/CartController.php";
                                                 </thead>
                                                 <tbody>
                                                     <?php
+                                                    $total = 0;
                                                     if (!empty($_SESSION["shopping_cart"])) {
-                                                        $total = 0;
                                                         foreach ($_SESSION["shopping_cart"] as $keys => $values) {
                                                     ?>
                                                             <tr>
@@ -143,7 +146,7 @@ require $rootPath . "Controller/CartController.php";
                                         <h5><?php echo number_format($total, 2); ?> kr.</h5>
                                     </div>
 
-                                    <a href="/checkout" type="button" class="btn btn-dark btn-lg" data-mdb-ripple-color="dark">Checkout</a>
+                                    <a href="/checkout" type="button" class="btn btn-dark btn-lg btn-checkout" data-mdb-ripple-color="dark">Checkout</a>
 
                                 </div>
                             </div>
@@ -157,6 +160,14 @@ require $rootPath . "Controller/CartController.php";
 
 </html>
 <style lang="css">
+    .btn-checkout {
+        font-size: 18px;
+        font-weight: 400;
+        width: 100%;
+        height: 32%;
+        box-shadow: 0px 0px 5px #212121;
+    }
+
     @media (min-width: 1025px) {
         .h-custom {
             height: 100vh !important;
