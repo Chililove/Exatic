@@ -16,8 +16,14 @@ require $rootPath . "Controller/SignupController.php";
     <?php } ?>
 
     <?php if ($signupSucess) { ?>
-        <div class="alert alert-danger text-center" role="alert">
+        <div class="alert alert-success text-center" role="alert">
             <strong>Sucess:</strong> User succesfully registered! - Go to login :)
+        </div>
+    <?php } ?>
+
+    <?php if ($error) { ?>
+        <div class="alert alert-danger text-center" role="alert">
+            <strong>Error:</strong> Something went wrong! - Please fill out all fields without whitespace :D
         </div>
     <?php } ?>
 
