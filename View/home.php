@@ -83,7 +83,7 @@ require $rootPath . "Controller/HomeController.php";
                                                         </a>
                                                         <div class="overlay-right d-flex flex-row justify-content-end">
                                                             <div class="card-text">
-                                                                <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" class="form-control" />
+                                                                <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" min="0" class="form-control" />
                                                             </div>
                                                             <p class="card-body text-end daily-price"><?php echo $row["price"]; ?> kr</p>
                                                         </div>
@@ -192,7 +192,7 @@ require $rootPath . "Controller/HomeController.php";
                                         </a>
                                         <div class="overlay-right d-flex flex-row justify-content-between">
                                             <div class="card-text">
-                                                <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" class="form-control" />
+                                                <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" min="0" class="form-control" />
                                             </div>
                                             <p class="text-end daily-price"><?php echo $row["price"]; ?> kr</p>
                                         </div>

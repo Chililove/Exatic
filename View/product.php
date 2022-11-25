@@ -87,7 +87,7 @@ require $rootPath . "Controller/CartController.php";
                                         <h5 class="card-text font-weight-bold"><?php echo $row["title"]; ?></h5>
                                         <div class="overlay-right d-flex flex-row justify-content-center">
                                             <div class="card-text">
-                                                <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" class="form-control" />
+                                                <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" min="0" class="form-control" />
                                             </div>
                                             <p class="text-end" style="font-size:20px; text-align: center; font-weight:200"><?php echo $row["price"]; ?> kr</p>
 
