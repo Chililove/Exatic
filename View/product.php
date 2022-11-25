@@ -27,23 +27,25 @@ require $rootPath . "Controller/CartController.php";
 </head>
 
 <body>
-
     <div class="text-center container py-2">
         <!--TO DO: NAV Categories Functionality -->
 
 
-        <ul class="nav  justify-content-center">
+        <ul class="nav justify-content-center">
             <?php
-            if (mysqli_num_rows($productResult) > 0) {
+            if (mysqli_num_rows($productTypeResult) > 0) {
                 while ($row = mysqli_fetch_array($productTypeResult)) {
             ?>
                     <li class="nav-item">
-                        <a style="color:black; font-weight:500;" class="nav-link active" aria-current="page" href="#"><?php echo $row["typeName"]; ?></a>
+                        <a style="color:black; font-weight:500;" class="nav-link active" aria-current="page" href="/product?action=getProductsByType&productTypeID=<?php echo $row['productTypeID'] ?>">
+                            <?php echo $row["typeName"]; ?>
+                        </a>
                     </li>
 
             <?php }
             } ?>
-            <li class="nav-item dropdown">
+            <!-- Future categories with sub-categories-->
+            <!--  <li class="nav-item dropdown">
                 <a style="color:black; font-weight:500;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Brands</a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">BrandTest1</a></li>
@@ -58,7 +60,7 @@ require $rootPath . "Controller/CartController.php";
                     <li><a class="dropdown-item" href="#">CountryTest2</a></li>
                     <li><a class="dropdown-item" href="#">CountryTest3</a></li>
                 </ul>
-            </li>
+            </li> -->
 
         </ul>
 

@@ -82,6 +82,9 @@ require $rootPath . "Controller/HomeController.php";
 
                                                         </a>
                                                         <div class="overlay-right d-flex flex-row justify-content-end">
+                                                            <div class="card-text">
+                                                                <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" class="form-control" />
+                                                            </div>
                                                             <p class="card-body text-end daily-price"><?php echo $row["price"]; ?> kr</p>
                                                         </div>
                                                     </div>
@@ -187,7 +190,10 @@ require $rootPath . "Controller/HomeController.php";
                                             <img class="rounded mx-auto d-block" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="250" />
 
                                         </a>
-                                        <div class="overlay-right d-flex flex-row justify-content-end">
+                                        <div class="overlay-right d-flex flex-row justify-content-between">
+                                            <div class="card-text">
+                                                <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" class="form-control" />
+                                            </div>
                                             <p class="text-end daily-price"><?php echo $row["price"]; ?> kr</p>
                                         </div>
                                         <div class="card-body text-center mx-auto">
