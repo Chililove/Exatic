@@ -4,9 +4,19 @@ $errorPassword = false;
 $notregistered = false;
 $wrongCredentials = false;
 
+function sanitize($input)
+{
+    return htmlspecialchars(trim($input));
+}
+
+// Here we sanitize all the incoming data
+$sanitized = array_map('sanitize', $_POST);
+
+
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $email = htmlspecialchars($_POST['email']);
-    $password = htmlspecialchars($_POST['password']);
+    $email = htmlspecialchars($sanitized['email']);
+    $password = htmlspecialchars($sanitized['password']);
 
     if (!empty($email) && !empty($password)) {
 
