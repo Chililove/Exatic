@@ -7,8 +7,9 @@ require $rootPath . "Controller/Admin/EventController.php";
 
 ?>
 
-<div class=" row-cols-4 d-flex justify-content-center">
-    <div class="col-lg-6 py-5">
+<div class="row row-cols-4 d-flex justify-content-center py-5">
+    <div class="col-lg-8" style="text-align: center">
+        <a href="/admin-event-add">Add a Event</a>
         <table class="table table">
             <thead>
             <tr>

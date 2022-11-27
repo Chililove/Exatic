@@ -14,8 +14,9 @@ if (isset($_POST['submit'])) {
         $startDate = trim(mysqli_real_escape_string($conn, $_POST['startDate']));
         $endDate = trim(mysqli_real_escape_string($conn, $_POST['endDate']));
 
-        $eventEdit = "UPDATE Discount SET `eventName` ='" . $eventName . "', `description` ='" . $description . "', `discountProcent` ='" . $discountProcent . "', 
-                    `startDate` ='" . $startDate . "', `endDate` ='" . $endDate ."' WHERE `discountID` = '" . $discountID . "'";
+        $discountID = $_SERVER['QUERY_STRING'];
+
+        $eventEdit = "UPDATE Discount SET eventName='$eventName', description='$description', discountProcent='$discountProcent', startDate='$startDate', endDate='$endDate' WHERE discountID=$discountID";
         echo $eventEdit;
         $result3 = mysqli_query($conn, $eventEdit);
         }
