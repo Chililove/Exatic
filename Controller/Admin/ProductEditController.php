@@ -22,10 +22,12 @@ if (isset($_POST['submit'])) {
 
         $filename = strtolower($file);
 
+        $productID = $_SERVER['QUERY_STRING'];
+
         if ($_FILES['productImage']['name']) {
             move_uploaded_file($_FILES['productImage']['tmp_name'], "../assets/product/" . $_FILES['productImage']['name']);
-            $update = "UPDATE Product SET `title` ='" . $title . "', `pricde` ='" . $price . "', `stockQuantity` ='" . $stockQuantity . "', 
-    `description` ='" . $description . "', `country` ='" . $country . "', `brand` ='" . $brand . "', `productTypeID` ='" . $productypeID . "', `productImage` ='" . $filename ."', `discountID` ='" . $discountID . "' WHERE `product_id` = '" . $product_id . "'";
+            $update = "UPDATE Product SET title='$title', price='$price',  stockQuantity='$stockQuantity', description='$description', country='$country', 
+                        brand='$brand', productTypeID='$productypeID', discountID='$discountID', productImage='$filename' WHERE productId=$productID";
             echo $update;
             $result3 = mysqli_query($conn, $update);
         }

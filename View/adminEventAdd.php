@@ -8,7 +8,12 @@ require $rootPath . "Controller/Admin/EventAddController.php";
 
 ?>
 
-<h4>Create Event</h4>
+<div class="container py-5">
+    <div class="row">
+        <div class="col">
+            <h4 style="text-align: center">Create Event</h4>
+        </div>
+    </div>
 <form action="#" enctype="multipart/form-data" method="post">
     <div class="row">
         <div class="col-md-10 mb-6">
@@ -50,3 +55,4 @@ require $rootPath . "Controller/Admin/EventAddController.php";
 
     <button type="submit" name="submit" class="btn btn-success" id="btn-add">Add</button>
 </form>
+</div>
