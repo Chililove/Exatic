@@ -4,6 +4,8 @@ require("rootPath.php");
 require $rootPath . "Model/ProductModel.php";
 require $rootPath . "Controller/ProductController.php";
 require $rootPath . "Controller/CartController.php";
+
+
 ?>
 
 
@@ -37,7 +39,7 @@ require $rootPath . "Controller/CartController.php";
                 while ($row = mysqli_fetch_array($productTypeResult)) {
             ?>
                     <li class="nav-item">
-                        <a style="color:black; font-weight:500;" class="nav-link active" aria-current="page" href="/product?action=getProductsByType&productTypeID=<?php echo $row['productTypeID'] ?>">
+                        <a style="color:black; font-weight:500;" class="nav-link active" aria-current="page" href="/product?action=products&productTypeID=<?php echo $row['productTypeID'] ?>">
                             <?php echo $row["typeName"]; ?>
                         </a>
                     </li>
@@ -97,6 +99,7 @@ require $rootPath . "Controller/CartController.php";
                                         <input type="hidden" name="title" value="<?php echo $row["title"]; ?>" />
 
                                         <input type="hidden" name="price" value="<?php echo $row["price"]; ?>" />
+                                        <input type="hidden" name="productImage" value="<?php echo $row["productImage"]; ?>" />
 
                                         <input type="submit" name="add_to_cart" style="margin-bottom:5%;" class="btn cart px-auto" value="Add to Cart" />
 
@@ -121,15 +124,46 @@ require $rootPath . "Controller/CartController.php";
 
 
     <!-- Pagination -->
-    <!--<nav class="d-flex justify-content-center">
+    <nav class="d-flex justify-content-center">
+        <?php
+        // set default values
+        $limit = 8;
+        $skip = 0;
+
+        if (isset($_GET['limit']) && $_GET['limit']) {
+            $limit = $_GET['limit'];
+        }
+        if (isset($_GET['skip']) && $_GET['skip']) {
+            $skip = $_GET['skip'];
+        }
+        ?>
         <ul class="pagination">
-            <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="#">Next</a></li>
+            <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="/product?action=products&productTypeID=<?php echo ($row['productTypeID']) ?>&limit=<?php echo ($limit) ?>&skip=<?php
+                                                                                                                                                                                                                if (($skip - $limit) >= 0) {
+                                                                                                                                                                                                                    echo ($skip - $limit);
+                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                    echo ($skip);
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                                ?>">Previous</a></li>
+            <?php
+            $pages = ceil($productResultCount->num_rows / $limit);
+            for ($i = 0; $i < $pages; $i++) {
+            ?>
+                <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="/product?action=products&productTypeID=<?php echo ($row['productTypeID']) ?>&limit=<?php echo ($limit) ?>&skip=<?php echo ($limit * $i) ?>"><?php echo ($i + 1); ?></a></li>
+            <?php
+            }
+            ?>
+            <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="/product?action=products&productTypeID=<?php echo ($row['productTypeID']) ?>&limit=<?php echo ($limit) ?>&skip=<?php
+                                                                                                                                                                                                                if (($skip + $limit) <= ($productResultCount->num_rows)) {
+                                                                                                                                                                                                                    echo ($skip + $limit);
+                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                    echo ($skip);
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                                ?>">Next</a></li>
         </ul>
-    </nav> -->
+
+
+    </nav>
 
 </body>
 
