@@ -58,8 +58,6 @@ $PageTitle = "Exatic";
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
                                 <?php if (!empty($_SESSION["shopping_cart"])) {
                                     echo  $product_count = array_sum(array_column($_SESSION['shopping_cart'], 'stockQuantity'));
-                                } else {
-                                    echo  $product_count = array_sum(array_column($_SESSION['shopping_cart'], '0'));
                                 }
                                 ?>
                                 <span class="visually-hidden">added items</span>
