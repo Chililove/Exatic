@@ -56,7 +56,11 @@ $PageTitle = "Exatic";
                     <li class="nav-item" style="position:absolute; right:8%;">
                         <a class="nav-link" href="/shopping-cart"> <img src="/assets/nav-icons/bag-plus.svg" style=" width:auto; height:29px;" class="d-inline-block" alt="cart">
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
-                                <?php echo  $product_count = array_sum(array_column($_SESSION['shopping_cart'], 'stockQuantity'));
+                                <?php if (!empty($_SESSION["shopping_cart"])) {
+                                    echo  $product_count = array_sum(array_column($_SESSION['shopping_cart'], 'stockQuantity'));
+                                } else {
+                                    echo  $product_count = array_sum(array_column($_SESSION['shopping_cart'], '0'));
+                                }
                                 ?>
                                 <span class="visually-hidden">added items</span>
                             </span>

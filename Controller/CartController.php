@@ -10,7 +10,9 @@ if (isset($_POST["add_to_cart"])) {
                 'productID' => $_GET["productID"],
                 'title' => $_POST["title"],
                 'price' => $_POST["price"],
-                'stockQuantity' => $_POST["stockQuantity"]
+                'stockQuantity' => $_POST["stockQuantity"],
+                'productImage' => $_POST["productImage"],
+                'description' => $_POST["description"],
             );
             $_SESSION["shopping_cart"][$count] = $item_array;
             $isSuccess = true;
@@ -28,7 +30,8 @@ if (isset($_POST["add_to_cart"])) {
             'productID' => $_GET["productID"],
             'title' => $_POST["title"],
             'price' => $_POST["price"],
-            'stockQuantity' => $_POST["stockQuantity"]
+            'stockQuantity' => $_POST["stockQuantity"],
+            'productImage' => $_POST["productImage"],
         );
         $_SESSION["shopping_cart"][0] = $item_array;
         $isSuccess = true;
