@@ -1,4 +1,4 @@
-EventAddController.php<?php
+<?php
 
 if (isset($_POST['submit'])) {
     if (
@@ -14,8 +14,10 @@ if (isset($_POST['submit'])) {
         $startDate = trim(mysqli_real_escape_string($conn, $_POST['startDate']));
         $endDate = trim(mysqli_real_escape_string($conn, $_POST['endDate']));
 
-            $Event = "INSERT INTO Discount (eventName, description, discountProcent, startDate, endDate) values ('$eventName', '$description','$discountProcent','$startDate', '$endDate')";
-            $result3 = mysqli_query($conn, $Event);
+        $eventEdit = "UPDATE Discount SET `eventName` ='" . $eventName . "', `description` ='" . $description . "', `discountProcent` ='" . $discountProcent . "', 
+                    `startDate` ='" . $startDate . "', `endDate` ='" . $endDate ."' WHERE `discountID` = '" . $discountID . "'";
+        echo $eventEdit;
+        $result3 = mysqli_query($conn, $eventEdit);
         }
 
 } else {

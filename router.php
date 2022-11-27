@@ -64,6 +64,12 @@ switch ($toCheck) {
     case '/admin-product':
         require __DIR__ . '/View/adminProduct.php';
         break;
+    case '/admin-user-list':
+        require __DIR__ . '/View/adminUsersList.php';
+        break;
+    case '/admin-event':
+        require __DIR__ . '/View/adminEvent.php';
+        break;
     case '/admin-product-add':
         require __DIR__ . '/View/adminProductAdd.php';
         break;
@@ -72,6 +78,9 @@ switch ($toCheck) {
         break;
     case '/admin-event-add':
         require __DIR__ . '/View/adminEventAdd.php';
+        break;
+    case '/admin-event-edit':
+        require __DIR__ . '/View/adminEventEdit.php';
         break;
     case '/logout':
         require __DIR__ . '/View/logout.php';
