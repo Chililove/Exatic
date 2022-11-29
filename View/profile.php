@@ -96,7 +96,7 @@ require $rootPath . "Controller/ProfileController.php";
                             Your previous orders:
                         </div>
                         <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action active">
+                            <a href="#" class="list-group-item list-group-item-action">
                                 Cras justo odio
                             </a>
                             <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
