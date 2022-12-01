@@ -1,11 +1,11 @@
 <?php
 class AdminOverviewModel
 {
-    public $EventDiscount = "SELECT * FROM Discount WHERE eventName = 'Halloween' Limit 1";
-    public $CountryProduct = "SELECT country, COUNT(country)
-                                FROM Product
+    public $CountryProduct = "SELECT country, COUNT(country),
+                                SUM(stockQuantity) AS totalQuantity
+                                FROM product
                                 GROUP BY country
-                                HAVING COUNT(country) > 0";
+                                HAVING COUNT(country) > 0;";
     public $CountProductID = "SELECT productID, COUNT(productID)
                                 FROM Product
                                 HAVING COUNT(discountID) > 0";
@@ -16,5 +16,6 @@ class AdminOverviewModel
                                 FROM User
                                 WHERE userType = 1
                                 HAVING COUNT(userID) > 0";
+    public $AdminProfile ="SELECT * FROM User u, Address a, postalCode p WHERE u.addressID = a.addressID AND a.postalCodeID = p.postalCodeID AND u.userType=0 LIMIT 1";
 };
 $AdminOverviewModel = new AdminOverviewModel();
