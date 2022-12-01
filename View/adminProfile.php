@@ -13,25 +13,28 @@ require $rootPath . "Controller/Admin/AdminOverviewController.php";
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
-            <div class="card border-0 shadow py-4 justify-content-center mb-5">
-                    <img src="Exatic/assets/default.jpg" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-                <div class="card-body p-1-9 p-xl-5">
-                    <div class="mb-4">
-                        <?php
+            <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+                <div class="card p-4">
+                    <div class=" image d-flex flex-column justify-content-center align-items-center">
+                        <button class="btn btn-secondary">
+                            <?php
 
-                        $profileDetails = "SELECT * FROM user LIMIT 1";
-                        $detailResult = mysqli_query($conn, $profileDetails);
-                        while ($row = mysqli_fetch_assoc($detailResult)) { ?>
-                        <h3 class="h4 mb-0"><?php echo $row['firstName'] ?> <?php echo $row['lastName'] ?></h3>
-                        <span></span>
+                            $profileDetails = "SELECT * FROM User u, Address a, postalCode p WHERE u.addressID = a.addressID AND a.postalCodeID = p.postalCodeID AND u.userType=0 LIMIT 1;";
+                            $detailResult = mysqli_query($conn, $profileDetails);
+                            while ($row = mysqli_fetch_assoc($detailResult)) { ?>
+                            <img src="Exatic/assets/default.jpg" alt="avatar" class="rounded-circle img-fluid" height="100" width="100" />
+                        </button>
+                        <span class="name mt-3"><?php echo $row['firstName'] ?> <?php echo $row['lastName'] ?></span>
+                        <span class="idd"><?php echo $row['email'] ?></span>
+                        <span class="idd2"><?php echo $row['streetName'] ?> <?php echo $row['streetNumber']  ?>, <?php echo $row['postNumber']  ?> <?php echo $row['cityName']  ?></span>
+                        <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                            <span class="idd1">ID no. <?php echo $row['userID'] ?></span> <span><i class="fa fa-copy"></i></span>
+                        </div>
+                        <div class=" d-flex mt-2"> <button class="btn1 btn-dark">Edit Profile</button> </div>
                     </div>
-                    <h6>Role</h6>
-                    <span>Admin</span> <br> <br>
-                    <h6>ds</h6>
-                    <span>ds</span>
                 </div>
-                <?php } ?>
             </div>
+            <?php }?>
         </div>
         <div class="col-lg-8">
             <section class="ps-lg-1-6 ps-xl-5">
