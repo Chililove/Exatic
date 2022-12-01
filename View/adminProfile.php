@@ -3,7 +3,7 @@ require("rootPath.php");
 
 require $rootPath . "Model/AdminOverviewModel.php";
 require $rootPath . "Controller/Admin/AdminOverviewController.php";
-
+require ("_partials/adminBar.php")
 
 
 ?>
@@ -44,7 +44,7 @@ require $rootPath . "Controller/Admin/AdminOverviewController.php";
                         <h2 class="mb-0 text-primary"></h2>
                     </div>
                     <div class="row mt-n4">
-                        <div class="col-sm-6 col-xl-4 mt-4">
+                        <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
                             <div class="card text-center border-0 rounded-3">
                                 <div class="card-body">
                                     <a href="/admin-product"><h3 class="h5 mb-3">Products</h3></a>
@@ -54,7 +54,7 @@ require $rootPath . "Controller/Admin/AdminOverviewController.php";
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-xl-4 mt-4">
+                        <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
                             <div class="card text-center border-0 rounded-3">
                                 <div class="card-body">
                                     <a href="/admin-user-list"><h3 class="h5 mb-3">Users</h3></a>
@@ -64,7 +64,7 @@ require $rootPath . "Controller/Admin/AdminOverviewController.php";
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-xl-4 mt-4">
+                        <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
                             <div class="card text-center border-0 rounded-3">
                                 <div class="card-body">
                                     <a href="/admin-event"><h3 class="h5 mb-3">Events</h3></a>

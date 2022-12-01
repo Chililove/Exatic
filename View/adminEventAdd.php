@@ -4,7 +4,7 @@ require("rootPath.php");
 require $rootPath . "Model/AdminOverviewModel.php";
 require $rootPath . "Controller/Admin/AdminOverviewController.php";
 require $rootPath . "Controller/Admin/EventAddController.php";
-
+require ("_partials/adminBar.php")
 
 ?>
 

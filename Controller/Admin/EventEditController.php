@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['submitEvent'])) {
     if (
         empty($_POST['eventName']) || empty($_POST['description']) || empty($_POST['discountProcent']) ||
         empty($_POST['startDate'])|| empty($_POST['endDate'])
@@ -19,6 +19,11 @@ if (isset($_POST['submit'])) {
         $eventEdit = "UPDATE Discount SET eventName='$eventName', description='$description', discountProcent='$discountProcent', startDate='$startDate', endDate='$endDate' WHERE discountID=$discountID";
         echo $eventEdit;
         $result3 = mysqli_query($conn, $eventEdit);
+        ?>
+        <script type="text/javascript">
+            window.location = "/admin-event";
+        </script>
+        <?php
         }
 
 } else {

@@ -2,6 +2,7 @@
 require("rootPath.php");
 
 require $rootPath . "Controller/Admin/EventEditController.php";
+require ("_partials/adminBar.php")
 ?>
 
 <div class="container py-5">
@@ -21,7 +22,6 @@ require $rootPath . "Controller/Admin/EventEditController.php";
                 <div class="form-group">
                     <label>Event Name</label>
                     <input type="text"  name="eventName" value="<?php echo $row['eventName']; ?>" class="form-control" required>
-
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@ require $rootPath . "Controller/Admin/EventEditController.php";
             </div>
         </div>
 
-        <button type="submit" name="submit" class="btn btn-success" id="btn-add">Add</button>
+        <button type="submit" name="submitEvent" class="btn btn-success" id="btn-add">Add</button>
     </form>
     <?php } ?>
 </div>

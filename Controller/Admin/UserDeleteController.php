@@ -1,6 +1,6 @@
 <?php
-$deleteProduct = $_SERVER['QUERY_STRING'];
-$query = "DELETE FROM Product WHERE productID = $deleteProduct";
+$deleteUser = $_SERVER['QUERY_STRING'];
+$query = "DELETE FROM User WHERE userID = $deleteUser";
 $result = mysqli_query($conn, $query);
 
 if ($result) {
