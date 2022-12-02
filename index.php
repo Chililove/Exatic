@@ -1,4 +1,4 @@
-<?php require("connection/conn.php");
+<?php require("DB/connection/conn.php");
 if (!isset($_SESSION)) {
     session_start();
 }
