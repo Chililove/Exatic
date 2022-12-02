@@ -4,6 +4,7 @@ $isSuccess = false;
 if (isset($_POST["add_to_cart"])) {
     if (isset($_SESSION["shopping_cart"])) {
         $item_array_id =  array_column($_SESSION["shopping_cart"], "productID");
+
         if (!in_array($_GET["productID"], $item_array_id)) {
             $count = count($_SESSION["shopping_cart"]);
             $item_array = array(
@@ -20,7 +21,8 @@ if (isset($_POST["add_to_cart"])) {
 
             //add quantity to existing item
             // need to find specific product smth with array_search
-            $productIndex = array_search($_GET["productID"], array_column($_SESSION["shopping_cart"], "productID"));
+            $productIndex = array_search($_GET["productID"], $item_array_id);
+
             $_SESSION["shopping_cart"][$productIndex]["stockQuantity"] += $_POST["stockQuantity"];
 
             $isUpdated = true;
@@ -32,6 +34,7 @@ if (isset($_POST["add_to_cart"])) {
             'price' => $_POST["price"],
             'stockQuantity' => $_POST["stockQuantity"],
             'productImage' => $_POST["productImage"],
+            'description' => $_POST["description"],
         );
         $_SESSION["shopping_cart"][0] = $item_array;
         $isSuccess = true;

@@ -30,12 +30,12 @@ require $rootPath . "Controller/CartController.php";
 
                                                 <div class="col-md-2 col-lg-2 col-xl-2">
 
-                                                    <a href="/product-overview?<?php echo $row['productID']; ?>"><img class="img-fluid rounded-3 mx-auto card-img-top" src="/Exatic/assets/product/<?php echo $values['productImage'] ?>" alt="Product Image" /></a>
+                                                    <a href="/product-overview?<?php echo $values['productID']; ?>"><img class="img-fluid rounded-3 mx-auto card-img-top" src="/Exatic/assets/product/<?php echo $values['productImage'] ?>" alt="Product Image" /></a>
                                                 </div>
 
                                                 <div class="col-md-3 col-lg-3 col-xl-3">
                                                     <h6 class="text-black mb-0"><?php echo $values["title"]; ?></h6>
-                                                    <h6 class="text-muted">Short description</h6>
+                                                    <h6 class="text-muted"><?php echo substr($values["description"], 0, 30); ?>...</h6>
                                                 </div>
                                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1  text-center">
                                                     <h6 class="mb-0"><?php echo $values["stockQuantity"]; ?></h6>
@@ -166,6 +166,7 @@ require $rootPath . "Controller/CartController.php";
         width: 100%;
         height: 32%;
         box-shadow: 0px 0px 5px #212121;
+        border-radius: 0px;
     }
 
     @media (min-width: 1025px) {
