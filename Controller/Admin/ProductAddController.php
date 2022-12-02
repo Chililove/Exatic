@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['productAdd'])) {
     if (
         empty($_POST['title']) || empty($_POST['price']) || empty($_POST['stockQuantity']) ||
         empty($_POST['description']) ||
@@ -27,9 +27,14 @@ if (isset($_POST['submit'])) {
             $product = "INSERT INTO product (title, price, stockQuantity, description, isNew, isDailySpecial, country, brand, productImage, timestamp, productTypeID, discountID) values ('$title', '$price', '$stockQuantity', '$description',1,  1, '$country', '$brand', '$filename', TIMESTAMP, '$productypeID', '$discountID' )";
             echo $product;
             $result3 = mysqli_query($conn, $product);
+            ?>
+                <script type="text/javascript">
+                    window.location = "/admin-product";
+                </script>
+            <?php
         }
+
     }
 } else {
 }
-
 

@@ -4,7 +4,7 @@ require("rootPath.php");
 require $rootPath . "Model/AdminProductAddModel.php";
 require $rootPath . "Controller/Admin/ProductAddResultController.php";
 require $rootPath . "Controller/Admin/ProductAddController.php";
-
+require ("_partials/adminBar.php")
 
 ?>
 
@@ -24,7 +24,16 @@ require $rootPath . "Controller/Admin/ProductAddController.php";
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-8 mb-4">
+                    <div class="form-group">
+                        <label for="image">Add image</label>
+                        <img style="width: 10%; justify-items: center" src="/Exatic/assets/product/<?php echo $row['productImage']; ?>" alt="<?php echo $row['productImage'] ?>" />
+                        <input type="name" name="productImage" class="form-control" value="<?php echo $row['productImage']; ?>" required />
 
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-2 mb-4">
                     <div class="form-outline">
@@ -91,15 +100,9 @@ require $rootPath . "Controller/Admin/ProductAddController.php";
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-8 mb-4">
-                    <div class="form-group">
-                        <label for="image">Add image</label>
-                        <input type="file" name="productImage" id="image" value="/Exatic/assets/product/<?php echo $row['productImage'] ?>" class="form-control" required />
-                    </div>
-                </div>
-            </div>
-            <button type="submit" name="submit" class="btn btn-success" id="btn-add">Add</button>
+
+            <button type="submit" name="submitProductEdit" class="btn btn-success" id="btn-add">Add</button>
+            <?php } ?>
         </form>
-        <?php } ?>
+
     </div>
