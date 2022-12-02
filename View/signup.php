@@ -1,7 +1,7 @@
 <?php
 require("rootPath.php");
 
-require $rootPath . "Model/SignupModel.php";
+require $rootPath . "Model/SignUpModel.php";
 require $rootPath . "Controller/SignupController.php";
 
 ?>
