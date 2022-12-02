@@ -11,14 +11,14 @@ require $rootPath . "Controller/HomeController.php";
 
 <head>
     <title>Home</title>
-    <div class="alert alert-black alert-dismissible fade show text-center" role="alert">
+    <div class="alert alert-black alert-dismissible fade show text-center" style="border-radius:0px;" role="alert">
         <strong>Black Friday!</strong> You should check our products with 20% off.
         <button type="button" class="btn btn-close btn-close-white close-btn-position" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 </head>
 
 <body>
-
+    <iframe name="home" style="display:none;"></iframe>
     <div class="container-fluid h-100">
         <div class="row d-flex justify-content-center h-100">
             <div class="container-fluid d-flex green-div">
@@ -72,7 +72,7 @@ require $rootPath . "Controller/HomeController.php";
 
                                             <div class="card">
 
-                                                <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>">
+                                                <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>" target="home">
                                                     <div class="row d-flex flex-row justify-content-center">
                                                         <a href="/product-overview?<?php echo $row['productID']; ?>">
                                                             <?php if ($row['isDailySpecial']) {
@@ -83,7 +83,7 @@ require $rootPath . "Controller/HomeController.php";
                                                         </a>
                                                         <div class="overlay-right d-flex flex-row justify-content-end">
                                                             <div class="card-text">
-                                                                <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" min="0" class="form-control" />
+                                                                <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" min="1" class="form-control" />
                                                             </div>
                                                             <p class="card-body text-end daily-price"><?php echo $row["price"]; ?> kr</p>
                                                         </div>
@@ -96,6 +96,10 @@ require $rootPath . "Controller/HomeController.php";
                                                         <input type="hidden" name="title" value="<?php echo $row["title"]; ?>" />
 
                                                         <input type="hidden" name="price" value="<?php echo $row["price"]; ?>" />
+
+                                                        <input type="hidden" name="productImage" value="<?php echo $row["productImage"]; ?>" />
+
+                                                        <input type="hidden" name="description" value="<?php echo $row["description"]; ?>" />
 
                                                         <input type="submit" name="add_to_cart" style="margin-bottom:5%;" class="btn add-cart px-auto" value="Add to Cart" />
 
@@ -132,22 +136,30 @@ require $rootPath . "Controller/HomeController.php";
                         <!--Carousel-->
                         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
-                                <div class="carousel-item active" data-bs-interval="2000">
-                                    <a href="/product"><img src="/assets/product.jpg" class="d-block mx-auto w-100" alt="New1"></a>
+                                <div class="carousel-item active" data-bs-interval="3000">
+                                    <a href="/product"><img src="/assets/product.jpg" class="d-block mx-auto w-100" alt="products"></a>
                                     <div class="carousel-caption d-none d-md-block">
                                         <h5>Exotic Asian Products </h5>
                                         <p>Checkout our variety of asian products</p>
                                     </div>
                                 </div>
-                                <div class="carousel-item">
-                                    <img src="/assets/delivery.jpeg" class="d-block mx-auto w-100" alt="New3">
+                                <div class="carousel-item" data-bs-interval="4000">
+                                    <a href="/about-us"><img src="/assets/aboutus.png" class="d-block mx-auto w-100" alt="products"></a>
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Welcome to Exatic </h5>
+                                        <p>Learn more about us here</p>
+                                        <a href="/about-us" class="btn btn-light" role="button"> Learn more</a>
+                                    </div>
+                                </div>
+                                <div class="carousel-item" data-bs-interval="2000">
+                                    <img src="/assets/delivery.jpeg" class="d-block mx-auto w-100" alt="Delivery">
                                     <div class="carousel-caption d-none d-md-block" style="color:black;">
                                         <h5>Delivery</h5>
                                         <p>Right at your doorstep!</p>
                                     </div>
                                 </div>
                                 <div class="carousel-item" data-bs-interval="2000">
-                                    <img src="/assets/event.jpg" class="d-block mx-auto w-100" alt="New2">
+                                    <img src="/assets/event.jpg" class="d-block mx-auto w-100" alt="events">
                                     <div class="carousel-caption d-none d-md-block">
                                         <h5>Events</h5>
                                         <p>Get 20% off on products during events</p>
@@ -181,7 +193,7 @@ require $rootPath . "Controller/HomeController.php";
                             <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-5 d-flex justify-content-center" style="padding-bottom:5%;">
                                 <div class="card">
 
-                                    <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>">
+                                    <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>" target="home">
 
                                         <a href="/product-overview?<?php echo $row['productID']; ?>">
                                             <?php if ($row['isNew']) {
@@ -192,7 +204,7 @@ require $rootPath . "Controller/HomeController.php";
                                         </a>
                                         <div class="overlay-right d-flex flex-row justify-content-between">
                                             <div class="card-text">
-                                                <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" min="0" class="form-control" />
+                                                <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" min="1" class="form-control" />
                                             </div>
                                             <p class="text-end daily-price"><?php echo $row["price"]; ?> kr</p>
                                         </div>
@@ -206,6 +218,10 @@ require $rootPath . "Controller/HomeController.php";
                                             <input type="hidden" name="title" value="<?php echo $row["title"]; ?>" />
 
                                             <input type="hidden" name="price" value="<?php echo $row["price"]; ?>" />
+                                            <input type="hidden" name="productImage" value="<?php echo $row["productImage"]; ?>" />
+
+                                            <input type="hidden" name="description" value="<?php echo $row["description"]; ?>" />
+
 
                                             <input type="submit" name="add_to_cart" style="margin-bottom:5%;" class="btn add-cart px-auto" value="Add to Cart" />
 
@@ -237,6 +253,10 @@ require $rootPath . "Controller/HomeController.php";
 </html>
 
 <style lang="css">
+    .btn {
+        border-radius: 0px;
+    }
+
     .alert-dismissible .btn-close {
         position: absolute;
         top: 0;
@@ -256,6 +276,7 @@ require $rootPath . "Controller/HomeController.php";
         margin-bottom: 2%;
         margin-left: 70%;
         font-size: 18px;
+        border-radius: 0px;
     }
 
     .title-news {
@@ -320,6 +341,7 @@ require $rootPath . "Controller/HomeController.php";
         height: 32%;
         padding-top: 2%;
         box-shadow: 0px 5px 10px #212121;
+        border-radius: 0px;
     }
 
     .title-welcome {
