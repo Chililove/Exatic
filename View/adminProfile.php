@@ -29,9 +29,10 @@ require ("_partials/adminBar.php")
                 </div>
                 <div class="card mt-3">
                     <ul class="list-group list-group-flush">
+                        <?php
+                        while ($row = mysqli_fetch_array($AdminProfileResult)) {?>
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <?php
-                            while ($row = mysqli_fetch_array($AdminProfileResult)) {?>
+
                                 <a href="/admin-product"></a>
 
                             <?php } ?>
