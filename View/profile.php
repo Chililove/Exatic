@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require("rootPath.php");
 require $rootPath . "Model/ProfileModel.php";
 require $rootPath . "Controller/ProfileController.php";
@@ -19,24 +22,26 @@ require $rootPath . "Controller/ProfileController.php";
     <section>
         <div class="row-1">
             <div class="container py-4 h-100">
-                <img src="Exatic/assets/default.jpg" alt="avatar" class="rounded-circle img-fluid" style="width: 18%;">
+                <img src="Exatic/assets/profilepictures/<?php echo $user["imagePath"] ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 18%;">
                 <div class="row align-items-center h-100">
+                    <button type="submit"></button>
                     <div class="col-md-10 col-lg-7 col-xl-5">
                         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                             <div class="card-body p-3 p-md-4">
                                 <h6 class="mb-4 pb-2 pb-md-0">User information</h6>
-                                <fieldset id="fieldset" disabled>
-                                    <form action="" method="post">
+                                <fieldset id="fieldset">
+                                    <form action="Exatic/profile" method="post">
 
+                                        <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg">
                                         <div class="row">
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                    <input type="firstname" name="firstName" class="form-control" placeholder="Firstname" required />
+                                                    <input type="firstname" value="<?php echo $user["firstName"] ?>" name="firstName" class="form-control" placeholder="Firstname" required />
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                    <input type="lastname" name="lastName" class="form-control" placeholder="Lastname" required />
+                                                    <input type="lastname" value="<?php echo $user["lastName"] ?>" name="lastName" class="form-control" placeholder="Lastname" required />
                                                 </div>
                                             </div>
                                         </div>
@@ -44,7 +49,7 @@ require $rootPath . "Controller/ProfileController.php";
                                         <div class="row">
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                    <input type="email" name="email" class="form-control" placeholder="Email" required />
+                                                    <input type="email" value="<?php echo $user["email"] ?>" name="email" class="form-control" placeholder="Email" required />
                                                 </div>
                                             </div>
 
@@ -61,12 +66,12 @@ require $rootPath . "Controller/ProfileController.php";
                                         <div class="row">
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                    <input type="street" name="streetName" class="form-control" placeholder="Name of the street" required />
+                                                    <input type="street" value="<?php echo $user["streetName"] ?>" name="streetName" class="form-control" placeholder="Name of the street" required />
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                    <input type="streetnumber" name="streetNumber" class="form-control" placeholder="Street number" required />
+                                                    <input type="streetnumber" value="<?php echo $user["firstName"] ?>" name="streetNumber" class="form-control" placeholder="Street number" required />
                                                 </div>
                                             </div>
                                         </div>
@@ -75,7 +80,7 @@ require $rootPath . "Controller/ProfileController.php";
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
                                                     <select class="form-control" name="postalCodeID" readonly>
-                                                        <option value="select">Select a city...</option>
+                                                        <option value="<?php echo $user["postalCodeID"] ?>"><?php echo $user["postNumber"] . " " . $user["cityName"] ?></option>
                                                         <?php foreach ($cities as $city) {
                                                             echo '<option value="' . $city["postalCodeID"] . '">' . $city["postNumber"] . ' ' . $city["cityName"] . '</option>';
                                                         } ?>
@@ -90,8 +95,7 @@ require $rootPath . "Controller/ProfileController.php";
 
                                     </form>
                                 </fieldset>
-                                <button onclick="EditProfileInfo()">Edit information</button>
-
+                                <input type="submit" value="save">
                             </div>
                         </div>
                     </div>
@@ -121,18 +125,7 @@ require $rootPath . "Controller/ProfileController.php";
                     </div>
                 </div>
             </div>
-
-
         </div>
-
-        <button onclick="Geeks()">Submit</button>
-        <script>
-            function Geeks() {
-                var g = document.getElementById("fieldset");
-                g.disabled = false;
-                g.name;
-            }
-        </script>
         <style>
             @import "../styles/css.scss";
 
