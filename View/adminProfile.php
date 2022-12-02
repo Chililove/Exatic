@@ -59,16 +59,35 @@ require ("_partials/adminBar.php")
             </div>
             <div class="col-md-8">
                 <h1 style="text-align: center">Import Countries</h1>
-                <ul class="list-group">
-                    <?php while ($row = mysqli_fetch_array($CountryResult)) { ?>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <?php echo $row['country']; ?>
-                        <span><?php echo $row['COUNT(country)']; ?></span>
-                        <span><?php echo $row['totalQuantity']; ?></span>
+                <table class="table table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Country</th>
+                        <th scope="col">No. Product</th>
+                        <th scope="col">Total Quantity</th>
 
-                    </li>
-                    <?php } ?>
+                    </tr>
+                    </thead>
+
+                    <?php
+                    $i = 1;
+                    while ($row = mysqli_fetch_array($CountryResult)) { ?>
+                    <tbody>
+                    <tr>
+                        <th scope="row"><?php echo $i; ?></th>
+                        <td><?php echo $row['country']; ?></td>
+                        <td><?php echo $row['COUNT(country)']; ?></td>
+                        <td><?php echo $row['totalQuantity']; ?></td>
+
+                    </tr>
+                    <?php $i++;} ?>
+                    </tbody>
+                </table>
+
             </div>
+
+
         </div>
     </div>
 </div>
