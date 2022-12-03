@@ -16,6 +16,18 @@ require $rootPath . "Controller/ProfileController.php";
         Profile page
     </title>
 
+    <?php if ($updateSucess) { ?>
+        <div class="alert alert-success text-center" role="alert">
+            <strong>Sucess:</strong> User succesfully registered! - Go to login :)
+        </div>
+    <?php } ?>
+
+    <?php if ($error) { ?>
+        <div class="alert alert-danger text-center" role="alert">
+            <strong>Error:</strong> Something went wrong! - Please fill out all fields without whitespace :D
+        </div>
+    <?php } ?>
+
 </head>
 
 <body>
@@ -24,7 +36,6 @@ require $rootPath . "Controller/ProfileController.php";
             <div class="container py-4 h-100">
                 <img src="Exatic/assets/profilepictures/<?php echo $user["imagePath"] ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 18%;">
                 <div class="row align-items-center h-100">
-                    <button type="submit"></button>
                     <div class="col-md-10 col-lg-7 col-xl-5">
                         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                             <div class="card-body p-3 p-md-4">
@@ -89,11 +100,11 @@ require $rootPath . "Controller/ProfileController.php";
                                             </div>
 
                                         </div>
+                                        <input type="submit" value="save">
+
                                         <?php if (!empty($message)) {
                                             echo "<p>" . $message . "</p>";
                                         } ?>
-                                        <input type="submit" value="save">
-
                                     </form>
                                 </fieldset>
                             </div>
