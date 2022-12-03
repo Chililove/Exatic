@@ -140,6 +140,7 @@ require $rootPath . "Controller/ProfileController.php";
         <style>
             @import "../styles/css.scss";
 
+
             section {
                 font-family: "Roboto", sans-serif;
                 -webkit-font-smoothing: antialiased;
@@ -152,11 +153,17 @@ require $rootPath . "Controller/ProfileController.php";
 
 
             }
-        </style>
-        <div class="logout" style="margin-left: 92%;">
-            <a class="btn btn-primary m-3" href="/logout">Logout</a>
 
-        </div>
+            .btn {
+                border-radius: 0;
+                background-color: black;
+                color: white;
+                box-shadow: 0px, 5px, 10px #212121;
+                margin: 2%;
+                margin-left: 88%;
+            }
+        </style>
+        <a class="btn btn-primary" href="/logout">Log out</a>
     </section>
 
 </body>
