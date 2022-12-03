@@ -53,11 +53,11 @@ require $rootPath . "Controller/ProfileController.php";
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 mb-4">
+                                            <!-- <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                    <input type="password" name="password" class="form-control" placeholder="Password" required />
+                                                    <input type="password" name="password" class="form-control" placeholder="Password" />
                                                 </div>
-                                            </div>
+                                            </div> -->
 
                                         </div>
 
@@ -92,10 +92,10 @@ require $rootPath . "Controller/ProfileController.php";
                                         <?php if (!empty($message)) {
                                             echo "<p>" . $message . "</p>";
                                         } ?>
+                                        <input type="submit" value="save">
 
                                     </form>
                                 </fieldset>
-                                <input type="submit" value="save">
                             </div>
                         </div>
                     </div>
