@@ -9,7 +9,7 @@ require ("_partials/adminBar.php")
 
 <div class="row row-cols-4 d-flex justify-content-center py-5">
     <div class="col-lg-8" style="text-align: center">
-        <a href="/admin-event-add">Add a Event</a>
+        <button type="button" class="btn" style="background: #212121; color: white;border-radius: 0;text-decoration: none;"><a href="/admin-event-add">Add a Event</a></button>
         <table class="table table">
             <thead>
             <tr>

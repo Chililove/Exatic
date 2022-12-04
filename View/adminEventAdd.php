@@ -53,6 +53,6 @@ require ("_partials/adminBar.php")
         </div>
     </div>
 
-    <button type="submit" name="submit" class="btn btn-success" id="btn-add">Add</button>
+    <button type="submit" name="submit" class="btn" id="btn-add" style="background: #212121;color: white;border-radius: 0">Add</button>
 </form>
 </div>

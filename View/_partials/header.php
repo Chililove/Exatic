@@ -24,7 +24,7 @@ $PageTitle = "Exatic";
     <!-- Navigation Bar -->
     <nav class="navbar sticky-top navbar-expand-lg" style="background-color: #C3DBB6;">
         <div class="container-fluid justify-content-between">
-            <a class="navbar-brand" href="/home">
+            <a class="navbar-brand" href="/home" >
                 <img src="/assets/exatic-logo-2.png" style="margin-left:85%; width:auto; height:45px;" width="35" height="35" class="d-inline-block" alt="Logo">
             </a>
             <!--responsive aka  burger for mobile ver.--->
@@ -32,7 +32,7 @@ $PageTitle = "Exatic";
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav" style="margin-left: 35%;">
+            <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: center">
 
                 <ul class="navbar-nav mr-auto">
                     <!-- probably remove home? -->

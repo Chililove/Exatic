@@ -6,9 +6,10 @@ require $rootPath . "Controller/Admin/AdminProductController.php";
 require $rootPath . "Controller/Admin/ProductDeleteController.php";
 require ("_partials/adminBar.php")
 ?>
+
 <div class="row row-cols-4 d-flex justify-content-center py-5">
     <div class="col-lg-8" style="text-align: center">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #212121; color: white;border-radius: 0">
             Add a new Product
         </button>
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -46,16 +47,12 @@ require ("_partials/adminBar.php")
                     <th scope="col">Delete</th>
                 </tr>
                 </thead>
-
                 <?php
-
-                $i = 1;
-
                 while ($row = mysqli_fetch_array($adminProductResult)) {
                 ?>
                     <tbody>
                     <tr>
-                        <th scope="row"><?php echo $i; ?></th>
+                        <th scope="row"><?php echo $row['productID']; ?></th>
                         <td><?php echo $row['title']; ?></td>
                         <td><?php echo $row['price']; ?></td>
                         <td><?php echo $row['discountProcent']; ?></td>
@@ -77,11 +74,9 @@ require ("_partials/adminBar.php")
                         <td><?php echo $row['timestamp']; ?></td>
                         <td><a href="/admin-product-edit?<?php echo $row['productID']; ?>" class="edit" data-id="<?php echo $row["productID"]; ?>">edit</a></td>
                         <td><a href="/admin-product?<?php echo $row['productID'] ?>" class="delete" data-id="<?php echo $row["productID"]; ?>">delete</a></td>
-
                     </tr>
                     </tbody>
-                <?php  $i++;}?>
-
+                <?php }?>
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -92,13 +87,12 @@ require ("_partials/adminBar.php")
                             <div class="modal-body">
                                 <?php  require("adminProductAdd.php") ?>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </table>
-            </div>
-        </div>
     </div>
+</div>
+
 
 
