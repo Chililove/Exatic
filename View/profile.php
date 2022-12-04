@@ -5,6 +5,8 @@ ini_set('display_errors', 1);
 require("rootPath.php");
 require $rootPath . "Model/ProfileModel.php";
 require $rootPath . "Controller/ProfileController.php";
+require "resize/Resizer.php";
+
 
 ?>
 
@@ -35,15 +37,17 @@ require $rootPath . "Controller/ProfileController.php";
         <div class="row-1">
             <div class="container py-4 h-100">
                 <img src="Exatic/assets/profilepictures/<?php echo $user["imagePath"] ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 18%;">
+
                 <div class="row align-items-center h-100">
                     <div class="col-md-10 col-lg-7 col-xl-5">
                         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                            <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg" class="imgSelect">
+
                             <div class="card-body p-3 p-md-4">
-                                <h6 class="mb-4 pb-2 pb-md-0">User information</h6>
+                                <h6 class="mb-3 pb-2 pb-md-0">User information</h6>
                                 <fieldset id="fieldset">
                                     <form action="Exatic/profile" method="post">
 
-                                        <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg">
                                         <div class="row">
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
@@ -101,10 +105,6 @@ require $rootPath . "Controller/ProfileController.php";
 
                                         </div>
                                         <input type="submit" value="save">
-
-                                        <?php if (!empty($message)) {
-                                            echo "<p>" . $message . "</p>";
-                                        } ?>
                                     </form>
                                 </fieldset>
                             </div>
@@ -118,7 +118,38 @@ require $rootPath . "Controller/ProfileController.php";
                                         Your previous orders:
                                     </div>
 
-                                    <div class="list-group overflow-auto">
+
+                                    <!-- <div class=" row-cols-4 d-flex justify-content-center">
+                                        <div class="col-lg-4 py-3">
+                                            <table class="table table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Order nr</th>
+                                                        <th scope="col">Date ordered</th>
+                                                        <th scope="col">Date delivered</th>
+                                                        <th scope="col">Status</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr>
+                                                        <?php foreach ($orders as $order) {
+                                                            echo '<option value="' . $order["orderID"] . '">' . $order["dateOrdered"] . ' ' . $order["dateDelivered"] . ' ' . $order["status"] . '</option>';
+                                                        } ?>
+                                                        <th scope="row"><?php echo $userOrders['orderID'] ?> <?php echo $userOrders['dateOrdered'] ?></th>
+                                                        <td><?php echo $userOrders['dateDelivered'] ?></td>
+                                                        <td><?php echo $userOrders['status'] ?> </td>
+
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+ -->
+
+                                    <!-- <div class="list-group overflow-auto">
                                         <a href="#" class="list-group-item list-group-item-action">
                                             Cras justo odio
                                         </a>
@@ -129,7 +160,7 @@ require $rootPath . "Controller/ProfileController.php";
                                         <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
 
                                         <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -145,6 +176,11 @@ require $rootPath . "Controller/ProfileController.php";
                 font-family: "Roboto", sans-serif;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
+            }
+
+            .imgSelect {
+                margin-top: 3%;
+                margin-left: 3%;
             }
 
             .cardlist {
