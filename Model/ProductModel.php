@@ -17,15 +17,13 @@ if (isset($_GET["productTypeID"])) {
 } else {
     $productTypeID = null;
 }
-
-$getAllProductsQuery = "SELECT * FROM Product LIMIT $limit";
-$getAllProductsCountQuery = "SELECT * FROM Product";
+$firstPageProductsQuery = "SELECT * FROM Product LIMIT $limit";
+$currentPageProductsQuery = "SELECT * FROM Product";
+$pageCountQuery = "SELECT * FROM Product";
 
 class ProductModel
 {
     public $products = "SELECT * FROM Product ORDER BY productID ASC";
     public $productType = "SELECT * FROM ProductType";
-    public $query = "SELECT * FROM Product";
-    public $getAllProductsCountQuery = "SELECT * FROM Product";
 }
 $ProductModel = new ProductModel();

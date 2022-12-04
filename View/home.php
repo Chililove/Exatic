@@ -66,53 +66,50 @@ require $rootPath . "Controller/HomeController.php";
                                 <div class="card card-body w-40">
 
                                     <?php
-                                    if (mysqli_num_rows($dailyResult) > 0) {
-                                        while ($row = mysqli_fetch_assoc($dailyResult)) {
+                                    // if (mysqli_num_rows($dailyResult) > 0) ?? Ask Kim if we need to check for count rows {
+                                    while ($row = $dailyResult->fetch(PDO::FETCH_ASSOC)) {
                                     ?>
 
-                                            <div class="card">
+                                        <div class="card">
 
-                                                <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>" target="home">
-                                                    <div class="row d-flex flex-row justify-content-center">
-                                                        <a href="/product-overview?<?php echo $row['productID']; ?>">
-                                                            <?php if ($row['isDailySpecial']) {
-                                                                echo '<span class="badge bg-warning">Daily Special</span>';
-                                                            } ?>
-                                                            <img class="rounded mx-auto d-block" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="250"></img>
+                                            <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>" target="home">
+                                                <div class="row d-flex flex-row justify-content-center">
+                                                    <a href="/product-overview?<?php echo $row['productID']; ?>">
+                                                        <?php if ($row['isDailySpecial']) {
+                                                            echo '<span class="badge bg-warning">Daily Special</span>';
+                                                        } ?>
+                                                        <img class="rounded mx-auto d-block" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="250"></img>
 
-                                                        </a>
-                                                        <div class="overlay-right d-flex flex-row justify-content-end">
-                                                            <div class="card-text">
-                                                                <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" min="1" class="form-control" />
-                                                            </div>
-                                                            <p class="card-body text-end daily-price"><?php echo $row["price"]; ?> kr</p>
+                                                    </a>
+                                                    <div class="overlay-right d-flex flex-row justify-content-end">
+                                                        <div class="card-text">
+                                                            <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" min="1" class="form-control" />
                                                         </div>
+                                                        <p class="card-body text-end daily-price"><?php echo $row["price"]; ?> kr</p>
                                                     </div>
+                                                </div>
 
-                                                    <div class="card-body text-center mx-auto">
-                                                        <h5 class="card-text font-weight-bold"><?php echo $row["title"]; ?></h5>
-                                                        <h8 class="card-text font-weight:100"><?php echo substr($row["description"], 0, 45); ?></h8>
+                                                <div class="card-body text-center mx-auto">
+                                                    <h5 class="card-text font-weight-bold"><?php echo $row["title"]; ?></h5>
+                                                    <h8 class="card-text font-weight:100"><?php echo substr($row["description"], 0, 45); ?></h8>
 
-                                                        <input type="hidden" name="title" value="<?php echo $row["title"]; ?>" />
+                                                    <input type="hidden" name="title" value="<?php echo $row["title"]; ?>" />
 
-                                                        <input type="hidden" name="price" value="<?php echo $row["price"]; ?>" />
+                                                    <input type="hidden" name="price" value="<?php echo $row["price"]; ?>" />
 
-                                                        <input type="hidden" name="productImage" value="<?php echo $row["productImage"]; ?>" />
+                                                    <input type="hidden" name="productImage" value="<?php echo $row["productImage"]; ?>" />
 
-                                                        <input type="hidden" name="description" value="<?php echo $row["description"]; ?>" />
+                                                    <input type="hidden" name="description" value="<?php echo $row["description"]; ?>" />
 
-                                                        <input type="submit" name="add_to_cart" style="margin-bottom:5%;" class="btn add-cart px-auto" value="Add to Cart" />
+                                                    <input type="submit" name="add_to_cart" style="margin-bottom:5%;" class="btn add-cart px-auto" value="Add to Cart" />
 
-                                                    </div>
-                                                </form>
+                                                </div>
+                                            </form>
 
                                         <?php
-                                        }
-                                    } else {
-                                        echo "No products at the moment :(";
                                     }
                                         ?>
-                                            </div>
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -183,57 +180,54 @@ require $rootPath . "Controller/HomeController.php";
 
                     <?php
 
-                    if (mysqli_num_rows($newsResult) > 0) {
+                    //if (mysqli_num_rows($newsResult) > 0) {
 
 
-                        while ($row = mysqli_fetch_assoc($newsResult)) {
+                    while ($row = $newsResult->fetch(PDO::FETCH_ASSOC)) {
 
                     ?>
 
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-5 d-flex justify-content-center" style="padding-bottom:5%;">
-                                <div class="card">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-5 d-flex justify-content-center" style="padding-bottom:5%;">
+                            <div class="card">
 
-                                    <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>" target="home">
+                                <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>" target="home">
 
-                                        <a href="/product-overview?<?php echo $row['productID']; ?>">
-                                            <?php if ($row['isNew']) {
-                                                echo '<span class="badge bg-success">New</span>';
-                                            } ?>
-                                            <img class="rounded mx-auto d-block" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="250" />
+                                    <a href="/product-overview?<?php echo $row['productID']; ?>">
+                                        <?php if ($row['isNew']) {
+                                            echo '<span class="badge bg-success">New</span>';
+                                        } ?>
+                                        <img class="rounded mx-auto d-block" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="250" />
 
-                                        </a>
-                                        <div class="overlay-right d-flex flex-row justify-content-between">
-                                            <div class="card-text">
-                                                <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" min="1" class="form-control" />
-                                            </div>
-                                            <p class="text-end daily-price"><?php echo $row["price"]; ?> kr</p>
+                                    </a>
+                                    <div class="overlay-right d-flex flex-row justify-content-between">
+                                        <div class="card-text">
+                                            <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" min="1" class="form-control" />
                                         </div>
-                                        <div class="card-body text-center mx-auto">
+                                        <p class="text-end daily-price"><?php echo $row["price"]; ?> kr</p>
+                                    </div>
+                                    <div class="card-body text-center mx-auto">
 
-                                            <h5 class="card-text font-weight-bold"><?php echo $row["title"]; ?></h5>
-                                            <h8 class="card-text font-weight:100"><?php echo substr($row["description"], 0, 65); ?>...</h8>
-
-
-
-                                            <input type="hidden" name="title" value="<?php echo $row["title"]; ?>" />
-
-                                            <input type="hidden" name="price" value="<?php echo $row["price"]; ?>" />
-                                            <input type="hidden" name="productImage" value="<?php echo $row["productImage"]; ?>" />
-
-                                            <input type="hidden" name="description" value="<?php echo $row["description"]; ?>" />
+                                        <h5 class="card-text font-weight-bold"><?php echo $row["title"]; ?></h5>
+                                        <h8 class="card-text font-weight:100"><?php echo substr($row["description"], 0, 65); ?>...</h8>
 
 
-                                            <input type="submit" name="add_to_cart" style="margin-bottom:5%;" class="btn add-cart px-auto" value="Add to Cart" />
+
+                                        <input type="hidden" name="title" value="<?php echo $row["title"]; ?>" />
+
+                                        <input type="hidden" name="price" value="<?php echo $row["price"]; ?>" />
+                                        <input type="hidden" name="productImage" value="<?php echo $row["productImage"]; ?>" />
+
+                                        <input type="hidden" name="description" value="<?php echo $row["description"]; ?>" />
 
 
-                                        </div>
-                                    </form>
-                                </div>
+                                        <input type="submit" name="add_to_cart" style="margin-bottom:5%;" class="btn add-cart px-auto" value="Add to Cart" />
+
+
+                                    </div>
+                                </form>
                             </div>
+                        </div>
                     <?php
-                        }
-                    } else {
-                        echo "0 results";
                     }
 
                     ?>
