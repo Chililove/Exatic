@@ -39,11 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
 
 
-        // $handle = $conn->prepare($SignupModel->addressInsert);
-        // $handle->bind_param('ssi', $streetName, $streetNumber, $postalCodeID);
-        // $addressResult = $handle->execute();
-        // $addressID = $conn->insert_id;
-
         $handle = $conn->prepare($SignupModel->addressInsert);
         $handle->bindParam(':streetName', $streetName, PDO::PARAM_STR);
         $handle->bindParam(':streetNumber', $streetNumber, PDO::PARAM_STR);
@@ -61,31 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $conn->commit();
         $signupSucess = true;
 
-        // $handle = $conn->prepare($SignupModel->userInsert);
-        // $handle->bind_param('ssssi', $firstName, $lastName, $email, $hashed_password, $addressID);
-        // $userResult = $handle->execute();
-        // $conn->commit();
-        // $signupSucess = true;
-
-        /* if ($email === ['email']) {
        
-        $signupSucess = true;
-    } else {
-        $errorEmail = true;
-        $conn->rollback();
-    } */
-        // Missing error message working , userResult has email which is unique therefore it fails, but it shouldn't fail
-        //it should sent error message to user about email..
-
-        /*  if ($userResult) {
-        $conn->commit();
-
-        $signupSucess = true;
-    } else {
-        $errorEmail = true;
-
-       
-    } */
+  
     } else {
         $error = true;
         $conn->rollback();

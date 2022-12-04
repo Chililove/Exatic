@@ -16,7 +16,6 @@ if (isset($parsedRequest[0])) {
 }
 
 
-
 switch ($toCheck) {
     case '':
     case '/':

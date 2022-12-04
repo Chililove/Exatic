@@ -12,20 +12,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (!empty($email) && !empty($password)) {
 
         $handle = $conn->prepare($LoginModel->selectQuery);
-        $handle->bind_param('s', $email);
+        $handle->bindParam(':email', $email, PDO::PARAM_STR);
         $handle->execute();
-        $result = $handle->get_result();
+        $result = $handle->fetchAll();
 
 
-
-
-
-        if ($result && mysqli_num_rows($result) > 0) {
-            $user = $result->fetch_assoc();
+        if ($result && count($result) > 0) {
+            $user = $result[0];
 
             if (password_verify($password, $user['password'])) {
                 $_SESSION['userID'] = $user['userID'];
+                $_SESSION['userType'] = $user['userType'];
 ?>
+    
+switch (){
+    case:
+        break;
+}
+
                 <script>
                     window.location.href = "/home";
                 </script>
