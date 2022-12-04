@@ -6,7 +6,7 @@ require $rootPath . "Controller/Admin/ProductAddResultController.php";
 require $rootPath . "Controller/Admin/ProductAddController.php";
 
 ?>
-<div class="container">
+<div class="container" >
     <form action="#" enctype="multipart/form-data" method="post">
         <div class="row">
             <div class="col-md-8 mb-4">
@@ -89,6 +89,6 @@ require $rootPath . "Controller/Admin/ProductAddController.php";
                 </div>
             </div>
         </div>
-        <button type="submit" name="productAdd" class="btn btn-success" id="btn-add">Add</button>
+        <button type="submit" name="productAdd" class="btn" id="btn-add" style="background: #212121;color: white;border-radius: 0">Add</button>
     </form>
 </div>

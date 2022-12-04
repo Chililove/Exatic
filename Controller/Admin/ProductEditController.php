@@ -15,7 +15,7 @@ if (isset($_POST['submitProductEdit'])) {
         $description = trim(mysqli_real_escape_string($conn, $_POST['description']));
         $country = trim(mysqli_real_escape_string($conn, $_POST['country']));
         $brand = trim(mysqli_real_escape_string($conn, $_POST['brand']));
-        $productypeID = trim(mysqli_real_escape_string($conn, $_POST['productTypeID']));
+        $producTypeID = trim(mysqli_real_escape_string($conn, $_POST['productTypeID']));
         $discountID = trim(mysqli_real_escape_string($conn, $_POST['discountID']));
 
         $file = $_FILES["productImage"]["name"];
@@ -27,9 +27,11 @@ if (isset($_POST['submitProductEdit'])) {
         if ($_FILES['productImage']['name']) {
             move_uploaded_file($_FILES['productImage']['tmp_name'], "../assets/product/" . $_FILES['productImage']['name']);
             $update = "UPDATE Product SET title='$title', price='$price',  stockQuantity='$stockQuantity', `description`='$description', country='$country', 
-                        brand='$brand', productTypeID='$productypeID', discountID='$discountID', productImage='$filename' WHERE productId=$productID";
+                        brand='$brand', productTypeID='$producTypeID', discountID='$discountID', productImage='$filename' WHERE productId=$productID";
             $result3 = mysqli_query($conn, $update);
+            echo $result3;
             ?>
+                echo
             <script type="text/javascript">
                 window.location = "/admin-product";
             </script>

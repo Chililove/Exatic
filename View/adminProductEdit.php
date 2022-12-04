@@ -78,8 +78,6 @@ require ("_partials/adminBar.php")
                             <?php
                             while ($row = mysqli_fetch_array($productTypeResult)) {
                                 ?>
-                            <option value="<?php echo $row['typeName']; ?>"><?php echo $row['typeName']; ?></option>
-
                                 <option value="<?php echo $row["productTypeID"]; ?>"><?php echo $row["typeName"]; ?></option>
                             <?php } ?>
                         </select>
@@ -92,8 +90,6 @@ require ("_partials/adminBar.php")
                             <?php
                             while ($row = mysqli_fetch_array($productDiscount)) {
                                 ?>
-                            <option value="<?php echo $row["eventName"]; ?>"><?php echo $row["eventName"]; ?></option>
-
                                 <option value="<?php echo $row["discountID"]; ?>"><?php echo $row["eventName"]; ?></option>
                             <?php } ?>
                         </select>

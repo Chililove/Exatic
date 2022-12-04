@@ -19,7 +19,7 @@ require("_partials/adminBar.php")
 
                             <div class="d-flex flex-column align-items-center text-center">
 
-                                <img src="/assets/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                <img src="/assets/default.jpg" alt="Admin" class="rounded-circle" width="150">
                                 <div class="mt-3">
                                     <h4><?php echo $row["firstName"]; ?> <?php echo $row["lastName"]; ?></h4>
                                     <p class="text-secondary mb-1">Admin ID. <?php echo $row["userID"]; ?></p>
