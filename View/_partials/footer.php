@@ -19,26 +19,25 @@
                     <?php
                     $address = "SELECT streetName, streetNumber FROM `Address` WHERE addressID=1";
                     $addressResult = $conn->query($address);
-                    if (mysqli_num_rows($addressResult) > 0) {
-                        while ($row = mysqli_fetch_assoc($addressResult)) {
+                    // if (mysqli_num_rows($addressResult) > 0)??Check in a better way {
+                    while ($row = $addressResult->fetch(PDO::FETCH_ASSOC)) {
                     ?>
-                            <li>
-                                <h8><?php echo $row["streetName"] ?></h8>
-                                <span> <?php echo $row["streetNumber"] ?></span>
-                            </li>
-                            <li>
-                                <h8>+45 we don't have one</h8>
-                            </li>
-                            <?php
-                            $owner = "SELECT email FROM `User` WHERE userID = 2";
-                            $ownerResult = $conn->query($owner);
-                            while ($row = mysqli_fetch_assoc($ownerResult)) { ?>
+                        <li>
+                            <h8><?php echo $row['streetName'] ?></h8>
+                            <span> <?php echo $row['streetNumber'] ?></span>
+                        </li>
+                        <li>
+                            <h8>+45 we don't have one</h8>
+                        </li>
+                        <?php
+                        $owner = "SELECT email FROM `User` WHERE userID = 2";
+                        $ownerResult = $conn->query($owner);
+                        while ($row = $ownerResult->fetch(PDO::FETCH_ASSOC)) { ?>
 
-                                <li>
-                                    <h8><?php echo $row["email"] ?></h8>
-                                </li>
+                            <li>
+                                <h8><?php echo $row['email'] ?></h8>
+                            </li>
                     <?php
-                            }
                         }
                     }
                     ?>
@@ -50,20 +49,18 @@
                     <?php
                     $companyInfo = "SELECT * FROM CompanyInfo";
                     $companyInfoResult = $conn->query($companyInfo);
-                    if (mysqli_num_rows($companyInfoResult) > 0) {
-                        while ($row = mysqli_fetch_assoc($companyInfoResult)) {
+                    while ($row = $companyInfoResult->fetch(PDO::FETCH_ASSOC)) {
                     ?>
-                            <li>
-                                <h8> All <?php echo $row["weekdays"] ?></h8>
-                            </li>
-                            <li>
-                                <h8>From: 8:00-22:00</h8>
-                            </li>
-                            <li>
-                                <h8>Closed on <?php echo $row["weekends"] ?></h8>
-                            </li>
+                        <li>
+                            <h8> All <?php echo $row['weekdays'] ?></h8>
+                        </li>
+                        <li>
+                            <h8>From: 8:00-22:00</h8>
+                        </li>
+                        <li>
+                            <h8>Closed on <?php echo $row['weekends'] ?></h8>
+                        </li>
                     <?php
-                        }
                     }
                     ?>
                 </ul>
