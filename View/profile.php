@@ -1,7 +1,12 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require("rootPath.php");
 require $rootPath . "Model/ProfileModel.php";
 require $rootPath . "Controller/ProfileController.php";
+require "resize/Resizer.php";
+
 
 ?>
 
@@ -13,30 +18,45 @@ require $rootPath . "Controller/ProfileController.php";
         Profile page
     </title>
 
+    <?php if ($updateSucess) { ?>
+        <div class="alert alert-success text-center" role="alert">
+            <strong>Sucess:</strong> User succesfully registered! - Go to login :)
+        </div>
+    <?php } ?>
+
+    <?php if ($error) { ?>
+        <div class="alert alert-danger text-center" role="alert">
+            <strong>Error:</strong> Something went wrong! - Please fill out all fields without whitespace :D
+        </div>
+    <?php } ?>
+
 </head>
 
 <body>
     <section>
         <div class="row-1">
             <div class="container py-4 h-100">
-                <img src="Exatic/assets/default.jpg" alt="avatar" class="rounded-circle img-fluid" style="width: 18%;">
+                <img src="Exatic/assets/profilepictures/<?php echo $user["imagePath"] ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 18%;">
+
                 <div class="row align-items-center h-100">
                     <div class="col-md-10 col-lg-7 col-xl-5">
                         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                            <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg" class="imgSelect">
+
                             <div class="card-body p-3 p-md-4">
-                                <h6 class="mb-4 pb-2 pb-md-0">User information</h6>
-                                <fieldset id="fieldset" disabled>
-                                    <form action="" method="post">
+                                <h6 class="mb-3 pb-2 pb-md-0">User information</h6>
+                                <fieldset id="fieldset">
+                                    <form action="Exatic/profile" method="post">
 
                                         <div class="row">
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                    <input type="firstname" name="firstName" class="form-control" placeholder="Firstname" required />
+                                                    <input type="firstname" value="<?php echo $user["firstName"] ?>" name="firstName" class="form-control" placeholder="Firstname" required />
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                    <input type="lastname" name="lastName" class="form-control" placeholder="Lastname" required />
+                                                    <input type="lastname" value="<?php echo $user["lastName"] ?>" name="lastName" class="form-control" placeholder="Lastname" required />
                                                 </div>
                                             </div>
                                         </div>
@@ -44,15 +64,15 @@ require $rootPath . "Controller/ProfileController.php";
                                         <div class="row">
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                    <input type="email" name="email" class="form-control" placeholder="Email" required />
+                                                    <input type="email" value="<?php echo $user["email"] ?>" name="email" class="form-control" placeholder="Email" required />
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 mb-4">
+                                            <!-- <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                    <input type="password" name="password" class="form-control" placeholder="Password" required />
+                                                    <input type="password" name="password" class="form-control" placeholder="Password" />
                                                 </div>
-                                            </div>
+                                            </div> -->
 
                                         </div>
 
@@ -61,12 +81,12 @@ require $rootPath . "Controller/ProfileController.php";
                                         <div class="row">
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                    <input type="street" name="streetName" class="form-control" placeholder="Name of the street" required />
+                                                    <input type="street" value="<?php echo $user["streetName"] ?>" name="streetName" class="form-control" placeholder="Name of the street" required />
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                    <input type="streetnumber" name="streetNumber" class="form-control" placeholder="Street number" required />
+                                                    <input type="streetnumber" value="<?php echo $user["firstName"] ?>" name="streetNumber" class="form-control" placeholder="Street number" required />
                                                 </div>
                                             </div>
                                         </div>
@@ -75,7 +95,7 @@ require $rootPath . "Controller/ProfileController.php";
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
                                                     <select class="form-control" name="postalCodeID" readonly>
-                                                        <option value="select">Select a city...</option>
+                                                        <option value="<?php echo $user["postalCodeID"] ?>"><?php echo $user["postNumber"] . " " . $user["cityName"] ?></option>
                                                         <?php foreach ($cities as $city) {
                                                             echo '<option value="' . $city["postalCodeID"] . '">' . $city["postNumber"] . ' ' . $city["cityName"] . '</option>';
                                                         } ?>
@@ -84,14 +104,9 @@ require $rootPath . "Controller/ProfileController.php";
                                             </div>
 
                                         </div>
-                                        <?php if (!empty($message)) {
-                                            echo "<p>" . $message . "</p>";
-                                        } ?>
-
+                                        <input type="submit" value="save">
                                     </form>
                                 </fieldset>
-                                <button onclick="EditProfileInfo()">Edit information</button>
-
                             </div>
                         </div>
                     </div>
@@ -103,7 +118,38 @@ require $rootPath . "Controller/ProfileController.php";
                                         Your previous orders:
                                     </div>
 
-                                    <div class="list-group overflow-auto">
+
+                                    <!-- <div class=" row-cols-4 d-flex justify-content-center">
+                                        <div class="col-lg-4 py-3">
+                                            <table class="table table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Order nr</th>
+                                                        <th scope="col">Date ordered</th>
+                                                        <th scope="col">Date delivered</th>
+                                                        <th scope="col">Status</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr>
+                                                        <?php foreach ($orders as $order) {
+                                                            echo '<option value="' . $order["orderID"] . '">' . $order["dateOrdered"] . ' ' . $order["dateDelivered"] . ' ' . $order["status"] . '</option>';
+                                                        } ?>
+                                                        <th scope="row"><?php echo $userOrders['orderID'] ?> <?php echo $userOrders['dateOrdered'] ?></th>
+                                                        <td><?php echo $userOrders['dateDelivered'] ?></td>
+                                                        <td><?php echo $userOrders['status'] ?> </td>
+
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+ -->
+
+                                    <!-- <div class="list-group overflow-auto">
                                         <a href="#" class="list-group-item list-group-item-action">
                                             Cras justo odio
                                         </a>
@@ -114,32 +160,27 @@ require $rootPath . "Controller/ProfileController.php";
                                         <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
 
                                         <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
-
-        <button onclick="Geeks()">Submit</button>
-        <script>
-            function Geeks() {
-                var g = document.getElementById("fieldset");
-                g.disabled = false;
-                g.name;
-            }
-        </script>
         <style>
             @import "../styles/css.scss";
+
 
             section {
                 font-family: "Roboto", sans-serif;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
+            }
+
+            .imgSelect {
+                margin-top: 3%;
+                margin-left: 3%;
             }
 
             .cardlist {
@@ -148,11 +189,17 @@ require $rootPath . "Controller/ProfileController.php";
 
 
             }
-        </style>
-        <div class="logout" style="margin-left: 92%;">
-            <a class="btn btn-primary m-3" href="/logout">Logout</a>
 
-        </div>
+            .btn {
+                border-radius: 0;
+                background-color: black;
+                color: white;
+                box-shadow: 0px, 5px, 10px #212121;
+                margin: 2%;
+                margin-left: 88%;
+            }
+        </style>
+        <a class="btn btn-primary" href="/logout">Log out</a>
     </section>
 
 </body>
