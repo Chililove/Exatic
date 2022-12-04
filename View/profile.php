@@ -30,6 +30,12 @@ require "resize/Resizer.php";
         </div>
     <?php } ?>
 
+    <?php if ($errorTransaction) { ?>
+        <div class="alert alert-danger text-center" role="alert">
+            <strong>Error:</strong> Transaction failed! - Please try again..
+        </div>
+    <?php } ?>
+
 </head>
 
 <body>
@@ -46,7 +52,7 @@ require "resize/Resizer.php";
                             <div class="card-body p-3 p-md-4">
                                 <h6 class="mb-3 pb-2 pb-md-0">User information</h6>
                                 <fieldset id="fieldset">
-                                    <form action="Exatic/profile" method="post">
+                                    <form action="/profile" method="post">
 
                                         <div class="row">
                                             <div class="col-md-6 mb-4">
@@ -80,7 +86,7 @@ require "resize/Resizer.php";
                                             </div>
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                    <input type="streetnumber" value="<?php echo $user["firstName"] ?>" name="streetNumber" class="form-control" placeholder="Street number" required />
+                                                    <input type="streetnumber" value="<?php echo $user["streetNumber"] ?>" name="streetNumber" class="form-control" placeholder="Street number" required />
                                                 </div>
                                             </div>
                                         </div>
@@ -142,7 +148,7 @@ require "resize/Resizer.php";
                                         </div>
                                     </div>
                                 </div>
-                            
+
                             </div>
                         </div>
                     </div>
@@ -152,7 +158,6 @@ require "resize/Resizer.php";
         </div>
         <style>
             @import "../styles/css.scss";
-
 
             section {
                 font-family: "Roboto", sans-serif;

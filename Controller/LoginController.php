@@ -24,11 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $_SESSION['userID'] = $user['userID'];
                 $_SESSION['userType'] = $user['userType'];
 ?>
-    
-switch (){
-    case:
-        break;
-}
 
                 <script>
                     window.location.href = "/home";
