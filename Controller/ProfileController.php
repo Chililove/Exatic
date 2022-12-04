@@ -23,25 +23,8 @@ $result = $handle->get_result();
 $user = $result->fetch_assoc();
 
 
-
-
-
-
-
-
-
-
 // Update user information on submit
 
-function sanitize($input)
-{
-    $input = trim($input);
-    $input = stripslashes($input);
-    $input = htmlspecialchars($input);
-    return $input;
-}
-
-$sanitized = array_map('sanitize', $_POST);
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
@@ -61,12 +44,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         $conn->autocommit(false);
 
-        
+
         $handle = $conn->prepare($ProfileModel->updateUser);
-        $handle->bind_param('sssissis', $firstName, $lastName, $email, $addressID, $streetName, $streetNumber, $postalCodeID, $imagePath);
         $uID = $conn->$user;
+        $handle->bind_param('sssissis', $uID, $firstName, $lastName, $email, $addressID, $streetName, $streetNumber, $postalCodeID, $imagePath);
         $result = $handle->execute();
-        $conn->commit($uID);
+        $conn->commit();
         $updateSucess = true;
     } else {
         $error = true;
