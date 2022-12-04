@@ -10,19 +10,6 @@ $error = false;
 $cities = $conn->query($SignupModel->allPostalSelect);
 
 
-// when i use this same function in logincontroller, where do i put it?
-function sanitize($input)
-{
-    $input = trim($input);
-    $input = stripslashes($input);
-    $input = htmlspecialchars($input);
-    return $input;
-}
-
-// Here we sanitize all the incoming data
-$sanitized = array_map('sanitize', $_POST);
-
-
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 

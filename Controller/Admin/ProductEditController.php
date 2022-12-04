@@ -1,44 +1,41 @@
 <?php
 
 if (isset($_POST['submitProductEdit'])) {
-    if (
-        empty($_POST['title']) || empty($_POST['price']) || empty($_POST['stockQuantity']) ||
-        empty($_POST['description']) ||
-        empty($_POST['country']) || empty($_POST['brand'])
-    ) {
-        echo 'Please fill in the blanks';
-    } else {
+    $title = htmlspecialchars($sanitized['title']);
+    $price = htmlspecialchars($sanitized['price']);
+    $stockQuantity = htmlspecialchars($sanitized['stockQuantity']);
+    $description = htmlspecialchars($sanitized['description']);
+    $country = htmlspecialchars($sanitized['country']);
+    $brand = htmlspecialchars($sanitized['brand']);
+    $producTypeID = htmlspecialchars($sanitized['productTypeID']);
+    $discountID = htmlspecialchars($sanitized['discountID']);
 
-        $title = trim(mysqli_real_escape_string($conn, $_POST['title']));
-        $price = trim(mysqli_real_escape_string($conn, $_POST['price']));
-        $stockQuantity = trim(mysqli_real_escape_string($conn, $_POST['stockQuantity']));
-        $description = trim(mysqli_real_escape_string($conn, $_POST['description']));
-        $country = trim(mysqli_real_escape_string($conn, $_POST['country']));
-        $brand = trim(mysqli_real_escape_string($conn, $_POST['brand']));
-        $producTypeID = trim(mysqli_real_escape_string($conn, $_POST['productTypeID']));
-        $discountID = trim(mysqli_real_escape_string($conn, $_POST['discountID']));
+    if (
+        !empty($_POST['title']) || !empty($_POST['price']) || !empty($_POST['stockQuantity']) ||
+        !empty($_POST['description']) ||
+        !empty($_POST['country']) || !empty($_POST['brand'])
+    )
+
 
         $file = $_FILES["productImage"]["name"];
 
-        $filename = strtolower($file);
+    $filename = strtolower($file);
 
-        $productID = $_SERVER['QUERY_STRING'];
+    $productID = $_SERVER['QUERY_STRING'];
 
-        if ($_FILES['productImage']['name']) {
-            move_uploaded_file($_FILES['productImage']['tmp_name'], "../assets/product/" . $_FILES['productImage']['name']);
-            $update = "UPDATE Product SET title='$title', price='$price',  stockQuantity='$stockQuantity', `description`='$description', country='$country', 
+    if ($_FILES['productImage']['name']) {
+        move_uploaded_file($_FILES['productImage']['tmp_name'], "../assets/product/" . $_FILES['productImage']['name']);
+        $update = "UPDATE Product SET title='$title', price='$price',  stockQuantity='$stockQuantity', `description`='$description', country='$country', 
                         brand='$brand', productTypeID='$producTypeID', discountID='$discountID', productImage='$filename' WHERE productId=$productID";
-            $result3 = mysqli_query($conn, $update);
-            echo $result3;
-            ?>
-                echo
-            <script type="text/javascript">
-                window.location = "/admin-product";
-            </script>
-            <?php
-        }
+        $result3 = $conn->query($update);
+        echo $result3;
+?>
+        echo
+        <script type="text/javascript">
+            window.location = "/admin-product";
+        </script>
+<?php
     }
 } else {
+    $conn->rollback();
 }
-
-

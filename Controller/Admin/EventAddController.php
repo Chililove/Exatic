@@ -1,22 +1,29 @@
 <?php
 
 if (isset($_POST['submit'])) {
+    $eventName = htmlspecialchars($sanitized['eventName']);
+    $description = htmlspecialchars($sanitized['description']);
+    $discountProcent = htmlspecialchars($sanitized['discountProcent']);
+    $startDate = htmlspecialchars($sanitized['startDate']);
+    $endDate = htmlspecialchars($sanitized['endDate']);
+
     if (
-        empty($_POST['eventName']) || empty($_POST['description']) || empty($_POST['discountProcent']) ||
-        empty($_POST['startDate'])|| empty($_POST['endDate'])
+        !empty($_POST['eventName']) || !empty($_POST['description']) || !empty($_POST['discountProcent']) ||
+        !empty($_POST['startDate']) || !empty($_POST['endDate'])
     ) {
-        echo 'Please fill in the blanks';
+
+        $conn->autocommit(false);
+        $handle = $conn->prepare($EventModel->Event);
+        $handle->bind_param('sssss', $eventName, $description, $discountProcent, $startDate, $endDate);
+        $result3 = $handle->execute();
+        $conn->commit();
+
+?>
+        <script>
+            window.location.href = "/admin-event";
+        </script>
+<?php
     } else {
-
-        $eventName = trim(mysqli_real_escape_string($conn, $_POST['eventName']));
-        $description = trim(mysqli_real_escape_string($conn, $_POST['description']));
-        $discountProcent = trim(mysqli_real_escape_string($conn, $_POST['discountProcent']));
-        $startDate = trim(mysqli_real_escape_string($conn, $_POST['startDate']));
-        $endDate = trim(mysqli_real_escape_string($conn, $_POST['endDate']));
-
-            $Event = "INSERT INTO Discount (eventName, description, discountProcent, startDate, endDate) values ('$eventName', '$description','$discountProcent','$startDate', '$endDate')";
-            $result3 = mysqli_query($conn, $Event);
-        }
-
-} else {
+        $conn->rollback();
+    }
 }

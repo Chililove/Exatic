@@ -1,3 +1,3 @@
 <?php
 
-$usersListResult = mysqli_query($conn, $UsersListModel->usersList);
+$usersListResult = $conn->query($UsersListModel->usersList);

@@ -1,3 +1,3 @@
 <?php
 
-$EventListResult = mysqli_query($conn, $EventModel->eventList);
+$EventListResult = $conn ->query($EventModel->eventList);

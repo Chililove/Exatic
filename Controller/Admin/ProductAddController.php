@@ -1,40 +1,41 @@
 <?php
 
 if (isset($_POST['productAdd'])) {
-    if (
-        empty($_POST['title']) || empty($_POST['price']) || empty($_POST['stockQuantity']) ||
-        empty($_POST['description']) ||
-        empty($_POST['country']) || empty($_POST['brand'])
-    ) {
-        echo 'Please fill in the blanks';
-    } else {
+    $title = htmlspecialchars($sanitized['title']);
+    $price = htmlspecialchars($sanitized['price']);
+    $stockQuantity = htmlspecialchars($sanitized['stockQuantity']);
+    $description = htmlspecialchars($sanitized['description']);
+    $country = htmlspecialchars($sanitized['country']);
+    $brand = htmlspecialchars($sanitized['brand']);
+    $productypeID = htmlspecialchars($sanitized['productTypeID']);
+    $discountID = htmlspecialchars($sanitized['discountID']);
+    $timestamp = ['timestamp'];
 
-        $title = trim(mysqli_real_escape_string($conn, $_POST['title']));
-        $price = trim(mysqli_real_escape_string($conn, $_POST['price']));
-        $stockQuantity = trim(mysqli_real_escape_string($conn, $_POST['stockQuantity']));
-        $description = trim(mysqli_real_escape_string($conn, $_POST['description']));
-        $country = trim(mysqli_real_escape_string($conn, $_POST['country']));
-        $brand = trim(mysqli_real_escape_string($conn, $_POST['brand']));
-        $productypeID = trim(mysqli_real_escape_string($conn, $_POST['productTypeID']));
-        $discountID = trim(mysqli_real_escape_string($conn, $_POST['discountID']));
+    if (
+        !empty($_POST['title']) || !empty($_POST['price']) || !empty($_POST['stockQuantity']) ||
+        !empty($_POST['description']) ||
+        !empty($_POST['country']) || !empty($_POST['brand'])
+    )
+
 
         $file = $_FILES["productImage"]["name"];
 
-        $filename = strtolower($file);
+    $filename = strtolower($file);
 
-        if ($_FILES['productImage']['name']) {
-            move_uploaded_file($_FILES['productImage']['tmp_name'], "../assets/product/" . $_FILES['productImage']['name']);
-            $product = "INSERT INTO Product (title, price, stockQuantity, description, isNew, isDailySpecial, country, brand, productImage, timestamp, productTypeID, discountID) values ('$title', '$price', '$stockQuantity', '$description',1,  1, '$country', '$brand', '$filename', TIMESTAMP, '$productypeID', '$discountID' )";
-            echo $product;
-            $result3 = mysqli_query($conn, $product);
-            ?>
-                <script type="text/javascript">
-                    window.location = "/admin-product";
-                </script>
-            <?php
-        }
-
+    if ($_FILES['productImage']['name']) {
+        move_uploaded_file($_FILES['productImage']['tmp_name'], "../assets/product/" . $_FILES['productImage']['name']);
+        echo $addProduct;
+        $conn->autocommit(false);
+        $handle = $conn->prepare($AdminProductAddModel->addProduct);
+        $handle->bind_param('ssisiissssii',  $title, $price, $stockQuantity, $description, $isNew, $isDailySpecial, $country, $brand, $filename, $timestamp, $productypeID, $discountID);
+        $result3 = $handle->execute();
+        $conn->commit();
+?>
+        <script type="text/javascript">
+            window.location = "/admin-product";
+        </script>
+<?php
     }
 } else {
+    $conn->rollback();
 }
-

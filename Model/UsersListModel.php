@@ -1,4 +1,6 @@
 <?php
+$deleteUser = $_SERVER['QUERY_STRING'];
+$query = "DELETE FROM User WHERE userID = $deleteUser";
 class UsersListModel
 {
     public $usersList = "SELECT u.userID, u.firstName, u.lastName, u.email, a.streetName, a.streetNumber, a.streetNumber, pc.cityName

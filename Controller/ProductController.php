@@ -1,34 +1,13 @@
 <?php
-// set default values
-if (isset($_GET["limit"])) {
-    $limit = $_GET["limit"];
-} else {
-    $limit = 8;
-}
-
-if (isset($_GET["skip"])) {
-    $skip = $_GET["skip"];
-} else {
-    $skip = 0;
-}
-
-if (isset($_GET["productTypeID"])) {
-    $productTypeID = $_GET["productTypeID"];
-} else {
-    $productTypeID = null;
-}
 
 
-$getAllProductsQuery = "SELECT * FROM Product LIMIT $limit";
-$productResult = mysqli_query($conn, $getAllProductsQuery);
+$productResult =  $conn->query($getAllProductsQuery);
 
+$productResultCount = mysqli_num_rows($conn->query($getAllProductsCountQuery));
 
-$getAllProductsCountQuery = "SELECT * FROM Product";
-$productResultCount = mysqli_num_rows(mysqli_query($conn, $getAllProductsCountQuery));
+$productTypeResult =  $conn->query($ProductModel->productType);
 
-$productTypeResult = mysqli_query($conn, $ProductModel->productType);
-
-
+// KIM?
 if (isset($_GET["action"])) {
     $query = "SELECT * FROM Product";
     $getAllProductsCountQuery = "SELECT * FROM Product";
@@ -51,7 +30,7 @@ if (isset($_GET["action"])) {
             $query .= " OFFSET $skip";
         }
 
-        $productResultCount = mysqli_num_rows(mysqli_query($conn, $getAllProductsCountQuery));
-        $productResult = mysqli_query($conn, $query);
+        $productResultCount = mysqli_num_rows($conn->query($getAllProductsCountQuery));
+        $productResult = $conn->query($query);
     }
 }

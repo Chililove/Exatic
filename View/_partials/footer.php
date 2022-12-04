@@ -18,7 +18,7 @@
                 <ul>
                     <?php
                     $address = "SELECT streetName, streetNumber FROM `Address` WHERE addressID=1";
-                    $addressResult = mysqli_query($conn, $address);
+                    $addressResult = $conn->query($address);
                     if (mysqli_num_rows($addressResult) > 0) {
                         while ($row = mysqli_fetch_assoc($addressResult)) {
                     ?>
@@ -31,7 +31,7 @@
                             </li>
                             <?php
                             $owner = "SELECT email FROM `User` WHERE userID = 2";
-                            $ownerResult = mysqli_query($conn, $owner);
+                            $ownerResult = $conn->query($owner);
                             while ($row = mysqli_fetch_assoc($ownerResult)) { ?>
 
                                 <li>
@@ -49,7 +49,7 @@
                 <ul>
                     <?php
                     $companyInfo = "SELECT * FROM CompanyInfo";
-                    $companyInfoResult = mysqli_query($conn, $companyInfo);
+                    $companyInfoResult = $conn->query($companyInfo);
                     if (mysqli_num_rows($companyInfoResult) > 0) {
                         while ($row = mysqli_fetch_assoc($companyInfoResult)) {
                     ?>
