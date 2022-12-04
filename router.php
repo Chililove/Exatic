@@ -16,77 +16,55 @@ if (isset($parsedRequest[0])) {
 }
 
 
-switch ($toCheck) {
-    case '':
-    case '/':
-        require __DIR__ . '/View/home.php';
-        break;
+$isAuthenticated = isset($_SESSION['userID']);
+$isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] == '0';
 
-    case '/about-us':
-        require __DIR__ . '/View/aboutus.php';
-        break;
+// public routes
+$view = match ($toCheck) {
+    '' => '/View/home.php',
+    '/' => '/View/home.php',
+    '/contact' => '/View/contact.php',
+    '/about-us' => '/View/aboutus.php',
+    '/product-overview' => '/View/productoverview.php',
+    '/home' => '/View/home.php',
+    '/signin' => '/View/login.php',
+    '/signup' => '/View/signup.php',
+    '/checkout' => '/View/checkout.php',
+    '/product' => '/View/product.php',
+    '/shopping-cart' => '/View/shoppingcart.php',
+    '/cart-preview' => '/View/cart-preview.php',
+    '/logout' => '/View/logout.php',
+    default => null
+};
 
-    case '/contact':
-        require __DIR__ . '/View/contact.php';
-        break;
-    case '/product-overview':
-        require __DIR__ . '/View/productoverview.php';
-        break;
-    case '/home':
-        require __DIR__ . '/View/home.php';
-        break;
-    case '/signin':
-        require __DIR__ . '/View/login.php';
-        break;
-    case '/signup':
-        require __DIR__ . '/View/signup.php';
-        break;
-        //remove from navbar after login is complete
-    case '/profile':
-        require __DIR__ . '/View/profile.php';
-        break;
-    case '/checkout':
-        require __DIR__ . '/View/checkout.php';
-        break;
-    case '/product':
-        require __DIR__ . '/View/product.php';
-        break;
-    case '/shopping-cart':
-        require __DIR__ . '/View/shoppingcart.php';
-        break;
-    case '/cart-preview':
-        require __DIR__ . '/View/cart-preview.php';
-        break;
-    case '/admin-profile':
-        require __DIR__ . '/View/adminProfile.php';
-        break;
-    case '/admin-product':
-        require __DIR__ . '/View/adminProduct.php';
-        break;
-    case '/admin-user-list':
-        require __DIR__ . '/View/adminUsersList.php';
-        break;
-    case '/admin-event':
-        require __DIR__ . '/View/adminEvent.php';
-        break;
-    case '/admin-product-add':
-        require __DIR__ . '/View/adminProductAdd.php';
-        break;
-    case '/admin-product-edit':
-        require __DIR__ . '/View/adminProductEdit.php';
-        break;
-    case '/admin-event-add':
-        require __DIR__ . '/View/adminEventAdd.php';
-        break;
-    case '/admin-event-edit':
-        require __DIR__ . '/View/adminEventEdit.php';
-        break;
-    case '/logout':
-        require __DIR__ . '/View/logout.php';
-        break;
 
-    default:
-        http_response_code(404);
-        require __DIR__ . '/View/404.php';
-        break;
+if ($view == null && $isAuthenticated && !$isAdmin) {
+    $view = match ($toCheck) {
+        '/profile' => '/View/profile.php',
+            // ... other authenticated pages
+        default => null
+    };
+}
+
+if ($view == null && $isAdmin) {
+    $view = match ($toCheck) {
+        'admin-profile' => '/View/adminProfile.php',
+        '/admin-profile' => '/View/adminProfile.php',
+        '/admin-product' => '/View/adminProduct.php',
+        '/admin-user-list' => '/View/adminUsersList.php',
+        '/admin-event' => '/View/adminEvent.php',
+        '/admin-product-add' => '/View/adminProductAdd.php',
+        '/admin-product-edit' => '/View/adminProductEdit.php',
+        '/admin-event-add' => '/View/adminEventAdd.php',
+        '/admin-event-edit' => '/View/adminEventEdit.php',
+
+            // ... other admin pages
+        default => null
+    };
+}
+
+if ($view !== null) {
+    require __DIR__ . $view;
+} else {
+    require __DIR__ . '/View/404.php';
 }
