@@ -30,6 +30,12 @@ require "resize/Resizer.php";
         </div>
     <?php } ?>
 
+    <?php if ($errorTransaction) { ?>
+        <div class="alert alert-danger text-center" role="alert">
+            <strong>Error:</strong> Transaction failed! - Please try again..
+        </div>
+    <?php } ?>
+
 </head>
 
 <body>
@@ -46,7 +52,7 @@ require "resize/Resizer.php";
                             <div class="card-body p-3 p-md-4">
                                 <h6 class="mb-3 pb-2 pb-md-0">User information</h6>
                                 <fieldset id="fieldset">
-                                    <form action="Exatic/profile" method="post">
+                                    <form action="/profile" method="post">
 
                                         <div class="row">
                                             <div class="col-md-6 mb-4">
@@ -68,12 +74,6 @@ require "resize/Resizer.php";
                                                 </div>
                                             </div>
 
-                                            <!-- <div class="col-md-6 mb-4">
-                                                <div class="form-outline">
-                                                    <input type="password" name="password" class="form-control" placeholder="Password" />
-                                                </div>
-                                            </div> -->
-
                                         </div>
 
 
@@ -86,7 +86,7 @@ require "resize/Resizer.php";
                                             </div>
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                    <input type="streetnumber" value="<?php echo $user["firstName"] ?>" name="streetNumber" class="form-control" placeholder="Street number" required />
+                                                    <input type="streetnumber" value="<?php echo $user["streetNumber"] ?>" name="streetNumber" class="form-control" placeholder="Street number" required />
                                                 </div>
                                             </div>
                                         </div>
@@ -119,7 +119,7 @@ require "resize/Resizer.php";
                                     </div>
 
 
-                                    <!-- <div class=" row-cols-4 d-flex justify-content-center">
+                                    <div class=" row-cols-4 d-flex justify-content-center">
                                         <div class="col-lg-4 py-3">
                                             <table class="table table">
                                                 <thead>
@@ -132,45 +132,32 @@ require "resize/Resizer.php";
                                                 </thead>
 
                                                 <tbody>
-                                                    <tr>
-                                                        <?php foreach ($orders as $order) {
-                                                            echo '<option value="' . $order["orderID"] . '">' . $order["dateOrdered"] . ' ' . $order["dateDelivered"] . ' ' . $order["status"] . '</option>';
-                                                        } ?>
-                                                        <th scope="row"><?php echo $userOrders['orderID'] ?> <?php echo $userOrders['dateOrdered'] ?></th>
-                                                        <td><?php echo $userOrders['dateDelivered'] ?></td>
-                                                        <td><?php echo $userOrders['status'] ?> </td>
 
-                                                    </tr>
+                                                    <?php foreach ($orderResult as $order) { ?>
+                                                        <tr>
+                                                            <td scope="row"><?php echo $order['orderID'] ?></td>
+                                                            <td><?php echo $order['dateOrdered'] ?> </td>
+                                                            <td><?php echo $order['dateDelivered'] ?></td>
+                                                            <td><?php echo $order['status'] ?> </td>
+                                                        </tr>
+
+                                                    <?php } ?>
 
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
- -->
 
-                                    <!-- <div class="list-group overflow-auto">
-                                        <a href="#" class="list-group-item list-group-item-action">
-                                            Cras justo odio
-                                        </a>
-                                        <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-
-                                        <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
-                                    </div> -->
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        </div>
         <style>
             @import "../styles/css.scss";
-
 
             section {
                 font-family: "Roboto", sans-serif;
