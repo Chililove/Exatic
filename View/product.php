@@ -31,21 +31,19 @@ require $rootPath . "Controller/CartController.php";
 <body>
     <iframe name="product" style="display:none;"></iframe>
     <div class="text-center container py-2">
-        <!--TO DO: NAV Categories Functionality -->
-
 
         <ul class="nav justify-content-center">
             <?php
-            if (mysqli_num_rows($productTypeResult) > 0) {
-                while ($row = mysqli_fetch_array($productTypeResult)) {
+            // if (mysqli_num_rows($productTypeResult) > 0) {
+            foreach ($productTypeResult as $row) {
             ?>
-                    <li class="nav-item">
-                        <a style="color:black; font-weight:500;" class="nav-link active" aria-current="page" href="/product?action=products&productTypeID=<?php echo $row['productTypeID'] ?>">
-                            <?php echo $row["typeName"]; ?>
-                        </a>
-                    </li>
+                <li class="nav-item">
+                    <a style="color:black; font-weight:500;" class="nav-link active" aria-current="page" href="/product?action=products&productTypeID=<?php echo $row['productTypeID'] ?>">
+                        <?php echo $row['typeName']; ?>
+                    </a>
+                </li>
 
-            <?php }
+            <?php
             } ?>
             <!-- Future categories with sub-categories-->
             <!--  <li class="nav-item dropdown">
@@ -74,46 +72,44 @@ require $rootPath . "Controller/CartController.php";
         <div class="row justify-content-center" style="margin-bottom:5%;">
 
             <?php
-            if (mysqli_num_rows($productResult) > 0) {
-                while ($row = mysqli_fetch_array($productResult)) {
+            foreach ($productResult as $row) {
             ?>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-5 d-flex justify-content-center">
-                        <div class="card" style="width: 18rem;">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-5 d-flex justify-content-center">
+                    <div class="card" style="width: 18rem;">
 
-                            <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>" target="product">
+                        <form method="post" action="/product.php?action=add&productID=<?php echo $row; ?>" target="product">
 
-                                <a href="/product-overview?<?php echo $row['productID']; ?>"><img class="rounded mx-auto d-block" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="230" /></a>
-                                <div class="card-body text-center mx-auto">
-                                    <div class='cvp'>
-
-
-                                        <h5 class="card-text font-weight-bold"><?php echo $row["title"]; ?></h5>
-                                        <div class="overlay-right d-flex flex-row justify-content-center">
-                                            <div class="card-text">
-                                                <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" min="1" class="form-control" />
-                                            </div>
-                                            <p class="text-end" style="font-size:20px; text-align: center; font-weight:200"><?php echo $row["price"]; ?> kr</p>
+                            <a href="/product-overview?<?php echo $row['productID']; ?>"><img class="rounded mx-auto d-block" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="230" /></a>
+                            <div class="card-body text-center mx-auto">
+                                <div class='cvp'>
 
 
+                                    <h5 class="card-text font-weight-bold"><?php echo $row["title"]; ?></h5>
+                                    <div class="overlay-right d-flex flex-row justify-content-center">
+                                        <div class="card-text">
+                                            <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" min="1" class="form-control" />
                                         </div>
+                                        <p class="text-end" style="font-size:20px; text-align: center; font-weight:200"><?php echo $row["price"]; ?> kr</p>
 
-                                        <input type="hidden" name="title" value="<?php echo $row["title"]; ?>" />
-
-                                        <input type="hidden" name="price" value="<?php echo $row["price"]; ?>" />
-
-                                        <input type="hidden" name="productImage" value="<?php echo $row["productImage"]; ?>" />
-
-                                        <input type="hidden" name="description" value="<?php echo $row["description"]; ?>" />
-
-                                        <input type="submit" name="add_to_cart" style="margin-bottom:5%;" class="btn cart px-auto" value="Add to Cart" />
 
                                     </div>
+
+                                    <input type="hidden" name="title" value="<?php echo $row["title"]; ?>" />
+
+                                    <input type="hidden" name="price" value="<?php echo $row["price"]; ?>" />
+
+                                    <input type="hidden" name="productImage" value="<?php echo $row["productImage"]; ?>" />
+
+                                    <input type="hidden" name="description" value="<?php echo $row["description"]; ?>" />
+
+                                    <input type="submit" name="add_to_cart" style="margin-bottom:5%;" class="btn cart px-auto" value="Add to Cart" />
+
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
+                </div>
             <?php
-                }
             }
             ?>
         </div>
@@ -156,7 +152,7 @@ require $rootPath . "Controller/CartController.php";
             }
             ?>">Previous</a></li>
             <?php
-            $pages = ceil($productResultCount / $limit);
+            $pages = ceil($pageCount / $limit);
             for ($i = 0; $i < $pages; $i++) {
             ?>
                 <li class="page-item">
@@ -167,7 +163,7 @@ require $rootPath . "Controller/CartController.php";
             }
             ?>
             <li class="page-item"><a class="page-link" style="background-color: #c3dbb6" href="/product?action=products&productTypeID=<?php echo ($productTypeID) ?>&limit=<?php echo ($limit) ?>&skip=<?php
-                                                                                                                                                                                                        if (($skip + $limit) <= ($productResultCount)) {
+                                                                                                                                                                                                        if (($skip + $limit) <= ($pageCount)) {
                                                                                                                                                                                                             echo ($skip + $limit);
                                                                                                                                                                                                         } else {
                                                                                                                                                                                                             echo ($skip);
