@@ -1,4 +1,4 @@
 <?php
 
 $adminProductResult = $conn->query($AdminProductModel->product_list);
-//$deleteProductResult = $conn->query($deleteProduct);
+//$deleteProductResult = $conn->query($AdminProductModel->deleteProduct);

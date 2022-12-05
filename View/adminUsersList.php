@@ -3,7 +3,6 @@ require("rootPath.php");
 
 require $rootPath . "Model/UsersListModel.php";
 require $rootPath . "Controller/Admin/UsersListController.php";
-require $rootPath . "Controller/Admin/UserDeleteController.php";
 require ("_partials/adminBar.php")
 
 ?>
