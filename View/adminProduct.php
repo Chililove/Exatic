@@ -3,7 +3,6 @@ require("rootPath.php");
 
 require $rootPath . "Model/AdminProductModel.php";
 require $rootPath . "Controller/Admin/AdminProductController.php";
-require $rootPath . "Controller/Admin/ProductDeleteController.php";
 require ("_partials/adminBar.php")
 ?>
 
@@ -19,7 +18,7 @@ require ("_partials/adminBar.php")
                         <h5 class="modal-title" id="staticBackdropLabel">Add Product</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                     <div class="modal-body">
                         <?php  require("adminProductAdd.php") ?>
                     </div>
 
@@ -48,7 +47,7 @@ require ("_partials/adminBar.php")
                 </tr>
                 </thead>
                 <?php
-                while ($row = mysqli_fetch_array($adminProductResult)) {
+                while ($row = $adminProductResult->fetch(PDO::FETCH_ASSOC)) {
                 ?>
                     <tbody>
                     <tr>

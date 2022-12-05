@@ -3,7 +3,6 @@ require("rootPath.php");
 
 require $rootPath . "Model/UsersListModel.php";
 require $rootPath . "Controller/Admin/UsersListController.php";
-require $rootPath . "Controller/Admin/UserDeleteController.php";
 require ("_partials/adminBar.php")
 
 ?>
@@ -21,7 +20,7 @@ require ("_partials/adminBar.php")
                 </thead>
 
                 <?php
-                while ($row = mysqli_fetch_assoc($usersListResult)) { ?>
+                while ($row = $usersListResult->fetch(PDO::FETCH_ASSOC)) {?>
                     <tbody>
                     <tr>
                         <th scope="row"><?php echo $row['firstName'] ?> <?php echo $row['lastName'] ?></th>
@@ -46,11 +45,9 @@ require ("_partials/adminBar.php")
                                         </div>
                                     </div>
                                 </div>
-                            </div></td>
-
-
+                            </div>
+                        </td>
                     </tr>
-
                     </tbody>
                 <?php }?>
             </table>
