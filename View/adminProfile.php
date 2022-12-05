@@ -12,7 +12,8 @@ require("_partials/adminBar.php")
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
                 <?php
-                while ($row = mysqli_fetch_array($AdminProfileResult)) { ?>
+                    while ($row = $AdminProfileResult->fetch(PDO::FETCH_ASSOC)) {
+                    ?>
                     <div class="card">
 
                         <div class="card-body">
@@ -38,7 +39,9 @@ require("_partials/adminBar.php")
                             <a href="/admin-product">
                                 <h3 class="h5 mb-3">Products</h3>
                             </a>
-                            <?php while ($row = mysqli_fetch_array($CountProductIDResult)) { ?>
+                            <?php
+                            while ($row = $CountProductIDResult->fetch(PDO::FETCH_ASSOC)) {
+                                ?>
                                 <h3><?php echo $row['COUNT(productID)']; ?></h3>
                             <?php } ?>
                         </li>
@@ -46,7 +49,9 @@ require("_partials/adminBar.php")
                             <a href="/admin-user-list">
                                 <h3 class="h5 mb-3">Users</h3>
                             </a>
-                            <?php while ($row = mysqli_fetch_array($CountUserIDResult)) { ?>
+                            <?php while
+                            ($row = $CountUserIDResult->fetch(PDO::FETCH_ASSOC)) {
+                                ?>
                                 <h3><?php echo $row['COUNT(userID)']; ?></h3>
                             <?php } ?>
                         </li>
@@ -54,7 +59,8 @@ require("_partials/adminBar.php")
                             <a href="/admin-event">
                                 <h3 class="h5 mb-3">Events</h3>
                             </a>
-                            <?php while ($row = mysqli_fetch_array($CountDiscountIDResult)) { ?>
+                            <?php while
+                            ($row = $CountDiscountIDResult->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <h3><?php echo $row['COUNT(discountID)']; ?></h3>
                             <?php } ?>
                         </li>
@@ -76,7 +82,9 @@ require("_partials/adminBar.php")
 
                     <?php
                     $i = 1;
-                    while ($row = mysqli_fetch_array($CountryResult)) { ?>
+
+                    while
+                    ($row = $CountryResult->fetch(PDO::FETCH_ASSOC))  { ?>
                         <tbody>
                             <tr>
                                 <th scope="row"><?php echo $i; ?></th>
