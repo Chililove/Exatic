@@ -26,7 +26,7 @@ require("_partials/adminBar.php")
 
             <?php
             $i = 1;
-            while ($row = mysqli_fetch_assoc($EventListResult)) { ?>
+            while ($row = $EventListResult->fetch(PDO::FETCH_ASSOC)) {?>
                 <tbody>
                     <tr>
                         <th scope="row"><?php echo $i; ?></th>
