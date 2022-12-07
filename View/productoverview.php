@@ -35,8 +35,8 @@ require $rootPath . "Controller/CartController.php";
                 <?php
                 $overview = $_SERVER['QUERY_STRING'];
                 $product_details = "SELECT * FROM Product p, ProductType pt WHERE p.productTypeID = pt.productTypeID AND p.productID = $overview";
-                $overviewResult = mysqli_query($conn, $product_details);
-                while ($row = mysqli_fetch_assoc($overviewResult)) { ?>
+                $overviewResult = $conn->query($product_details);
+                while ($row = $overviewResult->fetch(PDO::FETCH_ASSOC)) { ?>
 
                     <div class="col-6">
 
@@ -53,7 +53,7 @@ require $rootPath . "Controller/CartController.php";
 
                                     <!-- <div class="section"> -->
                                     <h3 class="text-font"><?php echo $row['title']; ?></h3>
-                                    <h5 style="color:#337ab7"><span><?php echo $row['typeName']; ?></span> / <span> <?php echo $row['brand']; ?></span> · <small style="color:#337ab7">(50 likes)</small>
+                                    <h5 style="color:#337ab7"><span><?php echo $row['typeName']; ?></span> / <span> <?php echo $row['brand']; ?></span>
                                     </h5>
                                     <!-- </div> -->
 
@@ -96,7 +96,6 @@ require $rootPath . "Controller/CartController.php";
                                         <input type="submit" name="add_to_cart" style="margin-bottom:2%;" class="btn add-cart px-auto" value="ADD TO CART" />
 
                                         <!--  <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> ADD TO CART</button> -->
-                                        <!--  <h6><a href="#"><span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span> Bookmark Product</a></h6> -->
                                     </div>
                                 </form>
                             </div>
@@ -109,8 +108,6 @@ require $rootPath . "Controller/CartController.php";
                             </small>
 
                         </div>
-
-                        <!--   </div> -->
 
                     </div>
 
@@ -137,7 +134,7 @@ require $rootPath . "Controller/CartController.php";
 
                 <div class="row">
                     <?php
-                    while ($row = mysqli_fetch_assoc($recommendResult)) { ?>
+                    while ($row = $recommendResult->fetch(PDO::FETCH_ASSOC)) { ?>
                         <div class="col-md-3">
                             <div class="col-12">
                                 <a href="/product-overview?<?php echo $row['productID']; ?>"><img class="img-fluid rounded  mx-auto d-block" width="200" height="200" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>

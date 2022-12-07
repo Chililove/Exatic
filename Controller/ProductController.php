@@ -1,14 +1,15 @@
 <?php
 
-// fetch all products
+// fetch first 10 products
 $productResultStmt =  $conn->query($firstPageProductsQuery);
 $productResult = $productResultStmt->fetchAll(PDO::FETCH_ASSOC);
 
+//Count Pages 
 $pageCountStmt = $conn->query($pageCountQuery);
 $pageCountResult = $pageCountStmt->fetchAll(PDO::FETCH_ASSOC);
 $pageCount = count($pageCountResult);
 
-//categories
+//Categories
 $productTypeResultStmt =  $conn->query($ProductModel->productType);
 $productTypeResult = $productTypeResultStmt->fetchAll(PDO::FETCH_ASSOC);
 
