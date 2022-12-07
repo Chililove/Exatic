@@ -3,17 +3,16 @@ require("rootPath.php");
 
 require $rootPath . "Model/AdminProductModel.php";
 require $rootPath . "Controller/Admin/AdminProductController.php";
-require ("_partials/adminBar.php")
+require("_partials/adminBar.php")
 
 ?>
 
-
-    <div class="container">
-        <h1>Edit Product</h1>
-        <?php $overview = $_SERVER['QUERY_STRING'];
-        $product_details = "SELECT * FROM Product p, ProductType pt WHERE p.productTypeID = pt.producttypeID AND p.productID = $overview";
-        $overviewResult = mysqli_query($conn, $product_details);
-        while ($row = mysqli_fetch_assoc($overviewResult)) { ?>
+<div class="container">
+    <h1>Edit Product</h1>
+    <?php $overview = $_SERVER['QUERY_STRING'];
+    $product_details = "SELECT * FROM Product p, ProductType pt WHERE p.productTypeID = pt.producttypeID AND p.productID = $overview";
+    $overviewResult = mysqli_query($conn, $product_details);
+    while ($row = mysqli_fetch_assoc($overviewResult)) { ?>
         <form action="#" enctype="multipart/form-data" method="post">
             <div class="row">
                 <div class="col-md-8 mb-4">
@@ -76,7 +75,7 @@ require ("_partials/adminBar.php")
                         <select type="text" name="productTypeID" class="form-control" required>
                             <?php
                             while ($row = mysqli_fetch_array($productTypeResult)) {
-                                ?>
+                            ?>
                                 <option value="<?php echo $row["productTypeID"]; ?>"><?php echo $row["typeName"]; ?></option>
                             <?php } ?>
                         </select>
@@ -88,7 +87,7 @@ require ("_partials/adminBar.php")
                         <select type="category" name="discountID" class="form-control" required>
                             <?php
                             while ($row = mysqli_fetch_array($productDiscount)) {
-                                ?>
+                            ?>
                                 <option value="<?php echo $row["discountID"]; ?>"><?php echo $row["eventName"]; ?></option>
                             <?php } ?>
                         </select>
@@ -97,7 +96,7 @@ require ("_partials/adminBar.php")
             </div>
 
             <button type="submit" name="submitProductEdit" class="btn btn-success" id="btn-add">Add</button>
-            <?php } ?>
+        <?php } ?>
         </form>
 
-    </div>
+</div>

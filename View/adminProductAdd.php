@@ -3,7 +3,7 @@ require("rootPath.php");
 
 require $rootPath . "Model/AdminProductModel.php";
 require $rootPath . "Controller/Admin/AdminProductController.php";
-require ("_partials/adminBar.php")
+require("_partials/adminBar.php")
 
 ?>
 <div class="container py-5">
