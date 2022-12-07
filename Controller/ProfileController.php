@@ -44,8 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $handle->bindParam(':email', $email, PDO::PARAM_STR);
             $handle->bindParam(':imagePath', $imagePath, PDO::PARAM_STR);
             $handle->bindParam(':userID', $userid, PDO::PARAM_INT);
-            $userResult = $handle->execute();
-
+            //$userResult = $handle->execute();
+            $handle->execute();
 
             $handleAddress = $conn->prepare($ProfileModel->updateAddress);
 
