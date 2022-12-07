@@ -1,7 +1,17 @@
 <?php
 $isUpdated = false;
 $isSuccess = false;
+
+
+
 if (isset($_POST["add_to_cart"])) {
+
+    $title = checkInput($_POST["title"]);
+    $price = checkInput($_POST["price"]);
+    $stockQuantity = checkInput($_POST["stockQuantity"]);
+    $productImage = checkInput($_POST["productImage"]);
+    $description = checkInput($_POST["description"]);
+
     if (isset($_SESSION["shopping_cart"])) {
         $item_array_id =  array_column($_SESSION["shopping_cart"], "productID");
 
@@ -39,6 +49,12 @@ if (isset($_POST["add_to_cart"])) {
         $_SESSION["shopping_cart"][0] = $item_array;
         $isSuccess = true;
     }
+    /*  doesnt workkkkk
+   if (empty($stockQuantity) || $stockQuantity < 0) {
+        echo '<div class="error">
+                quantity less then 1 or empty
+            </div>';
+    } */
 }
 
 if (isset($_GET["action"])) {
@@ -61,5 +77,14 @@ function shopping_cart_product_count()
 
     return $product_count;
 }
+
+//Validation help function 
+function checkInput($input)
+{
+    $input = trim($input);
+    $input = stripslashes($input);
+    $input = htmlspecialchars($input);
+    return $input;
+}    
 
 /* Start a new shopping cart logic cuz this is just ugh*/

@@ -5,6 +5,12 @@
 
 class POverviewModel
 {
+    /* public $overview;
+
+    public function  __construct()
+    {
+        $this->$overview = $_SERVER['QUERY_STRING'];
+    } */
 
     public $recommend = "SELECT * FROM Product ORDER BY RAND() LIMIT 4";
 }

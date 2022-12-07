@@ -32,21 +32,6 @@ require $rootPath . "Controller/HomeController.php";
                     </div>
                 </div>
                 <div class="col-6">
-                    <!--Voucher -->
-                    <!-- <div class="coupon">
-                        <div class="container">
-                            <h3>Welcome to Exatic</h3>
-                        </div>
-                        <img src="/Exatic/assets/coverexatic.jpeg" alt="Avatar" style="width:100%;">
-                        <div class="container" style="background-color:white">
-                            <h2><b>20% OFF YOUR PURCHASE</b></h2>
-                            <p>Lorem ipsum..</p>
-                        </div>
-                        <div class="container">
-                            <p> <span class="promo">Enjoy products</span></p>
-                            <p class="expire">#ExaticDiscount</p>
-                        </div>
-                    </div> -->
 
                     <div class="overlay-right d-flex col justify-content-end">
 
@@ -66,7 +51,6 @@ require $rootPath . "Controller/HomeController.php";
                                 <div class="card card-body w-40">
 
                                     <?php
-                                    // if (mysqli_num_rows($dailyResult) > 0) ?? Ask Kim if we need to check for count rows {
                                     while ($row = $dailyResult->fetch(PDO::FETCH_ASSOC)) {
                                     ?>
 
@@ -179,9 +163,6 @@ require $rootPath . "Controller/HomeController.php";
                     <!--END Carousel-->
 
                     <?php
-
-                    //if (mysqli_num_rows($newsResult) > 0) {
-
 
                     while ($row = $newsResult->fetch(PDO::FETCH_ASSOC)) {
 

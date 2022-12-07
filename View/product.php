@@ -32,6 +32,7 @@ require $rootPath . "Controller/CartController.php";
     <iframe name="product" style="display:none;"></iframe>
     <div class="text-center container py-2">
 
+
         <ul class="nav justify-content-center">
             <?php
             // if (mysqli_num_rows($productTypeResult) > 0) {
@@ -71,13 +72,14 @@ require $rootPath . "Controller/CartController.php";
     <div class="container-fluid">
         <div class="row justify-content-center" style="margin-bottom:5%;">
 
+
             <?php
             foreach ($productResult as $row) {
             ?>
                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-5 d-flex justify-content-center">
                     <div class="card" style="width: 18rem;">
 
-                        <form method="post" action="/product.php?action=add&productID=<?php echo $row; ?>" target="product">
+                        <form method="post" action="/product.php?action=add&productID=<?php echo $row['productID']; ?>" target="product">
 
                             <a href="/product-overview?<?php echo $row['productID']; ?>"><img class="rounded mx-auto d-block" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="230" /></a>
                             <div class="card-body text-center mx-auto">
