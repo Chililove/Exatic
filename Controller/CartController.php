@@ -6,11 +6,11 @@ $isSuccess = false;
 
 if (isset($_POST["add_to_cart"])) {
 
-    $title = checkInput($_POST["title"]);
-    $price = checkInput($_POST["price"]);
-    $stockQuantity = checkInput($_POST["stockQuantity"]);
-    $productImage = checkInput($_POST["productImage"]);
-    $description = checkInput($_POST["description"]);
+    $title = $sanitized($_POST["title"]);
+    $price = $sanitized($_POST["price"]);
+    $stockQuantity = $sanitized($_POST["stockQuantity"]);
+    $productImage = $sanitized($_POST["productImage"]);
+    $description = $sanitized($_POST["description"]);
 
     if (isset($_SESSION["shopping_cart"])) {
         $item_array_id =  array_column($_SESSION["shopping_cart"], "productID");

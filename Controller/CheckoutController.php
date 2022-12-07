@@ -25,13 +25,13 @@ if (isset($_POST['submit'])) {
         } else {
             //validate_input is a custom function
             //you can find it in helpers.php file
-            $firstName  = sanitize($_POST['firstName']);
-            $lastName   = sanitize($_POST['lastName']);
-            $email      = sanitize($_POST['email']);
-            $address    = sanitize($_POST['address']);
-            $address2   = (!empty($_POST['address2']) ? sanitize($_POST['address2']) : '');
-            $country    = sanitize($_POST['country']);
-            $zipcode    = sanitize($_POST['zipcode']);
+            $firstName  = $sanitized($_POST['firstName']);
+            $lastName   = $sanitized($_POST['lastName']);
+            $email      = $sanitized($_POST['email']);
+            $address    = $sanitized($_POST['address']);
+            $address2   = (!empty($_POST['address2']) ? $sanitized($_POST['address2']) : '');
+            $country    = $sanitized($_POST['country']);
+            $zipcode    = $sanitized($_POST['zipcode']);
 
             $sql = 'INSERT INTO orders (firstName, lastName, email, address, address2, country, zipcode, order_status,created_at, updated_at) VALUES (:fname, :lname, :email, :address, :address2, :country, :zipcode, :order_status,:created_at, :updated_at)';
             $statement = $conn->prepare($sql);
