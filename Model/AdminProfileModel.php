@@ -1,5 +1,5 @@
 <?php
-class AdminOverviewModel
+class AdminProfileModel
 {
     public $CountryProduct = "SELECT country, COUNT(country),
                                 SUM(stockQuantity) AS totalQuantity
@@ -18,4 +18,4 @@ class AdminOverviewModel
                                 HAVING COUNT(userID) > 0";
     public $AdminProfile = "SELECT * FROM User u, Address a, PostalCode p WHERE u.addressID = a.addressID AND a.postalCodeID = p.postalCodeID AND u.userType=0 LIMIT 1";
 };
-$AdminOverviewModel = new AdminOverviewModel();
+$AdminProfileModel = new AdminProfileModel();

@@ -1,9 +1,8 @@
 <?php
 require("rootPath.php");
 
-require $rootPath . "Model/AdminProductAddModel.php";
-require $rootPath . "Controller/Admin/ProductAddResultController.php";
-require $rootPath . "Controller/Admin/ProductAddController.php";
+require $rootPath . "Model/AdminProductModel.php";
+require $rootPath . "Controller/Admin/AdminProductController.php";
 require ("_partials/adminBar.php")
 
 ?>

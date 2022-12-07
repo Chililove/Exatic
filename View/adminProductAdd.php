@@ -1,12 +1,12 @@
 <?php
 require("rootPath.php");
 
-require $rootPath . "Model/AdminProductAddModel.php";
-require $rootPath . "Controller/Admin/ProductAddResultController.php";
-require $rootPath . "Controller/Admin/ProductAddController.php";
+require $rootPath . "Model/AdminProductModel.php";
+require $rootPath . "Controller/Admin/AdminProductController.php";
+require ("_partials/adminBar.php")
 
 ?>
-<div class="container" >
+<div class="container py-5">
     <form action="#" enctype="multipart/form-data" method="post">
         <div class="row">
             <div class="col-md-8 mb-4">
@@ -68,7 +68,7 @@ require $rootPath . "Controller/Admin/ProductAddController.php";
                     <select type="text" name="productTypeID" class="form-control" required>
                         <option value="">--- Choose a Type ---</option>
                         <?php
-                        while ($row = mysqli_fetch_array($productTypeResult)) {
+                        while ($row = $productTypeResult->fetch(PDO::FETCH_ASSOC)) {
                         ?>
                             <option value="<?php echo $row["productTypeID"]; ?>"><?php echo $row["typeName"]; ?></option>
                         <?php } ?>
@@ -81,7 +81,7 @@ require $rootPath . "Controller/Admin/ProductAddController.php";
                     <select type="category" name="discountID" class="form-control" required>
                         <option value="">--- Choose a Discount ---</option>
                         <?php
-                        while ($row = mysqli_fetch_array($productDiscount)) {
+                        while ($row = $productDiscount->fetch(PDO::FETCH_ASSOC)) {
                         ?>
                             <option value="<?php echo $row["discountID"]; ?>"><?php echo $row["eventName"]; ?></option>
                         <?php } ?>

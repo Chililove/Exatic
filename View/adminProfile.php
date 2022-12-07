@@ -1,8 +1,8 @@
 <?php
 require("rootPath.php");
 
-require $rootPath . "Model/AdminOverviewModel.php";
-require $rootPath . "Controller/Admin/AdminOverviewController.php";
+require $rootPath . "Model/AdminProfileModel.php";
+require $rootPath . "Controller/Admin/AdminProfileController.php";
 require("_partials/adminBar.php")
 
 

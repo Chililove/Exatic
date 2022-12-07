@@ -2,10 +2,10 @@
 require("rootPath.php");
 
 
-require $rootPath . "Model/AdminOverviewModel.php";
+require $rootPath . "Model/AdminProfileModel.php";
 require $rootPath . "Model/EventModel.php";
-require $rootPath . "Controller/Admin/AdminOverviewController.php";
-require $rootPath . "Controller/Admin/EventAddController.php";
+require $rootPath . "Controller/Admin/AdminProfileController.php";
+require $rootPath . "Controller/Admin/EventController.php";
 
 require("_partials/adminBar.php")
 

@@ -17,8 +17,7 @@ if (isset($_POST['productAdd'])) {
         !empty($_POST['country']) || !empty($_POST['brand'])
     )
 
-
-        $file = $_FILES["productImage"]["name"];
+    $file = $_FILES["productImage"]["name"];
 
     $filename = strtolower($file);
 
@@ -37,5 +36,5 @@ if (isset($_POST['productAdd'])) {
 <?php
     }
 } else {
-    $conn->rollback();
+
 }
