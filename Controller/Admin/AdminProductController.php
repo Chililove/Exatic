@@ -6,17 +6,20 @@ $adminProductResult = $conn->query($AdminProductModel->product_list);
 //$productDiscount = $conn ->query( $AdminProductModel->discount);
 $productTypeResult = $conn->query($AdminProductModel->productType);
 $productDiscount = $conn->query($AdminProductModel->discount);
-// Add controller 
+
+
+
+// Create product 
 
 if (isset($_POST['productAdd'])) {
-    $title = $sanitized($_POST['title']);
-    $price = $sanitized($_POST['price']);
-    $stockQuantity = $sanitized($_POST['stockQuantity']);
-    $description = $sanitized($_POST['description']);
-    $country = $sanitized($_POST['country']);
-    $brand = $sanitized($_POST['brand']);
-    $productypeID = $sanitized($_POST['productTypeID']);
-    $discountID = $sanitized($_POST['discountID']);
+    $title = $sanitized['title'];
+    $price = $sanitized['price'];
+    $stockQuantity = $sanitized['stockQuantity'];
+    $description = $sanitized['description'];
+    $country = $sanitized['country'];
+    $brand = $sanitized['brand'];
+    $productTypeID = $sanitized['productTypeID'];
+    $discountID = $sanitized['discountID'];
     $timestamp = ['timestamp'];
 
     if (
@@ -25,15 +28,15 @@ if (isset($_POST['productAdd'])) {
         !empty($_POST['country']) || !empty($_POST['brand'])
     ) {
 
-        $file = $_FILES["productImage"]["name"];
+        /*    $file = $_FILES["productImage"]["name"];
 
-        $filename = strtolower($file);
+        $filename = strtolower($file); */
 
-        if ($_FILES['productImage']['name']) {
+        // if ($_FILES['productImage']['name']) {
 
-            move_uploaded_file($_FILES['productImage']['tmp_name'], "../assets/product/" . $_FILES['productImage']['name']);
+        //     move_uploaded_file($_FILES['productImage']['tmp_name'], "../assets/product/" . $_FILES['productImage']['name']);
 
-
+        try {
             $conn->beginTransaction();
 
             $handle = $conn->prepare($AdminProductModel->addProduct);
@@ -47,24 +50,30 @@ if (isset($_POST['productAdd'])) {
             $handle->bindParam(':brand', $brand, PDO::PARAM_STR);
             $handle->bindParam(':productImage', $filename, PDO::PARAM_STR);
             $handle->bindParam(':timestamp', $timestamp, PDO::PARAM_INT);
-            $handle->bindParam(':productTypeID', $producTypeID, PDO::PARAM_INT);
+            $handle->bindParam(':productTypeID', $productTypeID, PDO::PARAM_INT);
             $handle->bindParam(':discountID', $discountID, PDO::PARAM_INT);
 
             $resultAdd = $handle->execute();
+            echo ($handle);
             $conn->commit();
+            echo "Succedded!!!"
+
 ?>
-            <script type="text/javascript">
+
+            <!-- <script type="text/javascript">
                 window.location = "/admin-product";
-            </script>
-        <?php
-        } else {
-            $conn->rollback();
+            </script> -->
+<?php
+        } catch (Exception $err) {
+            // $conn->rollback();
+            echo "failed!!!";
         }
     }
 }
-//Edit controller
+// }
+//Update product
 
-if (isset($_POST['submitProductEdit'])) {
+/* if (isset($_POST['submitProductEdit'])) {
     $title = htmlspecialchars($sanitized['title']);
     $price = htmlspecialchars($sanitized['price']);
     $stockQuantity = htmlspecialchars($sanitized['stockQuantity']);
@@ -97,7 +106,7 @@ if (isset($_POST['submitProductEdit'])) {
 
 
         echo $result3;
-        ?>
+    ?>
         echo
         <script type="text/javascript">
             window.location = "/admin-product";
@@ -106,4 +115,4 @@ if (isset($_POST['submitProductEdit'])) {
     }
 } else {
     $conn->rollback();
-}
+} */

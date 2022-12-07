@@ -21,7 +21,7 @@ require("_partials/adminBar.php")
             <div class="col-md-8 mb-4">
                 <div class="form-group">
                     <label for="image">Add image</label>
-                    <input type="file" name="productImage" id="image" value="" class="form-control" required />
+                    <input type="file" name="productImage" id="image" value="" class="form-control" />
                 </div>
             </div>
         </div>
@@ -68,10 +68,16 @@ require("_partials/adminBar.php")
                     <select type="text" name="productTypeID" class="form-control" required>
                         <option value="">--- Choose a Type ---</option>
                         <?php
-                        while ($row = $productTypeResult->fetch(PDO::FETCH_ASSOC)) {
+                        //  while ($row = $productTypeResult->fetch(PDO::FETCH_ASSOC)) {
                         ?>
-                            <option value="<?php echo $row["productTypeID"]; ?>"><?php echo $row["typeName"]; ?></option>
-                        <?php } ?>
+                        <!--     <option value="<?php //echo $row["productTypeID"]; 
+                                                ?>"><?php //echo $row["typeName"]; 
+                                                    ?></option> -->
+                        <?php //} 
+                        ?>
+                        <?php foreach ($productTypeResult as $productType) {
+                            echo '<option value="' . $productType["productTypeID"] . '">' . $productType["typeName"] . '</option>';
+                        } ?>
                     </select>
                 </div>
             </div>
@@ -81,10 +87,16 @@ require("_partials/adminBar.php")
                     <select type="category" name="discountID" class="form-control" required>
                         <option value="">--- Choose a Discount ---</option>
                         <?php
-                        while ($row = $productDiscount->fetch(PDO::FETCH_ASSOC)) {
+                        //while ($row = $productDiscount->fetch(PDO::FETCH_ASSOC)) {
                         ?>
-                            <option value="<?php echo $row["discountID"]; ?>"><?php echo $row["eventName"]; ?></option>
-                        <?php } ?>
+                        <!--  <option value="<?php //echo $row["discountID"]; 
+                                                ?>"><?php //echo $row["eventName"]; 
+                                                    ?></option> -->
+                        <?php // } 
+                        ?>
+                        <?php foreach ($productDiscount as $discount) {
+                            echo '<option value="' . $discount["discountID"] . '">' . $discount["eventName"] .  '</option>';
+                        } ?>
                     </select>
                 </div>
             </div>
