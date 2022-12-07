@@ -6,25 +6,12 @@ require $rootPath . "Controller/Admin/AdminProductController.php";
 require ("_partials/adminBar.php")
 ?>
 
-<div class="row row-cols-4 d-flex justify-content-center py-5">
+<div class="row-cols-4 d-flex justify-content-center py-5">
     <div class="col-lg-8" style="text-align: center">
-        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #212121; color: white;border-radius: 0">
-            Add a new Product
+        <button type="button" class="btn"  style="background: #212121; color: white;border-radius: 0">
+            <a href="/admin-product-add">Add a new Product</a>
         </button>
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Add Product</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                     <div class="modal-body">
-                        <?php  require("adminProductAdd.php") ?>
-                    </div>
 
-                </div>
-            </div>
-        </div>
             <table class="table table">
                 <thead>
                 <tr>
@@ -76,19 +63,7 @@ require ("_partials/adminBar.php")
                     </tr>
                     </tbody>
                 <?php }?>
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Add Product</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <?php  require("adminProductAdd.php") ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </table>
     </div>
 </div>
