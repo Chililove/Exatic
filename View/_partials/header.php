@@ -72,20 +72,15 @@ $PageTitle = "Exatic";
 
                     </li>
 
-
-
+                    <!-- switching between admin and user profile :) -->
                     <li class="nav-item" style="position:absolute; right:2%;">
-                        <?php if (isset($_SESSION["userID"]) && $_SESSION['userType'] == 0) {
-
-                        ?>
+                        <?php if (isset($_SESSION["userID"]) && $_SESSION['userType'] == 0) { ?>
                             <a class="nav-link" href="/admin-profile">
                                 <img src="/assets/nav-icons/person-circle.svg" style=" width:auto; height:30px;" class="d-inline-block" alt="login">
                             </a>
                             <?php
                         } else {
-                            if (isset($_SESSION["userID"])) {
-
-                            ?>
+                            if (isset($_SESSION["userID"])) { ?>
                                 <a class="nav-link" href="/profile">
                                     <img src="/assets/nav-icons/person-circle.svg" style=" width:auto; height:30px;" class="d-inline-block" alt="login">
                                 </a>
