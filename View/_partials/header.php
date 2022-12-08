@@ -24,7 +24,7 @@ $PageTitle = "Exatic";
     <!-- Navigation Bar -->
     <nav class="navbar sticky-top navbar-expand-lg" style="background-color: #C3DBB6;">
         <div class="container-fluid justify-content-between">
-            <a class="navbar-brand" href="/home" >
+            <a class="navbar-brand" href="/home">
                 <img src="/assets/exatic-logo-2.png" style="margin-left:85%; width:auto; height:45px;" width="35" height="35" class="d-inline-block" alt="Logo">
             </a>
             <!--responsive aka  burger for mobile ver.--->
@@ -72,19 +72,24 @@ $PageTitle = "Exatic";
 
                     </li>
 
-
-
+                    <!-- switching between admin and user profile :) -->
                     <li class="nav-item" style="position:absolute; right:2%;">
-                        <?php if (isset($_SESSION["userID"])) {
-                        ?>
-                            <a class="nav-link" href="/profile">
+                        <?php if (isset($_SESSION["userID"]) && $_SESSION['userType'] == 0) { ?>
+                            <a class="nav-link" href="/admin-profile">
                                 <img src="/assets/nav-icons/person-circle.svg" style=" width:auto; height:30px;" class="d-inline-block" alt="login">
                             </a>
-                        <?php
+                            <?php
                         } else {
-                        ?>
-                            <a class="nav-link" href="/signin">Login</a>
+                            if (isset($_SESSION["userID"])) { ?>
+                                <a class="nav-link" href="/profile">
+                                    <img src="/assets/nav-icons/person-circle.svg" style=" width:auto; height:30px;" class="d-inline-block" alt="login">
+                                </a>
+                            <?php
+                            } else {
+                            ?>
+                                <a class="nav-link" href="/signin">Login</a>
                         <?php
+                            }
                         }
                         ?>
 
