@@ -58,7 +58,7 @@ require $rootPath . "Controller/HomeController.php";
 
                                             <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>" target="home">
                                                 <div class="row d-flex flex-row justify-content-center">
-                                                    <a href="/product-overview?<?php echo $row['productID']; ?>">
+                                                    <a href="/product-overview.php?productID=<?php echo $row['productID']; ?>">
                                                         <?php if ($row['isDailySpecial']) {
                                                             echo '<span class="badge bg-warning">Daily Special</span>';
                                                         } ?>
@@ -170,7 +170,7 @@ require $rootPath . "Controller/HomeController.php";
 
                                 <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>" target="home">
 
-                                    <a href="/product-overview?<?php echo $row['productID']; ?>">
+                                    <a href="/product-overview.php?productID=<?php echo $row['productID']; ?>">
                                         <?php if ($row['isNew']) {
                                             echo '<span class="badge bg-success">New</span>';
                                         } ?>

@@ -1,5 +1,14 @@
 <?php
+//$pdetailsResult = '';
 
-//$overviewResult = mysqli_query($conn, $POverviewModel->product_details);
+/*class POverviewController
+{
 
+    public function __construct($POverviewModel)
+    {
+        $this->POverviewModel = $POverviewModel;
+    }
+}*/
+
+$pdetailsResult = $conn->query($product_details);
 $recommendResult = $conn->query($POverviewModel->recommend);

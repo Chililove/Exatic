@@ -50,7 +50,7 @@ require $rootPath . "Controller/CartController.php";
             } ?>
             <!-- Future categories with sub-categories-->
             <!--  <li class="nav-item dropdown">
-                <a style="color:black; font-weight:500;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Brands</a>
+                <a  class="nav-link dropdown-toggle categories-text" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Brands</a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">BrandTest1</a></li>
                     <li><a class="dropdown-item" href="#">BrandTest2</a></li>
@@ -58,7 +58,7 @@ require $rootPath . "Controller/CartController.php";
                 </ul>
             </li>
             <li class="nav-item dropdown">
-                <a style="color:black; font-weight:500;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Country</a>
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Country</a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">CountryTest1</a></li>
                     <li><a class="dropdown-item" href="#">CountryTest2</a></li>
@@ -82,7 +82,7 @@ require $rootPath . "Controller/CartController.php";
 
                         <form method="post" action="/product.php?action=add&productID=<?php echo $row['productID']; ?>" target="product">
 
-                            <a href="/product-overview?<?php echo $row['productID']; ?>"><img class="rounded mx-auto d-block" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="230" /></a>
+                            <a href="/product-overview?productID=<?php echo $row['productID']; ?>"><img class="rounded mx-auto d-block" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="230" /></a>
                             <div class="card-body text-center mx-auto">
                                 <div class='cvp'>
 

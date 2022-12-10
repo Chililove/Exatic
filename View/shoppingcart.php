@@ -28,7 +28,7 @@ require $rootPath . "Controller/CartController.php";
 
                                         <div class="col-md-2 col-lg-2 col-xl-2">
 
-                                            <a href="/product-overview?<?php echo $values['productID']; ?>"><img class="img-fluid rounded-3 mx-auto card-img-top" src="/Exatic/assets/product/<?php echo $values['productImage'] ?>" alt="Product Image" /></a>
+                                            <a href="/product-overview.php?productID=<?php echo $values['productID']; ?>"><img class="img-fluid rounded-3 mx-auto card-img-top" src="/Exatic/assets/product/<?php echo $values['productImage'] ?>" alt="Product Image" /></a>
                                         </div>
 
                                         <div class="col-md-3 col-lg-3 col-xl-3">
