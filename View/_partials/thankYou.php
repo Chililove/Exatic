@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_SESSION['confirm_order']) || empty($_SESSION['confirm_order'])) {
-    header('location:index.php');
+    header('location:checkout.php');
     exit();
 }
 

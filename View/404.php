@@ -3,10 +3,6 @@
    </div>
 
 
-   <style>
-       .style404 {
-           display: block;
-           margin-left: auto;
-           margin-right: auto;
-       }
+   <style lang="css">
+       @import "styles.css";
    </style>

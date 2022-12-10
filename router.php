@@ -33,6 +33,7 @@ $view = match ($toCheck) {
     '/product' => '/View/product.php',
     '/shopping-cart' => '/View/shoppingcart.php',
     '/cart-preview' => '/View/cart-preview.php',
+    '/SendMail' => '/View/SendMail.php',
     '/logout' => '/View/logout.php',
     default => null
 };
