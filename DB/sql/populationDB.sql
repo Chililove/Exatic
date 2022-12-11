@@ -6,7 +6,7 @@ INSERT INTO Discount (discountID, eventName, description, discountProcent, start
 
 
 
-/* producttype */
+/* productType */
 INSERT INTO ProductType (productTypeID, typeName) VALUES (1, "Ramen");
 INSERT INTO ProductType (productTypeID, typeName) VALUES (2, "Alcohol");
 INSERT INTO ProductType (productTypeID, typeName) VALUES (3, "Soda");
@@ -1176,7 +1176,12 @@ INSERT INTO Address (`addressID`, `streetName`, `streetNumber`, `postalCodeID`) 
 /*CompanyInfo*/
 
 INSERT INTO `CompanyInfo` (`companyInfoID`, `companyDescription`, `weekdays`, `weekends`, `addressID`) VALUES
-    (1, 'Its very nice to have you here, we hope the experience will please you.', 'Weekdays', 'Weekends', 1);
+    (1, 'It is very nice to have you here, we hope the experience will please you.<br />
+                                            Here at Exatic we aim to broaden asian products as well as making them more accessible in Denmark.<br /><br />
+                                            Here you can find any ingredient you need to cook asian cuisine and treat family and friends with familiar and newly added products.<br />
+                                            All groceries can be delivered at home.<br />
+                                            <br />
+                                            Hopefully you find what you need or maybe get inspired by new products from your familiar brands.', 'MONDAY-FRIDAY', 'SATURDAY-SUNDAY','8:00 AM - 9:00 PM','10:00 AM - 15:00 PM', 1);
 
 /* User */
 

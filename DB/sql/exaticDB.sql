@@ -58,7 +58,7 @@ CREATE TABLE Product (
     productID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     title VARCHAR(100),
     price DECIMAL,
-    stockQuantity INT(1000),
+    stockQuantity INT(255),
     description VARCHAR(1000),
     isNew BOOLEAN,
     isDailySpecial BOOLEAN,
