@@ -5,56 +5,55 @@ $isSuccess = false;
 
 
 if (isset($_POST["add_to_cart"])) {
+    if ($_POST["stockQuantity"] > 0 && $_POST["stockQuantity"] < 1000) {
 
-    $title = $sanitized($_POST["title"]);
-    $price = $sanitized($_POST["price"]);
-    $stockQuantity = $sanitized($_POST["stockQuantity"]);
-    $productImage = $sanitized($_POST["productImage"]);
-    $description = $sanitized($_POST["description"]);
+        $title = sanitize($_POST["title"]);
+        $price = sanitize($_POST["price"]);
+        $stockQuantity = sanitize($_POST["stockQuantity"]);
+        $productImage = sanitize($_POST["productImage"]);
+        $description = sanitize($_POST["description"]);
 
-    if (isset($_SESSION["shopping_cart"])) {
-        $item_array_id =  array_column($_SESSION["shopping_cart"], "productID");
+        if (isset($_SESSION["shopping_cart"])) {
+            $item_array_id =  array_column($_SESSION["shopping_cart"], "productID");
 
-        if (!in_array($_GET["productID"], $item_array_id)) {
-            $count = count($_SESSION["shopping_cart"]);
-            $item_array = array(
-                'productID' => $_GET["productID"],
-                'title' => $_POST["title"],
-                'price' => $_POST["price"],
-                'stockQuantity' => $_POST["stockQuantity"],
-                'productImage' => $_POST["productImage"],
-                'description' => $_POST["description"],
-            );
-            $_SESSION["shopping_cart"][$count] = $item_array;
-            $isSuccess = true;
+            if (!in_array($_GET["productID"], $item_array_id)) {
+                $count = count($_SESSION["shopping_cart"]);
+                $item_array = array(
+                    'productID' => sanitize($_GET["productID"]),
+                    'title' => sanitize($_POST["title"]),
+                    'price' => sanitize($_POST["price"]),
+                    'stockQuantity' => sanitize($_POST["stockQuantity"]),
+                    'productImage' => sanitize($_POST["productImage"]),
+                    'description' => sanitize($_POST["description"]),
+                );
+                $_SESSION["shopping_cart"][$count] = $item_array;
+                $isSuccess = true;
+            } else {
+
+                //add quantity to existing item
+                // need to find specific product smth with array_search
+                $productIndex = array_search($_GET["productID"], $item_array_id);
+
+                $_SESSION["shopping_cart"][$productIndex]["stockQuantity"] += $_POST["stockQuantity"];
+
+                $isUpdated = true;
+            }
         } else {
 
-            //add quantity to existing item
-            // need to find specific product smth with array_search
-            $productIndex = array_search($_GET["productID"], $item_array_id);
-
-            $_SESSION["shopping_cart"][$productIndex]["stockQuantity"] += $_POST["stockQuantity"];
-
-            $isUpdated = true;
+            $item_array = array(
+                'productID' => sanitize($_GET["productID"]),
+                'title' => sanitize($_POST["title"]),
+                'price' => sanitize($_POST["price"]),
+                'stockQuantity' => sanitize($_POST["stockQuantity"]),
+                'productImage' => sanitize($_POST["productImage"]),
+                'description' => sanitize($_POST["description"]),
+            );
+            $_SESSION["shopping_cart"][0] = $item_array;
+            $isSuccess = true;
         }
-    } else {
-        $item_array = array(
-            'productID' => $_GET["productID"],
-            'title' => $_POST["title"],
-            'price' => $_POST["price"],
-            'stockQuantity' => $_POST["stockQuantity"],
-            'productImage' => $_POST["productImage"],
-            'description' => $_POST["description"],
-        );
-        $_SESSION["shopping_cart"][0] = $item_array;
-        $isSuccess = true;
     }
-    /*  doesnt workkkkk
-   if (empty($stockQuantity) || $stockQuantity < 0) {
-        echo '<div class="error">
-                quantity less then 1 or empty
-            </div>';
-    } */
+    header("Location:product.php");
+    exit();
 }
 
 if (isset($_GET["action"])) {
@@ -77,14 +76,6 @@ function shopping_cart_product_count()
 
     return $product_count;
 }
-
-//Validation help function 
-function checkInput($input)
-{
-    $input = trim($input);
-    $input = stripslashes($input);
-    $input = htmlspecialchars($input);
-    return $input;
-}    
+   
 
 /* Start a new shopping cart logic cuz this is just ugh*/

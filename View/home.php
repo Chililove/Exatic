@@ -11,17 +11,17 @@ require $rootPath . "Controller/HomeController.php";
 
 <head>
     <title>Home</title>
-    <div class="alert alert-black alert-dismissible fade show text-center" style="border-radius:0px;" role="alert">
+    <div class="alert alert-black alert-dismissible fade show text-center event-alert" role="alert">
         <strong>Black Friday!</strong> You should check our products with 20% off.
         <button type="button" class="btn btn-close btn-close-white close-btn-position" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 </head>
 
 <body>
-    <iframe name="home" style="display:none;"></iframe>
+    <iframe name="home" class="iframe"></iframe>
     <div class="container-fluid h-100">
         <div class="row d-flex justify-content-center h-100">
-            <div class="container-fluid d-flex green-div">
+            <div class="container-fluid d-flex green-div exatic-background-color">
 
                 <div class="col-6">
                     <div class="text-box">
@@ -38,7 +38,7 @@ require $rootPath . "Controller/HomeController.php";
 
                         <div class="col-flex">
 
-                            <img src="/Exatic/assets/pngwingpng.png" alt="img-fluid rounded mx-auto d-block" style="width:100%;" />
+                            <img src="/Exatic/assets/pngwingpng.png" alt="img-fluid rounded mx-auto d-block" class="home-logo" />
 
                             <button class="btn btn-dark btn-daily" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
                                 Click for Daily Special
@@ -58,7 +58,7 @@ require $rootPath . "Controller/HomeController.php";
 
                                             <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>" target="home">
                                                 <div class="row d-flex flex-row justify-content-center">
-                                                    <a href="/product-overview?<?php echo $row['productID']; ?>">
+                                                    <a href="/product-overview.php?productID=<?php echo $row['productID']; ?>">
                                                         <?php if ($row['isDailySpecial']) {
                                                             echo '<span class="badge bg-warning">Daily Special</span>';
                                                         } ?>
@@ -67,7 +67,7 @@ require $rootPath . "Controller/HomeController.php";
                                                     </a>
                                                     <div class="overlay-right d-flex flex-row justify-content-end">
                                                         <div class="card-text">
-                                                            <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" min="1" class="form-control" />
+                                                            <input type="number" name="stockQuantity" value="1" min="1" class="form-control quantity-input" />
                                                         </div>
                                                         <p class="card-body text-end daily-price"><?php echo $row["price"]; ?> kr</p>
                                                     </div>
@@ -85,7 +85,7 @@ require $rootPath . "Controller/HomeController.php";
 
                                                     <input type="hidden" name="description" value="<?php echo $row["description"]; ?>" />
 
-                                                    <input type="submit" name="add_to_cart" style="margin-bottom:5%;" class="btn add-cart px-auto" value="Add to Cart" />
+                                                    <input type="submit" name="add_to_cart" class="btn cart px-auto" value="Add to Cart" />
 
                                                 </div>
                                             </form>
@@ -104,10 +104,7 @@ require $rootPath . "Controller/HomeController.php";
 
 
                 </div>
-
             </div>
-
-
 
             <!-- News Section-->
             <div class="container-fluid">
@@ -134,7 +131,7 @@ require $rootPath . "Controller/HomeController.php";
                                 </div>
                                 <div class="carousel-item" data-bs-interval="2000">
                                     <img src="/assets/delivery.jpeg" class="d-block mx-auto w-100" alt="Delivery">
-                                    <div class="carousel-caption d-none d-md-block" style="color:black;">
+                                    <div class="carousel-caption d-none d-md-block text-color-carousel">
                                         <h5>Delivery</h5>
                                         <p>Right at your doorstep!</p>
                                     </div>
@@ -168,12 +165,12 @@ require $rootPath . "Controller/HomeController.php";
 
                     ?>
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-5 d-flex justify-content-center" style="padding-bottom:5%;">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-5 d-flex justify-content-center news-section">
                             <div class="card">
 
                                 <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>" target="home">
 
-                                    <a href="/product-overview?<?php echo $row['productID']; ?>">
+                                    <a href="/product-overview.php?productID=<?php echo $row['productID']; ?>">
                                         <?php if ($row['isNew']) {
                                             echo '<span class="badge bg-success">New</span>';
                                         } ?>
@@ -182,7 +179,7 @@ require $rootPath . "Controller/HomeController.php";
                                     </a>
                                     <div class="overlay-right d-flex flex-row justify-content-between">
                                         <div class="card-text">
-                                            <input style="width: 40%; height:70%; text-align: center" type="number" name="stockQuantity" value="1" min="1" class="form-control" />
+                                            <input type="number" name="stockQuantity" value="1" min="1" class="form-control quantity-input" />
                                         </div>
                                         <p class="text-end daily-price"><?php echo $row["price"]; ?> kr</p>
                                     </div>
@@ -201,7 +198,7 @@ require $rootPath . "Controller/HomeController.php";
                                         <input type="hidden" name="description" value="<?php echo $row["description"]; ?>" />
 
 
-                                        <input type="submit" name="add_to_cart" style="margin-bottom:5%;" class="btn add-cart px-auto" value="Add to Cart" />
+                                        <input type="submit" name="add_to_cart" class="btn cart px-auto" value="Add to Cart" />
 
 
                                     </div>
@@ -212,14 +209,9 @@ require $rootPath . "Controller/HomeController.php";
                     }
 
                     ?>
-
-
-
                 </div>
-
             </div>
         </div>
-    </div>
     </div>
 
 </body>
@@ -228,138 +220,5 @@ require $rootPath . "Controller/HomeController.php";
 </html>
 
 <style lang="css">
-    .btn {
-        border-radius: 0px;
-    }
-
-    .alert-dismissible .btn-close {
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 2;
-        padding: 1rem 1rem;
-    }
-
-    .daily-price {
-        font-size: 20px;
-        padding-right: 5%;
-        font-weight: 200;
-
-    }
-
-    .btn-daily {
-        margin-bottom: 2%;
-        margin-left: 70%;
-        font-size: 18px;
-        border-radius: 0px;
-    }
-
-    .title-news {
-        font-size: 40px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin-top: 5%;
-        margin-left: 30%;
-    }
-
-    .green-div {
-        background: #C3DBB6;
-        box-shadow: 0 20px 20px rgba(0, 0, 0, .2);
-        width: 100%
-    }
-
-    .carousel .carousel-item {
-        margin-top: 4%;
-        height: 300px;
-    }
-
-    .carousel-item img {
-        position: absolute;
-        object-fit: cover;
-        top: 0;
-        left: 0;
-        min-height: 300px;
-    }
-
-    @media (min-width: 1025px) {
-        .h-custom {
-            height: 100vh !important;
-        }
-    }
-
-    .alert-black {
-        background: #212121;
-        color: white;
-        padding: 0.8%;
-        margin: 0%;
-    }
-
-    .card-body {
-        width: fit-content;
-        padding: 0px;
-    }
-
-    .card {
-        box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
-        border-radius: 5px;
-        padding-bottom: 10%;
-        width: 20rem;
-        height: 31rem;
-    }
-
-    .add-cart {
-        background-color: #212121;
-        color: white;
-        margin-top: 10px;
-        font-size: 12px;
-        font-weight: 900;
-        width: 90%;
-        height: 32%;
-        padding-top: 2%;
-        box-shadow: 0px 5px 10px #212121;
-        border-radius: 0px;
-    }
-
-    .title-welcome {
-        font-size: 40px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        padding-bottom: 9%;
-
-    }
-
-    .text-box {
-        width: 80%;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: #434343;
-        padding-left: 11%;
-        line-height: 30px;
-        font-size: 18px;
-        padding-top: 12%;
-        padding-bottom: 14%;
-    }
-
-    /* .coupon {
-        border: 5px dotted #bbb; */
-    /* Dotted border */
-    /*     width: 80%;
-        border-radius: 15px;
-        /* Rounded border */
-    /*      margin: 0 auto;
-        /* Center the coupon */
-    /*      max-width: 600px;
-    }
-
-    .container {
-        padding: 2px 16px;
-        background-color: #f1f1f1;
-    }
-
-    .promo {
-        background: #ccc;
-        padding: 3px;
-    }
-
-    .expire {
-        color: red;
-    }
-    */
+    @import "styles.css";
 </style>

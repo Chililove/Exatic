@@ -32,7 +32,7 @@ $view = match ($toCheck) {
     '/checkout' => '/View/checkout.php',
     '/product' => '/View/product.php',
     '/shopping-cart' => '/View/shoppingcart.php',
-    '/cart-preview' => '/View/cart-preview.php',
+    '/SendMail' => '/View/SendMail.php',
     '/logout' => '/View/logout.php',
     default => null
 };
@@ -49,7 +49,6 @@ if ($view == null && $isAuthenticated && !$isAdmin) {
 
 if ($view == null && $isAdmin) {
     $view = match ($toCheck) {
-        'admin-profile' => '/View/adminProfile.php',
         '/admin-profile' => '/View/adminProfile.php',
         '/admin-product' => '/View/adminProduct.php',
         '/admin-user-list' => '/View/adminUsersList.php',

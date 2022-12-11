@@ -1,3 +1,23 @@
+<?php
+
+require("rootPath.php");
+require $rootPath . "_partials/Mail.php";
+
+if (isset($_GET['msgid'])) {
+    if ($_GET['msgid'] == 1) {
+        echo "<p class='msgErr';>" . "Error: Email is not set!" . "</p>";
+    } elseif ($_GET['msgid'] == 2) {
+        echo "<p class='msgErr';>" . " Error: It's Empty!:)" . "</p>";
+    } elseif ($_GET['msgid'] == 3) {
+        echo "<p class='msgErr';>" . "Error: Incorrect Email format !" . "</p>";
+        // } elseif ($_GET['msgid'] == 4) {
+        //     echo "<p class='msgErr'>" . "Error: Incorrect format for LastName || & FirstName !" . "</p>";
+    } elseif ($_GET['msgid'] == 5) {
+        echo "<p class='msgErr';>" . "Error: Message needs to have at least 2 letters !" . "</p>";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +30,7 @@
     <div class="container-fluid py-5">
         <div class="container">
             <div class="section-title">
-                <h4 class="about2-title text-uppercase">Contact us</h4>
+                <h4 class="about2-title exatic-title-color text-uppercase">Contact us</h4>
             </div>
             <div class="row">
 
@@ -25,7 +45,7 @@
                     </h5>
                     <h5 class="mb-3 about-text">You can also contact the owners directly on the form bellow.</h5>
                 </div>
-                <div class="col-lg-4 py-5 py-lg-0" style="min-height: 500px;">
+                <div class="col-lg-4 py-5 py-lg-0 google-div">
                     <div class="position-relative h-100">
                         <!--Google map-->
                         <div class="embed-responsive embed-responsive-100x400px">
@@ -56,7 +76,7 @@
                     <h1 class="title-welcome">Get in touch with us</h1>
                 </div>
                 <div class="row">
-                    <div class="col-12 about-green-div">
+                    <div class="col-12 about-green-div exatic-background-color">
                         <div class="row">
                             <div class="col-sm-6 pt-2 px-5">
                                 <div class="col-lg-12 py-0 py-lg-5">
@@ -65,7 +85,7 @@
 
                                     <hr>
 
-                                    <form method="post" action="SendMail.php">
+                                    <form method="post" action="contact">
                                         <div class="row">
                                             <div class="col">
                                                 <input type="text" class="form-control" placeholder="First name" aria-label="First name" name="firstName">
@@ -83,7 +103,7 @@
                                                 <label for="exampleFormControlTextarea1" class="form-label">Message:</label>
                                                 <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
                                             </div>
-                                            <button type="submit" class="btn btn-dark">Send Message</button>
+                                            <button name="send_email" type="submit" class="btn btn-dark">Send Message</button>
 
                                         </div>
                                     </form>
@@ -92,8 +112,8 @@
                                 </div>
                             </div>
                             <div class="col-sm-6 pb-sm-0 pb-3 px-0">
-                                <div class="position-relative h-100" style="min-height: 445px">
-                                    <img class="about-img position-absolute w-100 h-100" src="Exatic/assets/asianfood.jpeg">
+                                <div class="position-relative h-100 green-div-img-responsive">
+                                    <img class="about-img position-absolute w-100 h-100" src="Exatic/assets/contact.png">
                                 </div>
 
                             </div>
@@ -109,88 +129,5 @@
 </html>
 
 <style lang="css">
-    .embed-responsive-100x400px {
-        padding-bottom: 3%;
-    }
-
-    .btn {
-        border-radius: 0px;
-        box-shadow: 0px 5px 10px #212121;
-        font-size: 16px;
-        font-weight: 600;
-    }
-
-    .add-cart {
-        background-color: #212121;
-        color: white;
-        margin-top: 10px;
-        font-size: 12px;
-        font-weight: 900;
-        width: 90%;
-        height: 32%;
-        padding-top: 2%;
-        box-shadow: 0px 5px 10px #212121;
-        border-radius: 0px;
-    }
-
-    @media (min-width: 1025px) {
-        .h-custom {
-            min-height: 100vh !important;
-        }
-    }
-
-    .about2-title {
-        letter-spacing: 4px;
-        color: #C3DBB6;
-    }
-
-    .about-img {
-        object-fit: cover;
-    }
-
-    .about-green-div {
-        background: #C3DBB6;
-        box-shadow: 10px 10px 10px rgba(0, 0, 0, .2);
-        width: 100%
-    }
-
-    .about-text {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: #434343;
-    }
-
-    .title-welcome {
-        font-size: 40px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: #434343;
-    }
-
-    .text-box {
-        width: 80%;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: #434343;
-        padding-left: 11%;
-        line-height: 30px;
-        font-size: 18px;
-        padding-top: 12%;
-        padding-bottom: 14%;
-    }
+    @import "styles.css";
 </style>
-<!-- <html lang="en">
-<section class="h-100 h-custom">
-    <div class="container-fluid py-3 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <h1>This is Contact us page</h1>
-        </div>
-    </div>
-
-</section>
-
-</html>
-<style lang="css">
-    @media (min-width: 1025px) {
-        .h-custom {
-            min-height: 100vh !important;
-        }
-    }
-</style> -->

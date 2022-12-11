@@ -6,15 +6,15 @@
 </head>
 
 <body>
-    <section class="h-100 h-custom">
+    <section class="h-100">
         <div class="container-fluid py-4 row justify-content-center ">
             <div class="col-11">
                 <div class="row d-flex justify-content-center align-items-center">
                     <div class="col-12 py-4 text-center">
-                        <h1 class="title-welcome">Welcome to Exatic</h1>
+                        <h1 class="about-title-welcome">Welcome to Exatic</h1>
                     </div>
                     <div class="row">
-                        <div class="col-12 about-green-div">
+                        <div class="col-12 about-green-div exatic-background-color">
                             <div class="row">
                                 <div class="col-sm-6 pt-2 px-5">
                                     <div id="text-box" class="col-lg-8 py-0 py-lg-5">
@@ -34,7 +34,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6 pb-sm-0 pb-3 px-0">
-                                    <div class="position-relative h-100" style="min-height: 445px">
+                                    <div class="position-relative h-100 about-img-div">
                                         <img class="about-img position-absolute w-100 h-100" src="Exatic/assets/asianfood.jpeg">
                                     </div>
 
@@ -45,12 +45,11 @@
                 </div>
             </div>
         </div>
-
         <!-- About Part 2 Start -->
         <div class="container-fluid py-5">
             <div class="container">
                 <div class="section-title">
-                    <h4 class="about2-title text-uppercase">About Us</h4>
+                    <h4 class="about2-title text-uppercase exatic-title-color">About Us</h4>
                     <h1 class="about-text">Existing Since 2022</h1>
                 </div>
                 <div class="row">
@@ -64,11 +63,6 @@
                         <h5 class="mb-3 about-text">If you would like to hear further or have any questions please contact us here:</h5>
                         <a href="/contact" class="btn btn-dark font-weight-bold py-2 px-4 mt-2">Contact us</a>
                     </div>
-                    <!-- <div class="col-lg-4 py-5 py-lg-0" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100" src="Exatic/assets/asianfood.jpeg" style="object-fit: cover;">
-                    </div>
-                </div> -->
                     <div class="col-lg-6 py-0 py-lg-5">
                         <h1 class="mb-3 about-text">Our Vision</h1>
                         <p class="about-text"> Here at Exatic we aim to deliver the best asian products to our customers right at their doorstep.
@@ -87,50 +81,5 @@
 </html>
 
 <style lang="css">
-    .btn {
-        border-radius: 0px;
-    }
-
-    @media (min-width: 1025px) {
-        .h-custom {
-            min-height: 100vh !important;
-        }
-    }
-
-    .about2-title {
-        letter-spacing: 5px;
-        color: #C3DBB6;
-    }
-
-    .about-img {
-        object-fit: cover;
-    }
-
-    .about-green-div {
-        background: #C3DBB6;
-        box-shadow: 10px 10px 10px rgba(0, 0, 0, .2);
-        width: 100%
-    }
-
-    .about-text {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: #434343;
-    }
-
-    .title-welcome {
-        font-size: 40px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: #434343;
-    }
-
-    .text-box {
-        width: 80%;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: #434343;
-        padding-left: 11%;
-        line-height: 30px;
-        font-size: 18px;
-        padding-top: 12%;
-        padding-bottom: 14%;
-    }
+    @import "styles.css";
 </style>

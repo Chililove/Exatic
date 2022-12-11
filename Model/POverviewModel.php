@@ -1,7 +1,7 @@
 <?php
-// ???? Why does this work when outside of class
-//$overview = $_SERVER['QUERY_STRING'];
-//$product_details = "SELECT * FROM product p, producttype pt WHERE p.productTypeID = pt.producttypeID AND p.productID = $overview";
+// __construct use for dependency injection to model
+$productID = $_GET['productID'];
+$product_details = "SELECT * FROM Product p, ProductType pt WHERE  p.productTypeID = pt.productTypeID AND productID = $productID";
 
 class POverviewModel
 {
