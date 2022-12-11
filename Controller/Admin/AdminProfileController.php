@@ -13,3 +13,22 @@ $handleAdmin->execute();
 $AdminProfileResult = $handleAdmin->fetchAll();
 
 $user = $AdminProfileResult[0];
+
+//edit compamy info
+if (isset($_POST['submit'])) {
+
+    echo ("it worked");
+    $companyDescription = ['companyDescription'];
+
+    if (!empty($companyDescription)) {
+
+        $company = $conn->prepare($AdminProfileModel->CompanyEdit);
+        $company->bindParam(':companyDescription', $companyDescription, PDO::PARAM_STR);
+
+        $company->execute();
+
+        $companyResult = $company->fetchAll();
+    } else {
+        echo ("smtmtmtm");
+    }
+}

@@ -1,17 +1,21 @@
 <?php
-//create Event
-if (isset($_POST['submit'])) {
+
+if(isset($_POST['submit'])) {
+    $eventName  = $sanitized['eventName'];
+    $description   = $sanitized['description'];
+    $discountProcent     = $sanitized['discountProcent'];
+    $startDate    = $sanitized['startDate'];
+    $endDate    = $sanitized['endDate'];
 
     if (
         !empty($_POST['eventName']) || !empty($_POST['description']) || !empty($_POST['discountProcent']) ||
         !empty($_POST['startDate']) || !empty($_POST['endDate'])
     ) {
 
-        $sql = "INSERT INTO Discount ( eventName, description, discountProcent, startDate, endDate) VALUES ( :eventName, :description, :discountProcent, :startDate, :endDate )";
-        $pdo_statement = $conn->prepare( $sql );
+        $pdoEvent = $conn->prepare($EventModel->createEvent );
 
-        $result = $pdo_statement->execute( array( ':eventName'=>$_POST['eventName'], ':description'=>$_POST['description'], ':discountProcent'=>$_POST['discountProcent'], ':startDate'=>$_POST['startDate'], ':endDate'=>$_POST['endDate'] ) );
-        if (!empty($result) ){
+        $createEvent = $pdoEvent->execute( array( ':eventName'=>$_POST['eventName'], ':description'=>$_POST['description'], ':discountProcent'=>$_POST['discountProcent'], ':startDate'=>$_POST['startDate'], ':endDate'=>$_POST['endDate'] ) );
+        if (!empty($createEvent) ){
 
             ?>
             <script>
@@ -42,5 +46,17 @@ if (isset($_POST['submitEvent'])) {
 
 }
 
-
+//read event
 $EventListResult = $conn ->query($EventModel->eventList);
+
+//delete event
+if (isset($_REQUEST['discountID'])) {
+    $setDiscount = $_REQUEST['discountID'];
+    $handle = $conn->prepare($EventModel->deleteEvent);
+    $handle->execute(array(":discountID" => $setDiscount));
+    ?>
+    <script>
+        window.location.href = "/admin-event";
+    </script>
+    <?php
+}
