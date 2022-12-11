@@ -11,7 +11,6 @@ require("_partials/adminBar.php")
     <div class="main-body py-5">
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
-
                 <div class="card">
 
                     <div class="card-body">
@@ -99,6 +98,12 @@ require("_partials/adminBar.php")
                     } ?>
                         </tbody>
                 </table>
+                <h3 style="text-align: center">Company</h3>
+                <form action="">
+                        <input class="form-control"  name="description" value="" rows="3"></input>
+                </form>
+                <button  type="submit" name="submit" class="btn" id="btn-add" style="background: #212121;color: white;border-radius: 0;">Edit</button>
+                </div>
 
             </div>
 

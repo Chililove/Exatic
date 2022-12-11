@@ -1,12 +1,8 @@
 <?php
 require("rootPath.php");
 
-
-require $rootPath . "Model/AdminProfileModel.php";
 require $rootPath . "Model/EventModel.php";
-require $rootPath . "Controller/Admin/AdminProfileController.php";
 require $rootPath . "Controller/Admin/EventController.php";
-
 require("_partials/adminBar.php")
 
 ?>

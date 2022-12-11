@@ -63,7 +63,6 @@ CREATE TABLE Product (
     country VARCHAR(50),
     brand VARCHAR(100),
     productImage VARCHAR(1000),
-    timestamp TIMESTAMP,
     productTypeID INT NOT NULL,
     discountID INT NOT NULL,
     FOREIGN KEY (productTypeID) REFERENCES ProductType(productTypeID),
