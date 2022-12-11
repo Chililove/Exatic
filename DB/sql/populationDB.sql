@@ -1181,6 +1181,4 @@ INSERT INTO `CompanyInfo` (`companyInfoID`, `companyDescription`, `weekdays`, `w
 /* User */
 
 INSERT INTO `User` (`userID`, `firstName`, `lastName`, `email`, `password`, `userType`, `imagePath`, `addressID`) VALUES
-(1, 'NAdTetst', 'testererer', 'testererrererer@email.com', '$2y$06$n4ZABmjODCX7E3P4SFCe..8y9H8OqyjPtZ5DYl8YmLeDaeesHKLh2', 1, NULL, 2),
-(2, 'Company', 'Exatic', 'exaticproject@gmail.com', '$2y$06$uBLmOkVcNhOqQGPaidHV7udqp/cO9W.y5PFXglprJR.UzCELQe4fm', 0, NULL, 3);
-
+(1, 'Exatic', 'Company', 'exaticproject@gmail.com', '$2y$06$D7r211Aj1/rRUCSORUuFjeOpuf6/tRq2Ap.pJyP5UXs142GJxWnIe', 0, NULL, 6)

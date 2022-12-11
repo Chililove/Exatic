@@ -26,7 +26,7 @@ require("_partials/adminBar.php")
                 <div class="col-md-8 mb-4">
                     <div class="form-group">
                         <label for="image">Add image</label>
-                        <img style="width: 10%; justify-items: center" src="/Exatic/assets/product/<?php echo $row['productImage']; ?>" alt="<?php echo $row['productImage'] ?>" />
+                        <img class="admin-image" src="/Exatic/assets/product/<?php echo $row['productImage']; ?>" alt="<?php echo $row['productImage'] ?>" />
                         <input type="name" name="productImage" class="form-control" value="<?php echo $row['productImage']; ?>" required />
 
                     </div>
@@ -100,3 +100,12 @@ require("_partials/adminBar.php")
         </form>
 
 </div>
+
+<style lang="css">
+    @import "styles.css";
+
+    .admin-image {
+        width: 10%;
+        justify-items: center;
+    }
+</style>

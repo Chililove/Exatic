@@ -9,14 +9,14 @@ require("_partials/adminBar.php")
 <div class="container py-5">
     <div class="row">
         <div class="col">
-            <h4 style="text-align: center">Edit Event</h4>
+            <h4>Edit Event</h4>
         </div>
     </div>
     <?php
     $editEvent = $_SERVER['QUERY_STRING'];
     $product_details = "SELECT * FROM Discount  WHERE discountID = $editEvent";
     $overviewResult = $conn->query($product_details);
-    while ($row = $overviewResult->fetch(PDO::FETCH_ASSOC)) {?>
+    while ($row = $overviewResult->fetch(PDO::FETCH_ASSOC)) { ?>
         <form action="#" enctype="multipart/form-data" method="post">
             <div class="row">
                 <div class="col-md-10 mb-6">
@@ -55,7 +55,17 @@ require("_partials/adminBar.php")
                 </div>
             </div>
 
-            <button type="submit" name="submitEvent" class="btn" id="btn-add" style="background: #212121;color: white;border-radius: 0">Add</button>
+            <button type="submit" name="submitEvent" class="btn admin-button" id="btn-add">Add</button>
         </form>
     <?php } ?>
 </div>
+
+<style lang="css">
+    @import "styles.css";
+
+    .admin-button {
+        background: #212121;
+        color: white;
+        border-radius: 0;
+    }
+</style>

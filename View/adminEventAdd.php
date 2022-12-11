@@ -7,10 +7,14 @@ require("_partials/adminBar.php")
 
 ?>
 
+
+<!Doctype html>
+<html lang="en">
+
 <div class="container py-5">
     <div class="row">
         <div class="col">
-            <h4 style="text-align: center">Create Event</h4>
+            <h4 class="admin-align-text">Create Event</h4>
         </div>
     </div>
     <form action="#" enctype="multipart/form-data" method="post">
@@ -51,6 +55,22 @@ require("_partials/adminBar.php")
                 </div>
             </div>
         </div>
-        <button type="submit" name="submit" class="btn" id="btn-add" style="background: #212121;color: white;border-radius: 0">Add</button>
+        <button type="submit" name="submit" class="btn admin-button" id="btn-add">Add</button>
     </form>
 </div>
+
+</html>
+<style lang="css">
+    @import "styles.css";
+
+    /* Event add */
+    .admin-align-text {
+        text-align: center;
+    }
+
+    .admin-button {
+        background: #212121;
+        color: white;
+        border-radius: 0;
+    }
+</style>

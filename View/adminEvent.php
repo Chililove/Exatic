@@ -4,12 +4,11 @@ require("rootPath.php");
 require $rootPath . "Model/EventModel.php";
 require $rootPath . "Controller/Admin/EventController.php";
 require("_partials/adminBar.php")
-
 ?>
 
 <div class="row row-cols-4 d-flex justify-content-center py-5">
-    <div class="col-lg-8" style="text-align: center">
-        <button type="button" class="btn" style="background: #212121; color: white;border-radius: 0;text-decoration: none;"><a href="/admin-event-add">Add a Event</a></button>
+    <div class="col-lg-8 admin-align-text">
+        <button type="button" class="btn event-background"><a href="/admin-event-add">Add a Event</a></button>
         <table class="table table">
             <thead>
                 <tr>
@@ -27,7 +26,7 @@ require("_partials/adminBar.php")
 
             <?php
             $i = 1;
-            while ($row = $EventListResult->fetch(PDO::FETCH_ASSOC)) {?>
+            while ($row = $EventListResult->fetch(PDO::FETCH_ASSOC)) { ?>
                 <tbody>
                     <tr>
                         <th scope="row"><?php echo $i; ?></th>
@@ -46,4 +45,17 @@ require("_partials/adminBar.php")
         </table>
     </div>
 </div>
-</div>
+<style lang="css">
+    @import "styles.css";
+
+    .admin-align-text {
+        text-align: center;
+    }
+
+    .event-background {
+        background: #212121;
+        color: white;
+        border-radius: 0;
+        text-decoration: none;
+    }
+</style>

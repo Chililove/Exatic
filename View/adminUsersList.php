@@ -7,7 +7,7 @@ require("_partials/adminBar.php")
 
 ?>
 
-<div class=" row-cols-4 d-flex justify-content-center">
+<div class="row-cols-4 d-flex justify-content-center">
     <div class="col-lg-6 py-5">
         <table class="table table">
             <thead>

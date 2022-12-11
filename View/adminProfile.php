@@ -8,6 +8,7 @@ require("_partials/adminBar.php")
 
 ?>
 <div class="container">
+
     <div class="main-body py-5">
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
@@ -70,7 +71,7 @@ require("_partials/adminBar.php")
                 </div>
             </div>
             <div class="col-md-8">
-                <h1 style="text-align: center">Import Countries</h1>
+                <h1 class="admin-align-text">Import Countries</h1>
                 <table class="table table">
                     <thead>
                         <tr>
@@ -100,7 +101,7 @@ require("_partials/adminBar.php")
                 </table>
 
 
-                <h3 style="text-align: center">Company</h3>
+                <!--  <h3 class="admin-align-text">Company</h3>
                 <form action="" method="POST">
                     <?php while ($result = $companyResult->fetch(PDO::FETCH_ASSOC)) { ?>
                         <div class="col-md-6 mb-4">
@@ -112,13 +113,22 @@ require("_partials/adminBar.php")
                             </div>
                         <?php } ?>
                 </form>
-                <button type="submit" name="submit" class="btn" id="btn-add" style="background: #212121;color: white;border-radius: 0;">Edit</button>
+                <button type="submit" name="submit" class="btn admin-button" id="btn-add">Edit</button> -->
             </div>
-
         </div>
-
-        <a class="btn btn-primary" href="/logout">Log out</a>
-
     </div>
+    <a class="btn btn-primary" href="/logout">Log out</a>
 </div>
-</div>
+<style lang="css">
+    @import "styles.css";
+
+    .admin-align-text {
+        text-align: center;
+    }
+
+    .admin-button {
+        background: #212121;
+        color: white;
+        border-radius: 0;
+    }
+</style>

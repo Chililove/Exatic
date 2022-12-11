@@ -18,7 +18,7 @@ require $rootPath . "Controller/LoginController.php";
         </div>
     <?php } ?>
 </head>
-<section class="vh-100">
+<section class="h-100 section-style ">
     <div class="container py-5 h-50">
         <div class="row d-flex align-items-center justify-content-center h-100">
             <div class="col">
@@ -40,36 +40,29 @@ require $rootPath . "Controller/LoginController.php";
                         <label class="form-label">Password</label>
                     </div>
 
-                    <!-- <div class="d-flex justify-content-around align-items-center mb-4">
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="checkbox" checked />
-                            <label class="form-check-label"> Remember me </label>
-                        </div>
-                        <a href="#!">Forgot password?</a>
-                    </div> -->
-
-                    <input type="submit" class="btn btn-success btn-lg" style="color: var(--background)" value="Sign In" />
-                    <a href="/signup"><button type="button" class="btn btn-outline-secondary btn-lg">Sign Up</button></a>
+                    <input type="submit" class="btn btn-dark btn-lg" value="Sign In" />
+                    <a href="/signup"><button type="button" class="btn btn-outline-dark btn-lg">Sign Up</button></a>
                 </form>
             </div>
         </div>
     </div>
 </section>
 
-<style>
+
+
+
+</html>
+
+<style lang="css">
     .item img {
         width: 100%;
         height: 100%;
 
     }
 
-    section {
+    .section-style {
         font-family: "Roboto", sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
 </style>
-
-
-</html>

@@ -101,6 +101,15 @@ require("_partials/adminBar.php")
                 </div>
             </div>
         </div>
-        <button type="submit" name="productAdd" class="btn" id="btn-add" style="background: #212121;color: white;border-radius: 0">Add</button>
+        <button type="submit" name="productAdd" class="btn admin-button" id="btn-add">Add</button>
     </form>
 </div>
+<style lang="css">
+    @import "styles.css";
+
+    .admin-button {
+        background: #212121;
+        color: white;
+        border-radius: 0;
+    }
+</style>
