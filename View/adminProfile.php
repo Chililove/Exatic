@@ -13,7 +13,7 @@ require("_partials/adminBar.php")
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
                 <div class="card">
-
+                    <a class="btn btn-primary" href="/logout">Log out</a>
                     <div class="card-body">
 
                         <div class="d-flex flex-column align-items-center text-center">
@@ -117,7 +117,7 @@ require("_partials/adminBar.php")
             </div>
         </div>
     </div>
-    <a class="btn btn-primary" href="/logout">Log out</a>
+
 </div>
 <style lang="css">
     @import "styles.css";
