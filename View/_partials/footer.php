@@ -28,7 +28,7 @@
                             <h8>+45 123456 78910</h8>
                         </li>
                         <?php
-                        $owner = "SELECT email FROM User WHERE userID = 10";
+                        $owner = "SELECT email FROM User WHERE userID = 1";
                         $ownerResult = $conn->query($owner);
                         while ($row = $ownerResult->fetch(PDO::FETCH_ASSOC)) { ?>
 
@@ -51,25 +51,19 @@
                     ?>
                         <li>
                             <h8> <?php echo $row['weekdays'] ?></h8>
-                            <p> 8.00 AM - 8.00 PM </p>
+                            <p> <?php echo $row['openingHours'] ?></p>
                         </li>
                         <li>
                             <h8> <?php echo $row['weekends'] ?></h8>
                         </li>
                         <li>
-                            <h8> 2.00 PM - 8.00 PM </h8>
+                            <h8> <?php echo $row['weekendHours'] ?></h8>
                         </li>
                     <?php
                     }
                     ?>
                 </ul>
             </div>
-            <!-- Opening Hours -->
-            <!--        <h6 class="text-white text-uppercase">Monday - Friday</h6>
-                        <p>8.00 AM - 8.00 PM</p>
-                        <h6 class="text-white text-uppercase">Saturday - Sunday</h6>
-                        <p>2.00 PM - 8.00 PM</p> -->
-
         </section>
 
         <!-- Footer legal -->

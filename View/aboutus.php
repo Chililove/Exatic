@@ -20,16 +20,16 @@
                                     <div id="text-box" class="col-lg-8 py-0 py-lg-5">
                                         <h1 class="mb-3 about-text">Our Story</h1>
                                         <h5 class="mb-3 about-text">Exatic was created for delivering variety of exotic asian products</h5>
-
                                         <hr>
-
-                                        <p class="about-text">It's very nice to have you here, we hope the experience will please you.<br />
-                                            Here at Exatic we aim to broaden asian products as well as making them more accessible in Denmark.<br /><br />
-                                            Here you can find any ingredient you need to cook asian cuisine and treat family and friends with familiar and newly added products.<br />
-                                            All groceries can be delivered at home.<br />
-                                            <br />
-                                            Hopefully you find what you need or maybe get inspired by new products from your familiar brands.
-                                        </p>
+                                        <?php
+                                        $companyInfo = "SELECT * FROM CompanyInfo";
+                                        $companyInfoResult = $conn->query($companyInfo);
+                                        while ($row = $companyInfoResult->fetch(PDO::FETCH_ASSOC)) {
+                                        ?>
+                                            <p class="about-text">
+                                                <?php echo $row['companyDescription'] ?>
+                                            </p>
+                                        <?php } ?>
                                         <hr>
                                     </div>
                                 </div>

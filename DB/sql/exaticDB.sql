@@ -19,9 +19,11 @@ CREATE TABLE `Address` (
 
 CREATE TABLE CompanyInfo (
     companyInfoID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    companyDescription VARCHAR(255) NULL,
-    weekdays VARCHAR(10) NOT NULL,
-    weekends VARCHAR(10) NOT NULL,
+    companyDescription VARCHAR(1000) NULL,
+    weekdays VARCHAR(50) NOT NULL,
+    weekends VARCHAR(50) NOT NULL,
+    openingHours VARCHAR(100) NOT NULL,
+    weekendHours VARCHAR(100) NOT NULL,
     addressID INT NOT NULL,
     FOREIGN KEY (addressID) REFERENCES `Address`(addressID)
 )  ENGINE=InnoDB;
