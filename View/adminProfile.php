@@ -98,17 +98,27 @@ require("_partials/adminBar.php")
                     } ?>
                         </tbody>
                 </table>
-                <h3 style="text-align: center">Company</h3>
-                <form action="">
-                        <input class="form-control"  name="description" value="" rows="3"></input>
-                </form>
-                <button  type="submit" name="submit" class="btn" id="btn-add" style="background: #212121;color: white;border-radius: 0;">Edit</button>
-                </div>
 
+
+                <h3 style="text-align: center">Company</h3>
+                <form action="" method="POST">
+                    <?php while ($result = $companyResult->fetch(PDO::FETCH_ASSOC)) { ?>
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+
+                                <input type="companyDescription" value="<?php echo $result["companyDescription"] ?>" name="companyDescription" class="form-control" placeholder="CompanyDescription" required />
+                                <input type="hidden" value="<?php echo $result["companyDescription"] ?>" name="companyDescription" class="form-control" placeholder="CompanyDescription" required />
+
+                            </div>
+                        <?php } ?>
+                </form>
+                <button type="submit" name="submit" class="btn" id="btn-add" style="background: #212121;color: white;border-radius: 0;">Edit</button>
             </div>
 
-            <a class="btn btn-primary" href="/logout">Log out</a>
-
         </div>
+
+        <a class="btn btn-primary" href="/logout">Log out</a>
+
     </div>
+</div>
 </div>
