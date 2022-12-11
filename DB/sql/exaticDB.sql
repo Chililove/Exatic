@@ -60,7 +60,6 @@ CREATE TABLE Product (
     price DECIMAL,
     stockQuantity INT(255),
     description VARCHAR(1000),
-    isNew BOOLEAN,
     isDailySpecial BOOLEAN,
     country VARCHAR(50),
     brand VARCHAR(100),

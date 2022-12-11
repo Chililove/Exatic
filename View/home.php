@@ -171,9 +171,9 @@ require $rootPath . "Controller/HomeController.php";
                                 <form method="post" action="/product.php?action=add&productID=<?php echo $row["productID"]; ?>" target="home">
 
                                     <a href="/product-overview.php?productID=<?php echo $row['productID']; ?>">
-                                        <?php if ($row['isNew']) {
-                                            echo '<span class="badge bg-success">New</span>';
-                                        } ?>
+                                        <?php
+                                        echo '<span class="badge bg-success">New</span>';
+                                        ?>
                                         <img class="rounded mx-auto d-block" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="ProductImage" width="250" height="250" />
 
                                     </a>
