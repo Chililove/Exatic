@@ -1186,4 +1186,4 @@ INSERT INTO `CompanyInfo` (`companyInfoID`, `companyDescription`, `weekdays`, `w
 /* User */
 
 INSERT INTO `User` (`userID`, `firstName`, `lastName`, `email`, `password`, `userType`, `imagePath`, `addressID`) VALUES
-(1, 'Exatic', 'Company', 'exaticproject@gmail.com', '$2y$06$D7r211Aj1/rRUCSORUuFjeOpuf6/tRq2Ap.pJyP5UXs142GJxWnIe', 0, NULL, 6)
+(1, 'Exatic', 'Company', 'exaticproject@gmail.com', '$2y$06$D7r211Aj1/rRUCSORUuFjeOpuf6/tRq2Ap.pJyP5UXs142GJxWnIe', 0, "default.jpg", 1);
