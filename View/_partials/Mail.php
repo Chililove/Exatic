@@ -19,8 +19,9 @@ if (isset($_POST["send_email"])) {
         header("Location:http://localhost/contact.php?msgid=2");
     } elseif (!preg_match($regexp, $_POST['email'])) {
         header("Location:http://localhost:8886/contact.php?msgid=3");
-    } elseif (!preg_match($msgValid, $_POST['message'])) {
-        header("Location:http://localhost:8886/contact.php?msgid=5");
+        // } elseif (!preg_match($msgValid, $_POST['message'])) {
+        //     header("Location:http://localhost:8886/contact.php?msgid=5");
+        //
     } else {
         // mail($myemail, "From: $email\n", $subject, $firstName, $lastName, $message);
         mail("From: $email\n", $subject, $firstName, $lastName, $message);

@@ -12,8 +12,9 @@ if (isset($_GET['msgid'])) {
         echo "<p class='msgErr';>" . "Error: Incorrect Email format !" . "</p>";
         // } elseif ($_GET['msgid'] == 4) {
         //     echo "<p class='msgErr'>" . "Error: Incorrect format for LastName || & FirstName !" . "</p>";
-    } elseif ($_GET['msgid'] == 5) {
-        echo "<p class='msgErr';>" . "Error: Message needs to have at least 2 letters !" . "</p>";
+        // } elseif ($_GET['msgid'] == 5) {
+        //     echo "<p class='msgErr';>" . "Error: Message needs to have at least 2 letters !" . "</p>";
+        // }
     }
 }
 ?>

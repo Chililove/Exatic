@@ -8,7 +8,5 @@ if (isset($_COOKIE[session_name()])) {
 
 // 4. Destroy the session
 session_destroy();
-?>
-<script>
-    window.location.href = "/home";
-</script>
+
+header("Location:home.php");
