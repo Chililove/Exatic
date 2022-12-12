@@ -53,7 +53,7 @@ if (isset($_POST['productAdd'])) {
 
             $addProductResult = $addProduct->execute();
             $conn->commit();
-            header("Location:admin-product");
+            //  header("Location:admin-product");
         } catch (Exception $err) {
             echo $err;
             $errorTransaction = true;
@@ -84,15 +84,6 @@ if (isset($_POST['submitProductEdit'])) {
         !empty($_POST['description']) || !empty($_POST['country']) || !empty($_POST['brand']) || !empty($_POST['productTypeID']) || !empty($_POST['discountID'])
     ) {
 
-        // $file = $_FILES["productImage"]["name"];
-        // $filename = strtolower($file);
-        // if ($_FILES['productImage']['name']) {
-        //     move_uploaded_file(
-        //         $_FILES['productImage']['tmp_name'],
-        //         "assets/product/" . $filename
-        //     );
-
-
         try {
             $conn->beginTransaction();
             $editProductPDO = $conn->prepare($AdminProductModel->editProduct);
@@ -104,12 +95,11 @@ if (isset($_POST['submitProductEdit'])) {
             $editProductPDO->bindParam(':isDailySpecial', $isDailySpecial, PDO::PARAM_INT);
             $editProductPDO->bindParam(':country', $country, PDO::PARAM_STR);
             $editProductPDO->bindParam(':brand', $brand, PDO::PARAM_STR);
-            //  $editProductPDO->bindParam(':productImage', $filename, PDO::PARAM_STR);
             $editProductPDO->bindParam(':productTypeID', $productTypeID, PDO::PARAM_INT);
             $editProductPDO->bindParam(':discountID', $discountID, PDO::PARAM_INT);
             $editProductResult = $editProductPDO->execute();
-            $editProductPDO->debugDumpParams();
             $conn->commit();
+            header("Location:admin-product");
         } catch (Exception $err) {
             echo $err;
             $errorTransaction = true;
@@ -119,12 +109,16 @@ if (isset($_POST['submitProductEdit'])) {
 }
 
 
-
-
 //delete product
-// if (isset($_REQUEST['productID'])) {
-//     $setProduct = $_REQUEST['productID'];
-//     $handle = $conn->prepare($AdminProductModel->deleteProduct);
-//     $handle->execute(array(":productID" => $setProduct));
-//    header("Location:admin-event");
-//}
+
+if (isset($_REQUEST['productID'])) {
+    $setProduct = $_REQUEST['productID'];
+    $conn->query("SET FOREIGN_KEY_CHECKS=0");
+    $handle = $conn->prepare($AdminProductModel->deleteProduct);
+    $handle->execute(array(":productID" => $setProduct));
+    $conn->query("SET FOREIGN_KEY_CHECKS=1");
+
+    header("Location:admin-product");
+
+    // quick fix - ask søren about constraints and deletion.
+}
