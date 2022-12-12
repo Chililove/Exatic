@@ -89,7 +89,8 @@ if(isset($_POST['submitProductEdit'])) {
 
         try {
             $conn->beginTransaction();
-            $editProductPDO = $conn->prepare($AdminProductModel->editProduct );
+            $editProductPDO = $conn->prepare($AdminProductModel->editProduct);
+        //    $editProductPDO->bindParam(':productID', $productID, PDO::PARAM_INT);
             $editProductPDO->bindParam(':title', $title, PDO::PARAM_STR);
             $editProductPDO->bindParam(':price', $price, PDO::PARAM_STR);
             $editProductPDO->bindParam(':stockQuantity', $stockQuantity, PDO::PARAM_INT);
