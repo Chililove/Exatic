@@ -50,6 +50,7 @@ if(isset($_POST['productAdd'])) {
 
             $addProductResult = $addProduct->execute();
             $conn->commit();
+            header("Location:admin-product");
         } catch (Exception $err) {
             echo $err;
             $errorTransaction = true;
@@ -58,10 +59,11 @@ if(isset($_POST['productAdd'])) {
         }
     }
 }
+
+
+
 //edit product
-
 if(isset($_POST['submitProductEdit'])) {
-
     $title = $sanitized['title'];
     $price = $sanitized['price'];
     $stockQuantity = $sanitized['stockQuantity'];
@@ -98,9 +100,9 @@ if(isset($_POST['submitProductEdit'])) {
             $editProductPDO->bindParam(':productImage', $filename, PDO::PARAM_STR);
             $editProductPDO->bindParam(':productTypeID', $productTypeID, PDO::PARAM_INT);
             $editProductPDO->bindParam(':discountID', $discountID, PDO::PARAM_INT);
-
             $editProductResult = $editProductPDO->execute();
             $conn->commit();
+
         } catch (Exception $err) {
             echo $err;
             $errorTransaction = true;

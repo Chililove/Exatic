@@ -50,7 +50,7 @@ require("_partials/adminBar.php")
                 <div class="col-md-10 mb-4">
                     <div class="form-group">
                         <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" name="description" value="<?php echo $row['description']; ?> rows=" 3"></textarea>
+                        <textarea class="form-control" name="description"  rows="2"><?php echo $row['description']; ?></textarea>
                     </div>
                 </div>
             </div>

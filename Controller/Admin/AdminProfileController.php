@@ -26,6 +26,7 @@ if (isset($_POST['submit'])) {
         $company->bindParam(':companyDescription', $companyDescription, PDO::PARAM_STR);
 
         $company->execute();
+        $conn->commit();
 
         $companyResult = $company->fetchAll();
     } else {

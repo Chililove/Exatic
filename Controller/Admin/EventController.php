@@ -1,6 +1,6 @@
 <?php
-
 if(isset($_POST['submit'])) {
+
     $eventName  = $sanitized['eventName'];
     $description   = $sanitized['description'];
     $discountProcent     = $sanitized['discountProcent'];
@@ -12,37 +12,60 @@ if(isset($_POST['submit'])) {
         !empty($_POST['startDate']) || !empty($_POST['endDate'])
     ) {
 
-        $pdoEvent = $conn->prepare($EventModel->createEvent );
+        try {
+            $conn->beginTransaction();
+            $addEvent = $conn->prepare($EventModel->createEvent );
+            $addEvent->bindParam(':eventName', $eventName, PDO::PARAM_STR);
+            $addEvent->bindParam(':description', $description, PDO::PARAM_STR);
+            $addEvent->bindParam(':discountProcent', $discountProcent, PDO::PARAM_STR);
+            $addEvent->bindParam(':startDate', $startDate, PDO::PARAM_STR);
+            $addEvent->bindParam(':endDate', $endDate, PDO::PARAM_STR);
 
-        $createEvent = $pdoEvent->execute( array( ':eventName'=>$_POST['eventName'], ':description'=>$_POST['description'], ':discountProcent'=>$_POST['discountProcent'], ':startDate'=>$_POST['startDate'], ':endDate'=>$_POST['endDate'] ) );
-        if (!empty($createEvent) ){
-
-            ?>
-            <script>
-                window.location.href = "/admin-event";
-            </script>
-            <?php
-        } else {
+            $addEventResult = $addEvent->execute();
+            $conn->commit();
+            header("Location:admin-event");
+        } catch (Exception $err) {
+            echo $err;
+            $errorTransaction = true;
             $conn->rollback();
         }
     }
 }
 
 
+
 //edit Event
 if (isset($_POST['submitEvent'])) {
+
+    $eventName  = $sanitized['eventName'];
+    $description   = $sanitized['description'];
+    $discountProcent     = $sanitized['discountProcent'];
+    $startDate    = $sanitized['startDate'];
+    $endDate    = $sanitized['endDate'];
 
     if (
         !empty($_POST['eventName']) || !empty($_POST['description']) || !empty($_POST['discountProcent']) ||
         !empty($_POST['startDate']) || !empty($_POST['endDate'])
-    )
+    ) {
 
-    $pdo_statement=$conn->prepare("UPDATE Discount SET eventName='" . $_POST[ 'eventName' ] . "', description='" . $_POST[ 'description' ]. "', discountProcent='" . $_POST[ 'discountProcent' ]. "', startDate='" . $_POST[ '$startDate' ]."', endDate='" . $_POST[ 'endDate' ]."' WHERE discountID=" . $_GET["discountID"]);
-    $result = $pdo_statement->execute();
-    if($result) {
-        header('location:/admin-event.php');
+        try {
+            $conn->beginTransaction();
+            $editEvent = $conn->prepare($EventModel->editEvent);
+            $editEvent->bindParam(':eventName', $eventName, PDO::PARAM_STR);
+            $editEvent->bindParam(':description', $description, PDO::PARAM_STR);
+            $editEvent->bindParam(':discountProcent', $discountProcent, PDO::PARAM_STR);
+            $editEvent->bindParam(':startDate', $startDate, PDO::PARAM_STR);
+            $editEvent->bindParam(':endDate', $endDate, PDO::PARAM_STR);
+
+            $editEventResult = $editEvent->execute();
+            $conn->commit();
+            header("Location:admin-event");
+        } catch (Exception $err) {
+            echo $err;
+            $errorTransaction = true;
+            $conn->rollback();
+        }
     }
-
 
 }
 
