@@ -1,9 +1,14 @@
 
 <?php
+require_once('index.php');
+
 
 
 if (!isset($_SESSION['shopping_cart']) || empty($_SESSION['shopping_cart'])) {
     header('location:product.php');
+    exit();
+} else if (!isset($_SESSION['userID']) || empty($_SESSION['userID'])) {
+    header('location:signup.php?checkout=1');
     exit();
 } else {
 
@@ -20,15 +25,15 @@ if (!isset($_SESSION['shopping_cart']) || empty($_SESSION['shopping_cart'])) {
             } else {
                 //sanitize is a custom function
                 //you can find it in index.php file
-                $firstName  = sanitize($_POST['firstName']);
-                $lastName   = sanitize($_POST['lastName']);
-                $email      = sanitize($_POST['email']);
-                $address    = sanitize($_POST['address']);
-                $address2   = (!empty($_POST['address2']) ? sanitize($_POST['address2']) : '');
-                $country    = sanitize($_POST['country']);
-                $zipcode    = sanitize($_POST['zipcode']);
+                $firstName  = $sanitized['firstName'];
+                $lastName   = $sanitized['lastName'];
+                $email      = $sanitized['email'];
+                $address    = $sanitized['address'];
+                $address2   = $sanitized['address2'] ?? '';
+                $country    = $sanitized['country'];
+                $zipcode    = $sanitized['zipcode'];
 
-                $sql = 'INSERT INTO orders (firstName, lastName, email, address, address2, country, zipcode, order_status,created_at, updated_at) VALUES (:fname, :lname, :email, :address, :address2, :country, :zipcode, :order_status,:created_at, :updated_at)';
+                $sql = 'INSERT INTO Order (firstName, lastName, email, address, address2, country, zipcode, order_status,created_at, updated_at) VALUES (:fname, :lname, :email, :address, :address2, :country, :zipcode, :order_status,:created_at, :updated_at)';
                 $statement = $conn->prepare($sql);
                 $params = [
                     'fname' => $firstName,

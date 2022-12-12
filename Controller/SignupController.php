@@ -3,6 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+
 $errorEmail = false;
 $signupSucess = false;
 $error = false;
@@ -56,8 +57,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $conn->commit();
         $signupSucess = true;
 
-       
-  
+        // if (isset($_GET['checkout'])) {
+        //     header('location:checkout.php');
+        //     exit();
+        // }
     } else {
         $error = true;
         $conn->rollback();
