@@ -21,77 +21,83 @@ require("_partials/adminBar.php")
                 </div>
                 <div class="py-2 admin-align-text">
                     <span">Company Info</span>
-                    <?php
-                    $companyRead = "SELECT * FROM CompanyInfo WHERE companyInfoID = 1";
-                    $companyResult = $conn->query($companyRead);
-                    while ($row = $companyResult->fetch(PDO::FETCH_ASSOC)) { ?>
-                        <form>
-                            <div class="row mb-4">
-                                <div class="form-outline mb-4">
-                                    <textarea class="form-control" name="" id="" cols="30" rows="10"><?php echo $row['companyDescription']; ?></textarea>
 
-                                </div>
-                                <div class="col">
-                                    <div class="form-outline">
-                                        <label class="form-label" for="form3Example1">Weekdays</label>
-                                        <input type="text" value="<?php echo $row['weekdays']; ?>" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-outline">
-                                        <label class="form-label" for="form3Example1">Weekends</label>
-                                        <input type="text" value="<?php echo $row['weekends']; ?>" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-outline">
-                                        <label class="form-label" for="form3Example1">OpHours</label>
-                                        <input type="text" value="<?php echo $row['openingHours']; ?>" class="form-control" />
-
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-outline">
-                                        <label class="form-label" for="form3Example1">WeHours</label>
-                                        <input type="text" value="<?php echo $row['weekendHours']; ?>" class="form-control" />
-
-                                    </div>
-                                </div>
-                                <button type="submit" name="submitCompany" class="btn admin-button">Edit</button>
-                            </div>
-                        </form>
-                        <?php ;} ?>
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="row">
                     <table class="table table">
                         <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Country</th>
-                            <th scope="col">No. Product</th>
-                            <th scope="col">Total Quantity</th>
-                        </tr>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">No. Product</th>
+                                <th scope="col">Total Quantity</th>
+                            </tr>
                         </thead>
                         <?php
                         $i = 1;
 
                         while ($row = $CountryResult->fetch(PDO::FETCH_ASSOC)) { ?>
-                        <tbody>
-                        <tr>
-                            <th scope="row"><?php echo $i; ?></th>
-                            <td><?php echo $row['country']; ?></td>
-                            <td><?php echo $row['COUNT(country)']; ?></td>
-                            <td><?php echo $row['totalQuantity']; ?></td>
-                        </tr>
-                        <?php $i++;
+                            <tbody>
+                                <tr>
+                                    <th scope="row"><?php echo $i; ?></th>
+                                    <td><?php echo $row['country']; ?></td>
+                                    <td><?php echo $row['COUNT(country)']; ?></td>
+                                    <td><?php echo $row['totalQuantity']; ?></td>
+                                </tr>
+                            <?php $i++;
                         } ?>
-                        </tbody>
+                            </tbody>
                     </table>
                 </div>
             </div>
         </div>
+        <?php
+        $companyRead = "SELECT * FROM CompanyInfo WHERE companyInfoID = 1";
+        $companyResult = $conn->query($companyRead);
+        while ($row = $companyResult->fetch(PDO::FETCH_ASSOC)) { ?>
+            <form>
+                <div class="row mb-4">
+                    <div class="form-outline mb-4">
+                        <textarea class="form-control" name="companyDescription" id="" cols="30" rows="10"><?php echo $row['companyDescription']; ?></textarea>
+
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <label class="form-label" for="form3Example1">Weekdays</label>
+                            <input type="text" name="weekdays" value="<?php echo $row['weekdays']; ?>" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <label class="form-label" for="form3Example1">Weekends</label>
+                            <input type="text" name="weekends" value="<?php echo $row['weekends']; ?>" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <label class="form-label" for="form3Example1">OpHours</label>
+                            <input type="text" name="openingHours" value="<?php echo $row['openingHours']; ?>" class="form-control" />
+
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <label class="form-label" for="form3Example1">WeHours</label>
+                            <input type="text" name="weekendHours" value="<?php echo $row['weekendHours']; ?>" class="form-control" />
+
+                        </div>
+                        <h1 name="companyInfoID"><?php echo $row['companyInfoID']; ?></h1>
+                        <input type="hidden" name="companyInfoID" value="<?php echo $row['companyInfoID']; ?>">
+                        <button type="submit" name="submitCompany" id="btn-edit" class="btn admin-button">Edit</button>
+
+                    </div>
+
+                </div>
+            </form>
+        <?php
+        } ?>
     </div>
 
 </div>

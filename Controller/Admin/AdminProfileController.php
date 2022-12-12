@@ -1,4 +1,8 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+
 $adminId = (int)$_SESSION["userID"];
 
 
@@ -12,30 +16,38 @@ $AdminProfileResult = $handleAdmin->fetchAll();
 $user = $AdminProfileResult[0];
 
 $companyReadResult = $conn->prepare($AdminProfileModel->CompanyRead);
+echo "snotherheth";
 
 //edit compamy info
+
 if (isset($_POST['submitCompany'])) {
+    var_dump($_POST);
     $companyDescription = $sanitized['companyDescription'];
     $weekdays = $sanitized['weekdays'];
     $weekends = $sanitized['weekends'];
     $openingHours = $sanitized['openingHours'];
     $weekendHours = $sanitized['weekendHours'];
-    $addressID = 1;
+    $addressID = $sanitized['addressID'];
+    $companyInfoID = $sanitized['companyInfoID'];
 
 
-    if (!empty($companyDescription)|| !empty($_POST['weekdays']) || !empty($_POST['weekends']) || !empty($_POST['openingHours']) || !empty($_POST['weekendHours']))  {
-        $company = $conn->prepare($AdminProfileModel->CompanyEdit);
-        $company->bindParam(':companyDescription', $companyDescription, PDO::PARAM_STR);
-        $company->bindParam(':weekdays', $weekdays, PDO::PARAM_STR);
-        $company->bindParam(':weekends', $weekends, PDO::PARAM_STR);
-        $company->bindParam(':openingHours', $openingHours, PDO::PARAM_STR);
-        $company->bindParam(':weekendHours', $weekendHours, PDO::PARAM_STR);
-        $company->bindParam(':addressID', $addressID, PDO::PARAM_STR);
-
-        $company->execute();
-        $conn->commit();
-        $companyResult = $company->fetchAll();
-    } else {
-        echo ("smtmtmtm");
+    if (!empty($companyDescription) || !empty($_POST['weekdays']) || !empty($_POST['weekends']) || !empty($_POST['openingHours']) || !empty($_POST['weekendHours'])) {
+        try {
+            $conn->beginTransaction();
+            $company = $conn->prepare($AdminProfileModel->companyEdit);
+            $company->bindParam(':companyInfoID', $companyInfoID, PDO::PARAM_INT);
+            $company->bindParam(':companyDescription', $companyDescription, PDO::PARAM_STR);
+            $company->bindParam(':weekdays', $weekdays, PDO::PARAM_STR);
+            $company->bindParam(':weekends', $weekends, PDO::PARAM_STR);
+            $company->bindParam(':openingHours', $openingHours, PDO::PARAM_STR);
+            $company->bindParam(':weekendHours', $weekendHours, PDO::PARAM_STR);
+            $company->bindParam(':addressID', $addressID, PDO::PARAM_INT);
+            $companyResult = $company->execute();
+            $conn->commit();
+            header("Location:admin-profile");
+        } catch (Exception $err) {
+            $err = true;
+            $conn->rollback();
+        }
     }
 }
