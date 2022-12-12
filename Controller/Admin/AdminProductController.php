@@ -73,23 +73,25 @@ if (isset($_POST['submitProductEdit'])) {
     $isDailySpecial = 1;
     $country = $sanitized['country'];
     $brand = $sanitized['brand'];
-    $productImage = $_FILES['productImage']['name'];
+    //$productImage = $_FILES['productImage']['name'];
     $productTypeID = $sanitized['productTypeID'];
     $discountID = $sanitized['discountID'];
+    $productID = $sanitized['productID'];
+
 
     if (
         !empty($_POST['title']) || !empty($_POST['price']) || !empty($_POST['stockQuantity']) ||
         !empty($_POST['description']) || !empty($_POST['country']) || !empty($_POST['brand']) || !empty($_POST['productTypeID']) || !empty($_POST['discountID'])
     ) {
 
-        $file = $_FILES["productImage"]["name"];
-        $filename = strtolower($file);
-        if ($_FILES['productImage']['name']) {
-            move_uploaded_file(
-                $_FILES['productImage']['tmp_name'],
-                "assets/product/" . $filename
-            );
-        }
+        // $file = $_FILES["productImage"]["name"];
+        // $filename = strtolower($file);
+        // if ($_FILES['productImage']['name']) {
+        //     move_uploaded_file(
+        //         $_FILES['productImage']['tmp_name'],
+        //         "assets/product/" . $filename
+        //     );
+
 
         try {
             $conn->beginTransaction();
@@ -102,10 +104,11 @@ if (isset($_POST['submitProductEdit'])) {
             $editProductPDO->bindParam(':isDailySpecial', $isDailySpecial, PDO::PARAM_INT);
             $editProductPDO->bindParam(':country', $country, PDO::PARAM_STR);
             $editProductPDO->bindParam(':brand', $brand, PDO::PARAM_STR);
-            $editProductPDO->bindParam(':productImage', $filename, PDO::PARAM_STR);
+            //  $editProductPDO->bindParam(':productImage', $filename, PDO::PARAM_STR);
             $editProductPDO->bindParam(':productTypeID', $productTypeID, PDO::PARAM_INT);
             $editProductPDO->bindParam(':discountID', $discountID, PDO::PARAM_INT);
             $editProductResult = $editProductPDO->execute();
+            $editProductPDO->debugDumpParams();
             $conn->commit();
         } catch (Exception $err) {
             echo $err;
@@ -119,13 +122,9 @@ if (isset($_POST['submitProductEdit'])) {
 
 
 //delete product
-if (isset($_REQUEST['productID'])) {
-    $setProduct = $_REQUEST['productID'];
-    $handle = $conn->prepare($AdminProductModel->deleteProduct);
-    $handle->execute(array(":productID" => $setProduct));
-?>
-    <script>
-        window.location.href = "/admin-product";
-    </script>
-<?php
-}
+// if (isset($_REQUEST['productID'])) {
+//     $setProduct = $_REQUEST['productID'];
+//     $handle = $conn->prepare($AdminProductModel->deleteProduct);
+//     $handle->execute(array(":productID" => $setProduct));
+//    header("Location:admin-event");
+//}

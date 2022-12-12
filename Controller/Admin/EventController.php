@@ -36,7 +36,6 @@ if (isset($_POST['submit'])) {
 
 //edit Event
 if (isset($_POST['submitEvent'])) {
-
     $eventName  = $sanitized['eventName'];
     $description   = $sanitized['description'];
     $discountProcent     = $sanitized['discountProcent'];
@@ -52,6 +51,7 @@ if (isset($_POST['submitEvent'])) {
         try {
             $conn->beginTransaction();
             $editEvent = $conn->prepare($EventModel->editEvent);
+
             $editEvent->bindParam(':discountID', $discountID, PDO::PARAM_INT);
             $editEvent->bindParam(':eventName', $eventName, PDO::PARAM_STR);
             $editEvent->bindParam(':description', $description, PDO::PARAM_STR);
@@ -82,10 +82,6 @@ if (isset($_REQUEST['del'])) {
     $conn->query("SET FOREIGN_KEY_CHECKS=1");
 
     // quick fix - needs to change 
-
-?>
-    <script>
-        window.location.href = "/admin-event";
-    </script>
-<?php
+    header("Location:admin-event");
 }
+?>
