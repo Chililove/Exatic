@@ -7,124 +7,111 @@ require("_partials/adminBar.php")
 
 
 ?>
-<div class="container">
-
-    <div class="main-body py-5">
+<div class="container py-5">
+    <div class="main-body">
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
-                <div class="card">
-                    <a class="btn btn-primary" href="/logout">Log out</a>
-                    <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                    <img src="assets/profilepictures/<?php echo $user['imagePath'] ?>" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                        <h4><?php echo $user["firstName"]; ?> <?php echo $user["lastName"]; ?></h4>
+                        <p class="text-secondary mb-1">Admin ID. <?php echo $user["userID"]; ?></p>
+                        <p class="text-muted font-size-sm"><?php echo $user["streetName"]; ?><?php echo $user["streetNumber"]; ?>, <?php echo $user["cityName"]; ?></p>
+                    </div>
+                </div>
+                <div class="py-2 admin-align-text">
+                    <span">Company Info</span>
 
-                        <div class="d-flex flex-column align-items-center text-center">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <table class="table table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">No. Product</th>
+                                <th scope="col">Total Quantity</th>
+                            </tr>
+                        </thead>
+                        <?php
+                        $i = 1;
 
-                            <img src="/assets/default.jpg" alt="Admin" class="rounded-circle" width="150">
-                            <div class="mt-3">
-                                <h4><?php echo $user["firstName"]; ?> <?php echo $user["lastName"]; ?></h4>
-                                <p class="text-secondary mb-1">Admin ID. <?php echo $user["userID"]; ?></p>
-                                <p class="text-muted font-size-sm"><?php echo $user["streetName"]; ?><?php echo $user["streetNumber"]; ?>, <?php echo $user["cityName"]; ?></p>
-                            </div>
+                        while ($row = $CountryResult->fetch(PDO::FETCH_ASSOC)) { ?>
+                            <tbody>
+                                <tr>
+                                    <th scope="row"><?php echo $i; ?></th>
+                                    <td><?php echo $row['country']; ?></td>
+                                    <td><?php echo $row['COUNT(country)']; ?></td>
+                                    <td><?php echo $row['totalQuantity']; ?></td>
+                                </tr>
+                            <?php $i++;
+                        } ?>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <?php
+        $companyRead = "SELECT * FROM CompanyInfo WHERE companyInfoID = 1";
+        $companyResult = $conn->query($companyRead);
+        while ($row = $companyResult->fetch(PDO::FETCH_ASSOC)) { ?>
+            <form>
+                <div class="row mb-4">
+                    <div class="form-outline mb-4">
+                        <textarea class="form-control" name="companyDescription" id="" cols="30" rows="10"><?php echo $row['companyDescription']; ?></textarea>
+
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <label class="form-label" for="form3Example1">Weekdays</label>
+                            <input type="text" name="weekdays" value="<?php echo $row['weekdays']; ?>" class="form-control" />
                         </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <label class="form-label" for="form3Example1">Weekends</label>
+                            <input type="text" name="weekends" value="<?php echo $row['weekends']; ?>" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <label class="form-label" for="form3Example1">OpHours</label>
+                            <input type="text" name="openingHours" value="<?php echo $row['openingHours']; ?>" class="form-control" />
+
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <label class="form-label" for="form3Example1">WeHours</label>
+                            <input type="text" name="weekendHours" value="<?php echo $row['weekendHours']; ?>" class="form-control" />
+
+                        </div>
+                        <h1 name="companyInfoID"><?php echo $row['companyInfoID']; ?></h1>
+                        <input type="hidden" name="companyInfoID" value="<?php echo $row['companyInfoID']; ?>">
+                        <button type="submit" name="submitCompany" id="btn-edit" class="btn admin-button">Edit</button>
 
                     </div>
 
                 </div>
-                <div class="card mt-3">
-                    <ul class="list-group list-group-flush">
-
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <a href="/admin-product">
-                                <h3 class="h5 mb-3">Products</h3>
-                            </a>
-                            <?php
-                            //while ($row = $CountProductIDResult->fetch(PDO::FETCH_ASSOC)) {
-                            ?>
-                            <h3><?php //echo $row['COUNT(productID)']; 
-                                ?></h3>
-                            <?php //} 
-                            ?>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <a href="/admin-user-list">
-                                <h3 class="h5 mb-3">Users</h3>
-                            </a>
-                            <?php // while
-                            // ($row = $CountUserIDResult->fetch(PDO::FETCH_ASSOC)) {
-                            ?>
-                            <h3><?php // echo $row['COUNT(userID)']; 
-                                ?></h3>
-                            <?php // } 
-                            ?>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <a href="/admin-event">
-                                <h3 class="h5 mb-3">Events</h3>
-                            </a>
-                            <?php //while ($row = $CountDiscountIDResult->fetch(PDO::FETCH_ASSOC)) { 
-                            ?>
-                            <h3><?php // echo $row['COUNT(discountID)']; 
-                                ?></h3>
-                            <?php // } 
-                            ?>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <h1 class="admin-align-text">Import Countries</h1>
-                <table class="table table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Country</th>
-                            <th scope="col">No. Product</th>
-                            <th scope="col">Total Quantity</th>
-
-                        </tr>
-                    </thead>
-
-                    <?php
-                    $i = 1;
-
-                    while ($row = $CountryResult->fetch(PDO::FETCH_ASSOC)) { ?>
-                        <tbody>
-                            <tr>
-                                <th scope="row"><?php echo $i; ?></th>
-                                <td><?php echo $row['country']; ?></td>
-                                <td><?php echo $row['COUNT(country)']; ?></td>
-                                <td><?php echo $row['totalQuantity']; ?></td>
-
-                            </tr>
-                        <?php $i++;
-                    } ?>
-                        </tbody>
-                </table>
-
-
-                <!--  <h3 class="admin-align-text">Company</h3>
-                <form action="" method="POST">
-                    <?php while ($result = $companyResult->fetch(PDO::FETCH_ASSOC)) { ?>
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline">
-
-                                <input type="companyDescription" value="<?php echo $result["companyDescription"] ?>" name="companyDescription" class="form-control" placeholder="CompanyDescription" required />
-                                <input type="hidden" value="<?php echo $result["companyDescription"] ?>" name="companyDescription" class="form-control" placeholder="CompanyDescription" required />
-
-                            </div>
-                        <?php } ?>
-                </form>
-                <button type="submit" name="submit" class="btn admin-button" id="btn-add">Edit</button> -->
-            </div>
-        </div>
+            </form>
+        <?php
+        } ?>
     </div>
 
 </div>
+<a class="btn btn-primary" href="/logout">Log out</a>
+
+
 <style lang="css">
     @import "styles.css";
 
     .admin-align-text {
         text-align: center;
     }
+
+
 
     .admin-button {
         background: #212121;

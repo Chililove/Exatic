@@ -36,7 +36,7 @@ require("_partials/adminBar.php")
                         <td><?php echo $row['startDate'] ?></td>
                         <td><?php echo $row['endDate'] ?></td>
                         <td><a href="/admin-event-edit?<?php echo $row['discountID']; ?>" class="edit" data-id="<?php echo $row["discountID"]; ?>">edit</a></td>
-                        <td><a href="admin-event.php?discountID=<?= $row["discountID"] ?>">Delete</a></td>
+                        <td><a href="admin-event.php?del=1&discountID=<?= $row["discountID"] ?>">Delete</a></td>
                     </tr>
 
                 </tbody>

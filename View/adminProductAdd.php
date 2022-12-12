@@ -67,14 +67,6 @@ require("_partials/adminBar.php")
                     <label>Type</label>
                     <select type="text" name="productTypeID" class="form-control" required>
                         <option value="">--- Choose a Type ---</option>
-                        <?php
-                        //  while ($row = $productTypeResult->fetch(PDO::FETCH_ASSOC)) {
-                        ?>
-                        <!--     <option value="<?php //echo $row["productTypeID"]; 
-                                                ?>"><?php //echo $row["typeName"]; 
-                                                    ?></option> -->
-                        <?php //} 
-                        ?>
                         <?php foreach ($productTypeResult as $productType) {
                             echo '<option value="' . $productType["productTypeID"] . '">' . $productType["typeName"] . '</option>';
                         } ?>
@@ -86,14 +78,6 @@ require("_partials/adminBar.php")
                     <label>Discount</label>
                     <select type="category" name="discountID" class="form-control" required>
                         <option value="">--- Choose a Discount ---</option>
-                        <?php
-                        //while ($row = $productDiscount->fetch(PDO::FETCH_ASSOC)) {
-                        ?>
-                        <!--  <option value="<?php //echo $row["discountID"]; 
-                                                ?>"><?php //echo $row["eventName"]; 
-                                                    ?></option> -->
-                        <?php // } 
-                        ?>
                         <?php foreach ($productDiscount as $discount) {
                             echo '<option value="' . $discount["discountID"] . '">' . $discount["eventName"] .  '</option>';
                         } ?>

@@ -9,26 +9,21 @@ require("_partials/adminBar.php")
 
 <div class="container">
     <h1>Edit Product</h1>
-    <?php $overview = $_SERVER['QUERY_STRING'];
-    $product_details = "SELECT * FROM Product p, ProductType pt WHERE p.productTypeID = pt.producttypeID AND p.productID = $overview";
-    $overviewResult = mysqli_query($conn, $product_details);
-    while ($row = mysqli_fetch_assoc($overviewResult)) { ?>
+    <?php
+    $editProduct = $_SERVER['QUERY_STRING'];
+    $productEdit = "SELECT * FROM Product  WHERE productID = $editProduct ";
+    $productEditResult = $conn->query($productEdit);
+    while ($row = $productEditResult->fetch(PDO::FETCH_ASSOC)) { ?>
+
         <form action="#" enctype="multipart/form-data" method="post">
+            <h1 name="productID"><?php echo $row['productID']; ?></h1>
+
+            <input type="hidden" name="productID" value="<?php echo $row['productID']; ?>">
             <div class="row">
                 <div class="col-md-8 mb-4">
                     <div class="form-group">
                         <label>Title</label>
                         <input type="text" id="title" name="title" class="form-control" value="<?php echo $row['title']; ?>" required>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 mb-4">
-                    <div class="form-group">
-                        <label for="image">Add image</label>
-                        <img class="admin-image" src="/Exatic/assets/product/<?php echo $row['productImage']; ?>" alt="<?php echo $row['productImage'] ?>" />
-                        <input type="name" name="productImage" class="form-control" value="<?php echo $row['productImage']; ?>" required />
-
                     </div>
                 </div>
             </div>
@@ -74,10 +69,9 @@ require("_partials/adminBar.php")
                         <label>Type</label>
                         <select type="text" name="productTypeID" class="form-control" required>
                             <?php
-                            while ($row = mysqli_fetch_array($productTypeResult)) {
-                            ?>
-                                <option value="<?php echo $row["productTypeID"]; ?>"><?php echo $row["typeName"]; ?></option>
-                            <?php } ?>
+                            while ($row = $productTypeResult->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <option value="<?php echo $row["productTypeID"]; ?>"><?php echo  $row["typeName"]; ?></option>
+                            <?php  } ?>
                         </select>
                     </div>
                 </div>
@@ -86,17 +80,17 @@ require("_partials/adminBar.php")
                         <label>Discount</label>
                         <select type="category" name="discountID" class="form-control" required>
                             <?php
-                            while ($row = mysqli_fetch_array($productDiscount)) {
-                            ?>
+                            while ($row = $productDiscount->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <option value="<?php echo $row["discountID"]; ?>"><?php echo $row["eventName"]; ?></option>
-                            <?php } ?>
+                            <?php  } ?>
                         </select>
                     </div>
                 </div>
             </div>
 
-            <button type="submit" name="submitProductEdit" class="btn btn-success" id="btn-add">Add</button>
-        <?php } ?>
+
+            <button type="submit" name="submitProductEdit" class="btn admin-button" id="btn-add">Add</button>
+        <?php  } ?>
         </form>
 
 </div>

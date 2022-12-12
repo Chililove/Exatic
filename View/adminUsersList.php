@@ -38,4 +38,3 @@ require("_partials/adminBar.php")
         </table>
     </div>
 </div>
-</div>
