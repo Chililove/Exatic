@@ -48,7 +48,7 @@ require("_partials/adminBar.php")
                                         if ($newPrice == 0) {
                                             echo $row['price'];
                                         } else {
-                                            $newPrice;
+                                          echo $newPrice;
                                         } ?></td>
                                     <td><?php echo $row['stockQuantity']; ?></td>
                                     <td class="block text-truncate admin-product-description"><?php echo $row['description']; ?></td>
@@ -58,7 +58,7 @@ require("_partials/adminBar.php")
                                     <td><?php echo $row['typeName']; ?></td>
                                     <td><?php echo $row['eventName']; ?></td>
                                     <td><a href="/admin-product-edit?<?php echo $row['productID']; ?>" class="edit" data-id="<?php echo $row["productID"]; ?>">edit</a></td>
-                                    <td><a href="admin-product.php?del=productID=<?= $row["productID"] ?>">Delete</a></td>
+                                    <td><a href="/admin-product.php?del=productID=<?= $row["productID"]?>">Delete</a></td>
                                 </tr>
                             </tbody>
                     <?php }

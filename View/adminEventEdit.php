@@ -54,14 +54,8 @@ require("_partials/adminBar.php")
                     </div>
                 </div>
             </div>
-            <h1 name="discountID" value="<?php echo $row['discountID']; ?>"><?php echo $row['discountID']; ?></h1>
-
             <input type="hidden" name="discountID" value="<?php echo $row['discountID']; ?>">
-
-
-            
-
-            <button type="submit" name="submitEvent" class="btn admin-button" id="btn-add">Add</button>
+            <button type="submit" name="submitEvent" class="btn admin-button" id="btn-add">Edit</button>
         </form>
     <?php } ?>
 </div>

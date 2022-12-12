@@ -39,7 +39,6 @@ if (isset($_POST['productAdd'])) {
         try {
             $conn->beginTransaction();
             $addProduct = $conn->prepare($AdminProductModel->addProduct);
-            $addProduct->bindParam(':productID', $productID, PDO::PARAM_INT);
             $addProduct->bindParam(':title', $title, PDO::PARAM_STR);
             $addProduct->bindParam(':price', $price, PDO::PARAM_STR);
             $addProduct->bindParam(':stockQuantity', $stockQuantity, PDO::PARAM_INT);
@@ -53,7 +52,7 @@ if (isset($_POST['productAdd'])) {
 
             $addProductResult = $addProduct->execute();
             $conn->commit();
-            //  header("Location:admin-product");
+            header("Location:admin-product");
         } catch (Exception $err) {
             echo $err;
             $errorTransaction = true;
@@ -117,7 +116,6 @@ if (isset($_REQUEST['del'])) {
     $handle = $conn->prepare($AdminProductModel->deleteProduct);
     $handle->execute(array(":productID" => $setProduct));
     $conn->query("SET FOREIGN_KEY_CHECKS=1");
-
     header("Location:admin-product");
 
     // quick fix - ask søren about constraints and deletion.
