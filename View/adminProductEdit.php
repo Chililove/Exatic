@@ -16,6 +16,9 @@ require("_partials/adminBar.php")
     while ($row = $productEditResult->fetch(PDO::FETCH_ASSOC)) { ?>
 
         <form action="#" enctype="multipart/form-data" method="post">
+            <h1 name="productID"><?php echo $row['productID']; ?></h1>
+
+            <input type="hidden" name="productID" value="<?php echo $row['productID']; ?>">
             <div class="row">
                 <div class="col-md-8 mb-4">
                     <div class="form-group">
@@ -84,9 +87,7 @@ require("_partials/adminBar.php")
                     </div>
                 </div>
             </div>
-            <h1 name="productID"><?php echo $row['productID']; ?></h1>
 
-            <input type="hidden" name="productID" value="<?php echo $row['productID']; ?>">
 
             <button type="submit" name="submitProductEdit" class="btn admin-button" id="btn-add">Add</button>
         <?php  } ?>
