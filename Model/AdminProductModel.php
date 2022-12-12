@@ -6,9 +6,9 @@ class AdminProductModel
                          ORDER BY p.productID DESC";
     public $productType = "SELECT * FROM ProductType";
     public $discount = "SELECT * FROM Discount";
-    public $addProduct = "INSERT INTO Product (title, price, stockQuantity, description, isNew, isDailySpecial, country, brand, productImage, productTypeID, discountID)
-                          VALUE (:title, :price, :stockQuantity, :description, 1, :isDailySpecial, :country, :brand, :productImage, :timestamp, :productTypeID, :discountID )";
-
+    public $addProduct = "INSERT INTO Product (title, price, stockQuantity, description, isDailySpecial, country, brand, productImage, productTypeID, discountID)
+                          VALUE (:title, :price, :stockQuantity, :description, :isDailySpecial, :country, :brand, :productImage, :productTypeID, :discountID )";
+    public $editProduct = "SELECT * FROM Product, ProductType WHERE productTypeID = :productTypeID AND productID = :productID";
     public $deleteProduct = "DELETE FROM Product WHERE productID = :productID";
 }
 

@@ -24,7 +24,6 @@ require("_partials/adminBar.php")
                             <th scope="col">NewPrice</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Description</th>
-                            <th scope="col">isNew</th>
                             <th scope="col">Country</th>
                             <th scope="col">Brand</th>
                             <th scope="col">Image</th>
@@ -53,7 +52,6 @@ require("_partials/adminBar.php")
                                         } ?></td>
                                     <td><?php echo $row['stockQuantity']; ?></td>
                                     <td class="block text-truncate admin-product-description"><?php echo $row['description']; ?></td>
-                                    <td><?php echo $row['isNew']; ?></td>
                                     <td><?php echo $row['country']; ?></td>
                                     <td><?php echo $row['brand']; ?></td>
                                     <td><img class="admin-product-image" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="<?php echo $row['productImage'] ?>" /></td>
