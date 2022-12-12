@@ -9,7 +9,7 @@ $productTypeResult = $conn->query($AdminProductModel->productType);
 $productDiscount = $conn->query($AdminProductModel->discount);
 
 //create product
-if(isset($_POST['productAdd'])) {
+if (isset($_POST['productAdd'])) {
 
     $title = $sanitized['title'];
     $price = $sanitized['price'];
@@ -18,7 +18,7 @@ if(isset($_POST['productAdd'])) {
     $isDailySpecial = 1;
     $country = $sanitized['country'];
     $brand = $sanitized['brand'];
-    $productImage = $_FILES['productImage'] ['name'];
+    $productImage = $_FILES['productImage']['name'];
     $productTypeID = $sanitized['productTypeID'];
     $discountID = $sanitized['discountID'];
 
@@ -30,13 +30,16 @@ if(isset($_POST['productAdd'])) {
         $file = $_FILES["productImage"]["name"];
         $filename = strtolower($file);
         if ($_FILES['productImage']['name']) {
-            move_uploaded_file($_FILES['productImage']['tmp_name'],
-            "assets/product/" . $filename);
+            move_uploaded_file(
+                $_FILES['productImage']['tmp_name'],
+                "assets/product/" . $filename
+            );
         }
 
         try {
-           $conn->beginTransaction();
-            $addProduct = $conn->prepare($AdminProductModel-> addProduct );
+            $conn->beginTransaction();
+            $addProduct = $conn->prepare($AdminProductModel->addProduct);
+            $addProduct->bindParam(':productID', $productID, PDO::PARAM_INT);
             $addProduct->bindParam(':title', $title, PDO::PARAM_STR);
             $addProduct->bindParam(':price', $price, PDO::PARAM_STR);
             $addProduct->bindParam(':stockQuantity', $stockQuantity, PDO::PARAM_INT);
@@ -54,8 +57,7 @@ if(isset($_POST['productAdd'])) {
         } catch (Exception $err) {
             echo $err;
             $errorTransaction = true;
-           $conn->rollback();
-
+            $conn->rollback();
         }
     }
 }
@@ -63,7 +65,7 @@ if(isset($_POST['productAdd'])) {
 
 
 //edit product
-if(isset($_POST['submitProductEdit'])) {
+if (isset($_POST['submitProductEdit'])) {
     $title = $sanitized['title'];
     $price = $sanitized['price'];
     $stockQuantity = $sanitized['stockQuantity'];
@@ -71,7 +73,7 @@ if(isset($_POST['submitProductEdit'])) {
     $isDailySpecial = 1;
     $country = $sanitized['country'];
     $brand = $sanitized['brand'];
-    $productImage = $_FILES['productImage'] ['name'];
+    $productImage = $_FILES['productImage']['name'];
     $productTypeID = $sanitized['productTypeID'];
     $discountID = $sanitized['discountID'];
 
@@ -83,14 +85,16 @@ if(isset($_POST['submitProductEdit'])) {
         $file = $_FILES["productImage"]["name"];
         $filename = strtolower($file);
         if ($_FILES['productImage']['name']) {
-            move_uploaded_file($_FILES['productImage']['tmp_name'],
-                "assets/product/" . $filename);
+            move_uploaded_file(
+                $_FILES['productImage']['tmp_name'],
+                "assets/product/" . $filename
+            );
         }
 
         try {
             $conn->beginTransaction();
             $editProductPDO = $conn->prepare($AdminProductModel->editProduct);
-        //    $editProductPDO->bindParam(':productID', $productID, PDO::PARAM_INT);
+            //    $editProductPDO->bindParam(':productID', $productID, PDO::PARAM_INT);
             $editProductPDO->bindParam(':title', $title, PDO::PARAM_STR);
             $editProductPDO->bindParam(':price', $price, PDO::PARAM_STR);
             $editProductPDO->bindParam(':stockQuantity', $stockQuantity, PDO::PARAM_INT);
@@ -103,12 +107,10 @@ if(isset($_POST['submitProductEdit'])) {
             $editProductPDO->bindParam(':discountID', $discountID, PDO::PARAM_INT);
             $editProductResult = $editProductPDO->execute();
             $conn->commit();
-
         } catch (Exception $err) {
             echo $err;
             $errorTransaction = true;
             $conn->rollback();
-
         }
     }
 }
@@ -117,14 +119,13 @@ if(isset($_POST['submitProductEdit'])) {
 
 
 //delete product
-    if (isset($_REQUEST['productID'])) {
+if (isset($_REQUEST['productID'])) {
     $setProduct = $_REQUEST['productID'];
     $handle = $conn->prepare($AdminProductModel->deleteProduct);
     $handle->execute(array(":productID" => $setProduct));
-    ?>
+?>
     <script>
         window.location.href = "/admin-product";
     </script>
 <?php
 }
-
