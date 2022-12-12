@@ -1172,7 +1172,11 @@ INSERT INTO `PostalCode` (postNumber, cityName) VALUES
 INSERT INTO Address (`addressID`, `streetName`, `streetNumber`, `postalCodeID`) VALUES
                                                                                     (1, 'Spangsbjerg Kirkevej', 103, 5),
                                                                                     (2, 'Havnegade', 11, 4),
-                                                                                    (3, 'Spangsbjerg Kirkevej', 103, 859);
+                                                                                    (3, 'Spangsbjerg Kirkevej', 103, 859),
+                                                                                    (4, 'Havnevej', 2, 8),
+                                                                                    (5, 'Lykkevej', 55, 23),
+                                                                                    (6, 'Solvej', 32, 24),
+                                                                                    (7, 'Samsøgade', 12, 23);
 /*CompanyInfo*/
 
 INSERT INTO `CompanyInfo` (`companyInfoID`, `companyDescription`, `weekdays`, `weekends`,`openingHours`,`weekendHours`,`addressID`) VALUES
@@ -1186,4 +1190,24 @@ INSERT INTO `CompanyInfo` (`companyInfoID`, `companyDescription`, `weekdays`, `w
 /* User */
 
 INSERT INTO `User` (`userID`, `firstName`, `lastName`, `email`, `password`, `userType`, `imagePath`, `addressID`) VALUES
-(1, 'Exatic', 'Company', 'exaticproject@gmail.com', '$2y$06$D7r211Aj1/rRUCSORUuFjeOpuf6/tRq2Ap.pJyP5UXs142GJxWnIe', 0, "default.jpg", 1);
+(1, 'Exatic', 'Company', 'exaticproject@gmail.com', '$2y$06$D7r211Aj1/rRUCSORUuFjeOpuf6/tRq2Ap.pJyP5UXs142GJxWnIe', 0, "default.jpg", 1),
+(2, 'Ruben', 'Kyed', 'ruben@mail.com', '$2y$06$RW4Q2kN6pgKNSC8GCQzSSur5N5MKQt9PHfwOwJAEiDP/SGa7DGmW.', 1, "default.jpg", 4),
+(3, 'Lady', 'Karlsen', 'Lady@mail.com', '$2y$06$bQ6fic/DkwJhWMrLty8ctuGZNb2Q3PpKLyvigkvhryovfvo3wiVva', 1, "default.jpg", 5),
+(4, 'test', 'test', 'test@test.com', '$2y$06$ppoAGJ0iTL8mBsj4HPYDA.RtpKCDhoxrZQ2jLuCT1C7OkNC3GsxRS', 0, "test.jpeg", 6);
+
+
+INSERT INTO `Order` (`orderID`, `dateOrdered`, `dateDelivered`, `status`, `userID`) VALUES
+(1, '2022-11-02 22:33:43', '2022-11-16 22:33:43', 'Done', 2),
+(2, '2022-12-05 22:33:43', '2022-12-27 22:33:43', 'Not done', 2),
+(3, '2022-11-22 22:33:43', '2022-12-22 22:33:43', 'Not done', 3),
+(4, '2022-12-11 22:33:43', '2022-12-20 22:33:43', 'Not done', 3),
+(5, '2022-12-05 22:33:43', '2022-12-08 22:33:43', 'Done', 2),
+(6, '2022-12-01 22:33:43', '2022-12-10 22:33:43', 'Done', 2);
+
+INSERT INTO `OrderDetail` (`orderDetailID`, `quantity`, `price`, `procent`, `orderID`, `productID`) VALUES
+(1, 2, '67', '0', 1, 18),
+(2, 4, '120', '0', 2, 19),
+(3, 3, '66', '10', 3, 9),
+(4, 12, '267', '10', 4, 22),
+(5, 8, '320', '0', 5, 15),
+(6, 1, '25', '0', 6, 16);
