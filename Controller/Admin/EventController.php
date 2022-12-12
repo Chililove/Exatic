@@ -1,5 +1,6 @@
 <?php
-if(isset($_POST['submit'])) {
+
+if (isset($_POST['submit'])) {
 
     $eventName  = $sanitized['eventName'];
     $description   = $sanitized['description'];
@@ -14,7 +15,7 @@ if(isset($_POST['submit'])) {
 
         try {
             $conn->beginTransaction();
-            $addEvent = $conn->prepare($EventModel->createEvent );
+            $addEvent = $conn->prepare($EventModel->createEvent);
             $addEvent->bindParam(':eventName', $eventName, PDO::PARAM_STR);
             $addEvent->bindParam(':description', $description, PDO::PARAM_STR);
             $addEvent->bindParam(':discountProcent', $discountProcent, PDO::PARAM_STR);
@@ -33,7 +34,6 @@ if(isset($_POST['submit'])) {
 }
 
 
-
 //edit Event
 if (isset($_POST['submitEvent'])) {
 
@@ -42,6 +42,7 @@ if (isset($_POST['submitEvent'])) {
     $discountProcent     = $sanitized['discountProcent'];
     $startDate    = $sanitized['startDate'];
     $endDate    = $sanitized['endDate'];
+    $discountID = $sanitized['discountID'];
 
     if (
         !empty($_POST['eventName']) || !empty($_POST['description']) || !empty($_POST['discountProcent']) ||
@@ -51,6 +52,7 @@ if (isset($_POST['submitEvent'])) {
         try {
             $conn->beginTransaction();
             $editEvent = $conn->prepare($EventModel->editEvent);
+            $editEvent->bindParam(':discountID', $discountID, PDO::PARAM_INT);
             $editEvent->bindParam(':eventName', $eventName, PDO::PARAM_STR);
             $editEvent->bindParam(':description', $description, PDO::PARAM_STR);
             $editEvent->bindParam(':discountProcent', $discountProcent, PDO::PARAM_STR);
@@ -59,27 +61,31 @@ if (isset($_POST['submitEvent'])) {
 
             $editEventResult = $editEvent->execute();
             $conn->commit();
-            header("Location:admin-event");
+            //   header("Location:admin-event");
         } catch (Exception $err) {
             echo $err;
             $errorTransaction = true;
             $conn->rollback();
         }
     }
-
 }
 
 //read event
-$EventListResult = $conn ->query($EventModel->eventList);
+$EventListResult = $conn->query($EventModel->eventList);
 
 //delete event
-if (isset($_REQUEST['discountID'])) {
+if (isset($_REQUEST['del'])) {
     $setDiscount = $_REQUEST['discountID'];
+    $conn->query("SET FOREIGN_KEY_CHECKS=0");
     $handle = $conn->prepare($EventModel->deleteEvent);
     $handle->execute(array(":discountID" => $setDiscount));
-    ?>
+    $conn->query("SET FOREIGN_KEY_CHECKS=1");
+
+    // quick fix - needs to change 
+
+?>
     <script>
         window.location.href = "/admin-event";
     </script>
-    <?php
+<?php
 }

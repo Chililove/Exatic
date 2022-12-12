@@ -50,10 +50,15 @@ require("_partials/adminBar.php")
                 <div class="col-md-10 mb-4">
                     <div class="form-group">
                         <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" name="description"  rows="2"><?php echo $row['description']; ?></textarea>
+                        <textarea class="form-control" name="description" rows="2"><?php echo $row['description']; ?></textarea>
                     </div>
                 </div>
             </div>
+            <h1 name="discountID" value="<?php echo $row['discountID']; ?>"><?php echo $row['discountID']; ?></h1>
+
+            <input type="hidden" name="discountID" value="<?php echo $row['discountID']; ?>">
+
+
 
             <button type="submit" name="submitEvent" class="btn admin-button" id="btn-add">Add</button>
         </form>
