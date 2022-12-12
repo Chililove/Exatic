@@ -16,10 +16,8 @@ $AdminProfileResult = $handleAdmin->fetchAll();
 $user = $AdminProfileResult[0];
 
 $companyReadResult = $conn->prepare($AdminProfileModel->CompanyRead);
-echo "snotherheth";
 
 //edit compamy info
-
 if (isset($_POST['submitCompany'])) {
     var_dump($_POST);
     $companyDescription = $sanitized['companyDescription'];
@@ -31,7 +29,7 @@ if (isset($_POST['submitCompany'])) {
     $companyInfoID = $sanitized['companyInfoID'];
 
 
-    if (!empty($companyDescription) || !empty($_POST['weekdays']) || !empty($_POST['weekends']) || !empty($_POST['openingHours']) || !empty($_POST['weekendHours'])) {
+    if (!empty($_POST['companyDescription']) || !empty($_POST['weekdays']) || !empty($_POST['weekends']) || !empty($_POST['openingHours']) || !empty($_POST['weekendHours'])) {
         try {
             $conn->beginTransaction();
             $company = $conn->prepare($AdminProfileModel->companyEdit);
