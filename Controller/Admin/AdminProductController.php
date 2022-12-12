@@ -111,7 +111,7 @@ if (isset($_POST['submitProductEdit'])) {
 
 //delete product
 
-if (isset($_REQUEST['productID'])) {
+if (isset($_REQUEST['del'])) {
     $setProduct = $_REQUEST['productID'];
     $conn->query("SET FOREIGN_KEY_CHECKS=0");
     $handle = $conn->prepare($AdminProductModel->deleteProduct);

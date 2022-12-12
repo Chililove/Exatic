@@ -58,7 +58,7 @@ require("_partials/adminBar.php")
                                     <td><?php echo $row['typeName']; ?></td>
                                     <td><?php echo $row['eventName']; ?></td>
                                     <td><a href="/admin-product-edit?<?php echo $row['productID']; ?>" class="edit" data-id="<?php echo $row["productID"]; ?>">edit</a></td>
-                                    <td><a href="admin-product.php?productID=<?= $row["productID"] ?>">Delete</a></td>
+                                    <td><a href="admin-product.php?del=productID=<?= $row["productID"] ?>">Delete</a></td>
                                 </tr>
                             </tbody>
                     <?php }
