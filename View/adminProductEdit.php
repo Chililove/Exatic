@@ -28,7 +28,7 @@ require("_partials/adminBar.php")
                 <div class="col-md-8 mb-4">
                     <div class="form-group">
                         <label for="image">Add image</label>
-                        <input type="file" name="productImage" id="image" value="<?php  echo $row['productImage']; ?>" class="form-control" />
+                        <input name="productImage"  type="file" id="image" value="" class="form-control" />
                     </div>
                 </div>
             </div>
