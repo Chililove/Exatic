@@ -84,6 +84,8 @@ CREATE TABLE `Order` (
 
 CREATE TABLE OrderDetail (
     orderDetailID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    title VARCHAR(1000),
+    priceOne DECIMAL,
     quantity INT,
     price DECIMAL,
     procent DECIMAL,

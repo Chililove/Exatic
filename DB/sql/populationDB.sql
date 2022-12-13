@@ -1204,10 +1204,10 @@ INSERT INTO `Order` (`orderID`, `dateOrdered`, `dateDelivered`, `status`, `userI
 (5, '2022-12-05 22:33:43', '2022-12-08 22:33:43', 'Done', 2),
 (6, '2022-12-01 22:33:43', '2022-12-10 22:33:43', 'Done', 2);
 
-INSERT INTO `OrderDetail` (`orderDetailID`, `quantity`, `price`, `procent`, `orderID`, `productID`) VALUES
-(1, 2, '67', '0', 1, 18),
-(2, 4, '120', '0', 2, 19),
-(3, 3, '66', '10', 3, 9),
-(4, 12, '267', '10', 4, 22),
-(5, 8, '320', '0', 5, 15),
-(6, 1, '25', '0', 6, 16);
+INSERT INTO `OrderDetail` (`orderDetailID`,`title`, `priceOne`,`quantity`, `price`, `procent`, `orderID`, `productID`) VALUES
+(1,'Gyoza Pork Ajinomoto','89',1, '67', '0', 1, 18),
+(2, 'Gyoza Pork & Vegetables Bibigo', '69',4, '120', '0', 2, 19),
+(3, 'Jinro Soju Chamisul Grapefruit 13% 36 cl.', '48',3, '66', '10', 3, 9),
+(4, 'Jasmin Rice Royal Tiger', '129',12, '267', '10', 4, 22),
+(5, 'Gyoza Duck Ajinomoto', '109',8, '320', '0', 5, 15),
+(6, 'Sanquan', 29,1, '25', '0', 6, 16);
