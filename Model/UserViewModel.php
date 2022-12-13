@@ -1,7 +1,8 @@
 <?php
+$userId = $_GET['userID'];
+$orders = "SELECT * FROM `Order` WHERE userID = $userId";
 class UserViewModel
 {
-public $userView = "SELECT * FROM `Order` WHERE userID = :userID";
 }
 
 $UserViewModel = new UserViewModel();

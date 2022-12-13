@@ -20,6 +20,9 @@ $addressReadResult = $conn->prepare($AdminProfileModel->addressRead);
 $ownerReadResult = $conn->prepare($AdminProfileModel->userRead);
 
 $companyResult = $conn->query($AdminProfileModel->companyRead);
+
+
+
 //edit company info
 if (isset($_POST['submitCompany'])) {
 

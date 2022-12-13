@@ -36,14 +36,26 @@ if (isset($_GET['msgid'])) {
             <div class="row">
 
                 <div class="col-lg-4 py-0 py-lg-4">
-                    <h1 class="mb-3 about-text">Talk to us</h1>
-                    <h5 class="mb-3 about-text">Exatic is here to answer your questions </h5>
-                    <h5 class="mb-3"><i class="fa-sharp fa-solid fa-location-dot fa-md"></i> Address: <span class="about-text">SomeAddress 23</span>
-                    </h5>
+                    <?php
+                    $address = "SELECT streetName, streetNumber FROM `Address` WHERE addressID=1";
+                    $addressResult = $conn->query($address);
+                    while ($row = $addressResult->fetch(PDO::FETCH_ASSOC)) {
+                    ?>
+                        <h1 class="mb-3 about-text">Talk to us</h1>
+                        <h5 class="mb-3 about-text">Exatic is here to answer your questions </h5>
+                        <h5 class="mb-3"><i class="fa-sharp fa-solid fa-location-dot fa-md"></i> Address: <span class="about-text"><?php echo $row['streetName'] ?></span><span> <?php echo $row['streetNumber'] ?></span>
+                        </h5>
+                    <?php } ?>
                     <h5 class="mb-3"><i class="fa-solid fa-phone fa-md"></i> Phone: <span class="about-text">+45 123456</span>
                     </h5>
-                    <h5 class="mb-3 "><i class="fa-solid fa-envelope fa-md"></i> Email: <span class="about-text">exaticproject@email.com</span>
-                    </h5>
+                    <?php
+                    $owner = "SELECT email FROM User WHERE userID = 1";
+                    $ownerResult = $conn->query($owner);
+                    while ($row = $ownerResult->fetch(PDO::FETCH_ASSOC)) { ?>
+
+                        <h5 class="mb-3 "><i class="fa-solid fa-envelope fa-md"></i> Email: <span class="about-text"><?php echo $row['email'] ?></span>
+                        </h5>
+                    <?php } ?>
                     <h5 class="mb-3 about-text">You can also contact the owners directly on the form bellow.</h5>
                 </div>
                 <div class="col-lg-4 py-5 py-lg-0 google-div">

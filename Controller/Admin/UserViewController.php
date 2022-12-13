@@ -1,6 +1,2 @@
 <?php
-
-$userViewResult = $conn->prepare($UserViewModel->userView);
-
-
-
+$orderResult = $conn->query($orders);
