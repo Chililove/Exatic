@@ -1,10 +1,10 @@
 <?php
-$usersListResult = $conn->query($UsersListModel->usersList);
+$usersListResult = $conn->query($UserListModel->usersList);
 
 
 if (isset($_REQUEST['userID'])) {
     $setUser = $_REQUEST['userID'];
-    $handle = $conn->prepare($UsersListModel->deleteUser);
+    $handle = $conn->prepare($UserListModel->deleteUser);
     $handle->execute(array(":userID" => $setUser));
 ?>
     <script>

@@ -51,7 +51,8 @@ if ($view == null && $isAdmin) {
     $view = match ($toCheck) {
         '/admin-profile' => '/View/adminProfile.php',
         '/admin-product' => '/View/adminProduct.php',
-        '/admin-user-list' => '/View/adminUsersList.php',
+        '/admin-user-list' => '/View/adminUserList.php',
+        '/admin-user-view' => '/View/adminUserView.php',
         '/admin-event' => '/View/adminEvent.php',
         '/admin-product-add' => '/View/adminProductAdd.php',
         '/admin-product-edit' => '/View/adminProductEdit.php',

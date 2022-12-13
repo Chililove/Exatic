@@ -12,7 +12,7 @@ class AdminProfileModel
     public $addressRead = "SELECT * FROM Address a, PostalCode p WHERE  a.postalCodeID = p.postalCodeID AND addressID = 1";
     public $addressEdit = "UPDATE Address SET `streetName` = :streetName, `streetNumber` = :streetNumber, `postalCodeID` = :postalCodeID WHERE Address.`addressID` = :addressID";
     public $userRead = "SELECT * FROM User WHERE userID = 1";
-    public $userEdit = "UPDATE User SET `firstName` = :firstName, `lastName` = :lastName, `email` = :email, `password` = :password,`userType` = :userType,`imagePath` = :imagePath,`addressID` = :addressID, WHERE User.`userID` = :userID";
+    public $userEdit = "UPDATE User SET `firstName` = :firstName, `lastName` = :lastName, `email` = :email, `password` = :password,`userType` = :userType,`imagePath` = :imagePath, `addressID` = :addressID WHERE User.`userID` = :userID";
     public $companyRead = "SELECT * FROM CompanyInfo WHERE companyInfoID = 1";
 }
 

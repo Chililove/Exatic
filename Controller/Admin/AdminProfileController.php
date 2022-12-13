@@ -15,7 +15,7 @@ $AdminProfileResult = $handleAdmin->fetchAll();
 
 $user = $AdminProfileResult[0];
 
-$companyReadResult = $conn->prepare($AdminProfileModel->CompanyRead);
+$companyReadResult = $conn->prepare($AdminProfileModel->companyRead);
 $addressReadResult = $conn->prepare($AdminProfileModel->addressRead);
 $ownerReadResult = $conn->prepare($AdminProfileModel->userRead);
 
@@ -54,7 +54,6 @@ if (isset($_POST['submitCompany'])) {
 }
 
 if (isset($_POST['updateAddress'])) {
-
     $streetName = $sanitized['streetName'];
     $streetNumber = $sanitized['streetNumber'];
     $postalCodeID = $sanitized['postalCodeID'];
@@ -80,8 +79,6 @@ if (isset($_POST['updateAddress'])) {
 }
 
 if (isset($_POST['updateEmail'])) {
-
-    $userID = $sanitized['userID'];
     $firstName = $sanitized['firstName'];
     $lastName = $sanitized['lastName'];
     $email = $sanitized['email'];
@@ -89,6 +86,7 @@ if (isset($_POST['updateEmail'])) {
     $userType = $sanitized['userType'];
     $imagePath = $sanitized['imagePath'];
     $addressID = $sanitized['addressID'];
+    $userID = $sanitized['userID'];
 
 
     if (!empty($_POST['firstName']) || !empty($_POST['lastName']) || !empty($_POST['email']) || !empty($_POST['userType']) || !empty($_POST['imagePath'])) {

@@ -1,8 +1,8 @@
 <?php
 require("rootPath.php");
 
-require $rootPath . "Model/UsersListModel.php";
-require $rootPath . "Controller/Admin/UsersListController.php";
+require $rootPath . "Model/UserListModel.php";
+require $rootPath . "Controller/Admin/UserListController.php";
 require("_partials/adminBar.php")
 
 ?>
@@ -28,6 +28,7 @@ require("_partials/adminBar.php")
                         <th scope="row"><?php echo $row['firstName'] ?> <?php echo $row['lastName'] ?></th>
                         <td><?php echo $row['email'] ?></td>
                         <td><?php echo $row['streetName'] ?> <?php echo $row['streetNumber'] ?>, <?php echo $row['cityName'] ?></td>
+                        <td><a href="/admin-user-view?<?php echo $row['userID']; ?>" class="edit" data-id="<?php echo $row["userID"]; ?>">View</a></td>
                         <td>
                             <a href="admin-user-list.php?userID=<?= $row["userID"] ?>">Delete</a>
                         </td>

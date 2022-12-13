@@ -109,13 +109,13 @@ require("_partials/adminBar.php")
                 <div class="col">
                     <div class="form-outline">
                         <label class="form-label" for="form3Example1">StreetName</label>
-                        <input type="text" name="weekdays" value="<?php echo $row['streetName']; ?>" class="form-control" />
+                        <input type="text" name="streetName" value="<?php echo $row['streetName']; ?>" class="form-control" />
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-outline">
                         <label class="form-label" for="form3Example1">StreetNumber</label>
-                        <input type="text" name="weekends" value="<?php echo $row['streetNumber']; ?>" class="form-control" />
+                        <input type="text" name="streetNumber" value="<?php echo $row['streetNumber']; ?>" class="form-control" />
                     </div>
                 </div>
                 <div class="col">
@@ -143,7 +143,7 @@ require("_partials/adminBar.php")
                 <div class="col">
                     <div class="form-outline">
                         <label class="form-label" for="form3Example1">Email</label>
-                        <input type="text" name="weekdays" value="<?php echo $row['email']; ?>" class="form-control" />
+                        <input type="text" name="email" value="<?php echo $row['email']; ?>" class="form-control" />
                     </div>
                 </div>
                 <div class="col">
@@ -152,13 +152,12 @@ require("_partials/adminBar.php")
                     <input type="hidden" name="password" value="<?php echo $row['password']; ?>">
                     <input type="hidden" name="userType" value="<?php echo $row['userType']; ?>">
                     <input type="hidden" name="imagePath" value="<?php echo $row['imagePath']; ?>">
-
+                    <input type="hidden" name="addressID" value="<?php echo $row['addressID']; ?>">
                     <input type="hidden" name="userID" value="<?php echo $row['userID']; ?>">
 
-                    <input type="hidden" name="addressID" value="<?php echo $row['addressID']; ?>">
                 </div>
             </div>
-            <button type="submit" name="submitCompany" id="btn-edit" class="btn admin-button">Edit</a></button>
+            <button type="submit" name="updateEmail" id="btn-edit" class="btn admin-button">Edit</a></button>
 
         </form>
     <?php
