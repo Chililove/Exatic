@@ -17,9 +17,9 @@ $user = $AdminProfileResult[0];
 
 $companyReadResult = $conn->prepare($AdminProfileModel->CompanyRead);
 
-//edit compamy info
+//edit company info
 if (isset($_POST['submitCompany'])) {
-    var_dump($_POST);
+
     $companyDescription = $sanitized['companyDescription'];
     $weekdays = $sanitized['weekdays'];
     $weekends = $sanitized['weekends'];
@@ -49,4 +49,3 @@ if (isset($_POST['submitCompany'])) {
         }
     }
 }
-

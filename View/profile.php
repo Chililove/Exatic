@@ -110,13 +110,14 @@ require "resize/Resizer.php";
                 </div>
             </div>
         </div>
-        <a class="btn btn-primary" href="/logout">Log out</a>
+
     </div>
 
 
 
-
 </body>
+
+<a class="btn admin-button" href="/logout">Log out</a>
 
 </html>
 
@@ -141,12 +142,9 @@ require "resize/Resizer.php";
 
     }
 
-    .btn {
-        border-radius: 0;
-        background-color: black;
+    .admin-button {
+        background: #212121;
         color: white;
-        box-shadow: 0px, 5px, 10px #212121;
-        margin: 2%;
-        margin-left: 88%;
+        border-radius: 0;
     }
 </style>

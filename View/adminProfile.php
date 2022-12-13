@@ -53,7 +53,7 @@ require("_partials/adminBar.php")
         $companyRead = "SELECT * FROM CompanyInfo WHERE companyInfoID = 1";
         $companyResult = $conn->query($companyRead);
         while ($row = $companyResult->fetch(PDO::FETCH_ASSOC)) { ?>
-            <form>
+            <form method="post" action="">
                 <div class="row mb-4">
                     <div class="form-outline mb-4">
                         <div class="py-2 admin-align-text">
@@ -86,10 +86,12 @@ require("_partials/adminBar.php")
                             <input type="text" name="weekendHours" value="<?php echo $row['weekendHours']; ?>" class="form-control" />
                         </div>
                         <input type="hidden" name="companyInfoID" value="<?php echo $row['companyInfoID']; ?>">
+                        <input type="hidden" name="addressID" value="<?php echo $row['addressID']; ?>">
                     </div>
                 </div>
+                <button type="submit" name="submitCompany" id="btn-edit" class="btn admin-button">Edit</a></button>
+
             </form>
-            <button type="submit" name="submitCompany" id="btn-edit" class="btn admin-button">Edit</a></button>
         <?php
         } ?>
     </div>
