@@ -157,7 +157,7 @@ require("_partials/adminBar.php")
 
                 </div>
             </div>
-            <button type="submit" name="updateEmail" id="btn-edit" class="btn admin-button">Edit</a></button>
+            <button type="submit" name="updateEmail" id="btn-edit" class="btn admin-button">Edit</button>
 
         </form>
     <?php

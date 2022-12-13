@@ -16,6 +16,8 @@ class AdminProductModel
                             `discountID` = :discountID
                             WHERE Product.`productID` = :productID";
 
+    public $editSpecialDaily = " UPDATE Product SET  `isDailySpecial` = :isDailySpecial WHERE Product.`productID` = :productID";
+
     public $deleteProduct = "DELETE FROM Product WHERE productID = :productID";
 }
 
