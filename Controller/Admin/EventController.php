@@ -61,7 +61,7 @@ if (isset($_POST['submitEvent'])) {
 
             $editEventResult = $editEvent->execute();
             $conn->commit();
-            //   header("Location:admin-event");
+            header("Location:admin-event");
         } catch (Exception $err) {
             echo $err;
             $errorTransaction = true;

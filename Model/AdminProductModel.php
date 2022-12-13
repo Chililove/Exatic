@@ -16,7 +16,6 @@ class AdminProductModel
                             `discountID` = :discountID
                             WHERE Product.`productID` = :productID";
 
-
     public $deleteProduct = "DELETE FROM Product WHERE productID = :productID";
 }
 

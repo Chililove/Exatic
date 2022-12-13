@@ -49,3 +49,4 @@ if (isset($_POST['submitCompany'])) {
         }
     }
 }
+

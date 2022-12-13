@@ -19,10 +19,6 @@ require("_partials/adminBar.php")
                         <p class="text-muted font-size-sm"><?php echo $user["streetName"]; ?><?php echo $user["streetNumber"]; ?>, <?php echo $user["cityName"]; ?></p>
                     </div>
                 </div>
-                <div class="py-2 admin-align-text">
-                    <span">Company Info</span>
-
-                </div>
             </div>
             <div class="col-md-8">
                 <div class="row">
@@ -60,8 +56,10 @@ require("_partials/adminBar.php")
             <form>
                 <div class="row mb-4">
                     <div class="form-outline mb-4">
+                        <div class="py-2 admin-align-text">
+                            <span">Company Info</span>
+                        </div>
                         <textarea class="form-control" name="companyDescription" id="" cols="30" rows="10"><?php echo $row['companyDescription']; ?></textarea>
-
                     </div>
                     <div class="col">
                         <div class="form-outline">
@@ -86,22 +84,18 @@ require("_partials/adminBar.php")
                         <div class="form-outline">
                             <label class="form-label" for="form3Example1">WeHours</label>
                             <input type="text" name="weekendHours" value="<?php echo $row['weekendHours']; ?>" class="form-control" />
-
                         </div>
-                        <h1 name="companyInfoID"><?php echo $row['companyInfoID']; ?></h1>
                         <input type="hidden" name="companyInfoID" value="<?php echo $row['companyInfoID']; ?>">
-                        <button type="submit" name="submitCompany" id="btn-edit" class="btn admin-button">Edit</button>
-
                     </div>
-
                 </div>
             </form>
+            <button type="submit" name="submitCompany" id="btn-edit" class="btn admin-button">Edit</a></button>
         <?php
         } ?>
     </div>
 
 </div>
-<a class="btn btn-primary" href="/logout">Log out</a>
+<a class="btn admin-button" href="/logout">Log out</a>
 
 
 <style lang="css">

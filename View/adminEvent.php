@@ -15,11 +15,11 @@ require("_partials/adminBar.php")
                     <th scope="col">#</th>
                     <th scope="col">Event Name</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Discount procent</th>
+                    <th scope="col">Discount percentage</th>
                     <th scope="col">Start date</th>
                     <th scope="col">End date</th>
                     <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
+                    <th scope="col"></th>
 
                 </tr>
             </thead>
@@ -36,7 +36,7 @@ require("_partials/adminBar.php")
                         <td><?php echo $row['startDate'] ?></td>
                         <td><?php echo $row['endDate'] ?></td>
                         <td><a href="/admin-event-edit?<?php echo $row['discountID']; ?>" class="edit" data-id="<?php echo $row["discountID"]; ?>">edit</a></td>
-                        <td><a href="admin-event.php?del=1&discountID=<?= $row["discountID"] ?>">Delete</a></td>
+                        <td><a href="/admin-event.php?del=1&discountID=<?= $row["discountID"] ?>"></a></td>
                     </tr>
 
                 </tbody>

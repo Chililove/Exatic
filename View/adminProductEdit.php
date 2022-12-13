@@ -98,8 +98,9 @@ require("_partials/adminBar.php")
 <style lang="css">
     @import "styles.css";
 
-    .admin-image {
-        width: 10%;
-        justify-items: center;
+    .admin-button {
+        background: #212121;
+        color: white;
+        border-radius: 0;
     }
 </style>

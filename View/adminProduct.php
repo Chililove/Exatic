@@ -48,7 +48,7 @@ require("_partials/adminBar.php")
                                         if ($newPrice == 0) {
                                             echo $row['price'];
                                         } else {
-                                            $newPrice;
+                                          echo $newPrice;
                                         } ?></td>
                                     <td><?php echo $row['stockQuantity']; ?></td>
                                     <td class="block text-truncate admin-product-description"><?php echo $row['description']; ?></td>
@@ -57,13 +57,12 @@ require("_partials/adminBar.php")
                                     <td><img class="admin-product-image" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="<?php echo $row['productImage'] ?>" /></td>
                                     <td><?php echo $row['typeName']; ?></td>
                                     <td><?php echo $row['eventName']; ?></td>
-                                    <td><a href="/admin-product-edit?<?php echo $row['productID']; ?>" class="edit" data-id="<?php echo $row["productID"]; ?>">edit</a></td>
-                                    <td><a href="admin-product.php?del=productID=<?= $row["productID"] ?>">Delete</a></td>
+                                    <td><a href="/admin-product-edit?<?php echo $row['productID']; ?>" class="edit" data-id="<?php echo $row["productID"]; ?>">Edit</a></td>
+                                    <td><a href="/admin-product.php?del=1&productID=<?= $row["productID"]?>">Delete</a></td>
                                 </tr>
                             </tbody>
                     <?php }
                     } ?>
-
                 </table>
             </div>
         </div>
