@@ -2,9 +2,6 @@
 
 //read product and options
 $adminProductResult = $conn->query($AdminProductModel->product_list);
-//$deleteProductResult = $conn->query($AdminProductModel->deleteProduct);
-//$productTypeResult = $conn ->query( $AdminProductModel->productType);
-//$productDiscount = $conn ->query( $AdminProductModel->discount);
 $productTypeResult = $conn->query($AdminProductModel->productType);
 $productDiscount = $conn->query($AdminProductModel->discount);
 
@@ -72,7 +69,6 @@ if (isset($_POST['submitProductEdit'])) {
     $isDailySpecial = 1;
     $country = $sanitized['country'];
     $brand = $sanitized['brand'];
-    //$productImage = $_FILES['productImage']['name'];
     $productTypeID = $sanitized['productTypeID'];
     $discountID = $sanitized['discountID'];
     $productID = $sanitized['productID'];
