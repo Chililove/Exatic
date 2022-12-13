@@ -20,6 +20,7 @@ if (isset($_POST['updateStatus'])) {
             $editStatus->bindParam(':userID', $userID, PDO::PARAM_INT);
             $statusResult = $editStatus->execute();
             $conn->commit();
+          //  header("Location:admin-user-view");
         } catch (Exception $err) {
             $err = true;
             $conn->rollback();
