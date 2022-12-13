@@ -1,6 +1,10 @@
 <?php
 require("rootPath.php");
 
+require $rootPath . "Model/ProfileModel.php";
+require $rootPath . "Model/OrderModel.php";
+
+
 require $rootPath . "Controller/CheckoutController.php";
 
 
@@ -51,41 +55,43 @@ require $rootPath . "Controller/CheckoutController.php";
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="firstName">First name</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" value="<?php echo (isset($fnameValue) && !empty($fnameValue)) ? $fnameValue : '' ?>">
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" value="<?php echo $user["firstName"] ?>">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">Last name</label>
-                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" value="<?php echo (isset($lnameValue) && !empty($lnameValue)) ? $lnameValue : '' ?>">
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" value="<?php echo $user["lastName"] ?>">
                 </div>
             </div>
 
             <div class="mb-3">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" value="<?php echo (isset($emailValue) && !empty($emailValue)) ? $emailValue : '' ?>">
+                <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" value="<?php echo $user["email"] ?>">
             </div>
 
             <div class="mb-3">
-                <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St" value="<?php echo (isset($addressValue) && !empty($addressValue)) ? $addressValue : '' ?>">
+                <label for="streetName">Streetname</label>
+                <input type="text" class="form-control" name="streetName" placeholder="Main St" value="<?php echo $user["streetName"] ?>">
+            </div>
+            <div class="mb-3">
+                <label for="streetNumber">Streetnumber</label>
+                <input type="text" class="form-control" name="streetNumber" placeholder="1234" value="<?php echo $user["streetNumber"] ?>">
             </div>
 
-            <div class="mb-3">
-                <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment or suite" value="<?php echo (isset($address2Value) && !empty($address2Value)) ? $address2Value : '' ?>">
-            </div>
+
+
 
             <div class="row">
                 <div class="col-md-5 mb-3">
-                    <label for="country">Country</label>
-                    <select class="custom-select d-block w-100" name="country" id="country">
-                        <option value="">Choose...</option>
-                        <option value="Denmark">Denmark</option>
+                    <label for="postalCodeID"></label>
+                    <select class="custom-select d-block w-100" name="postalCodeID">
+                        <option value="<?php echo $user["postalCodeID"] ?>"><?php echo $user["postNumber"] . " " . $user["cityName"] ?></option>
+                        <?php foreach ($cities as $city) {
+                            echo '<option value="' . $city["postalCodeID"] . '">' . $city["postNumber"] . ' ' . $city["cityName"] . '</option>';
+                        } ?>
+
                     </select>
                 </div>
-                <div class="col-md-3 mb-3">
-                    <label for="zip">Zip</label>
-                    <input type="text" class="form-control" id="zip" name="zipcode" placeholder="" value="<?php echo (isset($zipCodeValue) && !empty($zipCodeValue)) ? $zipCodeValue : '' ?>">
-                </div>
+
             </div>
             <hr class="mb-4">
 
