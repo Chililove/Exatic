@@ -32,32 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         try {
             $conn->beginTransaction();
 
-            $handleAddressID = $conn->prepare($ProfileModel->addressID);
-            $handleAddressID->bindParam(':userID', $userid, PDO::PARAM_INT);
-            $handleAddressID->execute();
-            $resultA = $handleAddressID->fetchAll();
-            $addressID = ($resultA[0])['addressID'];
+            $ProfileModel->update($conn, $userid, $firstName, $lastName, $email, $imagePath, $streetName, $streetNumber, $postalCodeID);
 
-            $handle = $conn->prepare($ProfileModel->updateUser);
-            $handle->bindParam(':firstName', $firstName, PDO::PARAM_STR);
-            $handle->bindParam(':lastName', $lastName, PDO::PARAM_STR);
-            $handle->bindParam(':email', $email, PDO::PARAM_STR);
-            $handle->bindParam(':imagePath', $imagePath, PDO::PARAM_STR);
-            $handle->bindParam(':userID', $userid, PDO::PARAM_INT);
-            //$userResult = $handle->execute();
-            $handle->execute();
-
-            $handleAddress = $conn->prepare($ProfileModel->updateAddress);
-
-            $handleAddress->bindParam(':streetName', $streetName, PDO::PARAM_STR);
-            $handleAddress->bindParam(':streetNumber', $streetNumber, PDO::PARAM_STR);
-            $handleAddress->bindParam(':postalCodeID', $postalCodeID, PDO::PARAM_INT);
-            $handleAddress->bindParam(':addressID', $addressID, PDO::PARAM_INT);
-
-            $addressResult = $handleAddress->execute();
             $conn->commit();
             $updateSucess = true;
         } catch (Exception $err) {
+            var_dump($err);
             $errorTransaction = true;
             $conn->rollback();
         }

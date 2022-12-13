@@ -3,6 +3,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+
+$signup = isset($_GET['checkout']);
 $errorEmail = false;
 $signupSucess = false;
 $error = false;
@@ -25,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $postalCodeID = htmlspecialchars($sanitized['postalCodeID']);
     $userType = ['userType'];
 
-    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+    // mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
     if (!empty($firstName) && !empty($lastName) && !empty($email) && !empty($password) && !empty($streetName) && !empty($streetNumber) && !empty($postalCodeID)) {
 
@@ -33,6 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         // Prepare Statement
         //Transaction - autocommit -> commit / rollback
+
+
         $conn->beginTransaction();
 
         $iterations = ['cost' => 6];
@@ -55,9 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $userResult = $handle->execute();
         $conn->commit();
         $signupSucess = true;
-
-       
-  
     } else {
         $error = true;
         $conn->rollback();

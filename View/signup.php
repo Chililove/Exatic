@@ -9,6 +9,12 @@ require $rootPath . "Controller/SignupController.php";
 <html lang="en">
 
 <head>
+    <?php if ($signup) { ?>
+        <div class="alert alert-danger text-center" role="alert">
+            <strong>Signup:</strong> Please signup to checkout your items :) ..
+        </div>
+    <?php } ?>
+
     <?php if ($errorEmail) { ?>
         <div class="alert alert-danger text-center" role="alert">
             <strong>Error:</strong> User already exists! Try signup with another email..
@@ -99,6 +105,7 @@ require $rootPath . "Controller/SignupController.php";
                         </div>
 
                         <div class="row align-self-end">
+
                             <input class="btn btn-dark btn-lg" type="submit" name="submit" value="SIGNUP" />
                         </div>
                         <?php if (!empty($message)) {
