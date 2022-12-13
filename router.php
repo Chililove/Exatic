@@ -53,6 +53,7 @@ if ($view == null && $isAdmin) {
         '/admin-product' => '/View/adminProduct.php',
         '/admin-user-list' => '/View/adminUserList.php',
         '/admin-user-view' => '/View/adminUserView.php',
+        '/admin-user-detail' => '/View/adminUserDetail.php',
         '/admin-event' => '/View/adminEvent.php',
         '/admin-product-add' => '/View/adminProductAdd.php',
         '/admin-product-edit' => '/View/adminProductEdit.php',

@@ -16,6 +16,8 @@ require("_partials/adminBar.php")
                 <th>Date Purchased</th>
                 <th>Delivered</th>
                 <th>Status</th>
+                <th>Edit</th>
+                <th>Details</th>
             </tr>
         </thead>
 
@@ -27,7 +29,23 @@ require("_partials/adminBar.php")
                     <td><?php echo $row['userID'] ?> </td>
                     <td><?php echo $row['dateOrdered'] ?> </td>
                     <td><?php echo $row['dateDelivered'] ?></td>
-                    <td><?php echo $row['status'] ?> </td>
+                    <td>
+                        <form method="post" action="">
+                            <input type="text" name="status" value="<?php echo $row['status']; ?>" class="form-control" />
+
+                            <!-- <select class="form-select" aria-label="Default select example">
+                                <option selected name="status" value="<?php echo $row['status'] ?>"><?php echo $row['status'] ?></option>
+                                <option value="done">Done</option>
+                            </select> -->
+                            <input type="hidden" name="dateOrdered" value="<?php echo $row['dateOrdered'] ?>">
+                            <input type="hidden" name="dateDelivered" value="<?php echo $row['dateDelivered'] ?>">
+                            <input type="hidden" name="userID" value="<?php echo $row['userID'] ?>">
+                            <input type="hidden" name="orderID" value="<?php echo $row['orderID'] ?>">
+                    <td> <button type="submit" name="updateStatus" id="btn-edit" class="btn admin-button">Edit</a></button></td>
+                    </form>
+                    </td>
+                    <td><a href="/admin-user-detail?orderID=<?php echo $row['orderID']; ?>" class="edit" data-id="<?php echo $row["orderID"]; ?>">Details</a></td>
+
                 </tr>
 
             <?php } ?>

@@ -48,15 +48,20 @@ if (!isset($_SESSION['shopping_cart']) || empty($_SESSION['shopping_cart'])) {
 
                     foreach ($_SESSION['shopping_cart'] as $item) {
                         $quantity = $item['stockQuantity'];
+                        $priceOne = $item['price'];
                         $price = $item['price'] * $item['stockQuantity'];
                         $procent = 0;
                         $productID = $item['productID'];
+                        $title = $item['title'];
                         $handleOrderDetail = $conn->prepare($OrderModel->orderDetailsInsert);
+                        $handleOrderDetail->bindParam(':title', $title, PDO::PARAM_STR);
                         $handleOrderDetail->bindParam(':quantity', $quantity, PDO::PARAM_INT);
                         $handleOrderDetail->bindParam(':price', $price, PDO::PARAM_INT);
                         $handleOrderDetail->bindParam(':procent', $procent, PDO::PARAM_INT);
                         $handleOrderDetail->bindParam(':orderID', $orderID, PDO::PARAM_INT);
                         $handleOrderDetail->bindParam(':productID', $productID, PDO::PARAM_INT);
+                        $handleOrderDetail->bindParam(':priceOne', $priceOne, PDO::PARAM_INT);
+
 
                         $handleOrderDetail->execute();
                     }
