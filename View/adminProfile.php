@@ -95,6 +95,74 @@ require("_partials/adminBar.php")
         <?php
         } ?>
     </div>
+    <?php
+    $address = "SELECT * FROM `Address` WHERE addressID=1";
+    $addressResult = $conn->query($address);
+    while ($row = $addressResult->fetch(PDO::FETCH_ASSOC)) { ?>
+        <form method="post" action="">
+            <div class="row mb-4">
+                <div class="form-outline mb-4">
+                    <div class="py-2 admin-align-text">
+                        <span">Update Address</span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="form3Example1">StreetName</label>
+                        <input type="text" name="weekdays" value="<?php echo $row['streetName']; ?>" class="form-control" />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="form3Example1">StreetNumber</label>
+                        <input type="text" name="weekends" value="<?php echo $row['streetNumber']; ?>" class="form-control" />
+                    </div>
+                </div>
+                <div class="col">
+                    <input type="hidden" name="postalCodeID" value="<?php echo $row['postalCodeID']; ?>">
+
+                    <input type="hidden" name="addressID" value="<?php echo $row['addressID']; ?>">
+                </div>
+            </div>
+            <button type="submit" name="updateAddress" id="btn-edit" class="btn admin-button">Edit</a></button>
+
+        </form>
+    <?php
+    } ?>
+    <?php
+    $ownerEmail = "SELECT * FROM User WHERE userID = 1";
+    $ownerEmailResult = $conn->query($ownerEmail);
+    while ($row = $ownerEmailResult->fetch(PDO::FETCH_ASSOC)) { ?>
+        <form method="post" action="">
+            <div class="row mb-4">
+                <div class="form-outline mb-4">
+                    <div class="py-2 admin-align-text">
+                        <span">Update Email</span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="form3Example1">Email</label>
+                        <input type="text" name="weekdays" value="<?php echo $row['email']; ?>" class="form-control" />
+                    </div>
+                </div>
+                <div class="col">
+                    <input type="hidden" name="firstName" value="<?php echo $row['firstName']; ?>">
+                    <input type="hidden" name="lastName" value="<?php echo $row['lastName']; ?>">
+                    <input type="hidden" name="password" value="<?php echo $row['password']; ?>">
+                    <input type="hidden" name="userType" value="<?php echo $row['userType']; ?>">
+                    <input type="hidden" name="imagePath" value="<?php echo $row['imagePath']; ?>">
+
+                    <input type="hidden" name="userID" value="<?php echo $row['userID']; ?>">
+
+                    <input type="hidden" name="addressID" value="<?php echo $row['addressID']; ?>">
+                </div>
+            </div>
+            <button type="submit" name="submitCompany" id="btn-edit" class="btn admin-button">Edit</a></button>
+
+        </form>
+    <?php
+    } ?>
 
 </div>
 <a class="btn admin-button" href="/logout">Log out</a>
