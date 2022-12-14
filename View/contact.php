@@ -10,11 +10,8 @@ if (isset($_GET['msgid'])) {
         echo "<p class='msgErr';>" . " Error: It's Empty!:)" . "</p>";
     } elseif ($_GET['msgid'] == 3) {
         echo "<p class='msgErr';>" . "Error: Incorrect Email format !" . "</p>";
-        // } elseif ($_GET['msgid'] == 4) {
-        //     echo "<p class='msgErr'>" . "Error: Incorrect format for LastName || & FirstName !" . "</p>";
-        // } elseif ($_GET['msgid'] == 5) {
-        //     echo "<p class='msgErr';>" . "Error: Message needs to have at least 2 letters !" . "</p>";
-        // }
+    } elseif ($_GET['msgid'] == 4) {
+        echo "<p class='msgErr';>" . "Error: Message needs to have at least 2 letters !" . "</p>";
     }
 }
 ?>
@@ -98,8 +95,14 @@ if (isset($_GET['msgid'])) {
 
                                     <hr>
 
-                                    <form method="post" action="contact">
+                                    <form method="post" action="">
                                         <div class="row">
+                                            <fieldset disabled>
+                                                <div class="mb-3">
+                                                    <label for="disabledTextInput" class="form-label">Owner Email:</label>
+                                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="exaticproject@gmail.com" name="myemail">
+                                                </div>
+                                            </fieldset>
                                             <div class="col">
                                                 <input type="text" class="form-control" placeholder="First name" aria-label="First name" name="firstName">
                                             </div>

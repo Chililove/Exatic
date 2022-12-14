@@ -1,6 +1,5 @@
 <!Doctype html>
 <html lang="en">
-<html>
 
 <head>
     <title>Exatic</title>
