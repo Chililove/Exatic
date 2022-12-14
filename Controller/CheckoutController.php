@@ -39,7 +39,7 @@ if (!isset($_SESSION['shopping_cart']) || empty($_SESSION['shopping_cart'])) {
                     $conn->beginTransaction();
 
                     $ProfileModel->update($conn, $userID, $firstName, $lastName, $email, '', $streetName, $streetNumber, $postalCodeID);
-                    $status = 'Not done';
+                    $status = 'Pending';
                     $handle = $conn->prepare($OrderModel->orderInsert);
                     $handle->bindParam(':status', $status, PDO::PARAM_STR);
                     $handle->bindParam(':userID', $userID, PDO::PARAM_INT);
