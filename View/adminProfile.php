@@ -89,8 +89,8 @@ require("_partials/adminBar.php")
                         <input type="hidden" name="addressID" value="<?php echo $row['addressID']; ?>">
                     </div>
                 </div>
-                <button type="submit" name="submitCompany" id="btn-edit" class="btn admin-button">Edit</a></button>
-
+                <button type="submit" name="submitCompany" id="btn-edit" class="btn admin-button">Edit
+                </button>
             </form>
         <?php
         } ?>
@@ -157,7 +157,7 @@ require("_partials/adminBar.php")
 
                 </div>
             </div>
-            <button type="submit" name="updateEmail" id="btn-edit" class="btn admin-button">Edit</a></button>
+            <button type="submit" name="updateEmail" id="btn-edit" class="btn admin-button">Edit</button>
 
         </form>
     <?php

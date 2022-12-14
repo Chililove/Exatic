@@ -11,10 +11,9 @@ require("_partials/adminBar.php")
     <table class="table table-hover mb-0">
         <thead>
             <tr>
-                <th>OrderID #</th>
-                <th>UserID #</th>
+                <th>Order ID</th>
                 <th>Date Purchased</th>
-                <th>Delivered</th>
+                <th>Estimated Delivered</th>
                 <th>Status</th>
                 <th>Edit</th>
                 <th>Details</th>
@@ -23,29 +22,30 @@ require("_partials/adminBar.php")
 
         <tbody>
             <?php
+
             while ($row = $orderResult->fetch(PDO::FETCH_ASSOC)) { ?>
                 <tr>
                     <td scope="row"><?php echo $row['orderID'] ?></td>
-                    <td><?php echo $row['userID'] ?> </td>
                     <td><?php echo $row['dateOrdered'] ?> </td>
-                    <td><?php echo $row['dateDelivered'] ?></td>
-                    <td>
-                        <form method="post" action="">
-                            <input type="text" name="status" value="<?php echo $row['status']; ?>" class="form-control" />
+                    <form method="post" action="">
+                    <td>  <input type="datetime-local" name="dateDelivered" value="<?php echo $row['dateDelivered']; ?>"></td>
 
-                            <!-- <select class="form-select" aria-label="Default select example">
-                                <option selected name="status" value="<?php echo $row['status'] ?>"><?php echo $row['status'] ?></option>
-                                <option value="done">Done</option>
-                            </select> -->
-                            <input type="hidden" name="dateOrdered" value="<?php echo $row['dateOrdered'] ?>">
-                            <input type="hidden" name="dateDelivered" value="<?php echo $row['dateDelivered'] ?>">
-                            <input type="hidden" name="userID" value="<?php echo $row['userID'] ?>">
-                            <input type="hidden" name="orderID" value="<?php echo $row['orderID'] ?>">
-                    <td> <button type="submit" name="updateStatus" id="btn-edit" class="btn admin-button">Edit</a></button></td>
-                    </form>
-                    </td>
+                    <td><select class="form-select" name="status"  aria-label="Default select example">
+
+                            <option selected name="status" value="<?php echo $row['status'] ?>"><?php echo $row['status'] ?></option>
+                            <option name="status" value="Done">Done</option>
+                            <option name="status" value="Not Done">Not Done</option>
+                            <option name="status" value="Not Done">Shipping</option>
+                            <option name="status" value="Not Done">Delivered</option>
+                        </select>
+                        </td>
+                        <input type="hidden" name="dateOrdered" value="<?php echo $row['dateOrdered'] ?>">
+                        <input type="hidden" name="dateDelivered" value="<?php echo $row['dateDelivered'] ?>">
+                        <input type="hidden" name="orderID" value="<?php echo $row['orderID'] ?>">
+                        <input type="hidden" name="userID" value="<?php echo $row['userID'] ?>">
+                    <td><button type="submit" name="updateStatus" id="btn-edit" class="btn admin-button">Edit</button></td>
                     <td><a href="/admin-user-detail?orderID=<?php echo $row['orderID']; ?>" class="edit" data-id="<?php echo $row["orderID"]; ?>">Details</a></td>
-
+                    </form>
                 </tr>
 
             <?php } ?>

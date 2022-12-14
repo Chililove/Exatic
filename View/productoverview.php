@@ -135,8 +135,7 @@ require $rootPath . "Controller/CartController.php";
                     while ($row = $recommendResult->fetch(PDO::FETCH_ASSOC)) { ?>
                         <div class="col-md-3">
                             <div class="col-12">
-                                <a href="/product-overview.php?productID=<?php echo $row['productID']; ?>"><img class="img-fluid rounded  mx-auto d-block" width="200" height="200" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
-                                <h5 class="bsp_card-title"><?php echo $row['title'] ?></h5>
+                                <a href="/product-overview.php?productID=<?php echo $row['productID']; ?>"><img class="rounded mx-auto d-block" width="200" height="200" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>                                <h5 class="bsp_card-title"><?php echo $row['title'] ?></h5>
                                 <div class="text-center">
                                     <p class="bsp_card-text"> <?php echo $row['price'] ?> kr.</p>
                                     <!--<p class="text-font"><?php echo $row['brand'] ?></p> -->

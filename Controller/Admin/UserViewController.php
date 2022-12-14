@@ -9,24 +9,23 @@ if (isset($_POST['updateStatus'])) {
     $userID = $sanitized['userID'];
 
 
-
-
     if (!empty($_POST['status'])) {
         try {
             $conn->beginTransaction();
-            $status = $conn->prepare($UserViewModel->statusEdit);
-            $status->bindParam(':orderID', $orderID, PDO::PARAM_INT);
-            $status->bindParam(':dateOrdered', $dateOrdered, PDO::PARAM_STR);
-            $status->bindParam(':dateDelivered', $dateDelivered, PDO::PARAM_STR);
-            $status->bindParam(':userID', $userID, PDO::PARAM_INT);
-            $status->bindParam(':status', $status, PDO::PARAM_STR);
-            $statusResult = $status->execute();
+            $editStatus = $conn->prepare($UserViewModel->statusEdit);
+            $editStatus->bindParam(':orderID', $orderID, PDO::PARAM_INT);
+            $editStatus->bindParam(':dateOrdered', $dateOrdered, PDO::PARAM_STR);
+            $editStatus->bindParam(':dateDelivered', $dateDelivered, PDO::PARAM_STR);
+            $editStatus->bindParam(':status', $status, PDO::PARAM_STR);
+            $editStatus->bindParam(':userID', $userID, PDO::PARAM_INT);
+            $statusResult = $editStatus->execute();
             $conn->commit();
-            $status->debugDumpParams();
-            header("Location:admin-user-view");
+          //  header("Location:admin-user-view");
         } catch (Exception $err) {
             $err = true;
             $conn->rollback();
         }
     }
 }
+
+
