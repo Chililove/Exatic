@@ -50,6 +50,11 @@ if (isset($_POST['productAdd'])) {
             $addProductResult = $addProduct->execute();
             $conn->commit();
             header("Location:admin-product");
+            //for one.com  
+            /*  $urlAdminProduct ="http://exatic.store/admin-product";
+                echo ("<script>
+                 location.href='$urlAdminProduct'
+                 </script>");  */
         } catch (Exception $err) {
             echo $err;
             $errorTransaction = true;
@@ -95,6 +100,11 @@ if (isset($_POST['submitProductEdit'])) {
             $editProductResult = $editProductPDO->execute();
             $conn->commit();
             header("Location:admin-product");
+            //for one.com  
+            /*  $urlAdminProduct ="http://exatic.store/admin-product";
+                echo ("<script>
+                 location.href='$urlAdminProduct'
+                 </script>");  */
         } catch (Exception $err) {
             echo $err;
             $errorTransaction = true;
@@ -118,7 +128,12 @@ if (isset($_POST['submitDaily'])) {
             $editSpecialResult = $editSpecial->execute();
             $conn->commit();
             $editSpecial->debugDumpParams();
-         //   header("Location:admin-product");
+            //   header("Location:admin-product");
+            //for one.com  
+            /*  $urlAdminProduct ="http://exatic.store/admin-product";
+                echo ("<script>
+                 location.href='$urlAdminProduct'
+                 </script>");  */
         } catch (Exception $err) {
             echo $err;
             $errorTransaction = true;
@@ -137,6 +152,9 @@ if (isset($_REQUEST['del'])) {
     $handle->execute(array(":productID" => $setProduct));
     $conn->query("SET FOREIGN_KEY_CHECKS=1");
     header("Location:admin-product");
-
-    // quick fix - ask søren about constraints and deletion.
+    //for one.com  
+    /*  $urlAdminProduct ="http://exatic.store/admin-product";
+                echo ("<script>
+                 location.href='$urlAdminProduct'
+                 </script>");  */
 }

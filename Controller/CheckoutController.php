@@ -10,9 +10,19 @@ $cities = $conn->query($ProfileModel->allPostalSelect);
 if (!isset($_SESSION['shopping_cart']) || empty($_SESSION['shopping_cart'])) {
     header('location:product.php');
     exit();
+    //for one.com  
+    /* $urlProduct ="http://exatic.store/product";
+         echo ("<script>
+             location.href='$urlProduct'
+             </script>"); */
 } else if (!isset($_SESSION['userID']) || empty($_SESSION['userID'])) {
     header('location:signup.php?checkout=1');
     exit();
+    //for one.com
+    /* $urlSignup ="/signup?checkout=1";
+    echo ("<script>
+        location.href='$urlSignup'
+        </script>"); */
 } else {
 
     $cartItemCount = count($_SESSION['shopping_cart']);

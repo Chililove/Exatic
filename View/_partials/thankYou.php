@@ -3,6 +3,11 @@
 if (!isset($_SESSION['confirm_order']) || empty($_SESSION['confirm_order'])) {
     header('location:checkout.php');
     exit();
+    //for one.com  
+    /* $urlCheckout ="/checkout";
+           echo ("<script>
+               location.href='$urlCheckout'
+               </script>"); */
 }
 
 
@@ -18,10 +23,10 @@ $pageTitle = 'Thank You';
 </head>
 
 <body>
-    <div class="vh-100 h-custom d-flex justify-content-center align-items-center">
+    <div class="h-100 h-custom d-flex justify-content-center align-items-center">
         <div class="col-md-4">
             <div class="border border-3 border-success"></div>
-            <div class="card  bg-white shadow p-5">
+            <div class="bg-white shadow p-5">
                 <div class="mb-4 text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="text-success" width="75" height="75" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -32,7 +37,7 @@ $pageTitle = 'Thank You';
                     <div class="col-md-12">
                         <div class="text-center">
                             <h1>Thank You !</h1>
-                            <p> Your order has been placed. <br> We've send the invoice to your mail ?
+                            <p> Your order has been placed. <br>
                                 <?php unset($_SESSION['confirm_order']); ?>
                             </p>
                             <a href="/" type="button" class="btn btn-outline-dark">Back Home</a>
