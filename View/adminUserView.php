@@ -40,7 +40,6 @@ require("_partials/adminBar.php")
                             </select>
                         </td>
                         <input type="hidden" name="dateOrdered" value="<?php echo $row['dateOrdered'] ?>">
-                        <input type="hidden" name="dateDelivered" value="<?php echo $row['dateDelivered'] ?>">
                         <input type="hidden" name="orderID" value="<?php echo $row['orderID'] ?>">
                         <input type="hidden" name="userID" value="<?php echo $row['userID'] ?>">
                         <td><button type="submit" name="updateStatus" id="btn-edit" class="btn admin-button">Edit</button></td>
