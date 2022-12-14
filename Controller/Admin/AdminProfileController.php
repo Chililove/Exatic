@@ -1,7 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 
 $adminId = (int)$_SESSION["userID"];
 
@@ -15,11 +12,10 @@ $AdminProfileResult = $handleAdmin->fetchAll();
 
 $user = $AdminProfileResult[0];
 
-$companyReadResult = $conn->prepare($AdminProfileModel->companyRead);
-$addressReadResult = $conn->prepare($AdminProfileModel->addressRead);
 $ownerReadResult = $conn->prepare($AdminProfileModel->userRead);
-
+$addressResult = $conn->query($AdminProfileModel->address);
 $companyResult = $conn->query($AdminProfileModel->companyRead);
+$ownerEmailResult = $conn->query($AdminProfileModel->ownerEmail);
 
 
 

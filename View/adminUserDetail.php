@@ -1,6 +1,8 @@
 <?php
 require("rootPath.php");
 
+require $rootPath . "Model/OrderDetailModel.php";
+require $rootPath . "Controller/Admin/OrderDetailController.php";
 require("_partials/adminBar.php")
 
 ?>
@@ -23,9 +25,6 @@ require("_partials/adminBar.php")
 
         <tbody>
             <?php
-            $orderId = $_GET['orderID'];
-            $ordersDetail = "SELECT * FROM `OrderDetail` WHERE orderID = $orderId";
-            $orderDetailResult = $conn->query($ordersDetail);
             while ($row = $orderDetailResult->fetch(PDO::FETCH_ASSOC)) { ?>
                 <tr>
                     <td><?php echo $row['orderDetailID'] ?> </td>

@@ -1,6 +1,8 @@
 <?php
 
 require("rootPath.php");
+require $rootPath . "Model/ContactModel.php";
+require $rootPath . "Controller/ContactController.php";
 require $rootPath . "_partials/Mail.php";
 
 if (isset($_GET['msgid'])) {
@@ -34,8 +36,6 @@ if (isset($_GET['msgid'])) {
 
                 <div class="col-lg-4 py-0 py-lg-4">
                     <?php
-                    $address = "SELECT streetName, streetNumber FROM `Address` WHERE addressID=1";
-                    $addressResult = $conn->query($address);
                     while ($row = $addressResult->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                         <h1 class="mb-3 about-text">Talk to us</h1>
@@ -46,8 +46,6 @@ if (isset($_GET['msgid'])) {
                     <h5 class="mb-3"><i class="fa-solid fa-phone fa-md"></i> Phone: <span class="about-text">+45 123456</span>
                     </h5>
                     <?php
-                    $owner = "SELECT email FROM User WHERE userID = 1";
-                    $ownerResult = $conn->query($owner);
                     while ($row = $ownerResult->fetch(PDO::FETCH_ASSOC)) { ?>
 
                         <h5 class="mb-3 "><i class="fa-solid fa-envelope fa-md"></i> Email: <span class="about-text"><?php echo $row['email'] ?></span>

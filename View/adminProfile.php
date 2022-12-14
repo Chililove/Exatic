@@ -33,7 +33,6 @@ require("_partials/adminBar.php")
                         </thead>
                         <?php
                         $i = 1;
-
                         while ($row = $CountryResult->fetch(PDO::FETCH_ASSOC)) { ?>
                             <tbody>
                                 <tr>
@@ -50,8 +49,6 @@ require("_partials/adminBar.php")
             </div>
         </div>
         <?php
-        $companyRead = "SELECT * FROM CompanyInfo WHERE companyInfoID = 1";
-        $companyResult = $conn->query($companyRead);
         while ($row = $companyResult->fetch(PDO::FETCH_ASSOC)) { ?>
             <form method="post" action="">
                 <div class="row mb-4">
@@ -96,8 +93,6 @@ require("_partials/adminBar.php")
         } ?>
     </div>
     <?php
-    $address = "SELECT * FROM `Address` WHERE addressID=1";
-    $addressResult = $conn->query($address);
     while ($row = $addressResult->fetch(PDO::FETCH_ASSOC)) { ?>
         <form method="post" action="">
             <div class="row mb-4">
@@ -130,8 +125,6 @@ require("_partials/adminBar.php")
     <?php
     } ?>
     <?php
-    $ownerEmail = "SELECT * FROM User WHERE userID = 1";
-    $ownerEmailResult = $conn->query($ownerEmail);
     while ($row = $ownerEmailResult->fetch(PDO::FETCH_ASSOC)) { ?>
         <form method="post" action="">
             <div class="row mb-4">

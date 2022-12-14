@@ -11,7 +11,7 @@ require("_partials/adminBar.php")
     <h1>Edit Product</h1>
     <?php
     $editProduct = $_SERVER['QUERY_STRING'];
-    $productEdit = "SELECT * FROM Product  WHERE productID = $editProduct ";
+    $productEdit = "SELECT * FROM Product  WHERE productID = $editProduct";
     $productEditResult = $conn->query($productEdit);
     while ($row = $productEditResult->fetch(PDO::FETCH_ASSOC)) { ?>
 
