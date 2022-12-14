@@ -93,6 +93,8 @@ require "resize/Resizer.php";
                                 <th>Date Purchased</th>
                                 <th>Delivered</th>
                                 <th>Status</th>
+                                <th>Invoice</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -102,6 +104,7 @@ require "resize/Resizer.php";
                                     <td><?php echo $order['dateOrdered'] ?> </td>
                                     <td><?php echo $order['dateDelivered'] ?></td>
                                     <td><?php echo $order['status'] ?> </td>
+                                    <td><a href="/invoice?orderID=<?php echo $order['orderID']; ?>" class="edit" data-id="<?php echo $order["orderID"]; ?>">Click</a></td>
                                 </tr>
 
                             <?php } ?>
