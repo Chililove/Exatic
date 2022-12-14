@@ -28,23 +28,23 @@ require("_partials/adminBar.php")
                     <td scope="row"><?php echo $row['orderID'] ?></td>
                     <td><?php echo $row['dateOrdered'] ?> </td>
                     <form method="post" action="">
-                    <td>  <input type="datetime-local" name="dateDelivered" value="<?php echo $row['dateDelivered']; ?>"></td>
+                        <td> <input type="datetime-local" name="dateDelivered" value="<?php echo $row['dateDelivered']; ?>"></td>
 
-                    <td><select class="form-select" name="status"  aria-label="Default select example">
+                        <td><select class="form-select" name="status" aria-label="Default select example">
 
-                            <option selected name="status" value="<?php echo $row['status'] ?>"><?php echo $row['status'] ?></option>
-                            <option name="status" value="Done">Done</option>
-                            <option name="status" value="Not Done">Not Done</option>
-                            <option name="status" value="Not Done">Shipping</option>
-                            <option name="status" value="Not Done">Delivered</option>
-                        </select>
+                                <option selected name="status" value="<?php echo $row['status'] ?>"><?php echo $row['status'] ?></option>
+                                <option name="status" value="Done">Done</option>
+                                <option name="status" value="Not Done">Not Done</option>
+                                <option name="status" value="Shipping">Shipping</option>
+                                <option name="status" value="Delivered">Delivered</option>
+                            </select>
                         </td>
                         <input type="hidden" name="dateOrdered" value="<?php echo $row['dateOrdered'] ?>">
                         <input type="hidden" name="dateDelivered" value="<?php echo $row['dateDelivered'] ?>">
                         <input type="hidden" name="orderID" value="<?php echo $row['orderID'] ?>">
                         <input type="hidden" name="userID" value="<?php echo $row['userID'] ?>">
-                    <td><button type="submit" name="updateStatus" id="btn-edit" class="btn admin-button">Edit</button></td>
-                    <td><a href="/admin-user-detail?orderID=<?php echo $row['orderID']; ?>" class="edit" data-id="<?php echo $row["orderID"]; ?>">Details</a></td>
+                        <td><button type="submit" name="updateStatus" id="btn-edit" class="btn admin-button">Edit</button></td>
+                        <td><a href="/admin-user-detail?orderID=<?php echo $row['orderID']; ?>" class="edit" data-id="<?php echo $row["orderID"]; ?>">Details</a></td>
                     </form>
                 </tr>
 

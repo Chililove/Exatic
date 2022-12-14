@@ -83,5 +83,9 @@ if (isset($_REQUEST['del'])) {
 
     // quick fix - needs to change 
     header("Location:admin-event");
+    //for one.com  
+    //$urlLogout ="http://exatic.store/logout/../adminEvent.php";
+    // echo ("<script>
+    //    location.href='$urlLogout'
+    //      </script>");
 }
-?>

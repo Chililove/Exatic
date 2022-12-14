@@ -10,3 +10,9 @@ if (isset($_COOKIE[session_name()])) {
 session_destroy();
 
 header("Location:home.php");
+
+ //for one.com  
+//$urlLogout ="http://exatic.store/logout/../home.php";
+ // echo ("<script>
+   //    location.href='$urlLogout'
+ //      </script>");

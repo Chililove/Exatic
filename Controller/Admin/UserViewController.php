@@ -20,12 +20,18 @@ if (isset($_POST['updateStatus'])) {
             $editStatus->bindParam(':userID', $userID, PDO::PARAM_INT);
             $statusResult = $editStatus->execute();
             $conn->commit();
-          //  header("Location:admin-user-view");
+            header("Refresh:0");
+            //header("Location:admin-user-view?");
+            //for local
+            // $url= "http://localhost:8886/admin-user-view";
+            //for one.com  
+            //$urlLogout ="http://exatic.store/logout/../adminUserView.php";
+            // echo ("<script>
+            //    location.href='$url'
+            //      </script>");
         } catch (Exception $err) {
             $err = true;
             $conn->rollback();
         }
     }
 }
-
-
