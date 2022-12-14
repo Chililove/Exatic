@@ -13,7 +13,7 @@ require("_partials/adminBar.php")
             <tr>
                 <th>Order ID</th>
                 <th>Date Purchased</th>
-                <th>Delivered</th>
+                <th>Estimated Delivered</th>
                 <th>Status</th>
                 <th>Edit</th>
                 <th>Details</th>
@@ -38,6 +38,8 @@ require("_partials/adminBar.php")
                             <option selected name="status" value="<?php echo $row['status'] ?>"><?php echo $row['status'] ?></option>
                             <option name="status" value="Done">Done</option>
                             <option name="status" value="Not Done">Not Done</option>
+                            <option name="status" value="Not Done">Shipping</option>
+                            <option name="status" value="Not Done">Delivered</option>
                         </select></td>
                         <input type="hidden" name="dateOrdered" value="<?php echo $row['dateOrdered'] ?>">
                         <input type="hidden" name="dateDelivered" value="<?php echo $row['dateDelivered'] ?>">

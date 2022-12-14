@@ -61,7 +61,8 @@ require("_partials/adminBar.php")
                                     <td><?php echo $row['eventName']; ?></td>
                                     <td><div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="isDailySpecial" id="inlineRadio1" value="1">
-                                            <label class="form-check-label" for="inlineRadio1">true</label>
+                                            <label class="form-check-label" for="inlineRadio1"></label>
+                                            <button type="submit" value="" name="submitDaily" id="btn-edit" class="btn admin-button">Change</button></a>
                                         </div>
                                      </td>
                                     <input type="hidden" name="productID">
@@ -69,10 +70,9 @@ require("_partials/adminBar.php")
                                     <td><a href="/admin-product.php?del=1&productID=<?= $row["productID"]?>">Delete</a></td>
                                 </tr>
                             </tbody>
-                    <?php }
+                        <?php }
                     } ?>
                 </table>
-                    <button type="submit" name="submitDaily" id="btn-edit" class="btn admin-button">Edit</button>
                 </form>
             </div>
         </div>
