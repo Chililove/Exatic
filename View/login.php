@@ -49,8 +49,6 @@ require $rootPath . "Controller/LoginController.php";
 </section>
 
 
-
-
 </html>
 
 <style lang="css">

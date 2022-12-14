@@ -61,7 +61,7 @@ require $rootPath . "Controller/CartController.php";
                             </div>
                         </div>
                     </div>
-                    <!-- Checkout -->
+                    <!-- Summary -->
                     <div class="col-lg-4 bg-grey">
                         <div class="p-2">
                             <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
@@ -135,13 +135,3 @@ require $rootPath . "Controller/CartController.php";
 <style lang="css">
     @import "styles.css";
 </style>
-
-<!-- move to checkout 
-  <h5 class="mb-3">Shipping</h5>
-
-        <div class="mb-4 pb-2">
-            <select class="select">
-                <option value="1">PostNord --30kr</option>
-                <option value="2">DSL --50kr</option>
-            </select>
-        </div> -->

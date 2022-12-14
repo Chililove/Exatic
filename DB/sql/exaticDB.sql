@@ -71,8 +71,6 @@ CREATE TABLE Product (
 
 ) ENGINE=InnoDB;
 
-
-
 CREATE TABLE `Order` (
     orderID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     dateOrdered DATETIME,
@@ -94,5 +92,35 @@ CREATE TABLE OrderDetail (
     FOREIGN KEY (productID) REFERENCES Product(productID),
     FOREIGN KEY (orderID) REFERENCES `Order`(orderID)
 ) ENGINE=InnoDB;
+
+
+
+/* Views */
+
+CREATE VIEW adminproductlist AS SELECT p.productID, p.title, p.price, p.stockQuantity, p.description, p.isDailySpecial, p.country, p.brand, p.productImage, pt.productTypeID, pt.typeName, d.discountID, d.eventName, d.discountProcent
+                         FROM Product p, ProductType pt, Discount d WHERE p.productTypeID = pt.productTypeID AND p.discountID = d.discountID
+                         ORDER BY p.productID DESC;
+
+
+
+CREATE VIEW countryproductcount AS SELECT country, COUNT(country),
+                                SUM(stockQuantity) AS totalQuantity
+                                FROM Product
+                                GROUP BY country
+                                HAVING COUNT(country) > 0;
+
+
+/* Triggers */
+
+DELIMITER //
+CREATE TRIGGER StockAfterPurchase AFTER INSERT ON OrderDetail
+FOR EACH ROW
+BEGIN
+UPDATE Product p 
+SET p.stockQuantity = p.stockQuantity - NEW.quantity
+WHERE p.ProductID = NEW.ProductID;
+END
+
+
 
 

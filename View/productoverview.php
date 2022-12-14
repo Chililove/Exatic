@@ -5,18 +5,6 @@ require $rootPath . "Model/POverviewModel.php";
 require $rootPath . "Controller/POverviewController.php";
 require $rootPath . "Controller/CartController.php";
 
-
-/*class productoverview
-{
-    private $POverviewModel;
-    private $POverviewController;
-
-    public function __construct($POverviewController, $POverviewModel)
-    {
-        $this->model = $POverviewModel;
-        $this->controller = $POverviewModel;
-    }
-} */
 ?>
 
 
@@ -26,20 +14,6 @@ require $rootPath . "Controller/CartController.php";
 
 <head>
     <title>Product Details</title>
-    <!--  <?php // if ($isSuccess) { 
-            ?>
-        <div class="alert alert-success text-center" role="alert">
-            <strong>Success!</strong> Product added to your shopping cart.
-        </div>
-    <?php //} 
-    ?>
-    <?php //if ($isUpdated) { 
-    ?>
-        <div class="alert alert-warning text-center" role="alert">
-            <strong>Product quantity updated</strong>
-        </div>
-    <?php //} 
-    ?> -->
 </head>
 
 <body>
@@ -135,10 +109,10 @@ require $rootPath . "Controller/CartController.php";
                     while ($row = $recommendResult->fetch(PDO::FETCH_ASSOC)) { ?>
                         <div class="col-md-3">
                             <div class="col-12">
-                                <a href="/product-overview.php?productID=<?php echo $row['productID']; ?>"><img class="rounded mx-auto d-block" width="200" height="200" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>                                <h5 class="bsp_card-title"><?php echo $row['title'] ?></h5>
+                                <a href="/product-overview.php?productID=<?php echo $row['productID']; ?>"><img class="rounded mx-auto d-block" width="200" height="200" src="/Exatic/assets/product/<?php echo $row['productImage'] ?>" alt="Card image top" /></a>
+                                <h5 class="bsp_card-title"><?php echo $row['title'] ?></h5>
                                 <div class="text-center">
                                     <p class="bsp_card-text"> <?php echo $row['price'] ?> kr.</p>
-                                    <!--<p class="text-font"><?php echo $row['brand'] ?></p> -->
                                 </div>
                             </div>
                         </div>

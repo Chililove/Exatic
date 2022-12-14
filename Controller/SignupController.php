@@ -1,9 +1,5 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-
 $signup = isset($_GET['checkout']);
 $errorEmail = false;
 $signupSucess = false;
@@ -13,8 +9,6 @@ $cities = $conn->query($SignupModel->allPostalSelect);
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
-
 
     $firstName = htmlspecialchars($sanitized['firstName']);
     $lastName = htmlspecialchars($sanitized['lastName']);
@@ -27,15 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $postalCodeID = htmlspecialchars($sanitized['postalCodeID']);
     $userType = ['userType'];
 
-    // mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-
     if (!empty($firstName) && !empty($lastName) && !empty($email) && !empty($password) && !empty($streetName) && !empty($streetNumber) && !empty($postalCodeID)) {
-
-
-
-        // Prepare Statement
-        //Transaction - autocommit -> commit / rollback
-
 
         $conn->beginTransaction();
 

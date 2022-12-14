@@ -27,9 +27,9 @@ require $rootPath . "Controller/CheckoutController.php";
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
                             <h6 class="my-0"><?php echo $cartItem['title'] ?></h6>
-                            <small class="text-muted">Quantity: <?php echo $cartItem['stockQuantity'] ?> X Price: $<?php echo $cartItem['price'] ?></small>
+                            <small class="text-muted">Quantity: <?php echo $cartItem['stockQuantity'] ?> X Price: <?php echo $cartItem['price'] ?> kr.</small>
                         </div>
-                        <span class="text-muted">$<?php echo $cartItem["stockQuantity"] * $cartItem["price"] ?></span>
+                        <span class="text-muted"><?php echo $cartItem["stockQuantity"] * $cartItem["price"] ?>kr.</span>
                     </li>
             <?php
                 }
@@ -38,7 +38,7 @@ require $rootPath . "Controller/CheckoutController.php";
 
             <li class="list-group-item d-flex justify-content-between">
                 <span>Total (DKK)</span>
-                <strong>$<?php echo number_format($total, 2); ?></strong>
+                <strong><?php echo number_format($total, 2); ?> kr.</strong>
             </li>
         </ul>
     </div>

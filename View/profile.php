@@ -1,12 +1,8 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 require("rootPath.php");
 require $rootPath . "Model/ProfileModel.php";
 require $rootPath . "Controller/ProfileController.php";
-require "resize/Resizer.php";
-
 
 ?>
 

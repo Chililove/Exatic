@@ -3,9 +3,8 @@ $isUpdated = false;
 $isSuccess = false;
 
 
-
 if (isset($_POST["add_to_cart"])) {
-    if ($_POST["stockQuantity"] > 0 && $_POST["stockQuantity"] < 1000) {
+    if ($_POST["stockQuantity"] > 0 && !empty($_POST["stockQuantity"])) { //????
 
         $title = sanitize($_POST["title"]);
         $price = sanitize($_POST["price"]);
@@ -30,8 +29,7 @@ if (isset($_POST["add_to_cart"])) {
                 $isSuccess = true;
             } else {
 
-                //add quantity to existing item
-                // need to find specific product smth with array_search
+                //Add quantity to existing item
                 $productIndex = array_search($_GET["productID"], $item_array_id);
 
                 $_SESSION["shopping_cart"][$productIndex]["stockQuantity"] += $_POST["stockQuantity"];
@@ -61,6 +59,7 @@ if (isset($_POST["add_to_cart"])) {
            </script>");  */
 }
 
+// Remove product from shopping_cart
 if (isset($_GET["action"])) {
     if ($_GET["action"] == "delete") {
         foreach ($_SESSION["shopping_cart"] as $keys => $values) {
@@ -71,6 +70,7 @@ if (isset($_GET["action"])) {
     }
 }
 
+// Helper function for counting the products in the shopping cart
 function shopping_cart_product_count()
 {
     $product_count = 0;

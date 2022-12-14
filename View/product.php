@@ -5,9 +5,7 @@ require $rootPath . "Model/ProductModel.php";
 require $rootPath . "Controller/ProductController.php";
 require $rootPath . "Controller/CartController.php";
 
-
 ?>
-
 
 <!Doctype html>
 <html lang="en">
@@ -30,7 +28,6 @@ require $rootPath . "Controller/CartController.php";
         </div>
     <?php //} 
     ?> -->
-
 </head>
 
 <body>
@@ -48,23 +45,6 @@ require $rootPath . "Controller/CartController.php";
 
             <?php
             } ?>
-            <!-- Future categories with sub-categories-->
-            <!--  <li class="nav-item dropdown">
-                <a  class="nav-link dropdown-toggle categories-text" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Brands</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">BrandTest1</a></li>
-                    <li><a class="dropdown-item" href="#">BrandTest2</a></li>
-                    <li><a class="dropdown-item" href="#">BrandTest3</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Country</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">CountryTest1</a></li>
-                    <li><a class="dropdown-item" href="#">CountryTest2</a></li>
-                    <li><a class="dropdown-item" href="#">CountryTest3</a></li>
-                </ul>
-            </li> -->
 
         </ul>
     </div>

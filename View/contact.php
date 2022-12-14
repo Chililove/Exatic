@@ -24,7 +24,7 @@ if (isset($_GET['msgid'])) {
 </head>
 
 <body>
-    <!-- Contact Part 1 Start -->
+    <!-- Contact Info -->
     <div class="container-fluid py-5">
         <div class="container">
             <div class="section-title">
@@ -78,7 +78,7 @@ if (isset($_GET['msgid'])) {
             </div>
         </div>
     </div>
-    <!-- Contact Part 2 Start -->
+    <!-- Contact Form-->
     <div class="container-fluid py-4 row justify-content-center ">
         <div class="col-11">
             <div class="row d-flex justify-content-center align-items-center">

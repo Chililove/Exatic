@@ -98,11 +98,6 @@ require $rootPath . "Controller/HomeController.php";
                             </div>
                         </div>
                     </div>
-
-
-
-
-
                 </div>
             </div>
 
