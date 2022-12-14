@@ -25,6 +25,11 @@ if (isset($_POST['submit'])) {
             $addEventResult = $addEvent->execute();
             $conn->commit();
             header("Location:admin-event");
+            //for one.com  
+            /* $urlEvent ="http://exatic.store/admin-event";
+              echo ("<script>
+               location.href='$urlEvent'
+               </script>"); */
         } catch (Exception $err) {
             echo $err;
             $errorTransaction = true;
@@ -62,6 +67,11 @@ if (isset($_POST['submitEvent'])) {
             $editEventResult = $editEvent->execute();
             $conn->commit();
             header("Location:admin-event");
+            //for one.com  
+            /* $urlEvent ="http://exatic.store/admin-event";
+              echo ("<script>
+               location.href='$urlEvent'
+               </script>"); */
         } catch (Exception $err) {
             echo $err;
             $errorTransaction = true;
@@ -84,8 +94,8 @@ if (isset($_REQUEST['del'])) {
     // quick fix - needs to change 
     header("Location:admin-event");
     //for one.com  
-    //$urlLogout ="http://exatic.store/logout/../adminEvent.php";
-    // echo ("<script>
-    //    location.href='$urlLogout'
-    //      </script>");
+    /* $urlEvent ="http://exatic.store/admin-event";
+              echo ("<script>
+               location.href='$urlEvent'
+               </script>"); */
 }

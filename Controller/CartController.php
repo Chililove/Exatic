@@ -54,6 +54,11 @@ if (isset($_POST["add_to_cart"])) {
     }
     header("Location:product.php");
     exit();
+    //for one.com  
+    /*  $urlProduct ="http://exatic.store/product";
+       echo ("<script>
+           location.href='$urlProduct'
+           </script>");  */
 }
 
 if (isset($_GET["action"])) {

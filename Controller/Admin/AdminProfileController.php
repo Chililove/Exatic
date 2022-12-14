@@ -49,6 +49,11 @@ if (isset($_POST['submitCompany'])) {
             $companyResult = $company->execute();
             $conn->commit();
             header("Location:admin-profile");
+            //for one.com  
+            /* $urlAdminProfile ="http://exatic.store/admin-profile";
+                echo ("<script>
+                 location.href='$urlAdminProfile'
+                 </script>");  */
         } catch (Exception $err) {
             $err = true;
             $conn->rollback();
@@ -74,6 +79,11 @@ if (isset($_POST['updateAddress'])) {
             $addressResult = $address->execute();
             $conn->commit();
             header("Location:admin-profile");
+            //for one.com  
+            /* $urlAdminProfile ="http://exatic.store/admin-profile";
+                echo ("<script>
+                 location.href='$urlAdminProfile'
+                 </script>");  */
         } catch (Exception $err) {
             $err = true;
             $conn->rollback();
@@ -107,6 +117,11 @@ if (isset($_POST['updateEmail'])) {
             $ownerResult = $owner->execute();
             $conn->commit();
             header("Location:admin-profile");
+            //for one.com  
+            /* $urlAdminProfile ="http://exatic.store/admin-profile";
+                echo ("<script>
+                 location.href='$urlAdminProfile'
+                 </script>");  */
         } catch (Exception $err) {
             $err = true;
             $conn->rollback();
