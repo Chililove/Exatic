@@ -95,6 +95,7 @@ require("_partials/adminBar.php")
 
 <style lang="css">
     @import "styles.css";
+
     .admin-button {
         background: #212121;
         color: white;

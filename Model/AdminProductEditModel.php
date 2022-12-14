@@ -1,4 +1,4 @@
-'<?php
+<?php
 $productId = $_SERVER['QUERY_STRING'];
 $productEdit = "SELECT * FROM Product  WHERE productID = $productId";
 class AdminProductEditModel
