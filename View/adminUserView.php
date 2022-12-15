@@ -33,8 +33,6 @@ require("_partials/adminBar.php")
                         <td><select class="form-select" name="status" aria-label="Default select example">
 
                                 <option selected name="status" value="<?php echo $row['status'] ?>"><?php echo $row['status'] ?></option>
-                                <option name="status" value="Done">Done</option>
-                                <option name="status" value="Not Done">Not Done</option>
                                 <option name="status" value="Shipping">Shipping</option>
                                 <option name="status" value="Delivered">Delivered</option>
                             </select>
