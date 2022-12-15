@@ -1,3 +1,10 @@
+<?php
+
+require("rootPath.php");
+require $rootPath . "Model/ContactModel.php";
+require $rootPath . "Controller/ContactController.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,8 +29,6 @@
                                         <h5 class="mb-3 about-text">Exatic was created for delivering variety of exotic asian products</h5>
                                         <hr>
                                         <?php
-                                        $companyInfo = "SELECT * FROM CompanyInfo";
-                                        $companyInfoResult = $conn->query($companyInfo);
                                         while ($row = $companyInfoResult->fetch(PDO::FETCH_ASSOC)) {
                                         ?>
                                             <p class="about-text">

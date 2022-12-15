@@ -33,7 +33,7 @@ require("_partials/adminBar.php")
                         </thead>
                         <?php
                         $i = 1;
-                        while ($row = $CountryResult->fetch(PDO::FETCH_ASSOC)) { ?>
+                        while ($row = $countryResult->fetch(PDO::FETCH_ASSOC)) { ?>
                             <tbody>
                                 <tr>
                                     <th scope="row"><?php echo $i; ?></th>

@@ -1,12 +1,15 @@
 <?php
 
-if (isset($_POST['submit'])) {
+$overviewResult = $conn->query($product_details);
 
+//edit Event
+if (isset($_POST['submitEvent'])) {
     $eventName  = $sanitized['eventName'];
     $description   = $sanitized['description'];
     $discountProcent     = $sanitized['discountProcent'];
     $startDate    = $sanitized['startDate'];
     $endDate    = $sanitized['endDate'];
+    $discountID = $sanitized['discountID'];
 
     if (
         !empty($_POST['eventName']) || !empty($_POST['description']) || !empty($_POST['discountProcent']) ||
@@ -15,14 +18,16 @@ if (isset($_POST['submit'])) {
 
         try {
             $conn->beginTransaction();
-            $addEvent = $conn->prepare($EventModel->createEvent);
-            $addEvent->bindParam(':eventName', $eventName, PDO::PARAM_STR);
-            $addEvent->bindParam(':description', $description, PDO::PARAM_STR);
-            $addEvent->bindParam(':discountProcent', $discountProcent, PDO::PARAM_STR);
-            $addEvent->bindParam(':startDate', $startDate, PDO::PARAM_STR);
-            $addEvent->bindParam(':endDate', $endDate, PDO::PARAM_STR);
+            $editEvent = $conn->prepare($EventEditModel->editEvent);
 
-            $addEventResult = $addEvent->execute();
+            $editEvent->bindParam(':discountID', $discountID, PDO::PARAM_INT);
+            $editEvent->bindParam(':eventName', $eventName, PDO::PARAM_STR);
+            $editEvent->bindParam(':description', $description, PDO::PARAM_STR);
+            $editEvent->bindParam(':discountProcent', $discountProcent, PDO::PARAM_STR);
+            $editEvent->bindParam(':startDate', $startDate, PDO::PARAM_STR);
+            $editEvent->bindParam(':endDate', $endDate, PDO::PARAM_STR);
+
+            $editEventResult = $editEvent->execute();
             $conn->commit();
             header("Location:admin-event");
             //for one.com  
@@ -37,7 +42,3 @@ if (isset($_POST['submit'])) {
         }
     }
 }
-
-
-//read event
-$EventListResult = $conn->query($EventModel->eventList);

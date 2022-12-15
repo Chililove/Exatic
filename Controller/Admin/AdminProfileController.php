@@ -3,7 +3,7 @@
 $adminId = (int)$_SESSION["userID"];
 
 
-$CountryResult = $conn->query($AdminProfileModel->CountryProduct);
+$countryResult = $conn->query($AdminProfileModel->countryProduct);
 
 $handleAdmin = $conn->prepare($AdminProfileModel->user);
 $handleAdmin->bindParam(':userID', $adminId, PDO::PARAM_INT);

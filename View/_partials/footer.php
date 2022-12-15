@@ -1,3 +1,8 @@
+<?php
+require("rootPath.php");
+require $rootPath . "Model/FooterModel.php";
+require $rootPath . "Controller/FooterController.php";
+?>
 <body>
     <footer>
         <!-- Footer main -->
@@ -16,9 +21,7 @@
                 <h2 class="ft-title">Contact</h2>
                 <ul>
                     <?php
-                    $address = "SELECT streetName, streetNumber FROM `Address` WHERE addressID=1";
-                    $addressResult = $conn->query($address);
-                    while ($row = $addressResult->fetch(PDO::FETCH_ASSOC)) {
+                    while ($row = $addressResultFooter->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                         <li>
                             <h8><?php echo $row['streetName'] ?></h8>
@@ -28,9 +31,7 @@
                             <h8>+45 123456 78910</h8>
                         </li>
                         <?php
-                        $owner = "SELECT email FROM User WHERE userID = 1";
-                        $ownerResult = $conn->query($owner);
-                        while ($row = $ownerResult->fetch(PDO::FETCH_ASSOC)) { ?>
+                        while ($row = $ownerResultFooter->fetch(PDO::FETCH_ASSOC)) { ?>
 
                             <li>
                                 <h8><?php echo $row['email'] ?></h8>
@@ -45,9 +46,7 @@
                 <h2 class="ft-title">Opening Hours</h2>
                 <ul>
                     <?php
-                    $companyInfo = "SELECT * FROM CompanyInfo";
-                    $companyInfoResult = $conn->query($companyInfo);
-                    while ($row = $companyInfoResult->fetch(PDO::FETCH_ASSOC)) {
+                    while ($row = $companyInfoResultFooter->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                         <li>
                             <h8> <?php echo $row['weekdays'] ?></h8>

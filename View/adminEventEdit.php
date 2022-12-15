@@ -1,8 +1,8 @@
 <?php
 require("rootPath.php");
 
-require $rootPath . "Model/EventModel.php";
-require $rootPath . "Controller/Admin/EventController.php";
+require $rootPath . "Model/EventEditModel.php";
+require $rootPath . "Controller/Admin/EventEditController.php";
 require("_partials/adminBar.php")
 ?>
 
@@ -13,9 +13,6 @@ require("_partials/adminBar.php")
         </div>
     </div>
     <?php
-    $editEvent = $_SERVER['QUERY_STRING'];
-    $product_details = "SELECT * FROM Discount  WHERE discountID = $editEvent";
-    $overviewResult = $conn->query($product_details);
     while ($row = $overviewResult->fetch(PDO::FETCH_ASSOC)) { ?>
         <form action="#" enctype="multipart/form-data" method="post">
             <div class="row">

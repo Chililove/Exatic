@@ -1,8 +1,8 @@
 <?php
 require("rootPath.php");
 
-require $rootPath . "Model/AdminProductModel.php";
-require $rootPath . "Controller/Admin/AdminProductController.php";
+require $rootPath . "Model/AdminProductEditModel.php";
+require $rootPath . "Controller/Admin/AdminProductEditController.php";
 require("_partials/adminBar.php")
 
 ?>
@@ -10,9 +10,7 @@ require("_partials/adminBar.php")
 <div class="container">
     <h1>Edit Product</h1>
     <?php
-    $editProduct = $_SERVER['QUERY_STRING'];
-    $productEdit = "SELECT * FROM Product  WHERE productID = $editProduct";
-    $productEditResult = $conn->query($productEdit);
+
     while ($row = $productEditResult->fetch(PDO::FETCH_ASSOC)) { ?>
 
         <form action="#" enctype="multipart/form-data" method="post">
@@ -97,7 +95,6 @@ require("_partials/adminBar.php")
 
 <style lang="css">
     @import "styles.css";
-
     .admin-button {
         background: #212121;
         color: white;
