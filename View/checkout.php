@@ -105,7 +105,7 @@ require $rootPath . "Controller/CheckoutController.php";
             </div>
 
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit" name="submit" value="submit">Continue to checkout</button>
+            <button class="btn btn-dark btn-lg btn-block" type="submit" name="submit" value="submit">Continue to checkout</button>
         </form>
     </div>
 </div>

@@ -12,6 +12,35 @@ $handleOrder->bindParam(':userID', $userid, PDO::PARAM_INT);
 $handleOrder->execute();
 $orderResult = $handleOrder->fetchAll();
 
+//update image
+
+if (isset($_POST['submitImage'])) {
+    $imagePath = $sanitized['imagePath'];
+    $userID = $sanitized['userID'];
+
+        try {
+            $conn->beginTransaction();
+            $userUpdate = $conn->prepare($ProfileModel->updatePicture);
+            $userUpdate->bindParam(':userID', $userID, PDO::PARAM_INT);
+            $userUpdate->bindParam(':imagePath', $imagePath, PDO::PARAM_STR);
+            $userUpdateResult = $userUpdate->execute();
+            $conn->commit();
+            $userUpdate->debugDumpParams();
+            header("Location:profile");
+            //for one.com
+            /* $urlEvent ="http://exatic.store/profile";
+              echo ("<script>
+               location.href='$urlEvent'
+               </script>"); */
+        } catch (Exception $err) {
+            echo $err;
+            $errorTransaction = true;
+            $conn->rollback();
+
+    }
+}
+
+
 // Update user information on submit
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
