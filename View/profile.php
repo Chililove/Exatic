@@ -27,10 +27,10 @@ require $rootPath . "Controller/ProfileController.php";
     <?php } ?>
 
     <?php if ($errorTransaction) { ?>
-        <div class="alert alert-danger text-center" role="alert">
-            <strong>Error:</strong> Transaction failed! - Please try again..
-        </div>
-    <?php } ?>
+    <div class="alert alert-danger text-center" role="alert">
+        <strong>Error:</strong> Transaction failed! - Please try again..
+    </div>
+<?php } ?>
 
 </head>
 

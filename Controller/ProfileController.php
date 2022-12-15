@@ -66,7 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $conn->commit();
             $updateSucess = true;
         } catch (Exception $err) {
-            var_dump($err);
             $errorTransaction = true;
             $conn->rollback();
         }
