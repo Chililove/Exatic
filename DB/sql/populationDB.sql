@@ -5,14 +5,12 @@ INSERT INTO Discount (discountID, eventName, description, discountProcent, start
 INSERT INTO Discount (discountID, eventName, description, discountProcent, startDate, endDate) VALUES (4, "Black Friday", "BLACK FRIDAY", "70", "2022-11-25 00:00:00", "2022-11-25 23:59:59");
 
 
-
 /* productType */
 INSERT INTO ProductType (productTypeID, typeName) VALUES (1, "Ramen");
 INSERT INTO ProductType (productTypeID, typeName) VALUES (2, "Alcohol");
 INSERT INTO ProductType (productTypeID, typeName) VALUES (3, "Soda");
 INSERT INTO ProductType (productTypeID, typeName) VALUES (4, "Rice");
 INSERT INTO ProductType (productTypeID, typeName) VALUES (5, "Frozen food");
-
 
 
 /* product*/
@@ -41,10 +39,6 @@ INSERT INTO Product (productID, title, price, stockQuantity, description,  isDai
 INSERT INTO Product (productID, title, price, stockQuantity, description,  isDailySpecial, country, brand, productImage, productTypeID, discountID) values (23, 'He Fong Taro Mochi', 35, 200, 'He Fong Taro Mochi 210 g.',  false, 'Japan', 'Q-Taiwan Desserts', 'purple-mochi.jpeg', 4, 1);
 INSERT INTO Product (productID, title, price, stockQuantity, description,  isDailySpecial, country, brand, productImage, productTypeID, discountID) values (24, 'Loves Flower Mochi Strawberry(20 stk.)', 79, 180, 'Loves Flower Mochi Strawberry 300g (20 stk.)',  false, 'Taiwan', 'Lovers Flowers', 'lovers-mochi.jpeg',  4, 2);
 INSERT INTO Product (productID, title, price, stockQuantity, description,  isDailySpecial, country, brand, productImage, productTypeID, discountID) values (25, 'Mogu Mogu Strawberry', 17, 100, 'Mogu Mogu Strawberry drink with Nata de Coco jelly 320 ml.',  false, 'Thailand', 'MoguMogu', 'mogumogu.jpeg', 3, 3);
-
-
-
-
 
 INSERT INTO `PostalCode` (postNumber, cityName) VALUES
 ('0783', 'Facility'),
@@ -1168,42 +1162,36 @@ INSERT INTO `PostalCode` (postNumber, cityName) VALUES
 
 
 /*Address */
-
 INSERT INTO Address (`addressID`, `streetName`, `streetNumber`, `postalCodeID`) VALUES
-                                                                                    (1, 'Spangsbjerg Kirkevej', 103, 5),
-                                                                                    (2, 'Havnegade', 11, 4),
-                                                                                    (3, 'Spangsbjerg Kirkevej', 103, 859),
-                                                                                    (4, 'Havnevej', 2, 8),
-                                                                                    (5, 'Lykkevej', 55, 23),
-                                                                                    (6, 'Solvej', 32, 24),
-                                                                                    (7, 'Samsøgade', 12, 23);
-/*CompanyInfo*/
+(1, 'Spangsbjerg Kirkevej', 103, 5),
+(2, 'Havnegade', 11, 4),
+(3, 'Spangsbjerg Kirkevej', 103, 859),
+(4, 'Havnevej', 2, 8),
+(5, 'Lykkevej', 55, 23),
+(6, 'Solvej', 32, 24),
+(7, 'Samsøgade', 12, 23);
 
+/*CompanyInfo*/
 INSERT INTO `CompanyInfo` (`companyInfoID`, `companyDescription`, `weekdays`, `weekends`,`openingHours`,`weekendHours`,`addressID`) VALUES
-    (1, 'It is very nice to have you here, we hope the experience will please you.<br />
-                                            Here at Exatic we aim to broaden asian products as well as making them more accessible in Denmark.<br /><br />
-                                            Here you can find any ingredient you need to cook asian cuisine and treat family and friends with familiar and newly added products.<br />
-                                            All groceries can be delivered at home.<br />
-                                            <br />
-                                            Hopefully you find what you need or maybe get inspired by new products from your familiar brands.', 'MONDAY-FRIDAY', 'SATURDAY-SUNDAY','8:00 AM - 9:00 PM','10:00 AM - 15:00 PM', 1);
+    (1, 'It is very nice to have you here, we hope the experience will please you.<br />Here at Exatic we aim to broaden asian products as well as making them more accessible in Denmark.<br /><br />Here you can find any ingredient you need to cook asian cuisine and treat family and friends with familiar and newly added products.<br />All groceries can be delivered at home.<br /><br />Hopefully you find what you need or maybe get inspired by new products from your familiar brands.', 'MONDAY-FRIDAY', 'SATURDAY-SUNDAY','8:00 AM - 9:00 PM','10:00 AM - 15:00 PM', 1);
 
 /* User */
-
 INSERT INTO `User` (`userID`, `firstName`, `lastName`, `email`, `password`, `userType`, `imagePath`, `addressID`) VALUES
 (1, 'Exatic', 'Company', 'exaticproject@gmail.com', '$2y$06$D7r211Aj1/rRUCSORUuFjeOpuf6/tRq2Ap.pJyP5UXs142GJxWnIe', 0, "default.jpg", 1),
 (2, 'Ruben', 'Kyed', 'ruben@mail.com', '$2y$06$RW4Q2kN6pgKNSC8GCQzSSur5N5MKQt9PHfwOwJAEiDP/SGa7DGmW.', 1, "default.jpg", 4),
 (3, 'Lady', 'Karlsen', 'Lady@mail.com', '$2y$06$bQ6fic/DkwJhWMrLty8ctuGZNb2Q3PpKLyvigkvhryovfvo3wiVva', 1, "default.jpg", 5),
 (4, 'test', 'test', 'test@test.com', '$2y$06$ppoAGJ0iTL8mBsj4HPYDA.RtpKCDhoxrZQ2jLuCT1C7OkNC3GsxRS', 0, "test.jpeg", 6);
 
-
+/* Order */
 INSERT INTO `Order` (`orderID`, `dateOrdered`, `dateDelivered`, `status`, `userID`) VALUES
-(1, '2022-11-02 22:33:43', '2022-11-16 22:33:43', 'Done', 2),
-(2, '2022-12-05 22:33:43', '2022-12-27 22:33:43', 'Not done', 2),
-(3, '2022-11-22 22:33:43', '2022-12-22 22:33:43', 'Not done', 3),
-(4, '2022-12-11 22:33:43', '2022-12-20 22:33:43', 'Not done', 3),
-(5, '2022-12-05 22:33:43', '2022-12-08 22:33:43', 'Done', 2),
-(6, '2022-12-01 22:33:43', '2022-12-10 22:33:43', 'Done', 2);
+(1, '2022-11-02 22:33:43', '2022-11-16 22:33:43', 'Delivered', 2),
+(2, '2022-12-05 22:33:43', '2022-12-27 22:33:43', 'Delivered', 2),
+(3, '2022-11-22 22:33:43', '2022-12-22 22:33:43', 'Delivered', 3),
+(4, '2022-12-11 22:33:43', '2022-12-20 22:33:43', 'Delivered', 3),
+(5, '2022-12-05 22:33:43', '2022-12-08 22:33:43', 'Delivered', 2),
+(6, '2022-12-01 22:33:43', '2022-12-10 22:33:43', 'Delivered', 2);
 
+/* OrderDetails */
 INSERT INTO `OrderDetail` (`orderDetailID`,`title`, `priceOne`,`quantity`, `price`, `procent`, `orderID`, `productID`) VALUES
 (1,'Gyoza Pork Ajinomoto','89',1, '67', '0', 1, 18),
 (2, 'Gyoza Pork & Vegetables Bibigo', '69',4, '120', '0', 2, 19),
@@ -1211,3 +1199,4 @@ INSERT INTO `OrderDetail` (`orderDetailID`,`title`, `priceOne`,`quantity`, `pric
 (4, 'Jasmin Rice Royal Tiger', '129',12, '267', '10', 4, 22),
 (5, 'Gyoza Duck Ajinomoto', '109',8, '320', '0', 5, 15),
 (6, 'Sanquan', 29,1, '25', '0', 6, 16);
+

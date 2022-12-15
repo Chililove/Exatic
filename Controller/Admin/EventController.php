@@ -82,20 +82,3 @@ if (isset($_POST['submitEvent'])) {
 
 //read event
 $EventListResult = $conn->query($EventModel->eventList);
-
-//delete event
-if (isset($_REQUEST['del'])) {
-    $setDiscount = $_REQUEST['discountID'];
-    $conn->query("SET FOREIGN_KEY_CHECKS=0");
-    $handle = $conn->prepare($EventModel->deleteEvent);
-    $handle->execute(array(":discountID" => $setDiscount));
-    $conn->query("SET FOREIGN_KEY_CHECKS=1");
-
-    // quick fix - needs to change 
-    header("Location:admin-event");
-    //for one.com  
-    /* $urlEvent ="http://exatic.store/admin-event";
-              echo ("<script>
-               location.href='$urlEvent'
-               </script>"); */
-}

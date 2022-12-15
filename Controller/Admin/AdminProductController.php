@@ -113,35 +113,6 @@ if (isset($_POST['submitProductEdit'])) {
     }
 }
 
-if (isset($_POST['submitDaily'])) {
-    $isDailySpecial = $sanitized['isDailySpecial'];
-    $productID = $sanitized['productID'];
-
-    if (
-        !empty($_POST['isDailySpecial'])
-    ) {
-        try {
-            $conn->beginTransaction();
-            $editSpecial = $conn->prepare($AdminProductModel->editSpecialDaily);
-            $editSpecial->bindParam(':productID', $productID, PDO::PARAM_INT);
-            $editSpecial->bindParam(':isDailySpecial', $isDailySpecial, PDO::PARAM_BOOL);
-            $editSpecialResult = $editSpecial->execute();
-            $conn->commit();
-            $editSpecial->debugDumpParams();
-            //   header("Location:admin-product");
-            //for one.com  
-            /*  $urlAdminProduct ="http://exatic.store/admin-product";
-                echo ("<script>
-                 location.href='$urlAdminProduct'
-                 </script>");  */
-        } catch (Exception $err) {
-            echo $err;
-            $errorTransaction = true;
-            $conn->rollback();
-        }
-    }
-}
-
 
 //delete product
 
