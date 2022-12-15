@@ -12,6 +12,8 @@ function sanitize($input)
     $input = trim($input);
     $input = stripslashes($input);
     $input = htmlspecialchars($input);
+    $input = nl2br($input);
+
     return $input;
 }
 // Here we sanitize all the incoming data
