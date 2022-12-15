@@ -41,7 +41,7 @@ $view = match ($toCheck) {
 if ($view == null && $isAuthenticated && !$isAdmin) {
     $view = match ($toCheck) {
         '/profile' => '/View/profile.php',
-        '/order-details-page' => '/View/orderDetailsPage.php',
+        '/invoice' => '/View/inVoice.php',
             // ... other authenticated pages
         default => null
     };
