@@ -27,20 +27,18 @@ require("_partials/adminBar.php")
                 <tr>
                     <td scope="row"><?php echo $row['orderID'] ?></td>
                     <td><?php echo $row['dateOrdered'] ?> </td>
-                    <td><?php echo $row['dateDelivered'] ?></td>
                     <form method="post" action="">
-<<<<<<< HEAD
                     <td>  <input type="datetime-local" name="dateDelivered" value="<?php echo $row['dateDelivered']; ?>"></td>
-                    <td><select name="status"  aria-label="Default select example">
-=======
+
                     <td><select class="form-select" name="status"  aria-label="Default select example">
->>>>>>> parent of 7c2a701 (edit-delivered-time)
+
                             <option selected name="status" value="<?php echo $row['status'] ?>"><?php echo $row['status'] ?></option>
                             <option name="status" value="Done">Done</option>
                             <option name="status" value="Not Done">Not Done</option>
                             <option name="status" value="Not Done">Shipping</option>
                             <option name="status" value="Not Done">Delivered</option>
-                        </select></td>
+                        </select>
+                        </td>
                         <input type="hidden" name="dateOrdered" value="<?php echo $row['dateOrdered'] ?>">
                         <input type="hidden" name="dateDelivered" value="<?php echo $row['dateDelivered'] ?>">
                         <input type="hidden" name="orderID" value="<?php echo $row['orderID'] ?>">
