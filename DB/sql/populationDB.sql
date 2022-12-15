@@ -1184,12 +1184,12 @@ INSERT INTO `User` (`userID`, `firstName`, `lastName`, `email`, `password`, `use
 
 /* Order */
 INSERT INTO `Order` (`orderID`, `dateOrdered`, `dateDelivered`, `status`, `userID`) VALUES
-(1, '2022-11-02 22:33:43', '2022-11-16 22:33:43', 'Delivered', 2),
-(2, '2022-12-05 22:33:43', '2022-12-27 22:33:43', 'Delivered', 2),
-(3, '2022-11-22 22:33:43', '2022-12-22 22:33:43', 'Delivered', 3),
-(4, '2022-12-11 22:33:43', '2022-12-20 22:33:43', 'Delivered', 3),
-(5, '2022-12-05 22:33:43', '2022-12-08 22:33:43', 'Delivered', 2),
-(6, '2022-12-01 22:33:43', '2022-12-10 22:33:43', 'Delivered', 2);
+(1, '2022-11-02 22:33:43', '2022-11-16', 'Delivered', 2),
+(2, '2022-12-05 22:33:43', '2022-12-27', 'Delivered', 2),
+(3, '2022-11-22 22:33:43', '2022-12-22', 'Delivered', 3),
+(4, '2022-12-11 22:33:43', '2022-12-20', 'Delivered', 3),
+(5, '2022-12-05 22:33:43', '2022-12-08', 'Delivered', 2),
+(6, '2022-12-01 22:33:43', '2022-12-10', 'Delivered', 2);
 
 /* OrderDetails */
 INSERT INTO `OrderDetail` (`orderDetailID`,`title`, `priceOne`,`quantity`, `price`, `procent`, `orderID`, `productID`) VALUES
