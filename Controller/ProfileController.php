@@ -45,14 +45,14 @@ if (isset($_POST['submitImage'])) {
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-    $firstName = htmlspecialchars($sanitized['firstName']);
-    $lastName = htmlspecialchars($sanitized['lastName']);
-    $email = htmlspecialchars($sanitized['email']);
+    $firstName = $sanitized['firstName'];
+    $lastName = $sanitized['lastName'];
+    $email = $sanitized['email'];
 
-    $streetName = htmlspecialchars($sanitized['streetName']);
-    $streetNumber = htmlspecialchars($sanitized['streetNumber']);
+    $streetName = $sanitized['streetName'];
+    $streetNumber = $sanitized['streetNumber'];
 
-    $postalCodeID = htmlspecialchars($sanitized['postalCodeID']);
+    $postalCodeID = $sanitized['postalCodeID'];
 
     $imagePath = ['imagePath'];
 

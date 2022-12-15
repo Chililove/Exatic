@@ -6,11 +6,11 @@ $isSuccess = false;
 if (isset($_POST["add_to_cart"])) {
     if ($_POST["stockQuantity"] > 0 && !empty($_POST["stockQuantity"])) { //????
 
-        $title = sanitize($_POST["title"]);
-        $price = sanitize($_POST["price"]);
-        $stockQuantity = sanitize($_POST["stockQuantity"]);
-        $productImage = sanitize($_POST["productImage"]);
-        $description = sanitize($_POST["description"]);
+        $title = $sanitized["title"];
+        $price = $sanitized["price"];
+        $stockQuantity = $sanitized["stockQuantity"];
+        $productImage = $sanitized["productImage"];
+        $description = $sanitized["description"];
 
         if (isset($_SESSION["shopping_cart"])) {
             $item_array_id =  array_column($_SESSION["shopping_cart"], "productID");
@@ -18,12 +18,12 @@ if (isset($_POST["add_to_cart"])) {
             if (!in_array($_GET["productID"], $item_array_id)) {
                 $count = count($_SESSION["shopping_cart"]);
                 $item_array = array(
-                    'productID' => sanitize($_GET["productID"]),
-                    'title' => sanitize($_POST["title"]),
-                    'price' => sanitize($_POST["price"]),
-                    'stockQuantity' => sanitize($_POST["stockQuantity"]),
-                    'productImage' => sanitize($_POST["productImage"]),
-                    'description' => sanitize($_POST["description"]),
+                    'productID' => $sanitized["productID"],
+                    'title' => $sanitized["title"],
+                    'price' => $sanitized["price"],
+                    'stockQuantity' => $sanitized["stockQuantity"],
+                    'productImage' => $sanitized["productImage"],
+                    'description' => $sanitized["description"],
                 );
                 $_SESSION["shopping_cart"][$count] = $item_array;
                 $isSuccess = true;
@@ -40,11 +40,11 @@ if (isset($_POST["add_to_cart"])) {
 
             $item_array = array(
                 'productID' => sanitize($_GET["productID"]),
-                'title' => sanitize($_POST["title"]),
-                'price' => sanitize($_POST["price"]),
-                'stockQuantity' => sanitize($_POST["stockQuantity"]),
-                'productImage' => sanitize($_POST["productImage"]),
-                'description' => sanitize($_POST["description"]),
+                'title' => $sanitized["title"],
+                'price' => $sanitized["price"],
+                'stockQuantity' => $sanitized["stockQuantity"],
+                'productImage' => $sanitized["productImage"],
+                'description' => $sanitized["description"],
             );
             $_SESSION["shopping_cart"][0] = $item_array;
             $isSuccess = true;

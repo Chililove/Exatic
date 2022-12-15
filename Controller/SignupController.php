@@ -10,15 +10,15 @@ $cities = $conn->query($SignupModel->allPostalSelect);
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-    $firstName = htmlspecialchars($sanitized['firstName']);
-    $lastName = htmlspecialchars($sanitized['lastName']);
-    $email = htmlspecialchars($sanitized['email']);
-    $password = htmlspecialchars($sanitized['password']);
+    $firstName = $sanitized['firstName'];
+    $lastName = $sanitized['lastName'];
+    $email = $sanitized['email'];
+    $password = $sanitized['password'];
 
-    $streetName = htmlspecialchars($sanitized['streetName']);
-    $streetNumber = htmlspecialchars($sanitized['streetNumber']);
+    $streetName = $sanitized['streetName'];
+    $streetNumber = $sanitized['streetNumber'];
 
-    $postalCodeID = htmlspecialchars($sanitized['postalCodeID']);
+    $postalCodeID = $sanitized['postalCodeID'];
     $userType = ['userType'];
 
     if (!empty($firstName) && !empty($lastName) && !empty($email) && !empty($password) && !empty($streetName) && !empty($streetNumber) && !empty($postalCodeID)) {
