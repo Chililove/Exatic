@@ -39,11 +39,18 @@ require $rootPath . "Controller/ProfileController.php";
         <div class="row">
             <div class="col-lg-4 pb-5">
                 <form method="POST">
-                    <div class="author-card pb-3">
-                        <div class="author-card-profile">
-                            <div class="author-card-avatar"><img src="Exatic/assets/profilepictures/<?php echo $user["imagePath"] ?? 'default.jpg' ?>" alt="">
-                                <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg" class="imgSelect">
-                            </div>
+                            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="Exatic/assets/profilepictures/<?php echo $user["imagePath"] ?>" alt="" width="200" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm center-block">
+                                <form method="post" action="">
+                                    <select name="imagePath" class="form-select" aria-label="Default select example">
+                                        <option name="imagePath"  selected><?php echo $user["imagePath"] ?></option>
+                                        <option name="imagePath"  value="default.jpg">Default</option>
+                                        <option name="imagePath"  value="male.jpeg">Male</option>
+                                        <option name="imagePath"  value="female.jpeg">Female</option>
+                                        <option name="imagePath"  value="cat.jpeg">Cat</option>
+                                        <input type="hidden" name="userID" value="<?php echo $user["userID"]; ?>">
+                                    </select>
+                                    <button type="submit" name="submitImage" class="btn admin-button" id="btn-add">Edit</button>
+                                </form>
                             <div class="author-card-details">
                                 <div class="form-outline">
                                     <input type="firstname" value="<?php echo $user["firstName"] ?>" name="firstName" class="form-control" placeholder="Firstname" required />
@@ -54,7 +61,7 @@ require $rootPath . "Controller/ProfileController.php";
                                 <div class="form-outline">
                                     <input type="email" value="<?php echo $user["email"] ?>" name="email" class="form-control" placeholder="Email" required />
                                 </div>
-                                <h6 class="mb-4 pb-2 pb-md-0">Address Information</h6>
+                                <h6 class="py-3">Address Information</h6>
                                 <div class="form-outline">
                                     <input type="streetName" value="<?php echo $user["streetName"] ?>" name="streetName" class="form-control" placeholder="Name of the street" required />
                                 </div>
@@ -75,9 +82,7 @@ require $rootPath . "Controller/ProfileController.php";
                             </div>
 
                         </div>
-                    </div>
                 </form>
-
             </div>
             <!-- Orders Table-->
             <div class="col-lg-8 pb-5">
@@ -123,27 +128,15 @@ require $rootPath . "Controller/ProfileController.php";
 <style>
     @import "styles.css";
 
-    .section-style {
-        font-family: "Roboto", sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-    .imgSelect {
-        margin-top: 3%;
-        margin-left: 3%;
-    }
-
-    .cardlist {
-        width: 45%;
-        align-self: center;
-
-
-    }
-
     .admin-button {
         background: #212121;
         color: white;
         border-radius: 0;
+    }
+
+    .center-block {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 </style>

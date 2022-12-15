@@ -11,6 +11,7 @@ class ProfileModel
     public $updateUser = "UPDATE User SET `firstName` = :firstName, `lastName` = :lastName, `email` = :email WHERE userID = :userID";
     public $updateAddress = "UPDATE `Address` SET `streetName` = :streetName, `streetNumber` = :streetNumber, `postalCodeID` = :postalCodeID WHERE addressID = :addressID";
 
+    public $updatePicture = "UPDATE `User` SET `imagePath` = :imagePath WHERE `user`.`userID` = :userID";
     // get all orders for logged in user
     public $allOrdersUser = "SELECT * FROM `Order` WHERE userID = :userID";
   //  public $orderDetails = "SELECT `orderID`, `p.productID`, `orderDetailID`, `quantity`, `price`, `procent` FROM OrderDetail od JOIN Order o ON od.orderID = o.orderID JOIN Product p ON od.productID = p.productID WHERE orderId = :orderID";
