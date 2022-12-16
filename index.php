@@ -6,6 +6,7 @@ if (!isset($_SESSION)) {
     $_SESSION["cart_items"] = array();
 }
 
+
 // sanitaze
 function sanitize($input)
 {
