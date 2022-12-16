@@ -61,7 +61,7 @@ require $rootPath . "Controller/CartController.php";
                                 <div class="section quantity-pad">
                                     <div>
                                         <span><small>Quantity</small></sp>
-                                            <input type="number" name="stockQuantity" value="1" min="1" class="form-control quantity-input" />
+                                            <input type="number" name="stockQuantity" value="1" min="1" class="form-control quantity-input" onchange="alert(this.value);"/>
                                     </div>
                                 </div>
                                 <div class="section quantity-pad">

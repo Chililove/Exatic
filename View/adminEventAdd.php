@@ -51,11 +51,16 @@ require("_partials/adminBar.php")
             <div class="col-md-10 mb-4">
                 <div class="form-group">
                     <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" name="description" rows="3"></textarea>
+                    <div class="input-group mb-3">
+                        <input class="form-control" name="description">
+                        <div class="input-group-prepend">
+                            <button type="submit" name="submit" class="btn btn-dark" id="btn-add">Add</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <button type="submit" name="submit" class="btn admin-button" id="btn-add">Add</button>
+
     </form>
 </div>
 
@@ -63,14 +68,7 @@ require("_partials/adminBar.php")
 <style lang="css">
     @import "styles.css";
 
-    /* Event add */
     .admin-align-text {
         text-align: center;
-    }
-
-    .admin-button {
-        background: #212121;
-        color: white;
-        border-radius: 0;
     }
 </style>

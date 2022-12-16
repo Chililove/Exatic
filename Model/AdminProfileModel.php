@@ -10,6 +10,7 @@ class AdminProfileModel
     public $companyRead = "SELECT * FROM CompanyInfo WHERE companyInfoID = 1";
     public $address = "SELECT * FROM `Address` WHERE addressID=1";
     public $ownerEmail = "SELECT * FROM User WHERE userID = 1";
+    public $updatePicture = "UPDATE `User` SET `imagePath` = :imagePath WHERE `user`.`userID` = :userID";
 }
 
 $AdminProfileModel = new AdminProfileModel();

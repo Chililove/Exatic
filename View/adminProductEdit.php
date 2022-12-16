@@ -76,18 +76,21 @@ require("_partials/adminBar.php")
                 <div class="col-md-4 mb-4">
                     <div class="form-group">
                         <label>Discount</label>
-                        <select type="category" name="discountID" class="form-control" required>
-                            <?php
-                            while ($row = $productDiscount->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <option value="<?php echo $row["discountID"]; ?>"><?php echo $row["eventName"]; ?></option>
-                            <?php  } ?>
-                        </select>
+                        <div class="input-group mb-3">
+                            <select type="category" name="discountID" class="form-control" required>
+                                <?php
+                                while ($row = $productDiscount->fetch(PDO::FETCH_ASSOC)) { ?>
+                                    <option value="<?php echo $row["discountID"]; ?>"><?php echo $row["eventName"]; ?></option>
+                                <?php  } ?>
+                            </select>
+                            <div class="input-group-prepend">
+                                <button type="submit" name="submitProductEdit" class="btn btn-dark" id="btn-add">Edit</button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-
-
-            <button type="submit" name="submitProductEdit" class="btn admin-button" id="btn-add">Add</button>
         <?php  } ?>
         </form>
 
@@ -96,9 +99,4 @@ require("_partials/adminBar.php")
 <style lang="css">
     @import "styles.css";
 
-    .admin-button {
-        background: #212121;
-        color: white;
-        border-radius: 0;
-    }
 </style>

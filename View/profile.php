@@ -41,15 +41,19 @@ require $rootPath . "Controller/ProfileController.php";
                 <form method="POST">
                             <div class="bg-white rounded shadow-sm py-5 px-4"><img src="Exatic/assets/profilepictures/<?php echo $user["imagePath"] ?>" alt="" width="200" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm center-block">
                                 <form method="post" action="">
-                                    <select name="imagePath" class="form-select" aria-label="Default select example">
-                                        <option name="imagePath"  selected><?php echo $user["imagePath"] ?></option>
-                                        <option name="imagePath"  value="default.jpg">Default</option>
-                                        <option name="imagePath"  value="male.jpeg">Male</option>
-                                        <option name="imagePath"  value="female.jpeg">Female</option>
-                                        <option name="imagePath"  value="cat.jpeg">Cat</option>
-                                        <input type="hidden" name="userID" value="<?php echo $user["userID"]; ?>">
-                                    </select>
-                                    <button type="submit" name="submitImage" class="btn admin-button" id="btn-add">Edit</button>
+                                    <div class="input-group mb-3">
+                                        <select name="imagePath" class="form-select" aria-label="Default select example">
+                                            <option name="imagePath"  selected><?php echo $user["imagePath"] ?></option>
+                                            <option name="imagePath"  value="default.jpg">Default</option>
+                                            <option name="imagePath"  value="male.jpeg">Male</option>
+                                            <option name="imagePath"  value="female.jpeg">Female</option>
+                                            <option name="imagePath"  value="catmeme.jpeg">Cat</option>
+                                            <input type="hidden" name="userID" value="<?php echo $user["userID"]; ?>">
+                                        </select>
+                                        <div class="input-group-prepend">
+                                            <button type="submit" name="submitImage" class="btn btn-dark" id="btn-add">Edit</button>
+                                        </div>
+                                    </div>
                                 </form>
                             <div class="author-card-details">
                                 <div class="form-outline">
@@ -66,18 +70,22 @@ require $rootPath . "Controller/ProfileController.php";
                                     <input type="streetName" value="<?php echo $user["streetName"] ?>" name="streetName" class="form-control" placeholder="Name of the street" required />
                                 </div>
                                 <div class="form-outline">
+
                                     <input type="streetnumber" value="<?php echo $user["streetNumber"] ?>" name="streetNumber" class="form-control" placeholder="Street number" required />
                                 </div>
                                 <div class="form-outline">
-                                    <select class="form-control" name="postalCodeID" readonly>
-                                        <option value="<?php echo $user["postalCodeID"] ?>"><?php echo $user["postNumber"] . " " . $user["cityName"] ?></option>
-                                        <?php foreach ($cities as $city) {
-                                            echo '<option value="' . $city["postalCodeID"] . '">' . $city["postNumber"] . ' ' . $city["cityName"] . '</option>';
-                                        } ?>
-                                    </select>
-                                </div>
-                                <div class="justify-content-start">
-                                    <input type="submit" class="btn btn-dark" value="save">
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" name="postalCodeID" readonly>
+                                            <option value="<?php echo $user["postalCodeID"] ?>"><?php echo $user["postNumber"] . " " . $user["cityName"] ?></option>
+                                            <?php foreach ($cities as $city) {
+                                                echo '<option value="' . $city["postalCodeID"] . '">' . $city["postNumber"] . ' ' . $city["cityName"] . '</option>';
+                                            } ?>
+                                        </select>
+                                        <div class="input-group-prepend">
+                                            <input type="submit" class="btn btn-dark" value="save">
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
 
@@ -121,18 +129,12 @@ require $rootPath . "Controller/ProfileController.php";
 
 </body>
 
-<a class="btn admin-button" href="/logout">Log out</a>
+<a class="btn btn-dark" href="/logout">Log out</a>
 
 </html>
 
 <style>
     @import "styles.css";
-
-    .admin-button {
-        background: #212121;
-        color: white;
-        border-radius: 0;
-    }
 
     .center-block {
         display: block;

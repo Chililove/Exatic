@@ -10,7 +10,7 @@ require("_partials/adminBar.php")
     <div class="row d-flex justify-content-center h-100">
         <div class="row-cols-4 d-flex justify-content-center py-5">
             <div class="col-lg-12 admin-align-text">
-                <button type="button" class="btn admin-button">
+                <button type="button" class="btn btn-dark">
                     <a href="/admin-product-add">Add a new Product</a>
                 </button>
                 <form method="post" action="">

@@ -12,7 +12,22 @@ require("_partials/adminBar.php")
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
                 <div class="d-flex flex-column align-items-center text-center">
-                    <img src="assets/profilepictures/<?php echo $user['imagePath'] ?>" alt="Admin" class="rounded-circle" width="150">
+                   <img src="Exatic/assets/profilepictures/<?php echo $user["imagePath"] ?>" alt="" width="200" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm center-block">
+                    <form method="post" action="">
+                        <div class="input-group mb-3">
+                            <select name="imagePath" class="form-select" aria-label="Default select example">
+                                <option name="imagePath"  selected><?php echo $user["imagePath"] ?></option>
+                                <option name="imagePath"  value="default.jpg">Default</option>
+                                <option name="imagePath"  value="male.jpeg">Male</option>
+                                <option name="imagePath"  value="female.jpeg">Female</option>
+                                <option name="imagePath"  value="catmeme.jpeg">Cat</option>
+                                <input type="hidden" name="userID" value="<?php echo $user["userID"]; ?>">
+                            </select>
+                            <div class="input-group-prepend">
+                                <button type="submit" name="submitImage" class="btn btn-dark" id="btn-add">Edit</button>
+                            </div>
+                        </div>
+                    </form>
                     <div class="mt-3">
                         <h4><?php echo $user["firstName"]; ?> <?php echo $user["lastName"]; ?></h4>
                         <p class="text-secondary mb-1">Admin ID. <?php echo $user["userID"]; ?></p>
@@ -48,6 +63,7 @@ require("_partials/adminBar.php")
                 </div>
             </div>
         </div>
+        <hr>
         <?php
         while ($row = $companyResult->fetch(PDO::FETCH_ASSOC)) { ?>
             <form method="post" action="">
@@ -80,48 +96,54 @@ require("_partials/adminBar.php")
                     <div class="col">
                         <div class="form-outline">
                             <label class="form-label" for="form3Example1">WeHours</label>
-                            <input type="text" name="weekendHours" value="<?php echo $row['weekendHours']; ?>" class="form-control" />
+                            <div class="input-group mb-3">
+                                <input type="text" name="weekendHours" value="<?php echo $row['weekendHours']; ?>" class="form-control" />
+                                <div class="input-group-prepend">
+                                    <button  type="submit" class="btn btn-dark" name="submitCompany" type="button">Edit</button>
+                                </div>
+                            </div>
                         </div>
                         <input type="hidden" name="companyInfoID" value="<?php echo $row['companyInfoID']; ?>">
                         <input type="hidden" name="addressID" value="<?php echo $row['addressID']; ?>">
                     </div>
                 </div>
-                <button type="submit" name="submitCompany" id="btn-edit" class="btn admin-button">Edit
-                </button>
             </form>
         <?php
         } ?>
     </div>
+    <hr>
     <?php
     while ($row = $addressResult->fetch(PDO::FETCH_ASSOC)) { ?>
         <form method="post" action="">
             <div class="row mb-4">
                 <div class="form-outline mb-4">
                     <div class="py-2 admin-align-text">
-                        <span">Update Address</span>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-outline">
                         <label class="form-label" for="form3Example1">StreetName</label>
+                        <div class="input-group mb-3">
                         <input type="text" name="streetName" value="<?php echo $row['streetName']; ?>" class="form-control" />
+                        </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="form-outline">
-                        <label class="form-label" for="form3Example1">StreetNumber</label>
+                    <label class="form-label" for="form3Example1">StreetNumber</label>
+                    <div class="input-group mb-3">
                         <input type="text" name="streetNumber" value="<?php echo $row['streetNumber']; ?>" class="form-control" />
+                        <div class="input-group-prepend">
+                            <button  type="submit" class="btn btn-dark" name="updateAddress" type="button">Edit</button>
+                        </div>
                     </div>
                 </div>
                 <div class="col">
                     <input type="hidden" name="postalCodeID" value="<?php echo $row['postalCodeID']; ?>">
-
                     <input type="hidden" name="addressID" value="<?php echo $row['addressID']; ?>">
                 </div>
             </div>
-            <button type="submit" name="updateAddress" id="btn-edit" class="btn admin-button">Edit</a></button>
-
         </form>
+        <hr>
     <?php
     } ?>
     <?php
@@ -130,13 +152,17 @@ require("_partials/adminBar.php")
             <div class="row mb-4">
                 <div class="form-outline mb-4">
                     <div class="py-2 admin-align-text">
-                        <span">Update Email</span>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-outline">
                         <label class="form-label" for="form3Example1">Email</label>
-                        <input type="text" name="email" value="<?php echo $row['email']; ?>" class="form-control" />
+                        <div class="input-group mb-3">
+                            <input type="text" name="email" value="<?php echo $row['email']; ?>" class="form-control" />
+                            <div class="input-group-prepend">
+                                <button  type="submit" class="btn btn-dark" name="updateEmail" type="button">Edit</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col">
@@ -150,28 +176,16 @@ require("_partials/adminBar.php")
 
                 </div>
             </div>
-            <button type="submit" name="updateEmail" id="btn-edit" class="btn admin-button">Edit</button>
 
         </form>
     <?php
     } ?>
 
 </div>
-<a class="btn admin-button" href="/logout">Log out</a>
+<a class="btn btn-dark" href="/logout">Log out</a>
 
 
 <style lang="css">
     @import "styles.css";
 
-    .admin-align-text {
-        text-align: center;
-    }
-
-
-
-    .admin-button {
-        background: #212121;
-        color: white;
-        border-radius: 0;
-    }
 </style>

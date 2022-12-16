@@ -76,24 +76,23 @@ require("_partials/adminBar.php")
             <div class="col-md-4 mb-4">
                 <div class="form-group">
                     <label>Discount</label>
-                    <select type="category" name="discountID" class="form-control" required>
-                        <option value="">--- Choose a Discount ---</option>
-                        <?php foreach ($productDiscount as $discount) {
-                            echo '<option value="' . $discount["discountID"] . '">' . $discount["eventName"] .  '</option>';
-                        } ?>
-                    </select>
+                    <div class="input-group mb-3">
+                        <select type="category" name="discountID" class="form-control" required>
+                            <option value="">--- Choose a Discount ---</option>
+                            <?php foreach ($productDiscount as $discount) {
+                                echo '<option value="' . $discount["discountID"] . '">' . $discount["eventName"] .  '</option>';
+                            } ?>
+                        </select>
+                        <div class="input-group-prepend">
+                            <button type="submit" name="productAdd" class="btn btn-dark" id="btn-add">Add</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <button type="submit" name="productAdd" class="btn admin-button" id="btn-add">Add</button>
     </form>
 </div>
 <style lang="css">
     @import "styles.css";
 
-    .admin-button {
-        background: #212121;
-        color: white;
-        border-radius: 0;
-    }
 </style>
